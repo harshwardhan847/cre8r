@@ -1,6 +1,7 @@
 import Brands from "./components/Brands";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
+import Transform from "./components/Transform";
 
 type Props = {};
 
@@ -10,6 +11,7 @@ const Home = (props: Props) => {
       <Navbar />
       <Header />
       <Brands />
+      <Transform />
     </header>
   );
 };

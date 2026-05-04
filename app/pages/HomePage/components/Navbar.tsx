@@ -39,12 +39,12 @@ const NavigationMenuComponent = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Button variant={"ghost"} size={"lg"} className="font-normal h-12">
+          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
             Customers
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Button variant={"ghost"} size={"lg"} className="font-normal h-12">
+          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
             Pricing
           </Button>
         </NavigationMenuItem>
@@ -55,8 +55,8 @@ const NavigationMenuComponent = () => {
 
 const Navbar = (props: Props) => {
   return (
-    <nav className="flex items-center justify-between px-4 py-2 pt-2 md:px-8 md:max-w-370 md:mx-auto">
-      <div className="flex items-center justify-start gap-12">
+    <nav className="flex items-center justify-between px-4 py-2 pt-2 md:px-8 md:max-w-350 md:mx-auto">
+      <div className="flex items-center justify-center gap-12">
         <img
           src="/logo.png"
           alt="Logo"
@@ -68,14 +68,14 @@ const Navbar = (props: Props) => {
         <Button
           variant={"outline"}
           size={"lg"}
-          className="font-normal text-base h-12"
+          className="font-normal text-sm h-10"
         >
           Open app
         </Button>
         <Button
           variant={"default"}
           size={"lg"}
-          className="font-light text-base h-12"
+          className="font-light text-sm h-10"
         >
           Get free trial
         </Button>
