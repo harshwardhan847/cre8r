@@ -41,7 +41,7 @@ const Features = (props: Props) => {
         Give your team the power to sell smarter and
         <br /> faster from day one.
       </p>
-      <div className="w-full grid grid-cols-1 relative container md:max-w-6xl mx-auto perspective-distant mt-24 mb-24">
+      <div className="w-full grid grid-cols-1 relative container md:max-w-6xl mx-auto perspective-distant mt-24 mb-24 md:mb-64">
         {featuresList.map((val, featureIdx) => {
           const pos = order.indexOf(featureIdx);
           const isHovered = hovered === featureIdx;

@@ -126,7 +126,7 @@ const Transform = (props: Props) => {
           Never miss an opportunity
         </h3>
 
-        <div className="w-screen mx-auto relative py-4">
+        <div className="w-screen overflow-clip mx-auto relative py-4">
           <div className="bg-linear-to-r from-primary to-transparent w-sm h-full absolute top-0 left-0 z-10" />
           <div className="bg-linear-to-l from-primary to-transparent w-sm h-full absolute top-0 right-0 z-10" />
           <motion.div
