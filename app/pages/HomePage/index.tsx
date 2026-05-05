@@ -1,4 +1,5 @@
 import Brands from "./components/Brands";
+import EmailCard from "./components/EmailCard";
 import Features from "./components/Features";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -20,6 +21,8 @@ const Home = (props: Props) => {
       <Brands />
       <Transform />
       <Features />
+      <EmailCard />
+      <div className="min-h-screen w-full"></div>
     </>
   );
 };
