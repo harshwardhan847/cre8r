@@ -73,7 +73,7 @@ const Navbar = (props: Props) => {
   return (
     <nav
       className={cn(
-        "flex items-center justify-between px-4 py-2 pt-2 z-50 transition-all fixed top-4 w-full left-1/2 -translate-x-1/2 ease-in duration-500 md:px-8 md:max-w-350 md:mx-auto",
+        "flex items-center justify-between px-4 py-2 pt-2 z-50 transition-all fixed top-4 w-full left-1/2 -translate-x-1/2 ease-in duration-200 md:px-8 md:max-w-350 md:mx-auto",
         isScrolled
           ? "bg-background/95 backdrop-blur-sm py-1 md:px-2 z-50 top-4 -translate-x-1/2 w-min rounded-xl shadow"
           : "bg-transparent",
