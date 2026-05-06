@@ -79,7 +79,8 @@ const Transform = (props: Props) => {
       <div className="w-full relative">
         <motion.div
           style={{ rotate: rotateRight, y }}
-          className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/4 right-12"
+          whileHover={{ scale: 1.04 }}
+          className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/4 right-12 border-t-2 border-t-green-400"
         >
           <span className="bg-green-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -91,7 +92,8 @@ const Transform = (props: Props) => {
         </motion.div>
         <motion.div
           style={{ y }}
-          className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-full right-1/2 translate-x-1/2 -translate-y-1/2"
+          whileHover={{ scale: 1.04 }}
+          className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-full right-1/2 translate-x-1/2 -translate-y-1/2 border-t-2 border-t-orange-400"
         >
           <span className="bg-orange-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -103,7 +105,8 @@ const Transform = (props: Props) => {
         </motion.div>
         <motion.div
           style={{ rotate, y }}
-          className="absolute rounded-md origin-top-left bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/6 left-12"
+          whileHover={{ scale: 1.04 }}
+          className="absolute rounded-md origin-top-left bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/6 left-12 border-t-2 border-t-pink-400"
         >
           <span className="bg-pink-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -168,9 +171,9 @@ const Transform = (props: Props) => {
             ].map((label, i) => (
               <div
                 key={i}
-                className="text-primary-foreground whitespace-nowrap bg-neutral-800 tracking-wider border border-neutral-500/20 p-1.5 px-2 rounded-lg flex items-center justify-center gap-2 text-sm"
+                className="text-primary-foreground whitespace-nowrap bg-neutral-900/80 tracking-wider border border-neutral-700/40 p-1.5 px-3 rounded-full flex items-center justify-center gap-2 text-sm"
               >
-                <span className="aspect-square text-xs font-light bg-pink-400 w-4 rounded-sm " />
+                <span className="aspect-square text-xs font-light bg-pink-400 w-3 rounded-full " />
                 {label}
               </div>
             ))}
@@ -179,7 +182,7 @@ const Transform = (props: Props) => {
             className="flex gap-4 py-2 px-4 flex-nowrap items-start justify-start"
             animate={{ x: [-1200, 0] }}
             transition={{
-              duration: 20,
+              duration: 26,
               repeat: Infinity,
               ease: "linear",
               repeatType: "reverse",
@@ -213,9 +216,9 @@ const Transform = (props: Props) => {
             ].map((label, i) => (
               <div
                 key={i}
-                className="text-primary-foreground whitespace-nowrap bg-neutral-800 tracking-wider border border-neutral-500/20 p-1.5 px-2 rounded-lg flex items-center justify-center gap-2 text-sm"
+                className="text-primary-foreground whitespace-nowrap bg-neutral-900/80 tracking-wider border border-neutral-700/40 p-1.5 px-3 rounded-full flex items-center justify-center gap-2 text-sm"
               >
-                <span className="aspect-square text-xs font-light bg-sky-400 w-4 rounded-sm " />
+                <span className="aspect-square text-xs font-light bg-sky-400 w-3 rounded-full " />
                 {label}
               </div>
             ))}
@@ -223,7 +226,7 @@ const Transform = (props: Props) => {
           <motion.div
             className="flex gap-4 py-2 px-4 flex-nowrap items-start justify-start"
             animate={{ x: [0, -1200] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 17, repeat: Infinity, ease: "linear" }}
           >
             {[
               "Engagement Rate",
@@ -253,9 +256,9 @@ const Transform = (props: Props) => {
             ].map((label, i) => (
               <div
                 key={i}
-                className="text-primary-foreground whitespace-nowrap bg-neutral-800 tracking-wider border border-neutral-500/20 p-1.5 px-2 rounded-lg flex items-center justify-center gap-2 text-sm"
+                className="text-primary-foreground whitespace-nowrap bg-neutral-900/80 tracking-wider border border-neutral-700/40 p-1.5 px-3 rounded-full flex items-center justify-center gap-2 text-sm"
               >
-                <span className="aspect-square text-xs font-light bg-green-400 w-4 rounded-sm " />
+                <span className="aspect-square text-xs font-light bg-green-400 w-3 rounded-full " />
                 {label}
               </div>
             ))}

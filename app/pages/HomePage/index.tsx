@@ -4,6 +4,7 @@ import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
+import Testimonials from "./components/Testimonials";
 import Transform from "./components/Transform";
 import BlurEffect from "react-progressive-blur";
 
@@ -22,6 +23,7 @@ const Home = (props: Props) => {
       <Brands />
       <Transform />
       <Features />
+      <Testimonials />
       <EmailCard />
       <Footer />
     </>

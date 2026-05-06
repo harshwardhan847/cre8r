@@ -9,24 +9,32 @@ const featuresList = [
     image: "/feature1.png",
     description:
       "Filter by engagement metrics, niche, audience demographics & more.",
+    accent: "bg-violet-400",
+    num: "01",
   },
   {
     title: "Advanced Creator Briefing System",
     image: "/feature2.png",
     description:
       "The intuitive briefing system helps you set clear goals and share detailed guidelines.",
+    accent: "bg-emerald-400",
+    num: "02",
   },
   {
     title: "Intelligent Matchmaking",
     image: "/feature3.png",
     description:
       "Make data-driven decisions with every click, every view, every comment.",
+    accent: "bg-amber-400",
+    num: "03",
   },
   {
     title: "Live Performance Tracking",
     image: "/feature4.png",
     description:
-      "Make data-driven decisions with every click, every view, every comment.",
+      "Monitor views, engagement and ROI in real-time across campaigns.",
+    accent: "bg-rose-400",
+    num: "04",
   },
 ];
 
@@ -67,14 +75,21 @@ const Features = (props: Props) => {
                 }}
               >
                 <h3
-                  className="p-6 py-2 bg-background border-border/10 border rounded-t-lg w-full flex items-center"
+                  className="p-6 py-2 bg-background border-border/10 border rounded-t-lg w-full flex items-center justify-between"
                   style={{
                     opacity: pos === 0 || isHovered ? 1 : 0.5,
                     transition: "opacity 0.3s ease",
                   }}
                 >
-                  <span className="rounded-sm items-center mr-2 border border-border/10 bg-pink-400 inline-flex rotate-45 w-4 h-4 aspect-square" />
-                  {val.title}
+                  <span className="flex items-center gap-2">
+                    <span
+                      className={`rounded-sm items-center border border-border/10 ${val.accent} inline-flex rotate-45 w-4 h-4 aspect-square`}
+                    />
+                    {val.title}
+                  </span>
+                  <span className="text-xs font-medium text-muted-foreground/50 tabular-nums">
+                    {val.num}
+                  </span>
                 </h3>
                 <img
                   src={val.image}
@@ -83,7 +98,11 @@ const Features = (props: Props) => {
                   height={500}
                   className="w-full h-auto bg-primary aspect-video object-cover rounded-b-lg"
                 />
-                {/* <p>{val.description}</p> */}
+                {(pos === 0 || isHovered) && (
+                  <p className="text-xs text-muted-foreground px-6 pb-4 pt-1">
+                    {val.description}
+                  </p>
+                )}
               </div>
             );
           })}
