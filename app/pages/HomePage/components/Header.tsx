@@ -7,7 +7,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="w-full mx-auto mt-12 flex flex-col items-center justify-start md:pt-12 relative md:min-h-[80vh]">
+    <header className="w-full mx-auto mt-24 flex flex-col items-center justify-start md:pt-12 relative md:min-h-[80vh]">
       <div className="w-full absolute -top-20 left-0 scale-100 hue-rotate-180 h-full z-0">
         <img
           src="./header_bg.png"
