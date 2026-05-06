@@ -5,30 +5,30 @@ import EmailInput from "./EmailInput";
 const articles = [
   {
     id: 1,
-    title: "How to Boost Your Sales with AI-Powered Tools",
+    title: "How to find the right micro-influencer for your brand",
     summary:
-      "Discover the top AI tools that can help you increase your sales and grow your business.",
+      "Discover the key metrics and strategies to identify micro-influencers who align with your brand values.",
     Image: "https://example.com/article1.jpg",
   },
   {
     id: 2,
-    title: "The Future of Sales: AI Trends to Watch in 2024",
+    title: "Measuring ROI in influencer campaigns",
     summary:
-      "Stay ahead of the curve with these emerging AI trends that are shaping the future of sales.",
+      "Learn how to track and measure the return on investment from your influencer marketing campaigns.",
     Image: "https://example.com/article2.jpg",
   },
   {
     id: 3,
-    title: "Case Study: How Company X Increased Sales by 50% with AI",
+    title: "The rise of nano-influencers in India",
     summary:
-      "Learn how Company X leveraged AI technology to achieve a significant boost in their sales performance.",
+      "Explore why nano-influencers are becoming the most cost-effective channel for D2C brands in India.",
     Image: "https://example.com/article3.jpg",
   },
   {
     id: 4,
-    title: "Case Study: How Company Y Increased Sales by 60% with AI",
+    title: "Building long-term creator partnerships",
     summary:
-      "Learn how Company Y leveraged AI technology to achieve a significant boost in their sales performance.",
+      "Strategies for fostering authentic, lasting relationships with content creators for sustainable growth.",
     Image: "https://example.com/article4.jpg",
   },
 ];
@@ -39,7 +39,7 @@ const Footer = () => {
         <div className=" flex flex-col items-center justify-center container mx-auto px-8 py-16">
           <div className="w-full items-center justify-between flex">
             <h2 className="text-lg font-light text-primary-foreground/70">
-              Level up your sales game
+              Insights &amp; Resources
             </h2>
             <Button variant={"outline"} size={"lg"} className="text-foreground">
               View all articles
@@ -60,10 +60,10 @@ const Footer = () => {
       </div>
       <div className="py-40 pt-20 flex flex-col bg-primary items-center justify-center gap-4">
         <h2 className="text-5xl uppercase text-center text-primary-foreground font-bold">
-          Unlock your AI
-          <br /> sales{" "}
+          Intelligent influencer
+          <br /> matchmaking{" "}
           <span className="text-transparent bg-clip-text bg-linear-to-br from-pink-500 via-background to-blue-500">
-            superpowers
+            powered by AI
           </span>
         </h2>
         <EmailInput dark />
@@ -85,25 +85,25 @@ const Footer = () => {
               href="#"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              About
+              Home
             </a>
             <a
               href="#"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              Features
+              About Us
             </a>
             <a
               href="#"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              Works
+              Product
             </a>
             <a
               href="#"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              Career
+              Contact Us
             </a>
           </div>
 
@@ -127,11 +127,7 @@ const Footer = () => {
 
         <div className="mx-auto flex max-w-7xl justify-center px-4 py-8 sm:px-6 items-center text-muted-foreground">
           <p className="text-center font-medium text-balance">
-            {`©${new Date().getFullYear()}`}{" "}
-            <a href="#" className="hover:underline">
-              Cre8r.ai
-            </a>
-            , Made with ❤️ for Creators.
+            @2025_Cre8r.ai, All Right Reserved
           </p>
         </div>
       </footer>

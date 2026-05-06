@@ -55,25 +55,25 @@ const Transform = (props: Props) => {
     >
       <h4 className="p-1.5 scale-90 shadow bg-neutral-800 flex border border-neutral-500/20 items-center justify-center gap-2 w-min whitespace-nowrap rounded-xl pr-3 text-[12px] text-primary-foreground font-extralight">
         <span className="p-0.5 px-2 bg-linear-to-br border border-neutral-500/20 shadow from-purple-400 via-background to-orange-400 text-[11px] font-normal rounded-md text-primary">
-          DUO
+          AI
         </span>
         <span className="text-primary-foreground/70 font-normal tracking-wide ">
-          AI Content Copilot
+          Influencer Marketing Platform
         </span>
       </h4>
       <h2 className="text-5xl font-light leading-none tracking-tighter text-primary-foreground text-center">
-        Transform the way you
-        <br /> sell with Duo Copilot
+        Understand your audience
+        <br /> through voices they trust.
       </h2>
       <p className="max-w-md -m-4 text-muted-foreground text-center text-pretty">
-        Save more than 10 hours per week with Duo’s daily
-        <br /> signals, in-depth research, and multichannel outreach.
+        We prioritize authentic influencer relationships
+        <br /> that create lasting impact for your brand.
       </p>
       <Button
         className="bg-background text-foreground cursor-pointer text-sm font-normal hover:bg-white"
         size={"lg"}
       >
-        Get Started
+        Request a call back
       </Button>
 
       <div className="w-full relative">
@@ -82,9 +82,11 @@ const Transform = (props: Props) => {
           className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/4 right-12"
         >
           <span className="bg-green-400 rounded-sm shadow w-4 aspect-square mb-1" />
-          <h6 className="font-normal text-xs text-foreground">Lorem, ipsum.</h6>
+          <h6 className="font-normal text-xs text-foreground">
+            Find & Track Creators
+          </h6>
           <p className="text-xs text-muted-foreground">
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit Lorem.
+            Discover 4mn+ creators filtered by niche, reach and engagement.
           </p>
         </motion.div>
         <motion.div
@@ -92,9 +94,11 @@ const Transform = (props: Props) => {
           className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-full right-1/2 translate-x-1/2 -translate-y-1/2"
         >
           <span className="bg-orange-400 rounded-sm shadow w-4 aspect-square mb-1" />
-          <h6 className="font-normal text-xs text-foreground">Lorem, ipsum.</h6>
+          <h6 className="font-normal text-xs text-foreground">
+            Intelligent Matchmaking
+          </h6>
           <p className="text-xs text-muted-foreground">
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit Lorem.
+            AI-powered recommendations to connect brands with ideal creators.
           </p>
         </motion.div>
         <motion.div
@@ -102,9 +106,11 @@ const Transform = (props: Props) => {
           className="absolute rounded-md origin-top-left bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/6 left-12"
         >
           <span className="bg-pink-400 rounded-sm shadow w-4 aspect-square mb-1" />
-          <h6 className="font-normal text-xs text-foreground">Lorem, ipsum.</h6>
+          <h6 className="font-normal text-xs text-foreground">
+            Live Performance Tracking
+          </h6>
           <p className="text-xs text-muted-foreground">
-            Lorem ipsum dolor sit amet Lorem ipsum dolor sit Lorem.
+            Monitor views, engagement and ROI in real-time across campaigns.
           </p>
         </motion.div>
         <motion.div className="aspect-video mx-auto max-w-6xl w-full h-full overflow-hidden mt-8 shadow rounded-lg relative backdrop-blur-lg bg-white/20">
@@ -123,7 +129,7 @@ const Transform = (props: Props) => {
       </div>
       <div className="mt-20">
         <h3 className="text-2xl font-normal text-muted-foreground text-center mb-8">
-          Never miss an opportunity
+          Never miss a campaign opportunity
         </h3>
 
         <div className="w-screen overflow-clip mx-auto relative py-4">
@@ -134,13 +140,38 @@ const Transform = (props: Props) => {
             animate={{ x: [0, -1200] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
-            {Array.from({ length: 24 }).map((_, i) => (
+            {[
+              "Influencer Discovery",
+              "Campaign Analytics",
+              "Creator Outreach",
+              "ROI Tracking",
+              "Audience Insights",
+              "Brand Collaboration",
+              "Influencer Discovery",
+              "Campaign Analytics",
+              "Creator Outreach",
+              "ROI Tracking",
+              "Audience Insights",
+              "Brand Collaboration",
+              "Influencer Discovery",
+              "Campaign Analytics",
+              "Creator Outreach",
+              "ROI Tracking",
+              "Audience Insights",
+              "Brand Collaboration",
+              "Influencer Discovery",
+              "Campaign Analytics",
+              "Creator Outreach",
+              "ROI Tracking",
+              "Audience Insights",
+              "Brand Collaboration",
+            ].map((label, i) => (
               <div
                 key={i}
                 className="text-primary-foreground whitespace-nowrap bg-neutral-800 tracking-wider border border-neutral-500/20 p-1.5 px-2 rounded-lg flex items-center justify-center gap-2 text-sm"
               >
                 <span className="aspect-square text-xs font-light bg-pink-400 w-4 rounded-sm " />
-                Lorem ipsum dolor sit.
+                {label}
               </div>
             ))}
           </motion.div>
@@ -154,13 +185,38 @@ const Transform = (props: Props) => {
               repeatType: "reverse",
             }}
           >
-            {Array.from({ length: 24 }).map((_, i) => (
+            {[
+              "Micro-Influencers",
+              "Nano Creators",
+              "Content Calendar",
+              "Performance Reports",
+              "Creator Briefs",
+              "Campaign Goals",
+              "Micro-Influencers",
+              "Nano Creators",
+              "Content Calendar",
+              "Performance Reports",
+              "Creator Briefs",
+              "Campaign Goals",
+              "Micro-Influencers",
+              "Nano Creators",
+              "Content Calendar",
+              "Performance Reports",
+              "Creator Briefs",
+              "Campaign Goals",
+              "Micro-Influencers",
+              "Nano Creators",
+              "Content Calendar",
+              "Performance Reports",
+              "Creator Briefs",
+              "Campaign Goals",
+            ].map((label, i) => (
               <div
                 key={i}
                 className="text-primary-foreground whitespace-nowrap bg-neutral-800 tracking-wider border border-neutral-500/20 p-1.5 px-2 rounded-lg flex items-center justify-center gap-2 text-sm"
               >
                 <span className="aspect-square text-xs font-light bg-sky-400 w-4 rounded-sm " />
-                Lorem ipsum dolor sit.
+                {label}
               </div>
             ))}
           </motion.div>
@@ -169,13 +225,38 @@ const Transform = (props: Props) => {
             animate={{ x: [0, -1200] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
-            {Array.from({ length: 24 }).map((_, i) => (
+            {[
+              "Engagement Rate",
+              "Reach & Impressions",
+              "Brand Awareness",
+              "Sponsored Posts",
+              "Story Views",
+              "Conversion Rate",
+              "Engagement Rate",
+              "Reach & Impressions",
+              "Brand Awareness",
+              "Sponsored Posts",
+              "Story Views",
+              "Conversion Rate",
+              "Engagement Rate",
+              "Reach & Impressions",
+              "Brand Awareness",
+              "Sponsored Posts",
+              "Story Views",
+              "Conversion Rate",
+              "Engagement Rate",
+              "Reach & Impressions",
+              "Brand Awareness",
+              "Sponsored Posts",
+              "Story Views",
+              "Conversion Rate",
+            ].map((label, i) => (
               <div
                 key={i}
                 className="text-primary-foreground whitespace-nowrap bg-neutral-800 tracking-wider border border-neutral-500/20 p-1.5 px-2 rounded-lg flex items-center justify-center gap-2 text-sm"
               >
                 <span className="aspect-square text-xs font-light bg-green-400 w-4 rounded-sm " />
-                Lorem ipsum dolor sit.
+                {label}
               </div>
             ))}
           </motion.div>
@@ -183,21 +264,23 @@ const Transform = (props: Props) => {
       </div>
       <div className="mx-auto w-xl mt-24 mb-24 text-primary-foreground">
         <p className="text-4xl text-start font-normal tracking-tight font-sans border-b border-white/20 pb-6">
-          "I wake up to a list of highly relevant signals and accounts, saving
-          me hours on research and personalization every day. This is the future
-          of sales!"
+          "Cre8r's platform made influencer outreach effortless. We scaled from
+          5 to 50 creators in a single month — results we never thought
+          possible."
         </p>
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center justify-center gap-2">
             <div className="aspect-square h-12 bg-background rounded-xl"></div>
             <div className="flex flex-col items-start justify-center">
               <p className="text-sm text-primary-foreground font-semibold">
-                John Doe
+                Ananya Singh
               </p>
-              <p className="text-sm text-muted-foreground">CEO, Company</p>
+              <p className="text-sm text-muted-foreground">
+                Marketing Director, D2C Brand
+              </p>
             </div>
           </div>
-          <div className="font-bold text-xl">Ceros</div>
+          <div className="font-bold text-xl">Cre8r.ai</div>
         </div>
       </div>
     </div>

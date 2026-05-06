@@ -5,24 +5,28 @@ type Props = {};
 
 const featuresList = [
   {
-    title: "Feature One",
+    title: "Find & Track 4mn+ Creators",
     image: "/feature1.png",
-    description: "Description for feature one.",
+    description:
+      "Filter by engagement metrics, niche, audience demographics & more.",
   },
   {
-    title: "Feature Two",
+    title: "Advanced Creator Briefing System",
     image: "/feature2.png",
-    description: "Description for feature two.",
+    description:
+      "The intuitive briefing system helps you set clear goals and share detailed guidelines.",
   },
   {
-    title: "Feature Three",
+    title: "Intelligent Matchmaking",
     image: "/feature3.png",
-    description: "Description for feature three.",
+    description:
+      "Make data-driven decisions with every click, every view, every comment.",
   },
   {
-    title: "Feature Four",
+    title: "Live Performance Tracking",
     image: "/feature4.png",
-    description: "Description for feature four.",
+    description:
+      "Make data-driven decisions with every click, every view, every comment.",
   },
 ];
 
@@ -33,13 +37,10 @@ const Features = (props: Props) => {
 
   return (
     <div className="w-full my-24 flex flex-col items-center gap-4 justify-center">
-      <h2 className="text-4xl font-normal text-center">
-        All-in-one platform to level
-        <br /> up your sales process
-      </h2>
+      <h2 className="text-4xl font-normal text-center">How it works?</h2>
       <p className="text-center text-muted-foreground text-sm -m-2">
-        Give your team the power to sell smarter and
-        <br /> faster from day one.
+        Find your ideal influencers in seconds —
+        <br /> no matter the niche, reach or region.
       </p>
       <div className="h-screen pt-24 w-full">
         <div className="w-full grid grid-cols-1 relative container md:max-w-6xl mx-auto perspective-distant">
@@ -91,18 +92,22 @@ const Features = (props: Props) => {
 
       <div className="mx-auto w-xl mt-24 text-foreground">
         <p className="text-4xl text-start font-normal tracking-tight font-sans border-b border-border/20 pb-6">
-          "Amplemarket is like having a super assistant that doesn’t sleep. The
-          AI is top-notch, helping me find the right leads quickly and easily."
+          "Cre8r's platform made it incredibly easy to find the right creators
+          for our brand. Our campaign reach doubled within the first week."
         </p>
         <div className="flex items-center justify-between mt-4">
           <div className="flex items-center justify-center gap-2">
             <div className="aspect-square h-12 bg-primary rounded-xl"></div>
             <div className="flex flex-col items-start justify-center">
-              <p className="text-sm text-foreground font-semibold">John Doe</p>
-              <p className="text-sm text-muted-foreground">CEO, Company</p>
+              <p className="text-sm text-foreground font-semibold">
+                Rahul Mehta
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Growth Lead, Consumer Brand
+              </p>
             </div>
           </div>
-          <div className="font-bold text-xl">Ceros</div>
+          <div className="font-bold text-xl">Cre8r.ai</div>
         </div>
       </div>
     </div>

@@ -22,17 +22,17 @@ const Header = (props: Props) => {
             New
           </p>
           <h4 className="text-sm font-light whitespace-nowrap">
-            Automate your content creation with AI
+            135K+ Registered creators on Cre8r
           </h4>
           <ArrowRight className="size-4 text-muted-foreground" />
         </button>
         <h1 className="text-6xl font-medium text-center tracking-tighter leading-16">
-          Step into the future of <br />
-          content creation: Human + AI
+          Let AI build your next <br />
+          Influencer campaign
         </h1>
         <h2 className="text-muted-foreground text-2xl max-w-lg font-light text-center">
-          Empower reps, uncover opportunities, and
-          <br /> grow revenue with an all-in-one AI platform.
+          Discover 4.1mn+ creators. Execute campaigns.
+          <br /> Track performance — All in one place.
         </h2>
         <EmailInput />
       </div>

@@ -18,37 +18,23 @@ const NavigationMenuComponent = () => {
     <NavigationMenu>
       <NavigationMenuList className="gap-4 mt-0">
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Product</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink>Link</NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Why us</NavigationMenuTrigger>
-          <NavigationMenuContent className="p-4">
-            <NavigationMenuLink
-              href="https://example.com"
-              className="flex flex-col gap-2 bg-background border-border/10 min-w-sm items-start justify-start rounded-lg! border-2 p-4 outline-none focus-within:ring-2 data-[state=open]:bg-background"
-            >
-              <h6 className="font-semibold text-base">Blogs</h6>
-              <p>Read our latest articles and updates.</p>
-            </NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink>Link</NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
           <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
-            Customers
+            Home
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
-            Pricing
+            About Us
+          </Button>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
+            Product
+          </Button>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
+            Blogs
           </Button>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -98,18 +84,18 @@ const Navbar = (props: Props) => {
       </div>
       <div className="flex items-center gap-4">
         <Button
-          variant={"outline"}
+          variant={"ghost"}
           size={"lg"}
-          className="font-normal text-sm h-10"
+          className="font-normal text-sm h-10 text-muted-foreground"
         >
-          Open app
+          For Influencers
         </Button>
         <Button
           variant={"default"}
           size={"lg"}
           className="font-light text-sm h-10"
         >
-          Get free trial
+          Schedule a Demo
         </Button>
       </div>
     </nav>
