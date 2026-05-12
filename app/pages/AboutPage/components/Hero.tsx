@@ -59,7 +59,8 @@ const ProofCards = [
   },
   {
     title: "Authentic Influence",
-    sub_heading: "Build sustainable audience relationships with trusted creators.",
+    sub_heading:
+      "Build sustainable audience relationships with trusted creators.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-orange-300",
   },

@@ -74,10 +74,8 @@ const Founders = () => {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
         >
           <h2 className="text-[2.1rem] md:text-[3.15rem] leading-[1.1] tracking-[-0.02em] font-light text-[#9f9f9f]">
-            <span className="font-medium text-[#161616]">
-              Our story.
-            </span>{" "}
-            We are a team of passionate marketers building influencer campaigns
+            <span className="font-medium text-[#161616]">Our story.</span> We
+            are a team of passionate marketers building influencer campaigns
             with performance, transparency, and genuine connections at the core.
           </h2>
         </motion.div>

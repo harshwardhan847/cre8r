@@ -22,7 +22,8 @@ const textBlocks: TextBlock[] = [
   },
   {
     id: "block-3",
-    content: "Cre8r is built for performance, transparency, and genuine creator-brand connections.",
+    content:
+      "Cre8r is built for performance, transparency, and genuine creator-brand connections.",
   },
   {
     id: "block-4",
