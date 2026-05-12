@@ -10,56 +10,56 @@ type Props = {};
 
 const ProofCards = [
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "4Mn+ Profiles",
+    sub_heading: "Discoverable creator profiles across niches and regions.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-red-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "500Mn+ Views",
+    sub_heading: "Campaign reach generated through trusted creator voices.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-green-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "6000+ Content Pieces",
+    sub_heading: "High-quality influencer content delivered at scale.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-blue-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "200+ Campaigns",
+    sub_heading: "Influencer campaigns successfully executed end to end.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-purple-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "135K+ Creators",
+    sub_heading: "Registered creators ready for brand collaborations.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-sky-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "Advanced Briefing",
+    sub_heading: "Set clear goals and share detailed campaign guidelines.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-emerald-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "AI Matchmaking",
+    sub_heading: "Find brand-fit influencers using data-driven intelligence.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-pink-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "Live Tracking",
+    sub_heading: "Track every click, view, and comment in real time.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-indigo-300",
   },
   {
-    title: "100+ Companies",
-    sub_heading: "lorem ipsum",
+    title: "Authentic Influence",
+    sub_heading: "Build sustainable audience relationships with trusted creators.",
     brand_image: "https://source.unsplash.com/random/300x200",
     color: "bg-orange-300",
   },
@@ -226,7 +226,7 @@ const Hero = (_props: Props) => {
                   {ProofCards[slots[posIdx].cardIndex!].sub_heading}
                 </p>
                 <div className="h-full flex items-end">
-                  <div className="text-4xl font-black">Ceros</div>
+                  <div className="text-4xl font-black">Cre8r</div>
                 </div>
               </motion.div>
             )}
@@ -236,13 +236,13 @@ const Hero = (_props: Props) => {
       <div className="absolute z-10 inset-0 bg-background/20 backdrop-blur-xs" />
       <h2 className="text-lg font-light z-30">About Us</h2>
       <h1 className="text-6xl font-light text-center z-30">
-        We help
+        Reimagining Influencer Marketing
         <br />
-        companies grow
+        One campaign at a time
       </h1>
       <p className="text-center max-w-lg text-lg font-light z-30">
-        At Cre8r.ai, we build tools that help companies find, connect with, and
-        close their ideal customers.
+        From concept to scale, we help brands discover top influencers, design
+        impactful campaigns, and grow their reach effortlessly.
       </p>
     </div>
   );

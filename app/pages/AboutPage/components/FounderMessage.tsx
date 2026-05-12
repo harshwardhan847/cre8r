@@ -17,43 +17,43 @@ type FounderMessageData = {
 };
 
 const founderData: FounderMessageData = {
-  name: "João Batalha",
-  title: "CEO & Co-founder at Amplemarket",
+  name: "Gaurav Sharma",
+  title: "CEO, Founder at Cre8r.ai",
   videoThumbnail:
-    "https://placehold.co/1280x720/b8956f/d4b5a0?text=Founder+Video",
+    "https://placehold.co/1280x720/b8956f/d4b5a0?text=Founder+Message",
 };
 
 const stats: Stat[] = [
   {
     entries: [
-      { value: "70M+", subheading: "weekly data updates" },
-      { value: "74M+", subheading: "weekly profile enrichments" },
-      { value: "78M+", subheading: "live contact signal refreshes" },
-      { value: "82M+", subheading: "intent events processed weekly" },
+      { value: "4Mn+", subheading: "discoverable profiles" },
+      { value: "4.1Mn+", subheading: "creator profiles discovered" },
+      { value: "3Mn+", subheading: "creators tracked by brands" },
+      { value: "135K+", subheading: "registered creators" },
     ],
   },
   {
     entries: [
-      { value: "100+", subheading: "buying signals" },
-      { value: "120+", subheading: "intent signals tracked" },
-      { value: "140+", subheading: "trigger types monitored" },
-      { value: "160+", subheading: "pipeline signal combinations" },
+      { value: "500Mn+", subheading: "views generated" },
+      { value: "6000+", subheading: "content published" },
+      { value: "200+", subheading: "campaigns delivered" },
+      { value: "200+", subheading: "campaigns executed" },
     ],
   },
   {
     entries: [
-      { value: "<3%", subheading: "email bounce rate" },
-      { value: "2.8%", subheading: "average weekly bounce rate" },
-      { value: "2.5%", subheading: "verified outbound bounce rate" },
-      { value: "2.2%", subheading: "best campaign bounce rate" },
+      { value: "2-4 Weeks", subheading: "average campaign go-live timeline" },
+      { value: "48 Hours", subheading: "creator response window" },
+      { value: "100%", subheading: "platform-led communication" },
+      { value: "2 Rounds", subheading: "content iteration support" },
     ],
   },
   {
     entries: [
-      { value: "43%", subheading: "more interest from AI leads" },
-      { value: "47%", subheading: "higher reply rate from AI segments" },
-      { value: "52%", subheading: "more meetings from warm signals" },
-      { value: "58%", subheading: "pipeline lift from AI prospecting" },
+      { value: "AI", subheading: "intelligent influencer matchmaking" },
+      { value: "Live", subheading: "performance tracking across campaigns" },
+      { value: "Clear", subheading: "advanced creator briefing workflows" },
+      { value: "Trusted", subheading: "authentic creator-brand relationships" },
     ],
   },
 ];

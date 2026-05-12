@@ -13,21 +13,21 @@ const textBlocks: TextBlock[] = [
   {
     id: "block-1",
     content:
-      "Today's buyers move fast. They switch channels, drop signals, and expect relevant conversations at every step.",
+      "We are a team of passionate marketers who have spent years navigating the digital media landscape.",
   },
   {
     id: "block-2",
     content:
-      "But most sales tools still ask reps to do the hard work manually, digging for leads, chasing stale data, and juggling outreach.",
+      "We saw firsthand the frustrations brands faced with influencer marketing and knew there had to be a better way.",
   },
   {
     id: "block-3",
-    content: "Cre8r is different.",
+    content: "Cre8r is built for performance, transparency, and genuine creator-brand connections.",
   },
   {
     id: "block-4",
     content:
-      "We're building the future of sales, a foundation for AI agents that work like teammates, spotting buying signals, researching prospects in-depth, and delivering timely outreach all in one place.",
+      "Our AI-powered matchmaking analyzes influencer profiles, audience demographics, and content themes to find voices authentically aligned with your brand.",
   },
 ];
 
@@ -124,7 +124,7 @@ const ScrollingTextAnimationSection = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Read our manifesto
+              Request a call back
             </motion.button>
           </motion.div>
         </div>

@@ -16,42 +16,42 @@ type Recognition = {
 
 const founders: Founder[] = [
   {
-    name: "Joao Batalha",
+    name: "Gaurav Sharma",
     role: "CEO & Founder",
-    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Founder+01",
+    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Gaurav+Sharma",
   },
   {
-    name: "Luis Batalha",
-    role: "CPO & Founder",
-    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Founder+02",
+    name: "Priya Kumar",
+    role: "Managing Partner",
+    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Priya+Kumar",
   },
   {
-    name: "Mica Oliveira",
-    role: "CRO & Founder",
-    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Founder+03",
+    name: "Riddhi Mehta",
+    role: "Managing Partner",
+    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Riddhi+Mehta",
   },
 ];
 
 const recognitions: Recognition[] = [
   {
-    title: "Top 50 sales tools",
-    source: "G2 award",
-    logo: "G2",
-    logoAlt: "G2",
-    logoBgClass: "bg-[#ff4f2f] text-white",
+    title: "AI-powered creator discovery",
+    source: "4.1Mn+ creator profiles",
+    logo: "AI",
+    logoAlt: "AI Matchmaking",
+    logoBgClass: "bg-[#111] text-white",
   },
   {
-    title: "AI Cool Vendor Award",
-    source: "Gartner",
-    logo: "GT",
-    logoAlt: "Gartner",
+    title: "Advanced creator briefing",
+    source: "Clear goals and campaign guidelines",
+    logo: "BR",
+    logoAlt: "Briefing",
     logoBgClass: "bg-white text-[#181818] border border-black/10",
   },
   {
-    title: "Next 50 GTM startups",
-    source: "RevGenius",
-    logo: "RG",
-    logoAlt: "RevGenius",
+    title: "Live performance tracking",
+    source: "Clicks, views, comments in one place",
+    logo: "LT",
+    logoAlt: "Live Tracking",
     logoBgClass: "bg-[#cce86b] text-[#202020]",
   },
 ];
@@ -75,9 +75,10 @@ const Founders = () => {
         >
           <h2 className="text-[2.1rem] md:text-[3.15rem] leading-[1.1] tracking-[-0.02em] font-light text-[#9f9f9f]">
             <span className="font-medium text-[#161616]">
-              Built by sellers for sellers.
+              Our story.
             </span>{" "}
-            Amplemarket was founded to make sales smarter and simpler.
+            We are a team of passionate marketers building influencer campaigns
+            with performance, transparency, and genuine connections at the core.
           </h2>
         </motion.div>
 
