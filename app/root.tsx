@@ -9,6 +9,9 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import BlurEffect from "react-progressive-blur";
+import Navbar from "./pages/HomePage/components/Navbar";
+import Footer from "./pages/HomePage/components/Footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,7 +36,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <div className="fixed z-50 top-0 left-0 w-screen h-auto">
+          <BlurEffect position="top" intensity={100} className="h-20" />
+        </div>
+        <Navbar />
         {children}
+
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

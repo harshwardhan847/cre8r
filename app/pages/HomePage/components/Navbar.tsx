@@ -1,5 +1,6 @@
 import { useScroll } from "motion/react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import {
   NavigationMenu,
@@ -18,13 +19,23 @@ const NavigationMenuComponent = () => {
     <NavigationMenu>
       <NavigationMenuList className="gap-4 mt-0">
         <NavigationMenuItem>
-          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
-            Home
+          <Button
+            variant={"ghost"}
+            size={"lg"}
+            className="font-normal h-11"
+            asChild
+          >
+            <Link to="/">Home</Link>
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
-            About Us
+          <Button
+            variant={"ghost"}
+            size={"lg"}
+            className="font-normal h-11"
+            asChild
+          >
+            <Link to="/about">About Us</Link>
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>

@@ -109,7 +109,7 @@ const Features = (props: Props) => {
         </div>
       </div>
 
-      <div className="mx-auto w-xl mt-24 text-foreground">
+      {/* <div className="mx-auto w-xl mt-24 text-foreground">
         <p className="text-4xl text-start font-normal tracking-tight font-sans border-b border-border/20 pb-6">
           "Cre8r's platform made it incredibly easy to find the right creators
           for our brand. Our campaign reach doubled within the first week."
@@ -128,7 +128,7 @@ const Features = (props: Props) => {
           </div>
           <div className="font-bold text-xl">Cre8r.ai</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

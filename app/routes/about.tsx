@@ -1,4 +1,4 @@
-import HomePage from "~/pages/HomePage/index";
+import AboutPage from "~/pages/AboutPage/index";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,6 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <HomePage />;
+export default function About() {
+  return <AboutPage />;
 }
