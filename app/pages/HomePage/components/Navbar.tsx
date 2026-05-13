@@ -98,8 +98,9 @@ const Navbar = (props: Props) => {
           variant={"ghost"}
           size={"lg"}
           className="font-normal text-sm h-10 text-muted-foreground"
+          asChild
         >
-          For Influencers
+          <Link to="/influencer">For Influencers</Link>
         </Button>
         <Button
           variant={"default"}
