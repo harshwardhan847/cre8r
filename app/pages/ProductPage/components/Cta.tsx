@@ -7,10 +7,10 @@ const Cta = () => {
         <div className="relative overflow-hidden rounded-2xl bg-amber-950 px-6 py-20 text-center sm:rounded-3xl sm:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-5xl font-extrabold uppercase leading-none tracking-[-0.06em] text-primary-foreground sm:text-6xl md:text-7xl lg:text-8xl">
-              Grow alongside
+              Scale influencer
             </h2>
             <p className="mt-2 text-5xl font-extrabold uppercase leading-none tracking-[-0.06em] text-fuchsia-100 drop-shadow-[0_0_1.25rem_rgba(244,214,255,0.5)] sm:text-6xl md:text-7xl lg:text-8xl">
-              600+ partners
+              campaigns with cre8r
             </p>
 
             <Button
@@ -18,7 +18,7 @@ const Cta = () => {
               size="lg"
               className="mt-10 h-12 rounded-xl bg-primary-foreground px-10 text-base font-medium text-foreground hover:bg-primary-foreground/90"
             >
-              Become a partner
+              Request a call back
             </Button>
           </div>
 

@@ -11,14 +11,14 @@ type PayoutCard = {
 
 const cards: PayoutCard[] = [
   {
-    amount: "$47,057",
+    amount: "4Mn+",
     bgClass: "bg-[#ecc9e7]",
     textClass: "text-[#1f1f1f]",
     positionClass: "top-10 left-[6%] lg:left-[12%]",
     avatarClass: "bg-[linear-gradient(135deg,#cc7e63,#6e5333)]",
   },
   {
-    amount: "$3,289",
+    amount: "500Mn+",
     bgClass: "bg-[#5a1d0e]",
     textClass: "text-[#f6f0eb]",
     positionClass: "top-[208px] left-[3%] lg:left-[10%]",
@@ -26,7 +26,7 @@ const cards: PayoutCard[] = [
     hiddenOnMobile: true,
   },
   {
-    amount: "$22,602",
+    amount: "6000+",
     bgClass: "bg-[#f24908]",
     textClass: "text-[#fff4ee]",
     positionClass: "top-[316px] left-[23%] lg:left-[26%]",
@@ -34,21 +34,21 @@ const cards: PayoutCard[] = [
     hiddenOnMobile: true,
   },
   {
-    amount: "$51,012",
+    amount: "200+",
     bgClass: "bg-[#5a1d0e]",
     textClass: "text-[#f6f0eb]",
     positionClass: "top-[370px] left-1/2 -translate-x-1/2",
     avatarClass: "bg-[linear-gradient(135deg,#46505c,#a77967)]",
   },
   {
-    amount: "$1,660",
+    amount: "135K+",
     bgClass: "bg-[#cbc5f0]",
     textClass: "text-[#2a2a2a]",
     positionClass: "top-10 right-[6%] lg:right-[12%]",
     avatarClass: "bg-[linear-gradient(135deg,#de987e,#7a5a4d)]",
   },
   {
-    amount: "$13,204",
+    amount: "3Mn+",
     bgClass: "bg-[#f24908]",
     textClass: "text-[#fff4ee]",
     positionClass: "top-[208px] right-[3%] lg:right-[10%]",
@@ -56,7 +56,7 @@ const cards: PayoutCard[] = [
     hiddenOnMobile: true,
   },
   {
-    amount: "$16,397",
+    amount: "4.1Mn+",
     bgClass: "bg-[#ecc9e7]",
     textClass: "text-[#1f1f1f]",
     positionClass: "top-[316px] right-[23%] lg:right-[26%]",
@@ -71,14 +71,14 @@ const Hero = () => {
       <div className="relative mx-auto md:min-h-screen w-full max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mx-auto flex max-w-162.5 flex-col items-center pt-28 md:pt-48 text-center">
           <p className="text-[13px] font-medium tracking-sm text-muted-foreground">
-            PARTNER PROGRAM
+            INFLUENCER PLATFORM
           </p>
           <h1 className="mt-4 text-balance text-[42px] font-normal leading-[0.96] text-foreground sm:text-[54px] md:text-5xl">
-            Get paid for every customer you send our way
+            Let AI build your next influencer campaign
           </h1>
           <p className="mt-6 max-w-125 text-pretty text-lg leading-[1.35] text-muted-foreground">
-            Earn up to 20% in revenue share by referring sales teams to
-            Amplemarket&apos;s all-in-one AI platform.
+            Discover 4.1mn+ creators. Execute campaigns. Track performance - all
+            in one place.
           </p>
           <Button
             type="button"
@@ -86,7 +86,7 @@ const Hero = () => {
             size={"lg"}
             className="mt-10 h-12 px-6 text-lg font-light"
           >
-            Become a partner
+            Request a call back
           </Button>
         </div>
         <div className=" relative top-0 left-0 bg-red-400 h-auto -translate-y-80 scale-110">
@@ -118,19 +118,18 @@ const Stats = () => {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-9xl font-normal font-mono text-foreground">
-            $1,000,000+
+            200+
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Total commissions to date
+            Campaigns delivered
           </p>
         </div>
 
         <div className="mt-20 mx-auto max-w-2xl pt-12">
           <blockquote className="text-start border-b border-border pb-8 ">
             <p className="text-3xl font-normal leading-relaxed text-foreground">
-              "With Amplemarket, we're not just referring leads. We're helping
-              companies modernize how they sell and that's a win-win for us and
-              our clients."
+              "We prioritize authentic influencer relationships that truly
+              represent your brand and connect with your audience."
             </p>
           </blockquote>
 
@@ -138,14 +137,14 @@ const Stats = () => {
             <div className="flex items-center gap-3 w-full">
               <div className="h-10 w-10 rounded-full bg-slate-300" />
               <div className="text-left">
-                <p className="font-medium text-foreground">Liron Kaplan</p>
+                <p className="font-medium text-foreground">Cre8r Team</p>
                 <p className="text-sm text-muted-foreground">
-                  Vice President GTM
+                  Influencer Marketing Platform
                 </p>
               </div>
             </div>
             <div className="font-bold whitespace-nowrap text-foreground">
-              DIRECT EXPERTS.
+              CRE8R.AI
             </div>
           </div>
         </div>

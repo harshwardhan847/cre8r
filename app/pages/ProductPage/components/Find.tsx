@@ -11,33 +11,33 @@ type ProgramCard = {
 
 const programCards: ProgramCard[] = [
   {
-    title: "Agency & Consultants",
+    title: "Find & Track 4mn+ Creators",
     description:
-      "Help clients reach their sales goals. Refer or help implement our AI sales platform to drive real growth.",
+      "Filter by engagement metrics, niche, audience demographics and more to discover the right voices quickly.",
     cardClass: "bg-violet-100",
     buttonClass:
       "border-violet-300/80 bg-violet-100 text-foreground hover:bg-violet-200",
   },
   {
-    title: "Affiliates",
+    title: "Advanced Creator Briefing",
     description:
-      "Turn your network into revenue. Share Amplemarket and earn a commission on every successful sale.",
+      "Set clear goals and share detailed campaign guidelines with a structured briefing system.",
     cardClass: "bg-yellow-200",
     buttonClass:
       "border-yellow-400/80 bg-yellow-200 text-foreground hover:bg-yellow-300",
   },
   {
-    title: "Communities & Creators",
+    title: "Intelligent Matchmaking",
     description:
-      "Help your audience grow smarter. Partner with us to share Amplemarket's sales tools and drive real impact.",
+      "Our AI analyses creator profiles, audience demographics and themes to match campaigns with precision.",
     cardClass: "bg-pink-200",
     buttonClass:
       "border-pink-300/80 bg-pink-200 text-foreground hover:bg-pink-300",
   },
   {
-    title: "VCs & Incubators",
+    title: "Live Performance Tracking",
     description:
-      "Support your portfolio with top-tier outbound sales. Offer startups special pricing to fuel growth.",
+      "Track every click, view and comment in one place to optimize performance while campaigns are live.",
     cardClass: "bg-green-300",
     buttonClass:
       "border-green-400/80 bg-green-300 text-foreground hover:bg-green-400",
@@ -53,17 +53,19 @@ type Step = {
 const steps: Step[] = [
   {
     number: "01.",
-    title: "Apply",
+    title: "Sign up & complete your profile",
   },
   {
     number: "02.",
-    title: "Get approved",
+    title: "Connect with brands",
     description:
-      "Once accepted, you'll get instant access to your Partner Dashboard with your personalized link, marketing materials, resources, and tools to track leads and commissions.",
+      "Our AI helps you connect with brands that fit your audience and content so you can move faster.",
   },
   {
     number: "03.",
-    title: "Start earning",
+    title: "Land dream collabs",
+    description:
+      "Partner with top brands, boost engagement, and grow your influence with every successful collaboration.",
   },
 ];
 
@@ -90,9 +92,9 @@ const Find = () => {
     <section className="bg-muted py-20 sm:py-24 min-h-screen">
       <div className="mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10">
         <h2 className="mx-auto max-w-lg text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl">
-          Find the right partner
+          Automate Influencer Marketing
           <br />
-          program for you
+          to Drive ROI
         </h2>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -112,7 +114,7 @@ const Find = () => {
                 variant="outline"
                 className={`mt-auto w-fit rounded-xl px-6 py-5 text-base font-normal shadow-none ${program.buttonClass}`}
               >
-                Apply for this program
+                Request a call back
               </Button>
             </article>
           ))}
@@ -124,9 +126,9 @@ const Find = () => {
         className="mx-auto mt-28 w-full max-w-2xl px-6 text-center sm:px-8"
       >
         <h3 className="text-4xl font-medium leading-tight text-foreground sm:text-5xl">
-          How to become an
+          Here&apos;s how
           <br />
-          Amplemarket partner
+          to start
         </h3>
 
         <div className="mt-12 space-y-28 sm:space-y-36">

@@ -8,34 +8,34 @@ type ReasonCard = {
 
 const reasonCards: ReasonCard[] = [
   {
-    title: "Fast-growing sales platform",
+    title: "Find & track 4mn+ creators",
     description:
-      "Earn up to 20% revenue share with uncapped commissions, and join a network that's already earned over $1M.",
+      "Filter by engagement metrics, niche, audience demographics, and more to shortlist creators faster.",
     Icon: MoveUpRight,
   },
   {
-    title: "Breakthrough AI Copilot",
+    title: "Advanced creator briefing",
     description:
-      "Equip your network with AI agents that spot buying signals, research prospects, and automate outreach to increase conversions.",
+      "Set clear goals and share detailed guidelines with an intuitive briefing flow built for campaign teams.",
     Icon: CircleDashed,
   },
   {
-    title: "Full partner support",
+    title: "Live performance tracking",
     description:
-      "Work with our partner manager and access co-marketing resources to grow alongside our expanding partner community.",
+      "Make data-driven decisions with every click, every view, and every comment from one central dashboard.",
     Icon: UsersRound,
   },
 ];
 
 const brandNames = [
-  "HiJiffy",
-  "wasabi",
-  "Brite*",
-  "Raconteur",
-  "RemotePass",
-  "JEEVES",
-  "CLARA",
-  "Mistra",
+  "Beauty",
+  "Fashion",
+  "Food",
+  "Beverage",
+  "Health",
+  "Fitness",
+  "Travel",
+  "Retail",
 ];
 
 const WhyUs = () => {
@@ -43,9 +43,9 @@ const WhyUs = () => {
     <section className="bg-primary py-20 text-primary-foreground sm:py-24">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 sm:px-10">
         <h2 className="max-w-sm text-center text-3xl font-medium leading-tight sm:text-5xl">
-          Why partner
+          How it
           <br />
-          with Amplemarket
+          works?
         </h2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -72,10 +72,9 @@ const WhyUs = () => {
 
         <div className="mt-20 w-full max-w-3xl">
           <blockquote className="text-3xl font-light leading-tight sm:text-4xl">
-            "We love working with partners who share our belief that sales can
-            be smarter, faster, and more human. Our partner program is designed
-            to create real value, not just for us but for every business and
-            community our partners reach."
+            "Understand your audience through voices they trust. We prioritize
+            authentic influencer relationships that truly represent your brand
+            and connect with your audience."
           </blockquote>
 
           <div className="mt-4 h-px w-full bg-primary-foreground/15" />
@@ -86,10 +85,10 @@ const WhyUs = () => {
             </div>
             <div>
               <p className="text-sm font-medium text-primary-foreground">
-                Bruno Santos
+                Cre8r Team
               </p>
               <p className="text-xs text-primary-foreground/70">
-                Partnerships Manager at Amplemarket
+                Intelligent influencer matchmaking powered by AI
               </p>
             </div>
           </div>
@@ -97,7 +96,7 @@ const WhyUs = () => {
 
         <div className="mt-16 w-full">
           <p className="text-center text-lg mb-12 mt-24 text-primary-foreground/70">
-            Brands scaling with our partner network
+            Industries we actively support
           </p>
           <div className="mt-6 grid grid-cols-2 items-center gap-x-6 gap-y-4 text-center text-lg font-semibold text-primary-foreground/80 sm:grid-cols-4 lg:grid-cols-8">
             {brandNames.map((brand) => (

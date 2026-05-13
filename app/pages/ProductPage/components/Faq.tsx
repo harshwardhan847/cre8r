@@ -9,39 +9,39 @@ type FaqItem = {
 const faqItems: FaqItem[] = [
   {
     id: 1,
-    question: "Who can become an Amplemarket partner?",
+    question: "How long does it take for a campaign to go live?",
     answer:
-      "We welcome agencies, consultants, creators, VC firms, GTM professionals, and individuals who want to share the Amplemarket love. If you believe in the power of AI-driven sales and are passionate about helping sales teams succeed, you're a great fit.",
+      "If we have to capture the entire project from finalizing the influencer pool, it typically takes 2-4 weeks from influencer discovery, selection, payments, and product shipping to the campaign going live.",
   },
   {
     id: 2,
-    question: "How and when do I get paid?",
+    question: "What industries does Cre8r focus on?",
     answer:
-      "Commissions are processed after qualifying payments are confirmed. You can track payouts in your partner dashboard and receive updates on payment timelines.",
+      "Cre8r primarily works in the beauty, fashion, food, beverage, health, fitness, travel and retail industries.",
   },
   {
     id: 3,
-    question: "Can I be both a customer and a partner?",
+    question: "How does Cre8r ensure a high-quality creator network?",
     answer:
-      "Yes. Many partners are also customers. You can promote the platform while continuing to use it for your own outbound and GTM workflows.",
+      "Cre8r's vetting process thoroughly screens and onboards only creators who produce relevant, trustworthy and high-value content.",
   },
   {
     id: 4,
-    question: "Do I need a large audience to join?",
+    question: "What is Cre8r's revenue model?",
     answer:
-      "No. You do not need a massive audience. What matters most is trusted relationships and the ability to connect Amplemarket with the right teams.",
+      "For barter campaigns, Cre8r charges a fixed platform fee per influencer. For paid campaigns, the margins are bundled in the influencer pricing.",
   },
   {
     id: 5,
-    question: "What support will I get as a partner?",
+    question: "How do brands communicate with influencers?",
     answer:
-      "Partners get access to enablement materials, campaign resources, and guidance from the partner team to help you create successful referrals.",
+      "All communication happens through the Cre8r platform, eliminating the need for emails or DMs. Brands can provide briefs, and influencers share content for approval.",
   },
   {
     id: 6,
-    question: "How much have partners earned so far?",
+    question: "What happens if a brand doesn't like the influencer content?",
     answer:
-      "Our partner community has generated significant recurring commissions, with top performers scaling steadily through qualified referrals.",
+      "Brands can reject content if it doesn't align with their requirements. They get two rounds of iterations with the influencer to provide feedback.",
   },
 ];
 
