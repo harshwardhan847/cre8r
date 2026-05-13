@@ -12,30 +12,30 @@ type Props = {};
 
 const featureRows = [
   {
-    title: "Simplify your tech stack with all-in-one selling",
+    title: "Sign up & complete your profile",
     description:
-      "Streamline operations for smoother sales cycles and unlock a better ROI. Eliminate cross-platform friction for easier onboarding, faster ramping, and crystal-clear visibility throughout your sales funnel.",
+      "Join our community to expand your reach and opportunities. Showcase your content, audience demographics, and engagement metrics to help us match you with the perfect brand partnerships.",
     reverse: false,
     visual: "hub",
   },
   {
-    title: "Robust CRM integrations to push custom attributes",
+    title: "Connect with brands that fit your niche",
     description:
-      "Enjoy complete control over your data with seamless bi-directional synchronization and custom field mapping. Keep your CRM in tip-top condition and your data consistent, up-to-date, and perfectly aligned with your ongoing workflows.",
+      "Our AI helps you connect with brands that align with your audience and content style. Browse vetted opportunities, receive personalized campaign offers, and partner with companies you actually want to work with.",
     reverse: true,
     visual: "crm",
   },
   {
-    title: "Boost open rates beyond 50% with validated emails",
+    title: "Land dream collaborations",
     description:
-      "Unleash the full potential of your lead data with AI-powered enrichment and email verification protocols. Safeguard your mailboxes and outbound efficiency by eradicating stale data and increasing completeness.",
+      "Partner with top brands, boost your engagement, and watch your influence grow. Create authentic content that resonates, meet exciting brands, and build lasting professional relationships.",
     reverse: false,
     visual: "lead",
   },
   {
-    title: "Optimize email domain health & performance",
+    title: "Get paid seamlessly",
     description:
-      "Leverage AI to optimize every aspect of your multichannel outbound engine and make the most of your reps' efforts. With mailbox warmup, deliverability support, and automation, your team can spend more time on high-value activities.",
+      "Receive your payment directly in your account as per agreed terms. For barter campaigns, get exclusive products. For paid collaborations, earn competitive rates. Everything handled in one platform.",
     reverse: true,
     visual: "domain",
   },

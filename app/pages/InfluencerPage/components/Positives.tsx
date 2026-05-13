@@ -5,27 +5,27 @@ type Props = {};
 
 const positives = [
   {
-    title: "Smarter, smoother selling",
+    title: "Creator-friendly pricing logic",
     description:
-      "Arm your sales team with all the industry-leading tools they need to sell in a single intuitive platform.",
+      "Unlock your earning potential with our performance-led pricing logic. We evaluate your data and insights to determine optimal compensation for your content.",
     accent: "bg-blue-500",
   },
   {
-    title: "Push productivity to new heights",
+    title: "Vetted brand opportunities",
     description:
-      "Relieve sales cycle bottlenecks and keep revenue consistent with AI-powered intelligence and automation.",
+      "Partner with trustworthy brands that are pre-screened and verified. Work with companies that value authentic creators and deliver real value.",
     accent: "bg-orange-500",
   },
   {
-    title: "Future-proof your growth machine",
+    title: "Grow your influence",
     description:
-      "Revolutionize your selling practices and discover a more sustainable and effective way to power pipeline.",
+      "Introduce your content to new followers and expand your fanbase. Every collaboration helps you reach wider audiences and strengthen your creator community.",
     accent: "bg-amber-400",
   },
   {
-    title: "End-to-end sales visibility",
+    title: "Seamless collaboration",
     description:
-      "Benefit from AI-powered analytics and performance insights to identify challenges and safeguard your operations.",
+      "From signing up to getting paid, we make it simple. Manage campaigns, share content, and receive payments all in one intuitive platform.",
     accent: "bg-emerald-500",
   },
 ];
@@ -35,8 +35,7 @@ const Positives = (props: Props) => {
     <section className="w-full bg-background py-20 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
         <h2 className=" text-xl font-normal leading-tight tracking-tight text-foreground/50 md:text-3xl">
-          Enhance efficiency,
-          <br /> transparency, and growth
+          Why creators choose Cre8r
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -48,10 +47,10 @@ const Positives = (props: Props) => {
               <span
                 className={`mb-5 inline-flex size-4 rotate-45 rounded-sm ${item.accent}`}
               />
-              <h3 className="text-xl font-medium tracking-tight text-foreground">
+              <h3 className="text-xl font-medium tracking-light text-foreground">
                 {item.title}
               </h3>
-              <p className="mt-3 text-base leading-normal text-muted-foreground font-light">
+              <p className="mt-3 text-sm leading-normal text-muted-foreground font-light">
                 {item.description}
               </p>
             </article>
@@ -107,12 +106,15 @@ const Positives = (props: Props) => {
 
           <div className="md:col-span-2">
             <p className="max-w-4xl text-xl font-light leading-tight tracking-tight text-foreground md:text-2xl">
-              &ldquo;Amplemarket is a game-changer and has put my career on a
-              whole new trajectory.&rdquo;
+              &ldquo;Cre8r makes it incredibly easy to find brand collaborations
+              that align with my content. From discovery to payment, everything
+              is seamless.&rdquo;
             </p>
             <p className="mt-3 text-sm text-muted-foreground font-light">
-              Kyle Rasmussen, Head of Sales at
-              <span className="ml-1 ">Chat Metrics</span>
+              Creator Partner
+              <span className="ml-1 font-medium text-foreground">
+                Cre8r Community
+              </span>
             </p>
           </div>
         </div>
