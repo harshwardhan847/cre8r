@@ -1,4 +1,4 @@
-import { useScroll } from "motion/react";
+import { motion, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "~/components/ui/button";
 
@@ -91,17 +91,32 @@ const Find = () => {
   return (
     <section className="bg-muted py-20 sm:py-24 min-h-screen">
       <div className="mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10">
-        <h2 className="mx-auto max-w-lg text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl">
+        <motion.h2
+          className="mx-auto max-w-lg text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl"
+          initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
           Automate Influencer Marketing
           <br />
           to Drive ROI
-        </h2>
+        </motion.h2>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {programCards.map((program) => (
-            <article
+          {programCards.map((program, index) => (
+            <motion.article
               key={program.title}
               className={`flex min-h-72 flex-col rounded-2xl p-6 sm:p-7 ${program.cardClass}`}
+              initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{
+                duration: 0.35,
+                ease: "easeOut",
+                delay: index * 0.06,
+              }}
+              viewport={{ once: true, amount: 0.35 }}
             >
               <h3 className="text-3xl font-medium tracking-tight text-foreground">
                 {program.title}
@@ -109,14 +124,19 @@ const Find = () => {
               <p className="mt-4 max-w-md text-xl leading-relaxed text-foreground/70">
                 {program.description}
               </p>
-              <Button
-                type="button"
-                variant="outline"
-                className={`mt-auto w-fit rounded-xl px-6 py-5 text-base font-normal shadow-none ${program.buttonClass}`}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Request a call back
-              </Button>
-            </article>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className={`mt-auto w-fit rounded-xl px-6 py-5 text-base font-normal shadow-none ${program.buttonClass}`}
+                >
+                  Request a call back
+                </Button>
+              </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -125,45 +145,69 @@ const Find = () => {
         ref={stepsSectionRef}
         className="mx-auto mt-28 w-full max-w-2xl px-6 text-center sm:px-8"
       >
-        <h3 className="text-4xl font-medium leading-tight text-foreground sm:text-5xl">
+        <motion.h3
+          className="text-4xl font-medium leading-tight text-foreground sm:text-5xl"
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
           Here&apos;s how
           <br />
           to start
-        </h3>
+        </motion.h3>
 
         <div className="mt-12 space-y-28 sm:space-y-36">
           {steps.map((step, index) => {
             const isActive = activeStep === index;
 
             return (
-              <div key={step.number} className="transition-colors duration-500">
-                <p
+              <motion.div
+                key={step.number}
+                className="transition-colors duration-500"
+                initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{
+                  duration: 0.45,
+                  ease: "easeOut",
+                  delay: index * 0.08,
+                }}
+                viewport={{ once: true, amount: 0.35 }}
+                animate={{ opacity: isActive ? 1 : 0.82 }}
+              >
+                <motion.p
                   className={`font-serif text-6xl italic leading-none ${
                     isActive ? "text-foreground/80" : "text-foreground/25"
                   }`}
+                  animate={{ y: isActive ? 0 : 2 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {step.number}
-                </p>
-                <p
+                </motion.p>
+                <motion.p
                   className={`mt-3 text-5xl font-medium leading-none ${
                     isActive ? "text-foreground" : "text-foreground/30"
                   }`}
+                  animate={{ scale: isActive ? 1 : 0.995 }}
+                  transition={{ duration: 0.28 }}
                 >
                   {step.title}
-                </p>
+                </motion.p>
 
                 {step.description ? (
-                  <p
+                  <motion.p
                     className={`mx-auto mt-10 max-w-md text-xl leading-relaxed transition-opacity duration-500 ${
                       isActive
                         ? "text-foreground/55 opacity-100"
                         : "text-foreground/25 opacity-40"
                     }`}
+                    animate={{ y: isActive ? 0 : 4 }}
+                    transition={{ duration: 0.3 }}
                   >
                     {step.description}
-                  </p>
+                  </motion.p>
                 ) : null}
-              </div>
+              </motion.div>
             );
           })}
         </div>

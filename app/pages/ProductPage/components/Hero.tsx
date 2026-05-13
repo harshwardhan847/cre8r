@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { Button } from "~/components/ui/button";
 
 type PayoutCard = {
@@ -69,7 +70,13 @@ const Hero = () => {
   return (
     <section className="">
       <div className="relative mx-auto md:min-h-screen w-full max-w-7xl px-6 sm:px-10 lg:px-16">
-        <div className="mx-auto flex max-w-162.5 flex-col items-center pt-28 md:pt-48 text-center">
+        <motion.div
+          className="mx-auto flex max-w-162.5 flex-col items-center pt-28 md:pt-48 text-center"
+          initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.5 }}
+        >
           <p className="text-[13px] font-medium tracking-sm text-muted-foreground">
             INFLUENCER PLATFORM
           </p>
@@ -88,12 +95,21 @@ const Hero = () => {
           >
             Request a call back
           </Button>
-        </div>
+        </motion.div>
         <div className=" relative top-0 left-0 bg-red-400 h-auto -translate-y-80 scale-110">
-          {cards.map((card) => (
-            <div
+          {cards.map((card, index) => (
+            <motion.div
               key={card.amount}
               className={`absolute z-10 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${card.bgClass} ${card.textClass} ${card.positionClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
+              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              whileHover={{ y: -4, scale: 1.03 }}
+              transition={{
+                duration: 0.35,
+                delay: index * 0.06,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true, amount: 0.4 }}
             >
               <div className="flex h-full flex-col items-center justify-between pb-3 pt-2">
                 <div className="rounded-full bg-[#d9d9d9] p-0.5">
@@ -103,7 +119,7 @@ const Hero = () => {
                 </div>
                 <p className="text-2xl font-light">{card.amount}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -116,16 +132,32 @@ const Stats = () => {
   return (
     <section className="w-full bg-background py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-        <div className="flex flex-col items-center text-center">
-          <h2 className="text-9xl font-normal font-mono text-foreground">
+        <motion.div
+          className="flex flex-col items-center text-center"
+          initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.6 }}
+        >
+          <motion.h2
+            className="text-9xl font-normal font-mono text-foreground"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             200+
-          </h2>
+          </motion.h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Campaigns delivered
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-20 mx-auto max-w-2xl pt-12">
+        <motion.div
+          className="mt-20 mx-auto max-w-2xl pt-12"
+          initial={{ opacity: 0, y: 22, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
+          viewport={{ once: true, amount: 0.5 }}
+        >
           <blockquote className="text-start border-b border-border pb-8 ">
             <p className="text-3xl font-normal leading-relaxed text-foreground">
               "We prioritize authentic influencer relationships that truly
@@ -147,7 +179,7 @@ const Stats = () => {
               CRE8R.AI
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

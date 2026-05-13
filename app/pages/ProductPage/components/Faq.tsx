@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 type FaqItem = {
@@ -51,18 +52,31 @@ const Faq = () => {
   return (
     <section className="bg-muted py-20 sm:py-24">
       <div className="mx-auto w-full max-w-3xl px-6 sm:px-8">
-        <h2 className="text-center text-3xl font-normal leading-tight text-foreground sm:text-5xl">
+        <motion.h2
+          className="text-center text-3xl font-normal leading-tight text-foreground sm:text-5xl"
+          initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.8 }}
+        >
           Frequently
           <br />
           asked questions
-        </h2>
+        </motion.h2>
 
         <div className="mt-10">
-          {faqItems.map((item) => {
+          {faqItems.map((item, index) => {
             const isOpen = openId === item.id;
 
             return (
-              <div key={item.id} className="border-b border-foreground/8 py-2">
+              <motion.div
+                key={item.id}
+                className="border-b border-foreground/8 py-2"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.04 }}
+                viewport={{ once: true, amount: 0.8 }}
+              >
                 <button
                   type="button"
                   onClick={() => setOpenId(isOpen ? 0 : item.id)}
@@ -84,21 +98,31 @@ const Faq = () => {
                       {item.question}
                     </span>
                   </div>
-                  <span className="ml-4 text-xl leading-none text-foreground/80">
+                  <motion.span
+                    className="ml-4 text-xl leading-none text-foreground/80"
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                  >
                     {isOpen ? "-" : "+"}
-                  </span>
+                  </motion.span>
                 </button>
 
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="px-4 pb-3 pt-4 text-sm leading-relaxed text-foreground/55 sm:text-base">
-                    {item.answer}
-                  </p>
-                </div>
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen ? (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="px-4 pb-3 pt-4 text-sm leading-relaxed text-foreground/55 sm:text-base">
+                        {item.answer}
+                      </p>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
