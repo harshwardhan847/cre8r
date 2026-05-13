@@ -39,15 +39,20 @@ const NavigationMenuComponent = () => {
           </Button>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
-            Product
+          <Button
+            variant={"ghost"}
+            size={"lg"}
+            className="font-normal h-11"
+            asChild
+          >
+            <Link to="/product">Product</Link>
           </Button>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
             Blogs
           </Button>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );
