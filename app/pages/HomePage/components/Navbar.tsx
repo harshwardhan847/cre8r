@@ -10,6 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "~/components/ui/navigation-menu";
+import { CONSTANTS } from "~/constants";
 import { cn } from "~/lib/utils";
 
 type Props = {};
@@ -112,7 +113,13 @@ const Navbar = (props: Props) => {
           size={"lg"}
           className="font-light text-sm h-10"
         >
-          Schedule a Demo
+          <Link
+            to={CONSTANTS.CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Schedule a Demo
+          </Link>
         </Button>
       </div>
     </nav>

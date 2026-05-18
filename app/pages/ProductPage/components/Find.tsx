@@ -89,10 +89,10 @@ const Find = () => {
   }, [scrollYProgress]);
 
   return (
-    <section className="bg-muted py-20 sm:py-24 min-h-screen">
+    <section className="py-20 sm:py-24 min-h-screen">
       <div className="mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10">
         <motion.h2
-          className="mx-auto max-w-lg text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl"
+          className="mx-auto max-w-auto text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl"
           initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
@@ -127,6 +127,7 @@ const Find = () => {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                className="h-full flex items-end justify-start"
               >
                 <Button
                   type="button"

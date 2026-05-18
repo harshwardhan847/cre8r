@@ -35,12 +35,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="">
         <div className="fixed z-50 top-0 left-0 w-screen h-auto">
           <BlurEffect position="top" intensity={100} className="h-20" />
         </div>
         <Navbar />
-        {children}
+        <div className="w-full h-full min-h-screen">{children}</div>
 
         <Footer />
         <ScrollRestoration />

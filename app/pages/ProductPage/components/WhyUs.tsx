@@ -50,9 +50,7 @@ const WhyUs = () => {
           transition={{ duration: 0.55, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.7 }}
         >
-          How it
-          <br />
-          works?
+          How it works?
         </motion.h2>
 
         <div className="mt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">

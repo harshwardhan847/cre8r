@@ -6,7 +6,7 @@ type Props = {};
 const featuresList = [
   {
     title: "Find & Track 4mn+ Creators",
-    image: "/feature1.png",
+    image: "platform/discovery.png",
     description:
       "Filter by engagement metrics, niche, audience demographics & more.",
     accent: "bg-violet-400",
@@ -14,7 +14,7 @@ const featuresList = [
   },
   {
     title: "Advanced Creator Briefing System",
-    image: "/feature2.png",
+    image: "platform/creator_insights.png",
     description:
       "The intuitive briefing system helps you set clear goals and share detailed guidelines.",
     accent: "bg-emerald-400",
@@ -22,7 +22,7 @@ const featuresList = [
   },
   {
     title: "Intelligent Matchmaking",
-    image: "/feature3.png",
+    image: "platform/creators.png",
     description:
       "Make data-driven decisions with every click, every view, every comment.",
     accent: "bg-amber-400",
@@ -30,7 +30,7 @@ const featuresList = [
   },
   {
     title: "Live Performance Tracking",
-    image: "/feature4.png",
+    image: "platform/campaign_insights.png",
     description:
       "Monitor views, engagement and ROI in real-time across campaigns.",
     accent: "bg-rose-400",

@@ -118,7 +118,7 @@ const ScrollingTextAnimationSection = () => {
             ref={buttonRef}
             animate={{ opacity: focusedIndex === "button" ? 1 : 0.25 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="flex justify-center pt-8"
+            className="flex justify-center pt-8 -mt-24"
           >
             <motion.button
               className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary-hover transition-colors"

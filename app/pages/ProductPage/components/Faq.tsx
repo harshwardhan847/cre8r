@@ -50,7 +50,7 @@ const Faq = () => {
   const [openId, setOpenId] = useState<number>(1);
 
   return (
-    <section className="bg-muted py-20 sm:py-24">
+    <section className=" py-20 sm:py-24">
       <div className="mx-auto w-full max-w-3xl px-6 sm:px-8">
         <motion.h2
           className="text-center text-3xl font-normal leading-tight text-foreground sm:text-5xl"

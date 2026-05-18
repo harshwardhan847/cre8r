@@ -1,5 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "~/components/ui/carousel";
 
 type TeamMember = {
   name: string;
@@ -34,17 +41,22 @@ const teamMembers: TeamMember[] = memberNames.map((name, index) => ({
   avatar: `https://i.pravatar.cc/64?img=${(index % 70) + 1}`,
 }));
 
-const DESKTOP_COLUMN_COUNT = 6;
-
 const Team = () => {
-  const columns: TeamMember[][] = Array.from(
-    { length: DESKTOP_COLUMN_COUNT },
-    () => [],
-  );
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
-  teamMembers.forEach((member, index) => {
-    columns[index % DESKTOP_COLUMN_COUNT].push(member);
-  });
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      carouselApi.scrollNext();
+    }, 2200);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [carouselApi]);
 
   return (
     <motion.section
@@ -82,41 +94,44 @@ const Team = () => {
           </h2>
         </motion.div>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-7">
-          {columns.map((column, columnIndex) => (
-            <motion.ul
-              key={`team-column-${columnIndex}`}
-              className="space-y-3"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{
-                duration: 0.4,
-                ease: "easeOut",
-                delay: 0.12 + columnIndex * 0.05,
-              }}
-            >
-              {column.map((member) => (
-                <motion.li
-                  key={`${columnIndex}-${member.name}`}
-                  className="flex items-center gap-2"
-                  whileHover={{ x: 1 }}
-                  transition={{ duration: 0.18, ease: "easeOut" }}
+        <motion.div
+          className="mt-10"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.4, ease: "easeOut", delay: 0.12 }}
+        >
+          <Carousel
+            setApi={setCarouselApi}
+            opts={{ align: "start", loop: true }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {teamMembers.map((member) => (
+                <CarouselItem
+                  key={member.name}
+                  className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
                 >
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    loading="lazy"
-                    className="h-5 w-5 shrink-0 rounded-full object-cover ring-1 ring-black/8"
-                  />
-                  <span className="text-[0.92rem] leading-none font-normal text-[#2a2a2a]">
-                    {member.name}
-                  </span>
-                </motion.li>
+                  <motion.div
+                    className="flex flex-col items-center"
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    <img
+                      src={member.avatar}
+                      alt={member.name}
+                      loading="lazy"
+                      className="w-24 aspect-9/16 rounded-md object-cover ring-2 ring-black/10 md:h-28 md:w-28"
+                    />
+                    <span className="mt-3 text-center text-[0.94rem] leading-snug font-medium text-[#2a2a2a]">
+                      {member.name}
+                    </span>
+                  </motion.div>
+                </CarouselItem>
               ))}
-            </motion.ul>
-          ))}
-        </div>
+            </CarouselContent>
+          </Carousel>
+        </motion.div>
       </div>
     </motion.section>
   );

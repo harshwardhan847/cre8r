@@ -2,6 +2,12 @@ import { useScroll, motion, useTransform, useSpring } from "motion/react";
 import { useRef } from "react";
 type Props = {};
 
+const videos = [
+  "https://www.youtube.com/embed/VIE2Ri2DQJg",
+  "https://www.youtube.com/embed/m8lRhHOiQro",
+  "https://www.youtube.com/embed/UT6vi65IP64",
+  "https://www.youtube.com/embed/VIE2Ri2DQJg",
+];
 const VideoExample = (props: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -23,9 +29,9 @@ const VideoExample = (props: Props) => {
         scale: scale,
       }}
       ref={ref}
-      className="aspect-video max-w-7xl w-full h-full p-4 mt-24 rounded-lg overflow-hidden relative backdrop-blur-lg bg-white/20"
+      className="grid grid-cols-4 gap-4 max-w-7xl w-full h-full p-4 mt-24 rounded-lg relative backdrop-blur-lg bg-white/20"
     >
-      <iframe
+      {/* <iframe
         width="560"
         height="315"
         src="https://www.youtube.com/embed/ozwfKTi461k?si=MGfoGHfWzBYdxScR"
@@ -35,7 +41,19 @@ const VideoExample = (props: Props) => {
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
         className="w-full h-full object-cover rounded-lg"
-      ></iframe>
+      ></iframe> */}
+      {videos?.map((video) => (
+        <iframe
+          width="560"
+          height="315"
+          src={`${video}?autoplay=1&mute=1&loop=1&playlist=${video.split("/").slice(-1)[0]}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen={false}
+          className="w-full h-full object-cover rounded-lg aspect-9/16"
+        />
+      ))}
     </motion.div>
   );
 };
