@@ -9,7 +9,9 @@ import { useRef } from "react";
 import { Button } from "~/components/ui/button";
 
 type PayoutCard = {
-  amount: string;
+  title: string;
+  label: string;
+  badge: string;
   bgClass: string;
   textClass: string;
   avatarClass: string;
@@ -20,61 +22,75 @@ type PayoutCard = {
 
 const cards: PayoutCard[] = [
   {
-    amount: "4Mn+",
+    title: "4.1Mn+",
+    label: "Creators",
+    badge: "F",
     bgClass: "bg-rose-300",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#cc7e63,#6e5333)]",
+    avatarClass: "bg-sky-500",
     startX: "clamp(-500px, -36vw, -220px)",
     startY: "-550px",
   },
   {
-    amount: "500Mn+",
+    title: "Audience",
+    label: "Deep filters",
+    badge: "A",
     bgClass: "bg-emerald-300",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#f4b8a3,#97685a)]",
+    avatarClass: "bg-sky-500",
     startX: "clamp(-560px, -42vw, -260px)",
     startY: "-370px",
     hiddenOnMobile: true,
   },
   {
-    amount: "6000+",
+    title: "Briefs",
+    label: "Clear goals",
+    badge: "B",
     bgClass: "bg-amber-200",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#303d45,#b57a57)]",
+    avatarClass: "bg-sky-500",
     startX: "clamp(-420px, -30vw, -210px)",
     startY: "-215px",
     hiddenOnMobile: true,
   },
   {
-    amount: "200+",
+    title: "200+",
+    label: "Campaigns",
+    badge: "C",
     bgClass: "bg-violet-300",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#46505c,#a77967)]",
+    avatarClass: "bg-sky-500",
     startX: "0px",
     startY: "-95px",
   },
   {
-    amount: "135K+",
+    title: "AI Match",
+    label: "Right creators",
+    badge: "AI",
     bgClass: "bg-rose-300",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#de987e,#7a5a4d)]",
+    avatarClass: "bg-sky-500",
     startX: "clamp(500px, 44vw, 640px)",
     startY: "-550px",
   },
   {
-    amount: "3Mn+",
+    title: "Track",
+    label: "Live results",
+    badge: "T",
     bgClass: "bg-emerald-300",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#5d6c7c,#ba805f)]",
+    avatarClass: "bg-sky-500",
     startX: "clamp(560px, 48vw, 260px)",
     startY: "-370px",
     hiddenOnMobile: true,
   },
   {
-    amount: "4.1Mn+",
+    title: "ROI",
+    label: "Performance",
+    badge: "R",
     bgClass: "bg-amber-200",
     textClass: "text-foreground",
-    avatarClass: "bg-[linear-gradient(135deg,#13161f,#8f6f4e)]",
+    avatarClass: "bg-sky-500",
     startX: "clamp(420px, 36vw, 210px)",
     startY: "-215px",
     hiddenOnMobile: true,
@@ -128,7 +144,7 @@ const Hero = () => {
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[780px] origin-top scale-90 sm:scale-95 lg:scale-100">
           {cards.map((card) => (
             <PayoutMotionCard
-              key={card.amount}
+              key={card.title}
               card={card}
               scrollYProgress={smoothProgress}
             />
@@ -167,13 +183,20 @@ const PayoutMotionCard = ({
       className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
       style={{ x, y, scale, opacity, filter }}
     >
-      <div className="flex h-full flex-col items-center justify-between pb-3 pt-2">
-        <div className="rounded-full bg-[#d9d9d9] p-0.5">
+      <div className="flex h-full flex-col items-center justify-center pb-2 pt-2 text-center">
+        {/* <div className="rounded-full bg-white/55 p-0.5">
           <div
-            className={`h-8 w-8 rounded-full border border-white/50 ${card.avatarClass}`}
-          />
+            className={`flex h-8 w-8 items-center justify-center rounded-full border border-white/70 text-[10px] font-medium text-white ${card.avatarClass}`}
+          >
+            {card.badge}
+          </div>
+        </div> */}
+        <div>
+          <p className="text-xl font-bold leading-none">{card.title}</p>
+          <p className="mt-2 text-[11px] font-medium uppercase text-foreground/60">
+            {card.label}
+          </p>
         </div>
-        <p className="text-2xl font-light">{card.amount}</p>
       </div>
     </motion.div>
   );
