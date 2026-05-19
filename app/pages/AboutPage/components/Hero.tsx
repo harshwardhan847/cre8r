@@ -35,7 +35,6 @@ const orbitDots = [
 const Hero = (_props: Props) => {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 py-28 sm:px-6 lg:px-12">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.045)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35" />
       <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-transparent via-foreground/15 to-transparent" />
       <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-linear-to-b from-transparent via-foreground/12 to-transparent" />
 
@@ -105,7 +104,7 @@ const Hero = (_props: Props) => {
       ))}
 
       <motion.div
-        className="relative z-10 flex max-w-4xl flex-col items-center gap-4 text-center"
+        className="relative z-10 flex max-w-5xl flex-col items-center gap-4 text-center"
         initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.65, ease: "easeOut" }}
