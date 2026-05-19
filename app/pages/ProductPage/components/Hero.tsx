@@ -1,12 +1,20 @@
-import { motion } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
+import { useRef } from "react";
 import { Button } from "~/components/ui/button";
 
 type PayoutCard = {
   amount: string;
   bgClass: string;
   textClass: string;
-  positionClass: string;
   avatarClass: string;
+  startX: string;
+  startY: string;
   hiddenOnMobile?: boolean;
 };
 
@@ -15,63 +23,84 @@ const cards: PayoutCard[] = [
     amount: "4Mn+",
     bgClass: "bg-rose-300",
     textClass: "text-foreground",
-    positionClass: "top-10 left-[6%] lg:left-[12%]",
     avatarClass: "bg-[linear-gradient(135deg,#cc7e63,#6e5333)]",
+    startX: "clamp(-500px, -36vw, -220px)",
+    startY: "-550px",
   },
   {
     amount: "500Mn+",
     bgClass: "bg-emerald-300",
     textClass: "text-foreground",
-    positionClass: "top-[208px] left-[3%] lg:left-[10%]",
     avatarClass: "bg-[linear-gradient(135deg,#f4b8a3,#97685a)]",
+    startX: "clamp(-560px, -42vw, -260px)",
+    startY: "-370px",
     hiddenOnMobile: true,
   },
   {
     amount: "6000+",
     bgClass: "bg-amber-200",
     textClass: "text-foreground",
-    positionClass: "top-[316px] left-[23%] lg:left-[26%]",
     avatarClass: "bg-[linear-gradient(135deg,#303d45,#b57a57)]",
+    startX: "clamp(-420px, -30vw, -210px)",
+    startY: "-215px",
     hiddenOnMobile: true,
   },
   {
     amount: "200+",
     bgClass: "bg-violet-300",
     textClass: "text-foreground",
-    positionClass: "top-[370px] left-1/2 -translate-x-1/2",
     avatarClass: "bg-[linear-gradient(135deg,#46505c,#a77967)]",
+    startX: "0px",
+    startY: "-95px",
   },
   {
     amount: "135K+",
     bgClass: "bg-rose-300",
     textClass: "text-foreground",
-    positionClass: "top-10 right-[6%] lg:right-[12%]",
     avatarClass: "bg-[linear-gradient(135deg,#de987e,#7a5a4d)]",
+    startX: "clamp(500px, 44vw, 640px)",
+    startY: "-550px",
   },
   {
     amount: "3Mn+",
     bgClass: "bg-emerald-300",
     textClass: "text-foreground",
-    positionClass: "top-[208px] right-[3%] lg:right-[10%]",
     avatarClass: "bg-[linear-gradient(135deg,#5d6c7c,#ba805f)]",
+    startX: "clamp(560px, 48vw, 260px)",
+    startY: "-370px",
     hiddenOnMobile: true,
   },
   {
     amount: "4.1Mn+",
     bgClass: "bg-amber-200",
     textClass: "text-foreground",
-    positionClass: "top-[316px] right-[23%] lg:right-[26%]",
     avatarClass: "bg-[linear-gradient(135deg,#13161f,#8f6f4e)]",
+    startX: "clamp(420px, 36vw, 210px)",
+    startY: "-215px",
     hiddenOnMobile: true,
   },
 ];
 
 const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 24,
+    mass: 0.25,
+  });
+
   return (
     <section className="">
-      <div className="relative mx-auto md:min-h-screen w-full max-w-7xl px-6 sm:px-10 lg:px-16">
+      <div
+        ref={heroRef}
+        className="relative mx-auto min-h-[860px] w-full max-w-7xl px-6 sm:px-10 md:min-h-screen lg:px-16"
+      >
         <motion.div
-          className="mx-auto flex max-w-162.5 flex-col items-center pt-28 md:pt-48 text-center"
+          className="relative z-20 mx-auto flex max-w-162.5 flex-col items-center pt-28 text-center md:pt-48"
           initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -96,30 +125,13 @@ const Hero = () => {
             Request a call back
           </Button>
         </motion.div>
-        <div className=" relative top-0 left-0 bg-red-400 h-auto -translate-y-80 scale-110">
-          {cards.map((card, index) => (
-            <motion.div
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[780px] origin-top scale-90 sm:scale-95 lg:scale-100">
+          {cards.map((card) => (
+            <PayoutMotionCard
               key={card.amount}
-              className={`absolute z-10 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${card.bgClass} ${card.textClass} ${card.positionClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
-              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              whileHover={{ y: -4, scale: 1.03 }}
-              transition={{
-                duration: 0.35,
-                delay: index * 0.06,
-                ease: "easeOut",
-              }}
-              viewport={{ once: true, amount: 0.4 }}
-            >
-              <div className="flex h-full flex-col items-center justify-between pb-3 pt-2">
-                <div className="rounded-full bg-[#d9d9d9] p-0.5">
-                  <div
-                    className={`h-8 w-8 rounded-full border border-white/50 ${card.avatarClass}`}
-                  />
-                </div>
-                <p className="text-2xl font-light">{card.amount}</p>
-              </div>
-            </motion.div>
+              card={card}
+              scrollYProgress={smoothProgress}
+            />
           ))}
         </div>
       </div>
@@ -128,9 +140,48 @@ const Hero = () => {
   );
 };
 
+const PayoutMotionCard = ({
+  card,
+  scrollYProgress,
+}: {
+  card: PayoutCard;
+  scrollYProgress: MotionValue<number>;
+}) => {
+  const x = useTransform(
+    scrollYProgress,
+    [0, 0.82, 1],
+    [card.startX, "0px", "0px"],
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.82, 1],
+    [card.startY, "300px", "300px"],
+  );
+  const scale = useTransform(scrollYProgress, [0, 0.72, 1], [1, 0.58, 0.0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.72, 0]);
+  const blur = useTransform(scrollYProgress, [0, 0.65, 1], [0, 20, 90]);
+  const filter = useTransform(blur, (value) => `blur(${value}px)`);
+
+  return (
+    <motion.div
+      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
+      style={{ x, y, scale, opacity, filter }}
+    >
+      <div className="flex h-full flex-col items-center justify-between pb-3 pt-2">
+        <div className="rounded-full bg-[#d9d9d9] p-0.5">
+          <div
+            className={`h-8 w-8 rounded-full border border-white/50 ${card.avatarClass}`}
+          />
+        </div>
+        <p className="text-2xl font-light">{card.amount}</p>
+      </div>
+    </motion.div>
+  );
+};
+
 const Stats = () => {
   return (
-    <section className="w-full bg-background py-24">
+    <section className="w-full py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <motion.div
           className="flex flex-col items-center text-center"
