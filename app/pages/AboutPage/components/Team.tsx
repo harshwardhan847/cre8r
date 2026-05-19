@@ -13,33 +13,28 @@ type TeamMember = {
   avatar: string;
 };
 
-const memberNames = [
-  "Gaurav Sharma",
-  "Priya Kumar",
-  "Riddhi Mehta",
-  "Sangeeta Kushwaha",
-  "Shyam Panicker",
-  "Maahi Jumnani",
-  "Vitica Singh",
-  "Rahul Mehta",
-  "Akshita Bangar",
-  "Jainam Mehta",
-  "Prateek Pal",
-  "Dipisha Bose",
-  "Harmita Desai",
-  "Niharika Mittal",
-  "Simran Sharma",
-  "Aditya Mathur",
-  "Tanish Gadodia",
-  "Neeraj Kishor",
-  "Aditya Chaudhary",
-  "Sonam Jattain",
+const teamMembers: TeamMember[] = [
+  // { name: "Gaurav Sharma", avatar: "/team/gaurav_sharma.png" },
+  // { name: "Priya Kumar", avatar: "/team/priya_kumar.png" },
+  // { name: "Riddhi Mehta", avatar: "/team/riddhi_mehta.png" },
+  { name: "Sangeeta Kushwaha", avatar: "/team/sangeeta_kushwaha.png" },
+  { name: "Shyam Panicker", avatar: "/team/shyam_panicker.png" },
+  { name: "Maahi Jumnani", avatar: "/team/maahi_jumnani.png" },
+  { name: "Vitika Singh", avatar: "/team/vitika_singh.png" },
+  { name: "Rahul Mehta", avatar: "/team/rahul_mehta.png" },
+  { name: "Akshita Bangar", avatar: "/team/akshita_bangar.png" },
+  { name: "Jainam Mehta", avatar: "/team/jainam_mehta.png" },
+  { name: "Prateek Pal", avatar: "/team/prateek_pal.png" },
+  { name: "Dipisha Bose", avatar: "/team/dipisha_bose.png" },
+  { name: "Harmita Desai", avatar: "/team/harmita_desai.png" },
+  { name: "Niharika Mittal", avatar: "/team/niharika_mittal.png" },
+  { name: "Simran Sharma", avatar: "/team/simran_sharma.png" },
+  { name: "Aditya Mathur", avatar: "/team/aditya_mathur.png" },
+  { name: "Tanish Gadodia", avatar: "/team/tanish_gadodia.png" },
+  { name: "Aarsh", avatar: "/team/aarsh.png" },
+  { name: "Aditya Chaudhary", avatar: "/team/aditya_chaudhary.png" },
+  { name: "Sonam Jattain", avatar: "/team/sonam_jattain.png" },
 ];
-
-const teamMembers: TeamMember[] = memberNames.map((name, index) => ({
-  name,
-  avatar: `https://i.pravatar.cc/64?img=${(index % 70) + 1}`,
-}));
 
 const Team = () => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
@@ -117,12 +112,14 @@ const Team = () => {
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                   >
-                    <img
-                      src={member.avatar}
-                      alt={member.name}
-                      loading="lazy"
-                      className="w-24 aspect-9/16 rounded-md object-cover ring-2 ring-black/10 md:h-28 md:w-28"
-                    />
+                    <div className="w-24 overflow-hidden rounded-xl bg-[#ff6200] ring-2 ring-black/10 md:w-28">
+                      <img
+                        src={member.avatar}
+                        alt={member.name}
+                        loading="lazy"
+                        className="aspect-3/4 w-full object-cover object-top scale-[1.03]"
+                      />
+                    </div>
                     <span className="mt-3 text-center text-[0.94rem] leading-snug font-medium text-[#2a2a2a]">
                       {member.name}
                     </span>

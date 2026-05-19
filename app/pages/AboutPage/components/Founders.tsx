@@ -18,17 +18,17 @@ const founders: Founder[] = [
   {
     name: "Gaurav Sharma",
     role: "CEO & Founder",
-    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Gaurav+Sharma",
+    image: "/team/gaurav_sharma.png",
   },
   {
     name: "Priya Kumar",
     role: "Managing Partner",
-    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Priya+Kumar",
+    image: "/team/priya_kumar.png",
   },
   {
     name: "Riddhi Mehta",
     role: "Managing Partner",
-    image: "https://placehold.co/640x760/e8e8e8/5e5e5e?text=Riddhi+Mehta",
+    image: "/team/riddhi_mehta.png",
   },
 ];
 
