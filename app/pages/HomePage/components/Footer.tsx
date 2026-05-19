@@ -1,6 +1,8 @@
 import { Button } from "~/components/ui/button";
 import { Separator } from "~/components/ui/separator";
 import EmailInput from "./EmailInput";
+import { Link } from "react-router";
+import { CONSTANTS } from "~/constants";
 
 const articles = [
   {
@@ -81,45 +83,55 @@ const Footer = () => {
           </a>
 
           <div className="flex items-center gap-5 whitespace-nowrap">
-            <a
-              href="#"
+            <Link
+              to="/brands_tc"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              Home
-            </a>
-            <a
-              href="#"
+              Brands - T&C
+            </Link>
+            <Link
+              to="/creators_tc"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              About Us
-            </a>
-            <a
-              href="#"
+              Creators - T&C
+            </Link>
+            <Link
+              to="/privacy_policy"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"
             >
-              Product
-            </a>
-            <a
-              href="#"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Contact Us
-            </a>
+              Privacy Policy
+            </Link>
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="#">
-              <div>F</div>
-            </a>
-            <a href="#">
-              <div className="size-5">L</div>
-            </a>
-            <a href="#">
-              <div className="size-5">T</div>
-            </a>
-            <a href="#">
-              <div className="size-5">Y</div>
-            </a>
+            <Link to={CONSTANTS.INSTAGRAM_URL} target="_blank">
+              <img
+                src="./icons/instagram.png"
+                alt="Instagram"
+                className=" size-8 md:size-10"
+              />
+            </Link>
+            <Link to={CONSTANTS.WHATSAPP_URL} target="_blank">
+              <img
+                src="./icons/whatsapp.png"
+                alt="WhatsApp"
+                className=" size-8 md:size-10"
+              />
+            </Link>
+            <Link to={CONSTANTS.LINKEDIN_URL} target="_blank">
+              <img
+                src="./icons/linkedin.png"
+                alt="LinkedIn"
+                className=" size-8 md:size-10"
+              />
+            </Link>
+            <Link to={CONSTANTS.MEDIUM_URL} target="_blank">
+              <img
+                src="./icons/medium.png"
+                alt="Medium"
+                className=" size-8 md:size-10"
+              />
+            </Link>
           </div>
         </div>
 
@@ -127,7 +139,7 @@ const Footer = () => {
 
         <div className="mx-auto flex max-w-7xl justify-center px-4 py-8 sm:px-6 items-center text-muted-foreground">
           <p className="text-center font-medium text-balance">
-            @2025_Cre8r.ai, All Right Reserved
+            @{new Date().getFullYear()}_Cre8r.ai, All Right Reserved
           </p>
         </div>
       </footer>

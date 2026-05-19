@@ -28,7 +28,7 @@ const EmailCard = (props: Props) => {
             </p>
             <h2 className="text-5xl font-black tracking-tight text-foreground leading-tight">
               Build{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-700 via-purple-500 to-blue-700">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-500 via-purple-500 to-violet-500">
                 sustainable
               </span>{" "}
               audience relationships
