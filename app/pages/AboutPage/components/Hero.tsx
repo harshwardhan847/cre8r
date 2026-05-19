@@ -1,251 +1,127 @@
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 type Props = {};
 
-const ProofCards = [
+const proofItems = [
   {
-    title: "4Mn+ Profiles",
-    sub_heading: "Discoverable creator profiles across niches and regions.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-rose-300",
+    value: "4Mn+",
+    label: "Creator profiles",
+    className: "left-4 top-24 sm:left-10 lg:left-[8%] lg:top-[22%]",
   },
   {
-    title: "500Mn+ Views",
-    sub_heading: "Campaign reach generated through trusted creator voices.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-emerald-300",
+    value: "500Mn+",
+    label: "Campaign views",
+    className: "right-4 top-28 sm:right-10 lg:right-[9%] lg:top-[24%]",
   },
   {
-    title: "6000+ Content Pieces",
-    sub_heading: "High-quality influencer content delivered at scale.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-violet-300",
+    value: "6000+",
+    label: "Content pieces",
+    className: "left-6 bottom-24 sm:left-16 lg:left-[15%] lg:bottom-[18%]",
   },
   {
-    title: "200+ Campaigns",
-    sub_heading: "Influencer campaigns successfully executed end to end.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-amber-300",
-  },
-  {
-    title: "135K+ Creators",
-    sub_heading: "Registered creators ready for brand collaborations.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-rose-300",
-  },
-  {
-    title: "Advanced Briefing",
-    sub_heading: "Set clear goals and share detailed campaign guidelines.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-violet-300",
-  },
-  {
-    title: "AI Matchmaking",
-    sub_heading: "Find brand-fit influencers using data-driven intelligence.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-emerald-300",
-  },
-  {
-    title: "Live Tracking",
-    sub_heading: "Track every click, view, and comment in real time.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-amber-300",
-  },
-  {
-    title: "Authentic Influence",
-    sub_heading:
-      "Build sustainable audience relationships with trusted creators.",
-    brand_image: "https://source.unsplash.com/random/300x200",
-    color: "bg-emerald-300",
+    value: "200+",
+    label: "Campaigns delivered",
+    className: "right-6 bottom-24 sm:right-16 lg:right-[14%] lg:bottom-[18%]",
   },
 ];
 
-// 10 fixed positions arranged around the title dead-zone
-// (title occupies roughly 35–72% vertically, 20–80% horizontally)
-const POSITIONS = [
-  { top: "24%", left: "8%" },
-  { top: "20%", left: "36%" },
-  { top: "10%", left: "64%" },
-  { top: "18%", left: "88%" },
-  { top: "50%", left: "5%" },
-  { top: "50%", left: "92%" },
-  { top: "83%", left: "8%" },
-  { top: "83%", left: "36%" },
-  { top: "83%", left: "64%" },
-  { top: "83%", left: "88%" },
+const orbitDots = [
+  "left-[14%] top-[34%] bg-rose-300",
+  "right-[18%] top-[38%] bg-emerald-300",
+  "left-[27%] bottom-[30%] bg-amber-200",
+  "right-[30%] bottom-[29%] bg-violet-300",
 ];
-
-type Slot = { cardIndex: number | null; zIndex: 0 | 20 };
 
 const Hero = (_props: Props) => {
-  const [slots, setSlots] = useState<Slot[]>(() => {
-    const initial: Slot[] = POSITIONS.map(() => ({
-      cardIndex: null,
-      zIndex: 0,
-    }));
-    const posOrder = [...Array(POSITIONS.length).keys()].sort(
-      () => Math.random() - 0.5,
-    );
-    const cardOrder = [...Array(ProofCards.length).keys()].sort(
-      () => Math.random() - 0.5,
-    );
-    posOrder.slice(0, 5).forEach((posIdx, i) => {
-      initial[posIdx] = {
-        cardIndex: cardOrder[i],
-        zIndex: Math.random() > 0.5 ? 20 : 0,
-      };
-    });
-    return initial;
-  });
-
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const rawX = useMotionValue(0);
-  const rawY = useMotionValue(0);
-  const springX = useSpring(rawX, { stiffness: 50, damping: 18 });
-  const springY = useSpring(rawY, { stiffness: 50, damping: 18 });
-
-  useEffect(() => {
-    const scheduleNext = () => {
-      timerRef.current = setTimeout(
-        () => {
-          setSlots((prev) => {
-            const occupied = prev.flatMap((s, i) =>
-              s.cardIndex !== null ? [i] : [],
-            );
-            const empty = prev.flatMap((s, i) =>
-              s.cardIndex === null ? [i] : [],
-            );
-            if (!occupied.length || !empty.length) return prev;
-
-            const swapCount = Math.min(
-              2 + Math.floor(Math.random() * 2), // 2 or 3
-              occupied.length,
-              empty.length,
-            );
-
-            const shuffled = (arr: number[]) =>
-              [...arr].sort(() => Math.random() - 0.5);
-            const removePositions = shuffled(occupied).slice(0, swapCount);
-            const fillPositions = shuffled(empty).slice(0, swapCount);
-
-            const next = [...prev];
-            const removedSet = new Set(removePositions);
-
-            removePositions.forEach((pos) => {
-              next[pos] = { cardIndex: null, zIndex: 0 };
-            });
-
-            const usedCards = new Set(
-              next.flatMap((s, i) =>
-                s.cardIndex !== null && !removedSet.has(i) ? [s.cardIndex] : [],
-              ),
-            );
-
-            fillPositions.forEach((pos) => {
-              const available = ProofCards.map((_, i) => i).filter(
-                (i) => !usedCards.has(i),
-              );
-              if (!available.length) return;
-              const newCard =
-                available[Math.floor(Math.random() * available.length)];
-              usedCards.add(newCard);
-              next[pos] = {
-                cardIndex: newCard,
-                zIndex: Math.random() > 0.5 ? 20 : 0,
-              };
-            });
-
-            return next;
-          });
-          scheduleNext();
-        },
-        2000 + Math.random() * 2000,
-      );
-    };
-
-    scheduleNext();
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, []);
-
   return (
-    <div
-      className="min-h-screen flex flex-col items-center gap-4 justify-center relative overflow-hidden"
-      onMouseMove={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const nx = (e.clientX - rect.left) / rect.width - 0.5;
-        const ny = (e.clientY - rect.top) / rect.height - 0.5;
-        rawX.set(nx * 20);
-        rawY.set(ny * 20);
-      }}
-      onMouseLeave={() => {
-        rawX.set(0);
-        rawY.set(0);
-      }}
-    >
-      {POSITIONS.map((pos, posIdx) => (
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4 py-28 sm:px-6 lg:px-12">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.045)_1px,transparent_1px)] bg-[size:72px_72px] opacity-35" />
+      <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-linear-to-r from-transparent via-foreground/15 to-transparent" />
+      <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-linear-to-b from-transparent via-foreground/12 to-transparent" />
+
+      <motion.div
+        className="absolute h-[520px] w-[520px] rounded-full border border-foreground/8 sm:h-[640px] sm:w-[640px]"
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1, rotate: 360 }}
+        transition={{
+          opacity: { duration: 0.7, ease: "easeOut" },
+          scale: { duration: 0.7, ease: "easeOut" },
+          rotate: { duration: 46, ease: "linear", repeat: Infinity },
+        }}
+      />
+      <motion.div
+        className="absolute h-[340px] w-[340px] rounded-full border border-dashed border-foreground/10 sm:h-[460px] sm:w-[460px]"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1, rotate: -360 }}
+        transition={{
+          opacity: { duration: 0.7, ease: "easeOut", delay: 0.1 },
+          scale: { duration: 0.7, ease: "easeOut", delay: 0.1 },
+          rotate: { duration: 38, ease: "linear", repeat: Infinity },
+        }}
+      />
+
+      {orbitDots.map((dot) => (
         <motion.div
-          key={posIdx}
-          className="absolute"
-          style={{
-            top: pos.top,
-            left: pos.left,
-            x: springX,
-            y: springY,
-            translate: "-50% -50%",
-            zIndex: slots[posIdx].zIndex,
+          key={dot}
+          className={`absolute hidden h-3 w-3 rounded-full shadow-sm sm:block ${dot}`}
+          animate={{ y: [0, -8, 0], opacity: [0.65, 1, 0.65] }}
+          transition={{
+            duration: 4.5,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+        />
+      ))}
+
+      {proofItems.map((item, index) => (
+        <motion.div
+          key={item.value}
+          className={`absolute hidden w-44 rounded-xl border border-border/10 bg-white/75 p-4 shadow-sm backdrop-blur-sm sm:block ${item.className}`}
+          initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: [0, -6, 0], filter: "blur(0px)" }}
+          transition={{
+            opacity: { duration: 0.45, delay: 0.15 + index * 0.08 },
+            filter: { duration: 0.45, delay: 0.15 + index * 0.08 },
+            y: {
+              duration: 5.5 + index * 0.4,
+              ease: "easeInOut",
+              repeat: Infinity,
+              delay: index * 0.2,
+            },
           }}
         >
-          <AnimatePresence>
-            {slots[posIdx].cardIndex !== null && (
-              <motion.div
-                key={slots[posIdx].cardIndex}
-                initial={{ opacity: 0, scale: 0.1, filter: "blur(8px)" }}
-                animate={{
-                  opacity: 1,
-                  scale: Math.random() * 0.5 + 0.5,
-                  filter: "blur(0px)",
-                }}
-                exit={{ opacity: 0, scale: 0.1, filter: "blur(8px)" }}
-                transition={{ duration: Math.random() * 0.2 + 0.3 }}
-                className={`p-4 flex flex-col gap-4 w-52 h-52 rounded-md outline outline-black/20 shadow-sm ${
-                  ProofCards[slots[posIdx].cardIndex!].color
-                }`}
-              >
-                <h3 className="text-xl font-semibold">
-                  {ProofCards[slots[posIdx].cardIndex!].title}
-                </h3>
-                <p className="text-sm">
-                  {ProofCards[slots[posIdx].cardIndex!].sub_heading}
-                </p>
-                <div className="h-full flex items-end">
-                  <div className="text-4xl font-black">Cre8r</div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className="mb-5 flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-foreground" />
+            <span className="h-2 w-2 rounded-full bg-foreground/25" />
+            <span className="h-2 w-2 rounded-full bg-foreground/15" />
+          </div>
+          <p className="text-3xl font-light leading-none text-foreground">
+            {item.value}
+          </p>
+          <p className="mt-2 text-sm font-light leading-tight text-muted-foreground">
+            {item.label}
+          </p>
         </motion.div>
       ))}
-      <div className="absolute z-10 inset-0 bg-background/20 backdrop-blur-xs" />
-      <h2 className="text-lg font-light z-30">About Us</h2>
-      <h1 className="text-6xl font-light text-center z-30">
-        Reimagining Influencer Marketing
-        <br />
-        One campaign at a time
-      </h1>
-      <p className="text-center max-w-lg text-lg font-light z-30">
-        From concept to scale, we help brands discover top influencers, design
-        impactful campaigns, and grow their reach effortlessly.
-      </p>
-    </div>
+
+      <motion.div
+        className="relative z-10 flex max-w-4xl flex-col items-center gap-4 text-center"
+        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.65, ease: "easeOut" }}
+      >
+        <h2 className="text-lg font-light">About Us</h2>
+        <h1 className="text-5xl font-light leading-tight text-center sm:text-6xl">
+          Reimagining Influencer Marketing
+          <br />
+          One campaign at a time
+        </h1>
+        <p className="max-w-lg text-center text-lg font-light text-muted-foreground">
+          From concept to scale, we help brands discover top influencers, design
+          impactful campaigns, and grow their reach effortlessly.
+        </p>
+      </motion.div>
+    </section>
   );
 };
 
