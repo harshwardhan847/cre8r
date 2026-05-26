@@ -61,10 +61,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="py-40 pt-20 flex flex-col bg-primary items-center justify-center gap-4">
-        <h2 className="text-5xl uppercase text-center text-primary-foreground font-bold">
+        <h2 className="text-5xl uppercase text-center text-primary-foreground font-normal">
           Intelligent influencer
           <br /> matchmaking{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-br from-pink-500 via-background to-blue-500">
+          <span className="text-transparent bg-clip-text bg-linear-to-br from-sky-500 via-background to-sky-500">
             powered by AI
           </span>
         </h2>

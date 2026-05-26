@@ -14,7 +14,7 @@ const programCards: ProgramCard[] = [
     title: "Find & Track 4mn+ Creators",
     description:
       "Filter by engagement metrics, niche, audience demographics and more to discover the right voices quickly.",
-    cardClass: "bg-violet-100",
+    cardClass: "border-violet-100 border-t-4 bg-white",
     buttonClass:
       "border-violet-300/80 bg-violet-100 text-foreground hover:bg-violet-200",
   },
@@ -22,7 +22,7 @@ const programCards: ProgramCard[] = [
     title: "Advanced Creator Briefing",
     description:
       "Set clear goals and share detailed campaign guidelines with a structured briefing system.",
-    cardClass: "bg-yellow-200",
+    cardClass: "border-yellow-200 border-t-4 bg-white",
     buttonClass:
       "border-yellow-400/80 bg-yellow-200 text-foreground hover:bg-yellow-300",
   },
@@ -30,7 +30,7 @@ const programCards: ProgramCard[] = [
     title: "Intelligent Matchmaking",
     description:
       "Our AI analyses creator profiles, audience demographics and themes to match campaigns with precision.",
-    cardClass: "bg-pink-200",
+    cardClass: "border-pink-200 border-t-4 bg-white",
     buttonClass:
       "border-pink-300/80 bg-pink-200 text-foreground hover:bg-pink-300",
   },
@@ -38,7 +38,7 @@ const programCards: ProgramCard[] = [
     title: "Live Performance Tracking",
     description:
       "Track every click, view and comment in one place to optimize performance while campaigns are live.",
-    cardClass: "bg-green-300",
+    cardClass: "border-green-300 border-t-4 bg-white",
     buttonClass:
       "border-green-400/80 bg-green-300 text-foreground hover:bg-green-400",
   },

@@ -26,9 +26,9 @@ const EmailCard = (props: Props) => {
             <p className="text-xs uppercase tracking-widest text-foreground/40 font-medium">
               Get started free
             </p>
-            <h2 className="text-5xl font-black tracking-tight text-foreground leading-tight">
+            <h2 className="text-5xl font-normal tracking-tight text-foreground leading-tight">
               Build{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-500 via-purple-500 to-violet-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-500 via-blue-500 to-sky-500">
                 sustainable
               </span>{" "}
               audience relationships
@@ -43,8 +43,8 @@ const EmailCard = (props: Props) => {
                   key={i}
                   className="flex items-center gap-3 text-sm text-foreground/70"
                 >
-                  <span className="w-5 h-5 rounded-full bg-violet-700/20 border border-violet-700/40 flex items-center justify-center shrink-0">
-                    <Check className="w-3 h-3 text-violet-600" />
+                  <span className="w-5 h-5 rounded-full bg-blue-700/20 border border-blue-700/40 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-sky-600" />
                   </span>
                   {perk}
                 </li>

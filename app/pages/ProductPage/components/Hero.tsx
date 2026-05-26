@@ -25,7 +25,7 @@ const cards: PayoutCard[] = [
     title: "4.1Mn+",
     label: "Creators",
     badge: "F",
-    bgClass: "bg-rose-300",
+    bgClass: "border-rose-300 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-500px, -36vw, -220px)",
@@ -35,7 +35,7 @@ const cards: PayoutCard[] = [
     title: "Audience",
     label: "Deep filters",
     badge: "A",
-    bgClass: "bg-emerald-300",
+    bgClass: "border-emerald-300 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-560px, -42vw, -260px)",
@@ -46,7 +46,7 @@ const cards: PayoutCard[] = [
     title: "Briefs",
     label: "Clear goals",
     badge: "B",
-    bgClass: "bg-amber-200",
+    bgClass: "border-amber-200 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-420px, -30vw, -210px)",
@@ -57,7 +57,7 @@ const cards: PayoutCard[] = [
     title: "200+",
     label: "Campaigns",
     badge: "C",
-    bgClass: "bg-violet-300",
+    bgClass: "border-violet-300 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "0px",
@@ -67,7 +67,7 @@ const cards: PayoutCard[] = [
     title: "AI Match",
     label: "Right creators",
     badge: "AI",
-    bgClass: "bg-rose-300",
+    bgClass: "border-rose-300 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(500px, 44vw, 640px)",
@@ -77,7 +77,7 @@ const cards: PayoutCard[] = [
     title: "Track",
     label: "Live results",
     badge: "T",
-    bgClass: "bg-emerald-300",
+    bgClass: "border-emerald-300 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(560px, 48vw, 260px)",
@@ -88,7 +88,7 @@ const cards: PayoutCard[] = [
     title: "ROI",
     label: "Performance",
     badge: "R",
-    bgClass: "bg-amber-200",
+    bgClass: "border-amber-200 border-t-4",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(420px, 36vw, 210px)",
@@ -180,7 +180,7 @@ const PayoutMotionCard = ({
 
   return (
     <motion.div
-      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
+      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] bg-white  ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
       style={{ x, y, scale, opacity, filter }}
     >
       <div className="flex h-full flex-col items-center justify-center pb-2 pt-2 text-center">

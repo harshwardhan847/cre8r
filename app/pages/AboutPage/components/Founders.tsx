@@ -59,7 +59,7 @@ const recognitions: Recognition[] = [
 const Founders = () => {
   return (
     <motion.section
-      className="w-full py-16 md:py-24"
+      className="w-full pt-16 md:pt-24"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -81,7 +81,7 @@ const Founders = () => {
         </motion.div>
 
         <div className="mt-10 md:mt-14 flex flex-col xl:flex-row xl:items-end gap-6 md:gap-8 xl:gap-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 flex-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-5 flex-1">
             {founders.map((founder, index) => (
               <motion.article
                 key={founder.name}
@@ -111,10 +111,10 @@ const Founders = () => {
                   initial={{ opacity: 0.85 }}
                   whileHover={{ opacity: 1 }}
                 >
-                  <p className="text-[1.75rem] leading-tight text-[#161616] font-light md:text-[1.95rem]">
+                  <p className="text-[1.75rem] leading-tight text-[#161616] font-light md:text-2xl">
                     {founder.name}
                   </p>
-                  <p className="text-[1.55rem] leading-tight text-[#6f6f6f] font-light md:text-[1.7rem]">
+                  <p className="text-[1.55rem] leading-tight text-[#6f6f6f] font-light md:text-base">
                     {founder.role}
                   </p>
                 </motion.div>
@@ -122,7 +122,7 @@ const Founders = () => {
             ))}
           </div>
 
-          <aside className="w-full xl:w-77.5 xl:pb-14">
+          <aside className="w-full xl:w-77.5 xl:pb-14 hidden">
             <ul className="space-y-3">
               {recognitions.map((item, index) => (
                 <motion.li
