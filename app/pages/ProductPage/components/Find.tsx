@@ -14,7 +14,7 @@ const programCards: ProgramCard[] = [
     title: "Find & Track 4mn+ Creators",
     description:
       "Filter by engagement metrics, niche, audience demographics and more to discover the right voices quickly.",
-    cardClass: "border border-border/30 bg-white shadow-[0_8px_30px_rgba(139,92,246,0.02)] hover:shadow-[0_8px_30px_rgba(139,92,246,0.08)] hover:border-violet-200/50",
+    cardClass: "bg-white shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.08)] transition-all duration-300",
     buttonClass:
       "border-violet-300/80 bg-violet-100 text-foreground hover:bg-violet-200",
   },
@@ -22,7 +22,7 @@ const programCards: ProgramCard[] = [
     title: "Advanced Creator Briefing",
     description:
       "Set clear goals and share detailed campaign guidelines with a structured briefing system.",
-    cardClass: "border border-border/30 bg-white shadow-[0_8px_30px_rgba(234,179,8,0.02)] hover:shadow-[0_8px_30px_rgba(234,179,8,0.08)] hover:border-yellow-200/50",
+    cardClass: "bg-white shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(234,179,8,0.08)] transition-all duration-300",
     buttonClass:
       "border-yellow-400/80 bg-yellow-200 text-foreground hover:bg-yellow-300",
   },
@@ -30,7 +30,7 @@ const programCards: ProgramCard[] = [
     title: "Intelligent Matchmaking",
     description:
       "Our AI analyses creator profiles, audience demographics and themes to match campaigns with precision.",
-    cardClass: "border border-border/30 bg-white shadow-[0_8px_30px_rgba(244,63,94,0.02)] hover:shadow-[0_8px_30px_rgba(244,63,94,0.08)] hover:border-pink-200/50",
+    cardClass: "bg-white shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(244,63,94,0.08)] transition-all duration-300",
     buttonClass:
       "border-pink-300/80 bg-pink-200 text-foreground hover:bg-pink-300",
   },
@@ -38,7 +38,7 @@ const programCards: ProgramCard[] = [
     title: "Live Performance Tracking",
     description:
       "Track every click, view and comment in one place to optimize performance while campaigns are live.",
-    cardClass: "border border-border/30 bg-white shadow-[0_8px_30px_rgba(34,197,94,0.02)] hover:shadow-[0_8px_30px_rgba(34,197,94,0.08)] hover:border-green-200/50",
+    cardClass: "bg-white shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(34,197,94,0.08)] transition-all duration-300",
     buttonClass:
       "border-green-400/80 bg-green-300 text-foreground hover:bg-green-400",
   },

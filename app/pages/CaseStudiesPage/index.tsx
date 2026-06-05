@@ -132,7 +132,7 @@ const CaseStudiesPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className={`rounded-3xl border border-border/20 overflow-hidden ${idx % 2 === 1 ? "bg-primary text-primary-foreground" : "bg-white"}`}
+              className={cn("rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all", idx % 2 === 1 ? "bg-primary text-primary-foreground" : "bg-white")}
             >
               <div className={`grid md:grid-cols-2 gap-0`}>
                 {/* Content */}
@@ -155,8 +155,8 @@ const CaseStudiesPage = () => {
                     </div>
                   </div>
                   <Button
-                    variant={idx % 2 === 1 ? "outline" : "default"}
-                    className={idx % 2 === 1 ? "border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 w-fit" : "w-fit"}
+                    variant={idx % 2 === 1 ? "ghost" : "default"}
+                    className={idx % 2 === 1 ? "bg-white text-neutral-900 hover:bg-neutral-100 hover:text-neutral-950 w-fit font-normal" : "w-fit"}
                     asChild
                   >
                     <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">

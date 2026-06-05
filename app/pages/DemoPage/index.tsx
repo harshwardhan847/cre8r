@@ -9,32 +9,28 @@ const demoModules = [
     title: "Creator Discovery",
     description: "Watch how to find the right creators using 25+ filters — category, city, age range, engagement rate, and more.",
     icon: Users,
-    accent: "border-t-violet-400 bg-violet-50/50",
-    iconClass: "text-violet-600",
+    accent: "bg-violet-50 text-violet-600 border border-violet-100/50",
     duration: "~8 min",
   },
   {
     title: "Campaign Execution",
     description: "See how to create a brief, send bulk outreach, approve content, and track deliverables — all in one flow.",
     icon: Zap,
-    accent: "border-t-emerald-400 bg-emerald-50/50",
-    iconClass: "text-emerald-600",
+    accent: "bg-emerald-50 text-emerald-600 border border-emerald-100/50",
     duration: "~10 min",
   },
   {
     title: "Affiliate & Attribution",
     description: "Learn how Cre8r maps every referral to a specific creator, tracking revenue attribution in real-time.",
     icon: ArrowRight,
-    accent: "border-t-amber-400 bg-amber-50/50",
-    iconClass: "text-amber-600",
+    accent: "bg-amber-50 text-amber-600 border border-amber-100/50",
     duration: "~6 min",
   },
   {
     title: "Analytics & Reporting",
     description: "Explore the reporting dashboard — from campaign-level metrics to creator-level ROI breakdowns.",
     icon: Video,
-    accent: "border-t-sky-400 bg-sky-50/50",
-    iconClass: "text-sky-600",
+    accent: "bg-sky-50 text-sky-600 border border-sky-100/50",
     duration: "~7 min",
   },
 ];
@@ -88,7 +84,7 @@ const DemoPage = () => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-3xl border border-border/20 bg-white shadow-sm overflow-hidden aspect-[4/3] flex items-center justify-center flex-col gap-4 p-8"
+            className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden aspect-[4/3] flex items-center justify-center flex-col gap-4 p-8"
           >
             <div className="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center">
               <Calendar className="w-8 h-8 text-primary/40" />
@@ -132,10 +128,10 @@ const DemoPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 whileHover={{ y: -3 }}
-                className={`rounded-2xl border border-t-4 p-7 flex gap-5 ${mod.accent} transition-transform`}
+                className="rounded-2xl bg-white p-7 flex gap-5 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-300"
               >
-                <div className={`w-10 h-10 rounded-xl bg-white/80 flex items-center justify-center shrink-0 shadow-sm`}>
-                  <mod.icon className={`w-5 h-5 ${mod.iconClass}`} />
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${mod.accent}`}>
+                  <mod.icon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-3 mb-1">
@@ -180,9 +176,9 @@ const DemoPage = () => {
           </div>
           <div className="mt-16 text-center">
             <Button
-              variant="outline"
+              variant="ghost"
               size="lg"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               asChild
             >
               <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">

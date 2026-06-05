@@ -174,7 +174,7 @@ const TightAboutUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
-                className={`rounded-2xl border border-l-4 bg-white p-7 shadow-sm ${val.accent}`}
+                className={`rounded-2xl border-l-4 bg-white p-7 shadow-sm ${val.accent}`}
               >
                 <h3 className="text-xl font-medium">{val.title}</h3>
                 <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{val.description}</p>
@@ -205,9 +205,9 @@ const TightAboutUs = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               whileHover={{ y: -4 }}
-              className="flex flex-col gap-4 p-6 rounded-2xl border border-border/20 bg-white shadow-sm hover:shadow-md transition-all"
+              className="flex flex-col gap-4 p-6 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all"
             >
-              <div className="w-20 h-20 rounded-2xl bg-neutral-100 flex items-center justify-center text-2xl font-light text-foreground/30 border border-border/20">
+              <div className="w-20 h-20 rounded-2xl bg-neutral-100 flex items-center justify-center text-2xl font-light text-foreground/30 shadow-xs">
                 {leader.name[0]}
               </div>
               <div>
@@ -235,9 +235,9 @@ const TightAboutUs = () => {
             </p>
             <div className="flex items-center justify-center gap-4 mt-10">
               <Button
-                variant="outline"
+                variant="ghost"
                 size="lg"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 asChild
               >
                 <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
@@ -248,7 +248,7 @@ const TightAboutUs = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                className="text-primary-foreground/75 hover:text-primary-foreground hover:bg-primary-foreground/10"
                 asChild
               >
                 <Link to="/hiring">

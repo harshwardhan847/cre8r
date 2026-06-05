@@ -30,7 +30,7 @@ const Hero = (props: Props) => {
         </div>
 
         <div className="mx-auto w-full">
-          <div className="overflow-hidden rounded-[24px] border border-border/10 bg-card shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
+          <div className="overflow-hidden rounded-[24px] bg-card shadow-[0_12px_32px_rgba(0,0,0,0.06)]">
             <img
               src="https://cdn.prod.website-files.com/6350808bc45bd0c902af10e6/65f8491bf1f296d2348ad62e_revops.avif"
               alt="Creators collaborating with brands"

@@ -29,7 +29,7 @@ const VideoExample = (props: Props) => {
         scale: scale,
       }}
       ref={ref}
-      className="grid grid-cols-4 gap-6 max-w-7xl w-full h-full p-6 mt-24 rounded-2xl relative backdrop-blur-md bg-white/30 border border-white/20 shadow-lg"
+      className="grid grid-cols-4 gap-6 max-w-7xl w-full h-full p-6 mt-24 rounded-2xl relative backdrop-blur-md bg-white/30 shadow-lg"
     >
       {/* <iframe
         width="560"

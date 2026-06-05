@@ -88,12 +88,12 @@ const BarterCollabsPage = () => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-3xl border border-border/20 bg-white shadow-sm p-8 flex flex-col gap-6"
+            className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col gap-6"
           >
             <h3 className="text-lg font-medium">Program at a glance</h3>
             <div className="grid grid-cols-2 gap-4">
               {requirements.map((req) => (
-                <div key={req.label} className="p-4 rounded-xl bg-neutral-50 border border-border/20">
+                <div key={req.label} className="p-4 rounded-xl bg-neutral-50/70 shadow-xs">
                   <div className="text-xs text-muted-foreground mb-1">{req.label}</div>
                   <div className="text-sm font-medium">{req.value}</div>
                 </div>
@@ -127,9 +127,9 @@ const BarterCollabsPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 whileHover={{ y: -3 }}
-                className="rounded-2xl border border-border/30 bg-white p-7 flex flex-col gap-4 shadow-sm hover:shadow-md transition-all"
+                className="rounded-2xl bg-white p-7 flex flex-col gap-4 shadow-sm hover:shadow-md transition-all"
               >
-                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${type.colorClass}`}>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${type.colorClass}`}>
                   <type.icon className="w-5 h-5" />
                 </div>
                 <div>
@@ -179,9 +179,9 @@ const BarterCollabsPage = () => {
             ))}
           </div>
           <Button
-            variant="outline"
+            variant="ghost"
             size="lg"
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
             asChild
           >
             <a href={CONSTANTS.CREATOR_FORM_URL} target="_blank" rel="noopener noreferrer">
