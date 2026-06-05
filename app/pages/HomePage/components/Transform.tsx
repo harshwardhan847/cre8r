@@ -80,7 +80,7 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ rotate: rotateRight, y }}
           whileHover={{ scale: 1.04 }}
-          className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/4 right-12 border-t-2 border-t-green-400"
+          className="absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(74,222,128,0.08)] z-10 w-xs flex flex-col items-start justify-center gap-1 p-5 top-1/4 right-12 border border-green-200/50"
         >
           <span className="bg-green-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -93,7 +93,7 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ y }}
           whileHover={{ scale: 1.04 }}
-          className="absolute rounded-md origin-top-right bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-full right-1/2 translate-x-1/2 -translate-y-1/2 border-t-2 border-t-orange-400"
+          className="absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(251,146,60,0.08)] z-10 w-xs flex flex-col items-start justify-center gap-1 p-5 top-full right-1/2 translate-x-1/2 -translate-y-1/2 border border-orange-200/50"
         >
           <span className="bg-orange-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -106,7 +106,7 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ rotate, y }}
           whileHover={{ scale: 1.04 }}
-          className="absolute rounded-md origin-top-left bg-white/80 backdrop-blur-md shadow-lg z-10 w-xs flex flex-col items-start justify-center gap-1 p-4 top-1/6 left-12 border-t-2 border-t-pink-400"
+          className="absolute rounded-2xl origin-top-left bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(244,114,182,0.08)] z-10 w-xs flex flex-col items-start justify-center gap-1 p-5 top-1/6 left-12 border border-pink-200/50"
         >
           <span className="bg-pink-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">

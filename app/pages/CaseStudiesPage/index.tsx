@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
+import { cn } from "~/lib/utils";
 
 const caseStudies = [
   {
@@ -138,10 +139,10 @@ const CaseStudiesPage = () => {
                 <div className="p-10 md:p-14 flex flex-col justify-between gap-8">
                   <div>
                     <div className="flex items-center gap-3 mb-6">
-                      <p className="text-xs font-medium uppercase tracking-[0.15em] opacity-50">{study.industry}</p>
+                      <p className={cn("text-xs font-medium uppercase tracking-[0.15em]", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/80")}>{study.industry}</p>
                     </div>
                     <h2 className="text-3xl font-medium tracking-tight">{study.brand}</h2>
-                    <p className="mt-4 text-base leading-relaxed opacity-70">{study.description}</p>
+                    <p className={cn("mt-4 text-base leading-relaxed", idx % 2 === 1 ? "text-primary-foreground/90" : "text-muted-foreground")}>{study.description}</p>
                     <div className="flex flex-wrap gap-2 mt-6">
                       {study.tags.map((tag) => (
                         <span
@@ -169,12 +170,12 @@ const CaseStudiesPage = () => {
                 <div className={`${idx % 2 === 1 ? "bg-primary-foreground/10" : "bg-neutral-50"} p-10 md:p-14 flex flex-col justify-center gap-8`}>
                   <div>
                     <div className="text-6xl font-light">{study.metric}</div>
-                    <div className="text-sm opacity-50 mt-1 uppercase tracking-widest">{study.metricLabel}</div>
+                    <div className={cn("text-sm mt-1 uppercase tracking-widest", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/70")}>{study.metricLabel}</div>
                   </div>
                   <div className="h-px opacity-10 bg-current" />
                   <div>
                     <div className="text-5xl font-light">{study.stat2}</div>
-                    <div className="text-sm opacity-50 mt-1 uppercase tracking-widest">{study.stat2Label}</div>
+                    <div className={cn("text-sm mt-1 uppercase tracking-widest", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/70")}>{study.stat2Label}</div>
                   </div>
                 </div>
               </div>

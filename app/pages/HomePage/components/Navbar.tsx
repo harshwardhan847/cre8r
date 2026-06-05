@@ -52,17 +52,16 @@ const Navbar = (props: Props) => {
           isScrolled && "gap-4",
         )}
       >
-        {isScrolled ? (
-          <Link to="/" className="text-lg font-semibold text-foreground mx-2">Cr</Link>
-        ) : (
-          <Link to="/">
-            <img
-              src="/logo.png"
-              alt="Logo"
-              className="h-16 w-auto mix-blend-multiply saturate-0 contrast-500"
-            />
-          </Link>
-        )}
+        <Link to="/" className="flex items-center justify-center">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className={cn(
+              "w-auto mix-blend-multiply saturate-0 contrast-500 transition-all duration-300 ease-in-out origin-left",
+              isScrolled ? "h-8" : "h-16"
+            )}
+          />
+        </Link>
         
         {/* Main Nav Links */}
         <div className="hidden md:flex items-center gap-1">

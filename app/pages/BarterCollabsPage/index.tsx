@@ -10,28 +10,28 @@ const collabTypes = [
     title: "Product Gifting",
     description: "Receive premium products from top brands in exchange for authentic, organic content posts. Perfect for building your portfolio.",
     examples: ["Unboxing videos", "Product reviews", "Day-in-life features"],
-    accent: "border-t-violet-400",
+    colorClass: "bg-violet-50 text-violet-600 border-violet-100",
   },
   {
     icon: Camera,
     title: "Content Creation",
     description: "Create high-quality content for brands — lifestyle shots, recipes, tutorials — without requiring paid promotion.",
     examples: ["Instagram Reels", "YouTube Shorts", "Blog features"],
-    accent: "border-t-emerald-400",
+    colorClass: "bg-emerald-50 text-emerald-600 border-emerald-100",
   },
   {
     icon: Star,
     title: "Brand Ambassador",
     description: "Become a long-term ambassador for a brand. Ongoing barter arrangement with exclusive perks and early product access.",
     examples: ["Monthly product kits", "Exclusive launches", "Brand events"],
-    accent: "border-t-amber-400",
+    colorClass: "bg-amber-50 text-amber-600 border-amber-100",
   },
   {
     icon: Handshake,
     title: "Affiliate + Barter",
     description: "Combine barter benefits with an affiliate code. Get products for free, plus earn commissions on every sale you drive.",
     examples: ["Custom discount codes", "Revenue sharing", "Performance bonuses"],
-    accent: "border-t-rose-400",
+    colorClass: "bg-rose-50 text-rose-600 border-rose-100",
   },
 ];
 
@@ -127,10 +127,10 @@ const BarterCollabsPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 whileHover={{ y: -3 }}
-                className={`rounded-2xl border border-t-4 bg-white p-7 flex flex-col gap-4 ${type.accent} shadow-sm hover:shadow-md transition-all`}
+                className="rounded-2xl border border-border/30 bg-white p-7 flex flex-col gap-4 shadow-sm hover:shadow-md transition-all"
               >
-                <div className="w-10 h-10 rounded-xl bg-neutral-50 border border-border/20 flex items-center justify-center">
-                  <type.icon className="w-5 h-5 text-foreground/60" />
+                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${type.colorClass}`}>
+                  <type.icon className="w-5 h-5" />
                 </div>
                 <div>
                   <h3 className="text-xl font-medium">{type.title}</h3>

@@ -7,24 +7,24 @@ const Hero = (props: Props) => {
   return (
     <section className="w-full bg-background">
       <div className="mx-auto grid min-h-screen w-full max-w-312.5 grid-cols-1 items-center gap-14 px-6 py-20 md:px-10 lg:grid-cols-2 lg:gap-10 lg:py-16 xl:px-14">
-        <div className="mx-auto flex w-full max-w-140 flex-col items-start justify-center">
+        <div className="mx-auto flex w-full max-w-140 flex-col items-center text-center lg:items-start lg:text-left justify-center">
           <p className="text-sm font-medium uppercase tracking-[0.06em] text-foreground/80">
             CRE8R FOR CREATORS
           </p>
 
-          <h1 className="mt-4 text-6xl font-medium leading-[1.02] tracking-[-0.02em] text-foreground">
+          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.02] tracking-[-0.02em] text-foreground">
             Discover campaigns.
             <br /> Create content.
             <br /> Get paid.
           </h1>
 
-          <p className="mt-6 max-w-150 text-[26px] font-light leading-tight text-muted-foreground md:text-lg">
-            Focus on creating content, we'll handle the rest. Connect with
+          <p className="mt-6 max-w-150 text-base sm:text-lg lg:text-xl font-light leading-relaxed text-muted-foreground">
+            Focus on creating content, we&apos;ll handle the rest. Connect with
             vetted brands, unlock your earning potential, and grow your
             influence.
           </p>
 
-          <div className="mt-2 ">
+          <div className="mt-6 w-full flex justify-center lg:justify-start">
             <EmailInput />
           </div>
         </div>

@@ -25,7 +25,7 @@ const cards: PayoutCard[] = [
     title: "4.1Mn+",
     label: "Creators",
     badge: "F",
-    bgClass: "border-rose-300 border-t-4",
+    bgClass: "bg-rose-50/40 border border-rose-200/60 shadow-[0_8px_30px_rgba(244,63,94,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-500px, -36vw, -220px)",
@@ -35,7 +35,7 @@ const cards: PayoutCard[] = [
     title: "Audience",
     label: "Deep filters",
     badge: "A",
-    bgClass: "border-emerald-300 border-t-4",
+    bgClass: "bg-emerald-50/40 border border-emerald-200/60 shadow-[0_8px_30px_rgba(16,185,129,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-560px, -42vw, -260px)",
@@ -46,7 +46,7 @@ const cards: PayoutCard[] = [
     title: "Briefs",
     label: "Clear goals",
     badge: "B",
-    bgClass: "border-amber-200 border-t-4",
+    bgClass: "bg-amber-50/40 border border-amber-200/60 shadow-[0_8px_30px_rgba(245,158,11,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-420px, -30vw, -210px)",
@@ -57,7 +57,7 @@ const cards: PayoutCard[] = [
     title: "200+",
     label: "Campaigns",
     badge: "C",
-    bgClass: "border-violet-300 border-t-4",
+    bgClass: "bg-violet-50/40 border border-violet-200/60 shadow-[0_8px_30px_rgba(139,92,246,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "0px",
@@ -67,7 +67,7 @@ const cards: PayoutCard[] = [
     title: "AI Match",
     label: "Right creators",
     badge: "AI",
-    bgClass: "border-rose-300 border-t-4",
+    bgClass: "bg-rose-50/40 border border-rose-200/60 shadow-[0_8px_30px_rgba(244,63,94,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(500px, 44vw, 640px)",
@@ -77,7 +77,7 @@ const cards: PayoutCard[] = [
     title: "Track",
     label: "Live results",
     badge: "T",
-    bgClass: "border-emerald-300 border-t-4",
+    bgClass: "bg-emerald-50/40 border border-emerald-200/60 shadow-[0_8px_30px_rgba(16,185,129,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(560px, 48vw, 260px)",
@@ -88,7 +88,7 @@ const cards: PayoutCard[] = [
     title: "ROI",
     label: "Performance",
     badge: "R",
-    bgClass: "border-amber-200 border-t-4",
+    bgClass: "bg-amber-50/40 border border-amber-200/60 shadow-[0_8px_30px_rgba(245,158,11,0.04)]",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(420px, 36vw, 210px)",
@@ -180,7 +180,7 @@ const PayoutMotionCard = ({
 
   return (
     <motion.div
-      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[18px] p-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] bg-white  ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
+      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[20px] p-3 backdrop-blur-md ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
       style={{ x, y, scale, opacity, filter }}
     >
       <div className="flex h-full flex-col items-center justify-center pb-2 pt-2 text-center">
@@ -214,7 +214,7 @@ const Stats = () => {
           viewport={{ once: true, amount: 0.6 }}
         >
           <motion.h2
-            className="text-9xl font-normal font-mono text-foreground"
+            className="text-7xl sm:text-8xl md:text-9xl font-light font-sans tracking-tight text-foreground"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
@@ -232,15 +232,15 @@ const Stats = () => {
           transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <blockquote className="text-start border-b border-border pb-8 ">
-            <p className="text-3xl font-normal leading-relaxed text-foreground">
+          <blockquote className="text-center border-b border-border/30 pb-8">
+            <p className="text-2xl md:text-3xl font-light leading-relaxed text-foreground/80">
               "We prioritize authentic influencer relationships that truly
               represent your brand and connect with your audience."
             </p>
           </blockquote>
 
-          <div className="mt-4 flex w-full flex-col items-center justify-between gap-6 sm:flex-row sm:justify-center sm:gap-8">
-            <div className="flex items-center gap-3 w-full">
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 text-center">
+            <div className="flex items-center gap-3 justify-center">
               <div className="h-10 w-10 rounded-full bg-slate-300" />
               <div className="text-left">
                 <p className="font-medium text-foreground">Cre8r Team</p>
@@ -249,7 +249,7 @@ const Stats = () => {
                 </p>
               </div>
             </div>
-            <div className="font-bold whitespace-nowrap text-foreground">
+            <div className="font-semibold text-xs tracking-widest text-muted-foreground uppercase mt-2">
               CRE8R.AI
             </div>
           </div>
