@@ -1,5 +1,226 @@
-`We are hiring!HomeAbout UsProductBlogsSchedule a DemoFor Influencers135K+ Registered creatorsLet AI build your next Influencer campaignDiscover 4.1mn+ creators. Execute campaigns. Track performance - All in one place.Request a call backWhatsApp us4Mn+Discoverable profiles500Mn+Views generated6000+Content published200+Campaigns deliveredAutomate Influencer Marketing to Drive ROIFind your ideal influencers in seconds — no matter the niche, reach or region.<style>\n  [data-wf-bgvideo-fallback-img] {\n    display: none;\n  }\n  @media (prefers-reduced-motion: reduce) {\n    [data-wf-bgvideo-fallback-img] {\n      position: absolute;\n      z-index: -100;\n      display: inline-block;\n      height: 100%;\n      width: 100%;\n      object-fit: cover;\n    }\n  }</style><img data-wf-bgvideo-fallback-img="true" src="https://cdn.prod.website-files.com/6646455ffcba1a16dc74d761%2F66cc322a3e0a719de1006ad9_website%20animation%20video%20%281%29%20%281%29-poster-00001.jpg" alt=""/>How it works?Find and Track  3mn+  CreatorsFilter by engagement metrics, niche, audience demographics & more.Advanced Creator Briefing SystemThe intuitive briefing system helps you set clear goals and share detailed guidelines.Intelligent MatchmakingMake data-driven decisions with every click, every view, every comment.Live Performance TrackingMake data-driven decisions with every click, every view, every comment.Find & Track  4mn+ CreatorsFilter by engagement metrics, niche, audience demographics & more.Advanced Creator Briefing SystemThe intuitive briefing system helps you set clear goals and share detailed guidelines.Intelligent  MatchmakingMake data-driven decisions with every click, every view, every comment.Live PerformanceTrackingMake data-driven decisions with every click, every view, every comment.Understand your audience through voices they trust.We prioritize authentic influencer relationships that truly represent your brand and connect with your audience.Request a call backWe're hiring!Join our teamView positionsBuild sustainable audience relationshipsCultivate a community of brand advocates who will amplify your message for years to come.Brand FAQsHow long does it take for a campaign to go live?If we have to capture the entire project from finalizing the influencer pool It typically takes 2-4 weeks from influencer discovery, selection, payments, and product shipping to the campaign going live.What industries does Cre8r focus on?Cre8r primarily works in the beauty, fashion, food, beverage, health, fitness, travel and retail industries.How does Cre8r ensure a high-quality creator network?Cre8r's vetting process thoroughly screens and onboards only creators who produce relevant, trustworthy and high-value content.What is Cre8r's revenue model?For barter campaigns, Cre8r charges a fixed platform fee per influencer. For paid campaigns, the margins are bundled in the influencer pricing.How do brands communicate with influencers?All communication happens through the Cre8r platform, eliminating the need for emails or DMs. Brands can provide briefs, and influencers share content for approval.What happens if a brand doesn't like the influencer content?Brands can reject content if it doesn't align with their requirements. They get two rounds of iterations with the influencer to provide feedback.More FAQ'sMumbai: Quest CoWorks, 5th Floor,Andheri East, Mumbai - 400 093Gurgaon: AltF Coworking, Orchid Business Park, Sohna Road, Gurgaon - 122001CompanyHomeAbout UsProductContact UsCreator Sign UpLegalBrands - T&CCreators - T&CPrivacy PolicyContact UsFor brands+91 8800 411 522campaign@cre8r.aiFor influencers+91 7754900652collabs@cre8r.ai@2025_Cre8r.ai,All Right Reserved\nvar Webflow = Webflow || [];\nWebflow.push(function () {\n\nvar tabTimeout;\nclearTimeout(tabTimeout);\ntabLoop();\n\nfunction tabLoop() {\ntabTimeout = setTimeout(function() {\nvar $next = $('.tabs-list').children('.w--current:first').next();\nif($next.length) {\nif ($(".menu-button").hasClass("w--open")) {\ntabLoop();\n}else{\n$next.removeAttr("href").click();\n}\n} else {\nif ($(".menu-button").hasClass("w--open")){\ntabLoop();\n}else{\n$('.tab-style:first').removeAttr("href").click();\n}\n}\n}, 5000); // 5 seconds\n}\n\n$('.tab-style').click(function() {\nclearTimeout(tabTimeout);\ntabLoop();\n});\n});\n`
+05-29 Meeting: Website Structure, Product Positioning, and Go-Live Planning
+Meeting Summary
+The discussion focused on reviewing and refining the website structure, homepage layout, product positioning, content needs, and go-live planning. GS asked the team to self-check design placements and not simply replicate references, but use them as inspiration and improvise where needed.
 
-`Reimagining Influencer Marketing‍One campaign at a timeFrom concept to scale, we help brands discover top influencers, design impactful campaigns and grow their reach effortlessly.Request a call back!\n\n// this script will autoplay video on click to avoid two clicks\ndocument.addEventListener("DOMContentLoaded", function () {\n  const VIDEO_WRAPPER = document.getElementById("video-wrapper"); \n  const VIDEO_EMBED = document.getElementById("video-embed");\n\n  VIDEO_WRAPPER.addEventListener("click", () => {\n    const IFRAME = VIDEO_EMBED.getElementsByTagName("iframe")[0];\n    const VIDEO_SOURCE = IFRAME.src;\n\n    if (VIDEO_SOURCE.includes("autoplay=0")) {\n      IFRAME.src = VIDEO_SOURCE.replace("autoplay=0", "autoplay=1");\n    } else {\n      IFRAME.src = VIDEO_SOURCE + "&autoplay=1";\n    }\n  });\n});\n\n\n\n\n\n\n.stroke-dotted {\n    opacity: 0;\n    stroke-dasharray: 1,3.14;\n    stroke-width: .0625rem;\n    transform-origin: 50% 50%;\n    -webkit-animation: spin 10s linear infinite;\n    animation: spin 10s linear infinite;\n    transition: opacity 1s ease, stroke-width 1s ease\n}\n\n.stroke-solid {\n    stroke-dashoffset: 0;\n    stroke-dasharray: 300;\n    stroke-width: .1875rem;\n    transition: stroke-dashoffset 1s ease, opacity 1s ease\n}\n\n.icon {\n    transform-origin: 50% 50%;\n    transition: transform .3s ease-out\n}\n\n.video-thumbnail:hover .stroke-dotted {\n    stroke-width: .25rem;\n    opacity: 1\n}\n\n.video-thumbnail:hover .stroke-solid {\n    opacity: 0;\n    stroke-dashoffset: 300\n}\n\n.video-thumbnail:hover .icon {\n    transform: scale(1.1)\n}\n\n.video-thumbnail:hover .thumbnail {\n    opacity: .7;\n    transform: scale(1.1)\n}\n\n@keyframes spin {\n    0% {\n        transform: rotate(0deg)\n    }\n\n    to {\n        transform: rotate(360deg)\n    }\n}\n\nOur storyWe're a team of passionate marketers who have spent years navigating the intricate landscape of large digital media companies. We saw firsthand the frustrations brands faced with influencer marketing, and we knew there had to be a better way. A way that focuses on performance, transparency and genuine connections.Meet our teamGaurav SharmaCEO, FounderPriya KumarManaging PartnerRiddhi MehtaManaging PartnerSangeeta KushwahaNational Sales HeadShyam PanickerBusiness HeadMaahi JumnaniGroup Account ManagerVitica SinghAccount ManagerRahul MehtaSr. Finance ManagerAkshita BangarHR ManagerJainam MehtaProject LeadPrateek PalSr. Manager, Media PlanningDipisha BoseManager, Data OperationsHarmita DesaiProject ManagerNiharika mittalCampaign ManagerSimran SharmaCampaign ManagerAditya MathurCampaign ManagerTanish GadodiaCampaign ManagerNeeraj KishorCampaign ManagerAditya ChaudharySocial Media InternSonam JattainGraphic & UXDesignerSlide 2 of 9.Intelligent influencer matchmaking powered by AIOur algorithms analyse influencer profiles, audience demographics and content themes to pinpoint the ideal voices authentically aligned with your brand.Request a call backMumbai: Quest CoWorks, 5th Floor,Andheri East, Mumbai - 400 093Gurgaon: AltF Coworking, Orchid Business Park, Sohna Road, Gurgaon - 122001CompanyHomeAbout UsProductContact UsCreator Sign UpLegalBrands - T&CCreators - T&CPrivacy PolicyContact UsFor brands+91 8800 411 522campaign@cre8r.aiFor influencers+91 7754900652collabs@cre8r.ai@2025_Cre8r.ai,All Right Reserved`
-`More than an influencer management platform.End-to-End Influencer Marketing PlatformRequest a call backWhatsApp usOne search tool. Million of creators.Scale Influencer Campaigns with‍Pre-configured WorkflowsIn just a few clicks, you can do more with easy-to-use workflows.Expand brand‍Reach & RelevanceGrow Customer Engagement & loyalty Build conversations that impact your Brand’s Advocacy Drive revenue and  Increase ROASAwards & RecognitionsIntelligent influencer matchmaking powered by AIOur algorithms analyse influencer profiles, audience demographics and content themes to pinpoint the ideal voices authentically aligned with your brand.Request a call backMumbai: Quest CoWorks, 5th Floor,Andheri East, Mumbai - 400 093Gurgaon: AltF Coworking, Orchid Business Park, Sohna Road, Gurgaon - 122001CompanyHomeAbout UsProductContact UsCreator Sign UpLegalBrands - T&CCreators - T&CPrivacy PolicyContact UsFor brands+91 8800 411 522campaign@cre8r.aiFor influencers+91 7754900652collabs@cre8r.ai@2025_Cre8r.ai,All Right Reserved`
-`200+ Campaigns executedDiscover campaigns.Create content.‍Get paid.Focus on creating content, we'll handle the rest.WhatsApp usSign up now!  →Creator-friendly pricing logicUnlock your earning potential with our performance-led pricing logic.Vetted brand opportunitiesPartner with trustworthy brands that are pre-screened and verified.Grow your influenceIntroduce your content to new followers & expand your fanbase.Join Cre8r community today!Request a call backHere’s  how  to  start1Sign up & complete your profileJoin our community to expand your reach and opportunities.2Connect withbrandsOur AI helps you connect with brands that fit your audience and content.3Land dreamcollabsPartner with top brands, boost your engagement and watch your influence grow.Collab with leading brandsTeam up with a vast selection of brands actively seeking influencer partnerships.Connectand createEasily team up with brands that match your niche and build engaging content.Get paid seamlesslyReceive your payment directly in your account as per agreed terms.Creator FAQsHow much time do creators have to respond?Creators have upto 48 hours to decide if they want to participate in a campaign on a first-come, first-served basis.Can creators choose their own pricing?No, Cre8r evaluates various data sets and performance insights to determine optimal pricing for creators.Do I need to pay some kind of registration charge?No, your registration at Cre8r is completely free. We just want to provide a platform that helps you escalate your growth as an Influencer and helps you earn money for the content you create and post on your social media accounts.What are the prerequisites for creators to join Cre8r?Creators must be at least 13 years old, have an Instagram/Youtube account with 5,000-100,000 followers/subscribers and be located in India.How do creators get paid on Cre8r?Creators receive payments as per the agreed terms. For barter campaigns, they receive products and for paid campaigns, they charge a fee.How are creators notified about new campaigns?Cre8r notifies creators via phone call and email about new campaign opportunities.More FAQ'sMumbai: Quest CoWorks, 5th Floor,Andheri East, Mumbai - 400 093Gurgaon: AltF Coworking, Orchid Business Park, Sohna Road, Gurgaon - 122001CompanyHomeAbout UsProductContact UsCreator Sign UpLegalBrands - T&CCreators - T&CPrivacy PolicyContact UsFor brands+91 8800 411 522campaign@cre8r.aiFor influencers+91 7754900652collabs@cre8r.ai@2025_Cre8r.ai,All Right Reserved`
+The team reviewed possible navigation tabs such as Home, About Us, Product, Demo, Creator, Case Studies, Resources, and possibly Hiring, depending on what feels relevant for the company’s positioning. GS emphasized that the website should clearly reflect the company’s shift from only campaign execution toward a broader acquisition-focused positioning, including SaaS, affiliate, lead generation, and discovery-led products.
+
+The homepage should focus on the problem being solved, past work, brand credibility, videos, and stronger positioning. Product-specific details should move to the product page, where the company’s key modules and offerings can be explained more clearly.
+
+Key Decisions and Direction
+The website should not look like a direct copy of reference sites; references should be used only for inspiration.
+
+The first page/homepage should include brand logos or strong brand credibility elements.
+
+The product page should explain 3–4 key offerings:
+
+Discovery/quality tech product
+
+Campaign execution
+
+Affiliate
+
+Lead generation
+
+The homepage should explain:
+
+What problem the company solves
+
+How it solves it
+
+Previous work and credibility
+
+Brand videos or explainer videos
+
+Static sections should be made more dynamic where possible, especially through videos.
+
+Product modules may be shown through short video clips of around 20–30 seconds each.
+
+Testimonials were considered less convincing and may be replaced or supported by case studies.
+
+Case studies can be added as a dedicated section or tab.
+
+The footer is important and should retain social handles, especially LinkedIn.
+
+The About Us page should focus more on the company, culture, team, and story rather than only numbers.
+
+Senior team members can be highlighted separately, with the rest of the team shown below.
+
+Resources may be added as a section or tab to create useful lead-capture points.
+
+Website Structure Discussed
+Possible navigation tabs:
+
+Home
+
+About Us
+
+Product
+
+Demo
+
+Creator
+
+Case Studies
+
+Resources
+
+Hiring, if relevant
+
+Product and Module Positioning
+GS clarified that the company should show multiple product/module areas, including:
+
+Discovery module
+
+Execution module
+
+Reporting module
+
+Sentiment analysis
+
+Comm Scan
+
+Outreach
+
+Affiliate
+
+Lead generation
+
+ROI calculator or other useful tools/resources
+
+These may appear on the product page and may also be accessible through a Resources section, allowing users multiple ways to reach the same destination.
+
+Content and Design Feedback
+The homepage needs a stronger brand impression.
+
+Brand logos should be visible earlier in the scroll.
+
+Videos can replace or enhance static visuals.
+
+Some sections currently look basic and need better visual treatment, such as stronger contrast, borders, or motion.
+
+The testimonial section may look paid or less credible; case studies may work better.
+
+Moving elements should not be overused across the page.
+
+The About Us content should be tighter and possibly reduced to one or two strong folds.
+
+Explainer videos can include GS, Priya, Kartikey, or other team members speaking in short segments.
+
+Product videos should show dashboard use cases, such as searching by category, city, age range, or influencer type.
+
+Action Items
+Task
+
+Owner
+
+Notes
+
+Self-check design placements and improve layout based on references
+
+Design/website team
+
+Adjust bands, text placement, visual hierarchy, and avoid blindly copying references.
+
+Rework website tabs/navigation options
+
+Design/website team with GS/Priya
+
+Consider Home, About Us, Product, Demo, Creator, Case Studies, Resources, and Hiring.
+
+Add brand credibility earlier on homepage
+
+Design/website team
+
+Brand logos should appear on the first page or early scroll.
+
+Decide how to present product modules
+
+GS
+
+GS to think through whether modules should sit under Product, Resources, or both.
+
+Prepare content for Resources section
+
+GS
+
+GS will provide text and details for resources such as reports, login/signup assets, ROI calculator, etc.
+
+Create or source product/module videos
+
+Priya/team
+
+Videos may include dashboard demos or 20–30 second module clips.
+
+Decide content requirements from Priya
+
+Design/website team
+
+Team should write to Priya listing required assets: video, static images, text, logos, etc.
+
+Provide requested website assets
+
+Priya
+
+Priya to make videos, static assets, text, and logos available as needed.
+
+Convert testimonial section into case studies or rethink it
+
+Design/website team
+
+GS felt current testimonial-style content may look sponsored or less believable.
+
+Tighten About Us page copy
+
+Design/website team/Priya
+
+Focus more on company, culture, team, and story. Reduce overly long explanatory text.
+
+Keep footer and social handles
+
+Design/website team
+
+Footer is important; LinkedIn and other handles should remain accessible.
+
+Prepare final cut with changes
+
+Design/website team
+
+First assess the feedback, then come back with a timeline for final cut and go-live.
+
+Create go-live timeline
+
+Design/website team
+
+Team to propose when final changes will be shown and when the website can go live.
+
+Open Questions
+Should Resources be a separate navigation tab, part of the product page, or both?
+
+Should Case Studies replace testimonials fully, or exist as an additional section?
+
+Which videos should be used on the homepage versus the product page?
+
+Should Hiring be added as a tab now or later?
+
+What exact launch date should be targeted after the final changes are assessed?
+
+Next Steps
+The website/design team will assess all feedback and identify required changes.
+
+The team will send Priya a clear list of needed assets, including videos, static images, text, and logos.
+
+GS will provide text and inputs for the Resources section.
+
+The team will revise the website structure, homepage, product page, About Us page, and case study/resource sections.
+
+The team will return with a final cut and proposed go-live timeline.
+
+collabs," the "YouTube creator's form," and the "book a demo" page. Additionally, the "We are hiring" section needs to be updated with new positions. A critical issue was raised regarding the WhatsApp contact number, which may be non-functional and is currently linked to Kartikeya's details; this requires immediate correction. The team also considered restarting social media posts for employee anniversaries and new joiners, suggesting a potential schedule of one or two posts per week. Finally, an immediate need to reset the company's Facebook password was identified.
+Action Items
+- GS: Send a consolidated list of the 5-6 required changes to Speaker 2.
+- Speaker 2:
+  - Update the website with changes to "butter collabs," "YouTube creator's form," and "book a demo."
+  - Update the "We are hiring" section with new positions.
+  - Investigate and correct the WhatsApp contact number and associated details.
+  - Assign the task of creating new joiner/anniversary posts to the designated person after confirming with her.
+  - Reset the Facebook account password immediately.

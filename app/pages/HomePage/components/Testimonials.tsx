@@ -1,55 +1,56 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 
-const testimonials = [
+const caseStudies = [
   {
     quote:
-      "Cre8r helped us discover the perfect micro-influencers for our campaign. The results were beyond our expectations — 3x ROI in just 30 days.",
-    name: "Priya Sharma",
-    role: "Head of Marketing",
-    company: "D2C Brand",
+      "A structured creator-discovery framework improved shortlist quality and reduced decision cycles for campaign planning.",
+    name: "D2C Skincare Brand",
+    role: "Discovery + execution",
+    company: "Case study placeholder",
     topBorder: "border-t-violet-400",
   },
   {
     quote:
-      "Cre8r's platform made it incredibly easy to find the right creators for our brand. Our campaign reach doubled within the first week.",
-    name: "Rahul Mehta",
-    role: "Growth Lead",
-    company: "Consumer Brand",
+      "Campaign briefing and performance visibility helped teams iterate faster during active creator collaborations.",
+    name: "Consumer Tech Launch",
+    role: "Execution + reporting",
+    company: "Case study placeholder",
     topBorder: "border-t-sky-400",
   },
   {
     quote:
-      "Cre8r's platform made influencer outreach effortless. We scaled from 5 to 50 creators in a single month — results we never thought possible.",
-    name: "Ananya Singh",
-    role: "Marketing Director",
-    company: "D2C Brand",
+      "Geo-targeted creator workflows and better matching logic improved consistency while scaling campaign volume.",
+    name: "F&B Expansion",
+    role: "Acquisition at scale",
+    company: "Case study placeholder",
     topBorder: "border-t-amber-400",
   },
   {
     quote:
-      "The campaign analytics gave us real-time clarity on what was working. We optimised mid-campaign and increased conversions by 40%.",
-    name: "Vikram Patel",
-    role: "Brand Strategist",
-    company: "FMCG Brand",
+      "Clear campaign feedback loops reduced communication lag and improved delivery confidence across stakeholders.",
+    name: "Retail Pilot",
+    role: "Collaboration ops",
+    company: "Case study placeholder",
     topBorder: "border-t-rose-400",
   },
   {
     quote:
-      "From creator discovery to performance reporting, everything is in one clean interface. Cre8r is the tool we didn't know we needed.",
-    name: "Meera Nair",
-    role: "Content Marketing Lead",
-    company: "SaaS Startup",
+      "Integrated discovery, matching, and monitoring gave teams stronger control over outcomes in every campaign phase.",
+    name: "Growth Team",
+    role: "Planning + optimisation",
+    company: "Case study placeholder",
     topBorder: "border-t-emerald-400",
   },
 ];
 
-type Testimonial = (typeof testimonials)[0];
+type CaseStudy = (typeof caseStudies)[0];
 
 const TestimonialCard = ({
   t,
   delay = 0,
 }: {
-  t: Testimonial;
+  t: CaseStudy;
   delay?: number;
 }) => (
   <motion.div
@@ -80,18 +81,22 @@ const Testimonials = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-3">
-            Social proof
+            Credibility
           </p>
           <h2 className="text-4xl font-light tracking-tight">
-            Loved by marketers
+            Case-study previews
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Detailed case studies are being added. Explore structured
+            placeholders for now.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start max-w-5xl mx-auto">
           {/* Column 1 */}
           <div className="flex flex-col gap-4">
-            <TestimonialCard t={testimonials[0]} delay={0} />
-            <TestimonialCard t={testimonials[3]} delay={0.1} />
+            <TestimonialCard t={caseStudies[0]} delay={0} />
+            <TestimonialCard t={caseStudies[3]} delay={0.1} />
           </div>
 
           {/* Column 2 — featured card */}
@@ -101,22 +106,22 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05, duration: 0.4 }}
-              className={`p-8 rounded-xl bg-white border border-neutral-100 border-t-4 ${testimonials[2].topBorder} shadow-md flex flex-col gap-4`}
+              className={`p-8 rounded-xl bg-white border border-neutral-100 border-t-4 ${caseStudies[2].topBorder} shadow-md flex flex-col gap-4`}
             >
               <span className="text-5xl text-neutral-200 font-serif leading-none select-none">
                 &ldquo;
               </span>
               <p className="text-base text-foreground leading-relaxed -mt-2">
-                {testimonials[2].quote}
+                {caseStudies[2].quote}
               </p>
               <div className="flex items-center gap-3 mt-auto pt-4 border-t border-neutral-100">
                 <div className="w-10 h-10 rounded-xl bg-primary shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-foreground">
-                    {testimonials[2].name}
+                    {caseStudies[2].name}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    {testimonials[2].role}, {testimonials[2].company}
+                    {caseStudies[2].role}, {caseStudies[2].company}
                   </p>
                 </div>
               </div>
@@ -125,9 +130,18 @@ const Testimonials = () => {
 
           {/* Column 3 */}
           <div className="flex flex-col gap-4">
-            <TestimonialCard t={testimonials[1]} delay={0.08} />
-            <TestimonialCard t={testimonials[4]} delay={0.16} />
+            <TestimonialCard t={caseStudies[1]} delay={0.08} />
+            <TestimonialCard t={caseStudies[4]} delay={0.16} />
           </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            to="/case-studies"
+            className="text-sm text-foreground/80 transition hover:text-foreground"
+          >
+            View all case studies
+          </Link>
         </div>
       </div>
     </section>

@@ -61,7 +61,7 @@ const Transform = (props: Props) => {
           Influencer Marketing Platform
         </span>
       </h4>
-      <h2 className="text-5xl font-light leading-none tracking-tighter text-primary-foreground text-center">
+      <h2 className="text-5xl font-light leading-none tracking-tight text-primary-foreground text-center">
         Understand your audience
         <br /> through voices they trust.
       </h2>

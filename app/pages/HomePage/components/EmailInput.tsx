@@ -15,7 +15,7 @@ const EmailInput = ({ dark }: Props) => {
             placeholder="Enter your work email"
           />
           <Button
-            className="h-10 bg-white text-foreground border-border/10 hover:bg-background "
+            className="h-10 bg-white text-foreground border-border/10 hover:bg-background font-light"
             size={"lg"}
           >
             Request a call back
@@ -34,7 +34,7 @@ const EmailInput = ({ dark }: Props) => {
           className="w-full h-10 focus:outline-none transition-all ease-in-out duration-300 font-light text-foreground text-base rounded-md px-4 py-2"
           placeholder="Enter your work email"
         />
-        <Button className="h-10" size={"lg"}>
+        <Button className="h-10 font-normal" size={"lg"}>
           Request a call back
         </Button>
       </div>

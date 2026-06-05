@@ -7,6 +7,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "~/components/ui/carousel";
+import { CONSTANTS } from "~/constants";
 
 type TeamMember = {
   name: string;
@@ -63,7 +64,9 @@ const Team = () => {
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-360">
         <motion.a
-          href="#"
+          href={CONSTANTS.HIRING_FORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-white px-2 py-1 text-xs font-medium text-[#3a3a3a] shadow-sm ring-1 ring-black/8"
           whileHover={{ y: -1 }}
           transition={{ duration: 0.2, ease: "easeOut" }}

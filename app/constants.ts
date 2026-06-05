@@ -1,5 +1,7 @@
 export const CONSTANTS = {
   CALENDLY_URL: "https://calendly.com/gs_cre8r/30min",
+  CREATOR_FORM_URL: "https://forms.google.com/creator-form-placeholder",
+  HIRING_FORM_URL: "https://forms.google.com/hiring-form-placeholder",
   LINKEDIN_URL: "https://www.linkedin.com/company/cre8r-ai/",
   INSTAGRAM_URL: "https://www.instagram.com/cre8r.community/",
   WHATSAPP_URL:

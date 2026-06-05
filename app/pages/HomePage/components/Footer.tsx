@@ -43,8 +43,13 @@ const Footer = () => {
             <h2 className="text-lg font-light text-primary-foreground/70">
               Insights &amp; Resources
             </h2>
-            <Button variant={"outline"} size={"lg"} className="text-foreground">
-              View all articles
+            <Button
+              variant={"outline"}
+              size={"lg"}
+              className="text-foreground font-normal"
+              asChild
+            >
+              <Link to="/resources">View all articles</Link>
             </Button>
           </div>
           <div className="grid grid-cols-4 items-start justify-center gap-4 mt-4">
@@ -82,7 +87,55 @@ const Footer = () => {
             </div>
           </a>
 
-          <div className="flex items-center gap-5 whitespace-nowrap">
+          <div className="flex items-center gap-x-5 gap-y-2 flex-wrap justify-center">
+            <Link
+              to="/"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              About
+            </Link>
+            <Link
+              to="/product"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Product
+            </Link>
+            <Link
+              to="/influencer"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Creator
+            </Link>
+            <Link
+              to="/demo"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Demo
+            </Link>
+            <Link
+              to="/case-studies"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Case Studies
+            </Link>
+            <Link
+              to="/resources"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Resources
+            </Link>
+            <Link
+              to="/barter-collabs"
+              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
+            >
+              Barter Collabs
+            </Link>
             <Link
               to="/brands_tc"
               className="opacity-80 transition-opacity duration-300 hover:opacity-100"

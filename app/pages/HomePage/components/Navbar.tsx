@@ -49,11 +49,36 @@ const NavigationMenuComponent = () => {
             <Link to="/product">Product</Link>
           </Button>
         </NavigationMenuItem>
-        {/* <NavigationMenuItem>
-          <Button variant={"ghost"} size={"lg"} className="font-normal h-11">
-            Blogs
-          </Button>
-        </NavigationMenuItem> */}
+        <NavigationMenuItem>
+          <NavigationMenuTrigger className="font-normal h-11">
+            Resources
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="grid min-w-64 gap-1.5 p-2">
+              <NavigationMenuLink asChild>
+                <Link to="/resources">Resources</Link>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <Link to="/demo">Demo</Link>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <Link to="/case-studies">Case Studies</Link>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <Link to="/barter-collabs">Barter Collabs</Link>
+              </NavigationMenuLink>
+              <NavigationMenuLink asChild>
+                <a
+                  href={CONSTANTS.CREATOR_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Creator Form
+                </a>
+              </NavigationMenuLink>
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );

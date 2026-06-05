@@ -26,7 +26,7 @@ const Header = (props: Props) => {
           </h4>
           <ArrowRight className="size-4 text-muted-foreground" />
         </button>
-        <h1 className="text-6xl font-medium text-center tracking-tighter leading-16">
+        <h1 className="text-6xl font-medium text-center tracking-normal leading-16">
           Let AI build your next <br />
           Influencer campaign
         </h1>
