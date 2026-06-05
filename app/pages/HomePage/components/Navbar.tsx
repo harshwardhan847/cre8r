@@ -1,107 +1,46 @@
 import { useScroll } from "motion/react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { Button } from "~/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "~/components/ui/navigation-menu";
 import { CONSTANTS } from "~/constants";
 import { cn } from "~/lib/utils";
 
 type Props = {};
 
-const NavigationMenuComponent = () => {
-  return (
-    <NavigationMenu>
-      <NavigationMenuList className="gap-4 mt-0">
-        <NavigationMenuItem>
-          <Button
-            variant={"ghost"}
-            size={"lg"}
-            className="font-normal h-11"
-            asChild
-          >
-            <Link to="/">Home</Link>
-          </Button>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Button
-            variant={"ghost"}
-            size={"lg"}
-            className="font-normal h-11"
-            asChild
-          >
-            <Link to="/about">About Us</Link>
-          </Button>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Button
-            variant={"ghost"}
-            size={"lg"}
-            className="font-normal h-11"
-            asChild
-          >
-            <Link to="/product">Product</Link>
-          </Button>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-normal h-11">
-            Resources
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="grid min-w-64 gap-1.5 p-2">
-              <NavigationMenuLink asChild>
-                <Link to="/resources">Resources</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link to="/demo">Demo</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link to="/case-studies">Case Studies</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <Link to="/barter-collabs">Barter Collabs</Link>
-              </NavigationMenuLink>
-              <NavigationMenuLink asChild>
-                <a
-                  href={CONSTANTS.CREATOR_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Creator Form
-                </a>
-              </NavigationMenuLink>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  );
-};
+const navLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Product", to: "/product" },
+  { label: "Case Studies", to: "/case-studies" },
+];
+
+const resourceLinks = [
+  { label: "Resources", to: "/resources" },
+  { label: "Barter Collabs", to: "/barter-collabs" },
+  { label: "Creator Form", to: CONSTANTS.CREATOR_FORM_URL, external: true },
+];
 
 const Navbar = (props: Props) => {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    return scrollY.onChange((latest) => {
-      if (latest > 0.8) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+    return scrollY.on("change", (latest) => {
+      setIsScrolled(latest > 20);
     });
   }, [scrollY]);
+
+  const isActive = (to: string) => {
+    if (to === "/") return location.pathname === "/";
+    return location.pathname.startsWith(to);
+  };
 
   return (
     <nav
       className={cn(
-        "flex items-center justify-between px-4 py-2 pt-2 z-50 transition-all fixed top-4 w-full left-1/2 -translate-x-1/2 ease-in duration-200 md:px-8 md:max-w-350 md:mx-auto",
+        "flex items-center justify-between px-4 py-2 z-50 transition-all fixed top-4 w-full left-1/2 -translate-x-1/2 ease-in duration-200 md:px-8 md:max-w-350 md:mx-auto",
         isScrolled
           ? "bg-background/95 backdrop-blur-sm py-1 md:px-2 z-50 top-4 -translate-x-1/2 w-min rounded-xl shadow"
           : "bg-transparent",
@@ -109,33 +48,121 @@ const Navbar = (props: Props) => {
     >
       <div
         className={cn(
-          "flex items-center justify-center gap-12",
+          "flex items-center justify-center gap-8",
           isScrolled && "gap-4",
         )}
       >
         {isScrolled ? (
-          <div className="text-lg font-semibold text-foreground mx-2">Cr</div>
+          <Link to="/" className="text-lg font-semibold text-foreground mx-2">Cr</Link>
         ) : (
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className="h-16 w-auto mix-blend-multiply saturate-0 contrast-500"
-          />
+          <Link to="/">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="h-16 w-auto mix-blend-multiply saturate-0 contrast-500"
+            />
+          </Link>
         )}
-        <NavigationMenuComponent />
+        
+        {/* Main Nav Links */}
+        <div className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <Button
+              key={link.to}
+              variant="ghost"
+              size="lg"
+              className={cn(
+                "font-normal h-10 text-sm relative",
+                isActive(link.to)
+                  ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+              asChild
+            >
+              <Link to={link.to}>{link.label}</Link>
+            </Button>
+          ))}
+
+          {/* Resources Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setResourcesOpen(true)}
+            onMouseLeave={() => setResourcesOpen(false)}
+          >
+            <Button
+              variant="ghost"
+              size="lg"
+              className={cn(
+                "font-normal h-10 text-sm gap-1",
+                resourceLinks.some(l => !l.external && isActive(l.to))
+                  ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Resources
+              <svg
+                className={cn("w-3 h-3 transition-transform", resourcesOpen && "rotate-180")}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </Button>
+            
+            {resourcesOpen && (
+              <div className="absolute top-full left-0 mt-1 w-52 rounded-xl border border-border/30 bg-background/98 backdrop-blur-sm shadow-lg p-1.5 z-50">
+                {resourceLinks.map((link) =>
+                  link.external ? (
+                    <a
+                      key={link.label}
+                      href={link.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.label}
+                      to={link.to}
+                      className={cn(
+                        "flex items-center px-3 py-2 rounded-lg text-sm transition-colors",
+                        isActive(link.to)
+                          ? "text-foreground bg-muted/60 font-medium"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                )}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      <div className="flex items-center gap-4">
+
+      {/* Right Side */}
+      <div className="flex items-center gap-3">
         <Button
-          variant={"ghost"}
-          size={"lg"}
-          className="font-normal text-sm h-10 text-muted-foreground"
+          variant="ghost"
+          size="lg"
+          className={cn(
+            "font-normal text-sm h-10",
+            isActive("/influencer")
+              ? "text-foreground"
+              : "text-muted-foreground hover:text-foreground"
+          )}
           asChild
         >
           <Link to="/influencer">For Influencers</Link>
         </Button>
         <Button
-          variant={"default"}
-          size={"lg"}
+          variant="default"
+          size="lg"
           className="font-light text-sm h-10"
         >
           <Link
@@ -143,7 +170,7 @@ const Navbar = (props: Props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Schedule a Demo
+            Book a Demo
           </Link>
         </Button>
       </div>

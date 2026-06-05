@@ -27,12 +27,11 @@ const Header = (props: Props) => {
           <ArrowRight className="size-4 text-muted-foreground" />
         </button>
         <h1 className="text-6xl font-medium text-center tracking-normal leading-16">
-          Let AI build your next <br />
-          Influencer campaign
+          End-to-End Influencer Marketing <br />
+          Powered by AI
         </h1>
         <h2 className="text-muted-foreground text-2xl max-w-lg font-light text-center">
-          Discover 4.1mn+ creators. Execute campaigns.
-          <br /> Track performance — All in one place.
+          From first brief to final conversion. Discover, execute, track affiliates, and generate leads — All in one place.
         </h2>
         <EmailInput />
       </div>

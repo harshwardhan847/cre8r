@@ -1,202 +1,165 @@
-import { Button } from "~/components/ui/button";
-import { Separator } from "~/components/ui/separator";
-import EmailInput from "./EmailInput";
 import { Link } from "react-router";
 import { CONSTANTS } from "~/constants";
 
-const articles = [
-  {
-    id: 1,
-    title: "How to find the right micro-influencer for your brand",
-    summary:
-      "Discover the key metrics and strategies to identify micro-influencers who align with your brand values.",
-    Image: "https://example.com/article1.jpg",
-  },
-  {
-    id: 2,
-    title: "Measuring ROI in influencer campaigns",
-    summary:
-      "Learn how to track and measure the return on investment from your influencer marketing campaigns.",
-    Image: "https://example.com/article2.jpg",
-  },
-  {
-    id: 3,
-    title: "The rise of nano-influencers in India",
-    summary:
-      "Explore why nano-influencers are becoming the most cost-effective channel for D2C brands in India.",
-    Image: "https://example.com/article3.jpg",
-  },
-  {
-    id: 4,
-    title: "Building long-term creator partnerships",
-    summary:
-      "Strategies for fostering authentic, lasting relationships with content creators for sustainable growth.",
-    Image: "https://example.com/article4.jpg",
-  },
-];
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <>
-      <div className=" bg-primary text-primary-foreground ">
-        <div className=" flex flex-col items-center justify-center container mx-auto px-8 py-16">
-          <div className="w-full items-center justify-between flex">
-            <h2 className="text-lg font-light text-primary-foreground/70">
-              Insights &amp; Resources
+    <footer className="bg-primary text-primary-foreground">
+      {/* CTA Banner */}
+      <div className="border-b border-primary-foreground/10">
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-xl">
+            <h2 className="text-4xl md:text-5xl font-light leading-tight tracking-tight">
+              Intelligent influencer
+              <br />
+              matchmaking{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-br from-sky-400 via-blue-300 to-sky-400">
+                powered by AI
+              </span>
             </h2>
-            <Button
-              variant={"outline"}
-              size={"lg"}
-              className="text-foreground font-normal"
-              asChild
-            >
-              <Link to="/resources">View all articles</Link>
-            </Button>
+            <p className="mt-4 text-primary-foreground/60 text-base leading-relaxed max-w-md">
+              From first brief to final conversion — discover, execute, and track campaigns with precision.
+            </p>
           </div>
-          <div className="grid grid-cols-4 items-start justify-center gap-4 mt-4">
-            {articles?.map((article) => (
-              <div key={article.id}>
-                <div className="aspect-video mb-2 w-full text-center flex items-center justify-center text-muted-foreground rounded-md shadow bg-neutral-900" />
-                <h3 className="text-sm font-light tracking-wide text-primary-foreground/50">
-                  {article.title}
-                </h3>
-                {/* <p>{article.summary}</p> */}
-              </div>
-            ))}
+          <div className="flex flex-col gap-3 items-start md:items-end shrink-0">
+            <Link
+              to={CONSTANTS.CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-medium px-6 py-3 rounded-xl hover:bg-primary-foreground/90 transition-colors"
+            >
+              Book a Demo
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link
+              to={CONSTANTS.WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
+            >
+              <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
+              Chat on WhatsApp
+            </Link>
           </div>
         </div>
       </div>
-      <div className="py-40 pt-20 flex flex-col bg-primary items-center justify-center gap-4">
-        <h2 className="text-5xl uppercase text-center text-primary-foreground font-normal">
-          Intelligent influencer
-          <br /> matchmaking{" "}
-          <span className="text-transparent bg-clip-text bg-linear-to-br from-sky-500 via-background to-sky-500">
-            powered by AI
-          </span>
-        </h2>
-        <EmailInput dark />
-      </div>
-      <footer className="bg-primary text-primary-foreground">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 max-md:flex-col sm:px-6 sm:py-6 md:gap-6 md:py-8">
-          <a href="#">
-            <div className="flex items-center gap-3">
-              <img
-                src="./logo.png"
-                alt="Cre8r.ai Logo"
-                className="h-12 w-auto mix-blend-"
-              />
-            </div>
-          </a>
 
-          <div className="flex items-center gap-x-5 gap-y-2 flex-wrap justify-center">
-            <Link
-              to="/"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Home
+      {/* Main Footer Links */}
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-2 flex flex-col gap-5">
+            <Link to="/">
+              <img
+                src="/logo.png"
+                alt="Cre8r.ai Logo"
+                className="h-14 w-auto invert"
+              />
             </Link>
-            <Link
-              to="/about"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              About
-            </Link>
-            <Link
-              to="/product"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Product
-            </Link>
-            <Link
-              to="/influencer"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Creator
-            </Link>
-            <Link
-              to="/demo"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Demo
-            </Link>
-            <Link
-              to="/case-studies"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Case Studies
-            </Link>
-            <Link
-              to="/resources"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Resources
-            </Link>
-            <Link
-              to="/barter-collabs"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Barter Collabs
-            </Link>
-            <Link
-              to="/brands_tc"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Brands - T&C
-            </Link>
-            <Link
-              to="/creators_tc"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
-              Creators - T&C
-            </Link>
-            <Link
-              to="/privacy_policy"
-              className="opacity-80 transition-opacity duration-300 hover:opacity-100"
-            >
+            <p className="text-primary-foreground/55 text-sm leading-relaxed max-w-xs">
+              End-to-end influencer marketing platform for brands that want to discover, execute, and scale campaigns with real ROI.
+            </p>
+            <div className="flex items-center gap-3 mt-2">
+              <a href={CONSTANTS.INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
+                <img src="/icons/instagram.png" alt="Instagram" className="w-4 h-4" />
+              </a>
+              <a href={CONSTANTS.LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
+                <img src="/icons/linkedin.png" alt="LinkedIn" className="w-4 h-4" />
+              </a>
+              <a href={CONSTANTS.MEDIUM_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
+                <img src="/icons/medium.png" alt="Medium" className="w-4 h-4" />
+              </a>
+              <a href={CONSTANTS.WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
+                <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Platform */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Platform</h3>
+            <div className="flex flex-col gap-3">
+              {[
+                { label: "Home", to: "/" },
+                { label: "Product", to: "/product" },
+                { label: "Case Studies", to: "/case-studies" },
+                { label: "Resources", to: "/resources" },
+                { label: "Book a Demo", to: CONSTANTS.CALENDLY_URL, ext: true },
+              ].map((link) => (
+                link.ext ? (
+                  <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link key={link.label} to={link.to} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                    {link.label}
+                  </Link>
+                )
+              ))}
+            </div>
+          </div>
+
+          {/* Company */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Company</h3>
+            <div className="flex flex-col gap-3">
+              {[
+                { label: "About Us", to: "/about" },
+                { label: "Barter Collabs", to: "/barter-collabs" },
+                { label: "We're Hiring!", to: "/hiring" },
+              ].map((link) => (
+                <Link key={link.label} to={link.to} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                  {link.label === "We're Hiring!" ? (
+                    <span className="flex items-center gap-2">
+                      {link.label}
+                      <span className="px-1.5 py-0.5 bg-sky-400/20 text-sky-300 text-[10px] rounded-full font-medium">Open</span>
+                    </span>
+                  ) : link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Contact</h3>
+            <div className="flex flex-col gap-3">
+              <a href={`mailto:${CONSTANTS.CONTACT_EMAIL_BRANDS}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                {CONSTANTS.CONTACT_EMAIL_BRANDS}
+              </a>
+              <a href={`tel:${CONSTANTS.CONTACT_NUMBER_BRANDS.replace(/\s/g, "")}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                {CONSTANTS.CONTACT_NUMBER_BRANDS}
+              </a>
+              <p className="text-sm text-primary-foreground/40 mt-1">For Creators:</p>
+              <a href={`mailto:${CONSTANTS.CONTACT_EMAIL_CREATORS}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                {CONSTANTS.CONTACT_EMAIL_CREATORS}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-primary-foreground/40">
+            © {year} Cre8r.ai · All rights reserved
+          </p>
+          <div className="flex items-center gap-6">
+            <Link to="/privacy_policy" className="text-sm text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
               Privacy Policy
             </Link>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Link to={CONSTANTS.INSTAGRAM_URL} target="_blank">
-              <img
-                src="./icons/instagram.png"
-                alt="Instagram"
-                className=" size-8 md:size-10"
-              />
+            <Link to="/brands_tc" className="text-sm text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
+              Terms (Brands)
             </Link>
-            <Link to={CONSTANTS.WHATSAPP_URL} target="_blank">
-              <img
-                src="./icons/whatsapp.png"
-                alt="WhatsApp"
-                className=" size-8 md:size-10"
-              />
-            </Link>
-            <Link to={CONSTANTS.LINKEDIN_URL} target="_blank">
-              <img
-                src="./icons/linkedin.png"
-                alt="LinkedIn"
-                className=" size-8 md:size-10"
-              />
-            </Link>
-            <Link to={CONSTANTS.MEDIUM_URL} target="_blank">
-              <img
-                src="./icons/medium.png"
-                alt="Medium"
-                className=" size-8 md:size-10"
-              />
+            <Link to="/creators_tc" className="text-sm text-primary-foreground/40 hover:text-primary-foreground/70 transition-colors">
+              Terms (Creators)
             </Link>
           </div>
         </div>
-
-        <Separator className="bg-primary-foreground/10" />
-
-        <div className="mx-auto flex max-w-7xl justify-center px-4 py-8 sm:px-6 items-center text-muted-foreground">
-          <p className="text-center font-medium text-balance">
-            @{new Date().getFullYear()}_Cre8r.ai, All Right Reserved
-          </p>
-        </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 };
 

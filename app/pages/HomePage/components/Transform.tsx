@@ -265,27 +265,6 @@ const Transform = (props: Props) => {
           </motion.div>
         </div>
       </div>
-      <div className="mx-auto w-xl mt-24 mb-24 text-primary-foreground">
-        <p className="text-4xl text-start font-normal tracking-tight font-sans border-b border-white/20 pb-6">
-          "Cre8r's platform made influencer outreach effortless. We scaled from
-          5 to 50 creators in a single month — results we never thought
-          possible."
-        </p>
-        <div className="flex items-center justify-between mt-4">
-          <div className="flex items-center justify-center gap-2">
-            <div className="aspect-square h-12 bg-background rounded-xl"></div>
-            <div className="flex flex-col items-start justify-center">
-              <p className="text-sm text-primary-foreground font-semibold">
-                Ananya Singh
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Marketing Director, D2C Brand
-              </p>
-            </div>
-          </div>
-          <div className="font-bold text-xl">Cre8r.ai</div>
-        </div>
-      </div>
     </div>
   );
 };
