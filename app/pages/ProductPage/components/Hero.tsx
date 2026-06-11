@@ -25,7 +25,7 @@ const cards: PayoutCard[] = [
     title: "4.1Mn+",
     label: "Creators",
     badge: "F",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(244,63,94,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(244,63,94,0.08)] transition-all duration-300 border-rose-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-500px, -36vw, -220px)",
@@ -35,7 +35,7 @@ const cards: PayoutCard[] = [
     title: "Audience",
     label: "Deep filters",
     badge: "A",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.08)] transition-all duration-300 border-emerald-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-560px, -42vw, -260px)",
@@ -46,7 +46,7 @@ const cards: PayoutCard[] = [
     title: "Briefs",
     label: "Clear goals",
     badge: "B",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(245,158,11,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(245,158,11,0.08)] transition-all duration-300 border-amber-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(-420px, -30vw, -210px)",
@@ -57,7 +57,7 @@ const cards: PayoutCard[] = [
     title: "200+",
     label: "Campaigns",
     badge: "C",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.08)] transition-all duration-300 border-purple-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "0px",
@@ -67,7 +67,7 @@ const cards: PayoutCard[] = [
     title: "AI Match",
     label: "Right creators",
     badge: "AI",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(244,63,94,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(244,63,94,0.08)] transition-all duration-300 border-rose-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(500px, 44vw, 640px)",
@@ -77,7 +77,7 @@ const cards: PayoutCard[] = [
     title: "Track",
     label: "Live results",
     badge: "T",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.08)] transition-all duration-300 border-emerald-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(560px, 48vw, 260px)",
@@ -88,7 +88,7 @@ const cards: PayoutCard[] = [
     title: "ROI",
     label: "Performance",
     badge: "R",
-    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(245,158,11,0.08)] transition-all duration-300",
+    bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(245,158,11,0.08)] transition-all duration-300 border-amber-400",
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "clamp(420px, 36vw, 210px)",
@@ -113,7 +113,7 @@ const Hero = () => {
     <section className="">
       <div
         ref={heroRef}
-        className="relative mx-auto min-h-[860px] w-full max-w-7xl px-6 sm:px-10 md:min-h-screen lg:px-16"
+        className="relative mx-auto min-h-215 w-full max-w-7xl px-6 sm:px-10 md:min-h-screen lg:px-16"
       >
         <motion.div
           className="relative z-20 mx-auto flex max-w-162.5 flex-col items-center pt-28 text-center md:pt-48"
@@ -141,7 +141,7 @@ const Hero = () => {
             Request a call back
           </Button>
         </motion.div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-[780px] origin-top scale-90 sm:scale-95 lg:scale-100">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-195 origin-top scale-90 sm:scale-95 lg:scale-100">
           {cards.map((card) => (
             <PayoutMotionCard
               key={card.title}
@@ -180,7 +180,7 @@ const PayoutMotionCard = ({
 
   return (
     <motion.div
-      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[20px] p-3 backdrop-blur-md ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
+      className={`absolute left-1/2 top-175 z-10 -ml-16 h-32 w-32 rounded-[20px] p-3 border-t-4 backdrop-blur-md ${card.bgClass} ${card.textClass} ${card.hiddenOnMobile ? "hidden sm:block" : "block"}`}
       style={{ x, y, scale, opacity, filter }}
     >
       <div className="flex h-full flex-col items-center justify-center pb-2 pt-2 text-center">
@@ -226,7 +226,7 @@ const Stats = () => {
         </motion.div>
 
         <motion.div
-          className="mt-20 mx-auto max-w-2xl pt-12"
+          className="mt-20 mx-auto max-w-2xl pt-12 hidden"
           initial={{ opacity: 0, y: 22, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.55, ease: "easeOut", delay: 0.05 }}

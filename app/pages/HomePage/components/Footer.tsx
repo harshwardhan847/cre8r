@@ -9,7 +9,7 @@ const Footer = () => {
       {/* CTA Banner */}
       <div className="border-b border-primary-foreground/10">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-xl">
+          <div className="max-w-2xl">
             <h2 className="text-4xl md:text-5xl font-light leading-tight tracking-tight">
               Intelligent influencer
               <br />
@@ -56,7 +56,7 @@ const Footer = () => {
               <img
                 src="/logo.png"
                 alt="Cre8r.ai Logo"
-                className="h-14 w-auto invert"
+                className="h-14 w-auto object-contain"
               />
             </Link>
             <p className="text-primary-foreground/55 text-sm leading-relaxed max-w-xs">

@@ -37,7 +37,7 @@ const ProductModules = () => {
             Everything you need for a successful influencer marketing strategy, broken down into powerful modules.
           </p>
         </div>
-        
+
         <div className="flex flex-col gap-24">
           {modules.map((mod, idx) => (
             <div key={mod.title} className={`flex flex-col md:flex-row gap-12 items-center ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
@@ -46,14 +46,14 @@ const ProductModules = () => {
                 <p className="text-xl text-muted-foreground">{mod.description}</p>
                 <ul className="flex flex-wrap gap-2">
                   {mod.features.map(f => (
-                    <li key={f} className="px-4 py-2 bg-primary/5 text-primary rounded-full text-sm font-medium border border-primary/10">
+                    <li key={f} className="px-4 py-2 bg-primary/5 text-primary tracking-tight rounded-full text-sm  font-normal border border-primary/10">
                       {f}
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="flex-1 w-full">
-                <div className="aspect-video bg-muted rounded-2xl border border-border shadow-sm flex items-center justify-center overflow-hidden">
+                <div className="aspect-video bg-muted rounded-2xl shadow-sm flex items-center justify-center overflow-hidden">
                   <div className="text-center text-muted-foreground animate-pulse p-4">
                     <div className="w-16 h-16 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center">
                       ▶

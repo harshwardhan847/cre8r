@@ -13,9 +13,47 @@ const statItems = [
   { stat: "200+", label: "Campaigns delivered", border: "border-l-rose-400" },
 ];
 
+const brands = [
+  "Nike",
+  "Samsung",
+  "L'Oréal",
+  "Spotify",
+  "Amazon",
+  "Apple",
+  "Google",
+  "Microsoft",
+  "Disney",
+  "Netflix",
+];
+
 const Brands = (props: Props) => {
   return (
-    <section className="py-24">
+    <section className="py-24 overflow-hidden">
+      <div className="w-full flex overflow-hidden mb-24 py-8 border-y border-black/5 bg-white/50 backdrop-blur-sm opacity-60 hover:opacity-100 transition-opacity duration-500">
+        <motion.div
+          className="flex whitespace-nowrap gap-16 shrink-0 pr-16 items-center"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+        >
+          {brands.map((brand, i) => (
+            <span key={i} className="text-3xl font-bold text-black/30 uppercase tracking-widest">
+              {brand}
+            </span>
+          ))}
+        </motion.div>
+        <motion.div
+          className="flex whitespace-nowrap gap-16 shrink-0 pr-16 items-center"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+        >
+          {brands.map((brand, i) => (
+            <span key={i} className="text-3xl font-bold text-black/30 uppercase tracking-widest">
+              {brand}
+            </span>
+          ))}
+        </motion.div>
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div

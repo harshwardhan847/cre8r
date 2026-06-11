@@ -34,14 +34,14 @@ const CaseStudiesPreview = () => {
             <Link to="/case-studies">View All Case Studies</Link>
           </Button>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           {caseStudies.map((study) => (
-            <div key={study.id} className="group relative rounded-2xl overflow-hidden border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-              <div className="aspect-[16/9] w-full bg-muted overflow-hidden">
-                 <div className="w-full h-full bg-neutral-200 animate-pulse flex items-center justify-center text-muted-foreground">
-                    [Case Study Image Placeholder]
-                 </div>
+            <div key={study.id} className="group relative rounded-2xl overflow-hidden shadow bg-card hover:shadow-xl transition-all duration-300">
+              <div className="aspect-video w-full bg-muted overflow-hidden">
+                <div className="w-full h-full bg-neutral-200 animate-pulse flex items-center justify-center text-muted-foreground">
+                  [Case Study Image Placeholder]
+                </div>
               </div>
               <div className="p-8 flex flex-col gap-4">
                 <h3 className="text-2xl font-semibold">{study.brand}</h3>

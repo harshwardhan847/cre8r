@@ -144,7 +144,7 @@ const Find = () => {
 
       <div
         ref={stepsSectionRef}
-        className="mx-auto mt-28 w-full max-w-2xl px-6 text-center sm:px-8"
+        className="mx-auto mt-28 hidden w-full max-w-2xl px-6 text-center sm:px-8"
       >
         <motion.h3
           className="text-4xl font-medium leading-tight text-foreground sm:text-5xl"
@@ -177,18 +177,16 @@ const Find = () => {
                 animate={{ opacity: isActive ? 1 : 0.82 }}
               >
                 <motion.p
-                  className={`font-serif text-6xl italic leading-none ${
-                    isActive ? "text-foreground/80" : "text-foreground/25"
-                  }`}
+                  className={`font-serif text-6xl italic leading-none ${isActive ? "text-foreground/80" : "text-foreground/25"
+                    }`}
                   animate={{ y: isActive ? 0 : 2 }}
                   transition={{ duration: 0.3 }}
                 >
                   {step.number}
                 </motion.p>
                 <motion.p
-                  className={`mt-3 text-5xl font-medium leading-none ${
-                    isActive ? "text-foreground" : "text-foreground/30"
-                  }`}
+                  className={`mt-3 text-5xl font-medium leading-none ${isActive ? "text-foreground" : "text-foreground/30"
+                    }`}
                   animate={{ scale: isActive ? 1 : 0.995 }}
                   transition={{ duration: 0.28 }}
                 >
@@ -197,11 +195,10 @@ const Find = () => {
 
                 {step.description ? (
                   <motion.p
-                    className={`mx-auto mt-10 max-w-md text-xl leading-relaxed transition-opacity duration-500 ${
-                      isActive
+                    className={`mx-auto mt-10 max-w-md text-xl leading-relaxed transition-opacity duration-500 ${isActive
                         ? "text-foreground/55 opacity-100"
                         : "text-foreground/25 opacity-40"
-                    }`}
+                      }`}
                     animate={{ y: isActive ? 0 : 4 }}
                     transition={{ duration: 0.3 }}
                   >

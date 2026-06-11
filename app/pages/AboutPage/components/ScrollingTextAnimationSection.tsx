@@ -20,16 +20,16 @@ const textBlocks: TextBlock[] = [
     content:
       "We saw firsthand the frustrations brands faced with influencer marketing and knew there had to be a better way.",
   },
-  {
-    id: "block-3",
-    content:
-      "Cre8r is built for performance, transparency, and genuine creator-brand connections.",
-  },
-  {
-    id: "block-4",
-    content:
-      "Our AI-powered matchmaking analyzes influencer profiles, audience demographics, and content themes to find voices authentically aligned with your brand.",
-  },
+  // {
+  //   id: "block-3",
+  //   content:
+  //     "Cre8r is built for performance, transparency, and genuine creator-brand connections.",
+  // },
+  // {
+  //   id: "block-4",
+  //   content:
+  //     "Our AI-powered matchmaking analyzes influencer profiles, audience demographics, and content themes to find voices authentically aligned with your brand.",
+  // },
 ];
 
 const ScrollingTextAnimationSection = () => {
@@ -86,9 +86,9 @@ const ScrollingTextAnimationSection = () => {
     <div
       ref={containerRef}
       className="w-full py-32 md:py-48"
-      style={{ minHeight: "200vh" }}
+      style={{ minHeight: "40vh" }}
     >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-4">
+      <div className="sticky top-0 h-[40vh] flex flex-col items-center justify-center px-4">
         <div className="max-w-2xl mx-auto space-y-24">
           {textBlocks.map((block, index) => {
             const isHighlighted = focusedIndex === index;

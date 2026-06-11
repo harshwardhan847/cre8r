@@ -130,7 +130,8 @@ const Transform = (props: Props) => {
           ></iframe>
         </motion.div>
       </div>
-      <div className="mt-20">
+      <div className="h-20" />
+      <div className="mt-20 hidden">
         <h3 className="text-2xl font-normal text-muted-foreground text-center mb-8">
           Never miss a campaign opportunity
         </h3>

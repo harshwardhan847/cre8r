@@ -14,7 +14,7 @@ const Cta = () => {
         >
           <div className="mx-auto max-w-4xl">
             <motion.h2
-              className="text-5xl font-normal uppercase leading-none tracking-[-0.06em] text-foreground sm:text-6xl md:text-7xl lg:text-7xl"
+              className="text-5xl font-medium uppercase leading-none tracking-wide text-foreground sm:text-6xl md:text-7xl lg:text-7xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.1 }}
@@ -23,7 +23,7 @@ const Cta = () => {
               Scale influencer
             </motion.h2>
             <motion.p
-              className="mt-2 text-5xl font-normal uppercase leading-none tracking-[-0.06em] text-sky-500 sm:text-6xl md:text-7xl lg:text-7xl"
+              className="mt-2 text-5xl font-medium uppercase leading-none tracking-wide text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-400 to-blue-400 sm:text-6xl md:text-7xl lg:text-7xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.16 }}
@@ -40,7 +40,7 @@ const Cta = () => {
               <Button
                 type="button"
                 size="lg"
-                className="mt-10 h-12 rounded-xl bg-sky-100 border-sky-400 border text-sky-400 px-10 text-base font-medium hover:bg-primary-foreground/90"
+                className="mt-10 h-12 rounded-xl bg-sky-100 border-blue-400 border text-blue-400 px-10 text-base font-medium hover:bg-primary-foreground/90"
               >
                 Request a call back
               </Button>

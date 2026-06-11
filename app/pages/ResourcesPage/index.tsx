@@ -129,8 +129,8 @@ const RoiCalculator = () => {
             </div>
           ))}
           <Button
-            variant="outline"
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 w-fit mt-4"
+            variant="ghost"
+            className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground w-fit mt-4"
             asChild
           >
             <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
@@ -258,9 +258,9 @@ const ResourcesPage = () => {
           </div>
           <div className="flex flex-col gap-3 shrink-0">
             <Button
-              variant="outline"
+              variant="ghost"
               size="lg"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               asChild
             >
               <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">

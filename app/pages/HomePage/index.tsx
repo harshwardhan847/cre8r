@@ -16,7 +16,7 @@ const Home = (props: Props) => {
       </header>
       <Brands />
       <Transform />
-      <VideoCarousel />
+      {/* <VideoCarousel /> */}
       <Features />
       <CaseStudiesPreview />
       <EmailCard />
