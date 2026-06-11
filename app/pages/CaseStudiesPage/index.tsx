@@ -5,50 +5,8 @@ import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
 import { cn } from "~/lib/utils";
 
-const caseStudies = [
-  {
-    id: 1,
-    brand: "HealthCorp",
-    industry: "D2C Health & Wellness",
-    metric: "3x",
-    metricLabel: "Increase in Qualified Leads",
-    stat2: "₹2.4Cr",
-    stat2Label: "Revenue Attributed",
-    description:
-      "HealthCorp needed to scale their customer acquisition beyond paid ads. Using our discovery module, they found 120+ niche health creators filtered by audience demographics. The affiliate module tracked every referral, attributing ₹2.4Cr in revenue directly to creator-driven traffic.",
-    tags: ["Discovery", "Affiliate", "Lead Gen"],
-    accent: "border-t-emerald-400",
-    accentBg: "bg-emerald-50",
-  },
-  {
-    id: 2,
-    brand: "FashionNova India",
-    industry: "Fashion E-commerce",
-    metric: "4.5M",
-    metricLabel: "Reach in 14 Days",
-    stat2: "200+",
-    stat2Label: "Creators Deployed",
-    description:
-      "FashionNova India's launch campaign required coordinated execution across 200+ micro-influencers. Our execution module enabled bulk outreach, content approval workflows, and real-time tracking — all from a single dashboard. The campaign hit 4.5M combined reach within two weeks.",
-    tags: ["Execution", "Campaign Mgmt", "Reporting"],
-    accent: "border-t-violet-400",
-    accentBg: "bg-violet-50",
-  },
-  {
-    id: 3,
-    brand: "FreshBites",
-    industry: "Food & Beverage",
-    metric: "50%",
-    metricLabel: "Lower CAC",
-    stat2: "8 Cities",
-    stat2Label: "Regional Expansion",
-    description:
-      "FreshBites needed to expand into 8 tier-2 cities with limited budget. Our city-level creator filtering helped them identify hyper-local food creators with strong engagement in target markets. The result was a 50% reduction in customer acquisition cost compared to their traditional advertising spend.",
-    tags: ["Discovery", "Regional", "Analytics"],
-    accent: "border-t-amber-400",
-    accentBg: "bg-amber-50",
-  },
-];
+const caseStudies = CONSTANTS.CASE_STUDIES;
+
 
 const metrics = [
   { value: "200+", label: "Campaigns Delivered" },

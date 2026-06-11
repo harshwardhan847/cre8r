@@ -5,68 +5,20 @@ import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
 import React, { useState } from "react";
 
-const resources = [
-  {
-    icon: Calculator,
-    title: "ROI Calculator",
-    description: "Estimate your influencer campaign ROI before you spend a rupee. Factor in creator fees, reach, engagement, and conversion projections.",
-    tag: "Tool",
-    accent: "bg-violet-50 border-violet-200",
-    iconBg: "bg-violet-100 text-violet-600",
-    cta: "Use Calculator",
-    available: true,
-  },
-  {
-    icon: BookOpen,
-    title: "Influencer Discovery Playbook",
-    description: "A step-by-step guide to shortlisting the right creators for your brand — from defining your criteria to evaluating authenticity scores.",
-    tag: "Guide",
-    accent: "bg-emerald-50 border-emerald-200",
-    iconBg: "bg-emerald-100 text-emerald-600",
-    cta: "Download Guide",
-    available: false,
-  },
-  {
-    icon: FileText,
-    title: "Campaign Brief Template",
-    description: "A structured brief template that ensures creators understand your brand voice, deliverables, timelines, and success metrics from day one.",
-    tag: "Template",
-    accent: "bg-amber-50 border-amber-200",
-    iconBg: "bg-amber-100 text-amber-600",
-    cta: "Get Template",
-    available: false,
-  },
-  {
-    icon: TrendingUp,
-    title: "Affiliate Growth Toolkit",
-    description: "Everything you need to set up, track, and scale your influencer affiliate program — from attribution setup to performance reporting.",
-    tag: "Toolkit",
-    accent: "bg-sky-50 border-sky-200",
-    iconBg: "bg-sky-100 text-sky-600",
-    cta: "Get Toolkit",
-    available: false,
-  },
-  {
-    icon: Zap,
-    title: "Campaign Launch Checklist",
-    description: "A 40-point checklist to ensure every influencer campaign launch is airtight — no missed deliverables, no last-minute surprises.",
-    tag: "Checklist",
-    accent: "bg-rose-50 border-rose-200",
-    iconBg: "bg-rose-100 text-rose-600",
-    cta: "Get Checklist",
-    available: false,
-  },
-  {
-    icon: Users,
-    title: "Creator Vetting Framework",
-    description: "Know exactly what to look for beyond follower count. Our framework covers authenticity, audience overlap, content quality, and brand safety.",
-    tag: "Framework",
-    accent: "bg-orange-50 border-orange-200",
-    iconBg: "bg-orange-100 text-orange-600",
-    cta: "Get Framework",
-    available: false,
-  },
-];
+const iconMap: Record<string, React.ComponentType<any>> = {
+  Calculator,
+  BookOpen,
+  FileText,
+  TrendingUp,
+  Zap,
+  Users
+};
+
+const resources = CONSTANTS.RESOURCES.map((res) => ({
+  ...res,
+  icon: iconMap[res.iconName] || BookOpen
+}));
+
 
 // Simple ROI Calculator
 const RoiCalculator = () => {
@@ -169,7 +121,7 @@ const ResourcesPage = () => {
       </section>
 
       {/* ROI Calculator */}
-      <section className="px-6 md:px-8 mx-auto max-w-6xl pb-24">
+      <section id="roi-calculator" className="px-6 md:px-8 mx-auto max-w-6xl pb-24 scroll-mt-28">
         <RoiCalculator />
       </section>
 
