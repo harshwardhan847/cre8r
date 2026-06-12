@@ -69,7 +69,7 @@ const Navbar = (props: Props) => {
             )}
           />
         </Link>
-        
+
         {/* Main Nav Links with Popovers */}
         <div className="hidden md:flex items-center gap-1">
           {/* Home Link */}
@@ -93,20 +93,22 @@ const Navbar = (props: Props) => {
             onMouseEnter={() => handleMouseEnter("product")}
             onMouseLeave={handleMouseLeave}
           >
-            <Button
-              variant="ghost"
-              size="lg"
-              className={cn(
-                "font-normal h-10 text-sm gap-1 relative",
-                isActive("/product")
-                  ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              Product
-              <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", activeMenu === "product" && "rotate-180")} />
-            </Button>
-            
+            <Link to="/product">
+              <Button
+                variant="ghost"
+                size="lg"
+                className={cn(
+                  "font-normal h-10 text-sm gap-1 relative",
+                  isActive("/product")
+                    ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                Product
+                <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", activeMenu === "product" && "rotate-180")} />
+              </Button>
+            </Link>
+
             <AnimatePresence>
               {activeMenu === "product" && (
                 <motion.div
@@ -162,7 +164,7 @@ const Navbar = (props: Props) => {
                               </ul>
                             </div>
                           </div>
-                          
+
                           <Button size="sm" className="w-fit mt-4 text-[11px] h-8 font-light" asChild>
                             <Link to={activeItem.to} onClick={() => setActiveMenu(null)}>
                               Explore Module
@@ -184,20 +186,22 @@ const Navbar = (props: Props) => {
             onMouseEnter={() => handleMouseEnter("resources")}
             onMouseLeave={handleMouseLeave}
           >
-            <Button
-              variant="ghost"
-              size="lg"
-              className={cn(
-                "font-normal h-10 text-sm gap-1 relative",
-                isActive("/resources") || isActive("/barter-collabs") || isActive("/creator")
-                  ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              Resources
-              <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", activeMenu === "resources" && "rotate-180")} />
-            </Button>
-            
+            <Link to="/resources">
+              <Button
+                variant="ghost"
+                size="lg"
+                className={cn(
+                  "font-normal h-10 text-sm gap-1 relative",
+                  isActive("/resources") || isActive("/barter-collabs") || isActive("/creator")
+                    ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                Resources
+                <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", activeMenu === "resources" && "rotate-180")} />
+              </Button>
+            </Link>
+
             <AnimatePresence>
               {activeMenu === "resources" && (
                 <motion.div
@@ -257,20 +261,22 @@ const Navbar = (props: Props) => {
             onMouseEnter={() => handleMouseEnter("company")}
             onMouseLeave={handleMouseLeave}
           >
-            <Button
-              variant="ghost"
-              size="lg"
-              className={cn(
-                "font-normal h-10 text-sm gap-1 relative",
-                isActive("/about") || isActive("/case-studies") || isActive("/hiring")
-                  ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              Company
-              <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", activeMenu === "company" && "rotate-180")} />
-            </Button>
-            
+            <Link to={'/about'}>
+              <Button
+                variant="ghost"
+                size="lg"
+                className={cn(
+                  "font-normal h-10 text-sm gap-1 relative",
+                  isActive("/about") || isActive("/case-studies") || isActive("/hiring")
+                    ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                Company
+                <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", activeMenu === "company" && "rotate-180")} />
+              </Button>
+            </Link>
+
             <AnimatePresence>
               {activeMenu === "company" && (
                 <motion.div
