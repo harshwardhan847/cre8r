@@ -5,25 +5,29 @@ import { Link } from "react-router";
 type Props = {};
 
 const videos = [
-  "https://www.youtube.com/embed/VIE2Ri2DQJg",
-  "https://www.youtube.com/embed/m8lRhHOiQro",
-  "https://www.youtube.com/embed/UT6vi65IP64",
-  "https://www.youtube.com/embed/VIE2Ri2DQJg",
-  "https://www.youtube.com/embed/m8lRhHOiQro",
-  "https://www.youtube.com/embed/UT6vi65IP64",
+  { url: "https://www.youtube.com/embed/PNFbo5tpO9c", brand: "Reebok" },
+  { url: "https://www.youtube.com/embed/MjfTaozFBuE", brand: "Reebok" },
+  { url: "https://www.youtube.com/embed/Kg3YlLT9Fys", brand: "Reebok" },
+  { url: "https://www.youtube.com/embed/E-Ge8ehnIE8", brand: "IDFC" },
+  { url: "https://www.youtube.com/embed/2Gq2mI7RySk", brand: "Bontress Pro" },
+  { url: "https://www.youtube.com/embed/1-7BVYDIlRA", brand: "Reequil" },
+  { url: "https://www.youtube.com/embed/zfS6wiQWjXc", brand: "Reequil" },
+  { url: "https://www.youtube.com/embed/e3TPXyF-jP0", brand: "Reequil" },
+  { url: "https://www.youtube.com/embed/4GQGr17Ace4", brand: "Fortune" },
+  { url: "https://www.youtube.com/embed/8qNf9_hYSkA", brand: "Fortune" },
 ];
 
 const brandLogos = [
-  { name: "Myntra", letter: "M" },
-  { name: "Nykaa", letter: "N" },
-  { name: "Boat", letter: "b" },
-  { name: "Mamaearth", letter: "M" },
-  { name: "WOW Science", letter: "W" },
-  { name: "Plum", letter: "P" },
-  { name: "Pilgrim", letter: "Pi" },
-  { name: "Minimalist", letter: "Mi" },
-  { name: "Decathlon", letter: "D" },
-  { name: "Lenskart", letter: "L" },
+  { name: "Reebok", letter: "R" },
+  { name: "IDFC", letter: "I" },
+  { name: "Bontress Pro", letter: "B" },
+  { name: "Reequil", letter: "R" },
+  { name: "Fortune", letter: "F" },
+  { name: "Reebok", letter: "R" },
+  { name: "IDFC", letter: "I" },
+  { name: "Bontress Pro", letter: "B" },
+  { name: "Reequil", letter: "R" },
+  { name: "Fortune", letter: "F" },
 ];
 
 const VideoCarousel = () => {
@@ -48,21 +52,25 @@ const VideoCarousel = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-background to-transparent z-10 pointer-events-none" />
         <motion.div
           className="flex gap-4 px-8"
-          animate={{ x: [0, -1800] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          animate={{ x: [0, -2080] }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
         >
           {[...videos, ...videos].map((video, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-48 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 shadow-lg"
+              className="flex-shrink-0 w-48 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 shadow-lg relative group/card"
             >
               <div className="aspect-[9/16] w-full overflow-hidden relative bg-neutral-900">
                 <iframe
-                  src={`${video}?autoplay=1&mute=1&loop=1&playlist=${video.split("/").slice(-1)[0]}&controls=0&modestbranding=1`}
+                  src={`${video.url}?autoplay=1&mute=1&loop=1&playlist=${video.url.split("/").slice(-1)[0]}&controls=0&modestbranding=1`}
                   title={`Creator video ${i}`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
                   className="w-full h-full object-cover pointer-events-none scale-110"
                 />
+                {/* Floating Brand Badge */}
+                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-[10px] font-semibold text-white px-2.5 py-1 rounded-full border border-white/10 z-20 shadow-sm opacity-90 group-hover/card:opacity-100 transition-opacity">
+                  {video.brand}
+                </div>
               </div>
             </div>
           ))}
