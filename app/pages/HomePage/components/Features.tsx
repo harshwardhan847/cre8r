@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "~/lib/utils";
+import { CONSTANTS } from "~/constants";
 
 type Props = {};
 
@@ -7,6 +8,7 @@ const featuresList = [
   {
     title: "Find & Track 4mn+ Creators",
     image: "platform/discovery.png",
+    embedUrl: CONSTANTS.SUPADEMO.DISCOVERY,
     description:
       "Filter by engagement metrics, niche, audience demographics & more.",
     accent: "bg-violet-400",
@@ -15,6 +17,7 @@ const featuresList = [
   {
     title: "Advanced Creator Briefing System",
     image: "platform/creator_insights.png",
+    embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_REQUEST,
     description:
       "The intuitive briefing system helps you set clear goals and share detailed guidelines.",
     accent: "bg-emerald-400",
@@ -23,6 +26,7 @@ const featuresList = [
   {
     title: "Intelligent Matchmaking",
     image: "platform/creators.png",
+    embedUrl: CONSTANTS.SUPADEMO.CRM,
     description:
       "Make data-driven decisions with every click, every view, every comment.",
     accent: "bg-amber-400",
@@ -31,6 +35,7 @@ const featuresList = [
   {
     title: "Live Performance Tracking",
     image: "platform/campaign_insights.png",
+    embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_CREATION,
     description:
       "Monitor views, engagement and ROI in real-time across campaigns.",
     accent: "bg-rose-400",
@@ -91,13 +96,20 @@ const Features = (props: Props) => {
                     {val.num}
                   </span>
                 </h3>
-                <img
-                  src={val.image}
-                  alt={val.title}
-                  width={500}
-                  height={500}
-                  className="w-full h-auto bg-primary aspect-video object-cover rounded-b-lg"
-                />
+                <div className="w-full bg-primary aspect-video rounded-b-lg relative overflow-hidden">
+                  <iframe
+                    src={val.embedUrl}
+                    loading="lazy"
+                    title={val.title}
+                    allow="clipboard-write"
+                    frameBorder="0"
+                    allowFullScreen
+                    className={cn(
+                      "w-full h-full absolute top-0 left-0 border-0",
+                      pos !== 0 && "pointer-events-none"
+                    )}
+                  />
+                </div>
                 {(pos === 0 || isHovered) && (
                   <p className="text-xs text-muted-foreground px-6 pb-4 pt-1">
                     {val.description}
@@ -108,27 +120,6 @@ const Features = (props: Props) => {
           })}
         </div>
       </div>
-
-      {/* <div className="mx-auto w-xl mt-24 text-foreground">
-        <p className="text-4xl text-start font-normal tracking-tight font-sans border-b border-border/20 pb-6">
-          "Cre8r's platform made it incredibly easy to find the right creators
-          for our brand. Our campaign reach doubled within the first week."
-        </p>
-        <div className="flex items-center justify-between mt-4">
-          <div className="flex items-center justify-center gap-2">
-            <div className="aspect-square h-12 bg-primary rounded-xl"></div>
-            <div className="flex flex-col items-start justify-center">
-              <p className="text-sm text-foreground font-semibold">
-                Rahul Mehta
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Growth Lead, Consumer Brand
-              </p>
-            </div>
-          </div>
-          <div className="font-bold text-xl">Cre8r.ai</div>
-        </div>
-      </div> */}
     </div>
   );
 };

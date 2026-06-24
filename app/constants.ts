@@ -1,6 +1,16 @@
 export const CONSTANTS = {
   CALENDLY_URL: "https://calendly.com/gs_cre8r/30min",
   CREATOR_FORM_URL: "https://forms.google.com/creator-form-placeholder",
+  SUPADEMO: {
+    DISCOVERY: "https://app.supademo.com/embed/cmhbmkvoz0jr1fatigxf20w6o?embed_v=2&utm_source=embed",
+    CAMPAIGN_CREATION: "https://app.supademo.com/embed/cmhd8z96e2ke7fatisiomh2yr?embed_v=2&utm_source=embed",
+    COLLECTION: "https://app.supademo.com/embed/cmhepmh4c45x0fati8nn5kvj3?embed_v=2&utm_source=embed",
+    CREATOR_INSIGHTS: "https://app.supademo.com/embed/cmheg7jxl3ps2fatiwz9idfb0?embed_v=2&utm_source=embed",
+    OUTREACH: "https://app.supademo.com/embed/cmhet3bm44cabfatizw9me1tb?embed_v=2&utm_source=embed",
+    COMPETITION_SCANNER: "https://app.supademo.com/embed/cmhlz91pf16jnla10p5a82iln?embed_v=2&utm_source=embed",
+    CAMPAIGN_REQUEST: "https://app.supademo.com/embed/cmhoi69kf00gt0x0ijchk8ujx?embed_v=2&utm_source=embed",
+    CRM: "https://app.supademo.com/embed/cmiq61ttw04lgcj0e5jwe3juq?embed_v=2&utm_source=embed",
+  },
   HIRING_FORM_URL: "https://forms.google.com/hiring-form-placeholder",
   LINKEDIN_URL: "https://www.linkedin.com/company/cre8r-ai/",
   INSTAGRAM_URL: "https://www.instagram.com/cre8r.community/",

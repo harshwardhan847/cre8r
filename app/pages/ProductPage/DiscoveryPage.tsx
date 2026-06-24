@@ -57,6 +57,7 @@ const DiscoveryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLocation, setSelectedLocation] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [demoMode, setDemoMode] = useState<"sandbox" | "walkthrough">("sandbox");
 
   const categories = ["All", "Tech & Gadgets", "Fitness & Lifestyle", "Food & Cooking", "Travel & Culture"];
   const locations = ["All", "Bangalore", "Mumbai", "Delhi"];
@@ -119,107 +120,147 @@ const DiscoveryPage = () => {
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
           <h2 className="mt-2 text-3xl font-light tracking-tight">Test-drive the Filter Engine</h2>
-          <p className="mt-2 text-muted-foreground">Adjust filters below to see how accurately our module isolates creators.</p>
+          <p className="mt-2 text-muted-foreground">Adjust filters or watch an interactive walkthrough of our Discovery Module.</p>
         </div>
 
-        <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden">
-          {/* Filters Bar */}
-          <div className="p-6 md:p-8 bg-neutral-50/70 border-b border-border/15 flex flex-col gap-6 md:flex-row md:items-center justify-between">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search by name, handle, tag..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-border/30 bg-white focus:outline-none focus:ring-1 focus:ring-primary/45"
-              />
-            </div>
-            
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm font-medium text-muted-foreground">Niche:</span>
-              </div>
-              <select 
-                value={selectedCategory} 
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="text-sm rounded-xl border border-border/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
-              >
-                {categories.map(c => <option key={c} value={c}>{c}</option>)}
-              </select>
-
-              <span className="text-sm font-medium text-muted-foreground">Location:</span>
-              <select 
-                value={selectedLocation} 
-                onChange={(e) => setSelectedLocation(e.target.value)}
-                className="text-sm rounded-xl border border-border/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
-              >
-                {locations.map(l => <option key={l} value={l}>{l}</option>)}
-              </select>
-            </div>
-          </div>
-
-          {/* Creators List Panel */}
-          <div className="p-6 md:p-8 min-h-[300px]">
-            {filteredCreators.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {filteredCreators.map((creator, i) => (
-                  <motion.div 
-                    key={creator.handle}
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.25, delay: i * 0.05 }}
-                    className="p-5 rounded-2xl border border-border/10 bg-neutral-50/30 flex items-start gap-4 hover:shadow-xs transition-all"
-                  >
-                    <img 
-                      src={creator.avatar} 
-                      alt={creator.name} 
-                      className="w-12 h-12 rounded-full object-cover border border-border/10"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <h4 className="font-semibold text-sm truncate">{creator.name}</h4>
-                        <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
-                      </div>
-                      <p className="text-xs text-muted-foreground">{creator.handle}</p>
-                      
-                      <div className="mt-3 flex items-center gap-3 flex-wrap">
-                        <span className="text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/5 text-primary border border-primary/10">
-                          {creator.category}
-                        </span>
-                        <span className="text-[10px] text-muted-foreground font-medium">
-                          📍 {creator.location}
-                        </span>
-                      </div>
-
-                      <div className="mt-4 grid grid-cols-3 gap-2 pt-3 border-t border-neutral-100 text-center">
-                        <div>
-                          <p className="text-xs text-muted-foreground">Followers</p>
-                          <p className="font-semibold text-sm mt-0.5">{creator.followers}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground">Eng. Rate</p>
-                          <p className="font-semibold text-sm mt-0.5 text-indigo-600">{creator.engagement}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground">Credibility</p>
-                          <p className="font-semibold text-sm mt-0.5 text-emerald-600">{creator.credibility}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <Users className="w-12 h-12 text-muted-foreground/30 mb-3" />
-                <h4 className="text-base font-semibold text-muted-foreground">No creators found</h4>
-                <p className="text-xs text-muted-foreground max-w-xs mt-1">Try expanding your filter parameters or search query.</p>
-              </div>
-            )}
+        {/* Demo Mode Switcher */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex rounded-xl p-1 bg-neutral-100 border border-neutral-200/50">
+            <button
+              onClick={() => setDemoMode("sandbox")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "sandbox"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Interactive Sandbox
+            </button>
+            <button
+              onClick={() => setDemoMode("walkthrough")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "walkthrough"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Interactive Video Walkthrough
+            </button>
           </div>
         </div>
+
+        {demoMode === "walkthrough" ? (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
+            <iframe
+              src={CONSTANTS.SUPADEMO.DISCOVERY}
+              loading="lazy"
+              title="Discovery Walkthrough"
+              allow="clipboard-write"
+              frameBorder="0"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        ) : (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden">
+            {/* Filters Bar */}
+            <div className="p-6 md:p-8 bg-neutral-50/70 border-b border-border/15 flex flex-col gap-6 md:flex-row md:items-center justify-between">
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Search by name, handle, tag..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-border/30 bg-white focus:outline-none focus:ring-1 focus:ring-primary/45"
+                />
+              </div>
+              
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <SlidersHorizontal className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm font-medium text-muted-foreground">Niche:</span>
+                </div>
+                <select 
+                  value={selectedCategory} 
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="text-sm rounded-xl border border-border/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
+                >
+                  {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+
+                <span className="text-sm font-medium text-muted-foreground">Location:</span>
+                <select 
+                  value={selectedLocation} 
+                  onChange={(e) => setSelectedLocation(e.target.value)}
+                  className="text-sm rounded-xl border border-border/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
+                >
+                  {locations.map(l => <option key={l} value={l}>{l}</option>)}
+                </select>
+              </div>
+            </div>
+
+            {/* Creators List Panel */}
+            <div className="p-6 md:p-8 min-h-[300px]">
+              {filteredCreators.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {filteredCreators.map((creator, i) => (
+                    <motion.div 
+                      key={creator.handle}
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.25, delay: i * 0.05 }}
+                      className="p-5 rounded-2xl border border-border/10 bg-neutral-50/30 flex items-start gap-4 hover:shadow-xs transition-all"
+                    >
+                      <img 
+                        src={creator.avatar} 
+                        alt={creator.name} 
+                        className="w-12 h-12 rounded-full object-cover border border-border/10"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <h4 className="font-semibold text-sm truncate">{creator.name}</h4>
+                          <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
+                        </div>
+                        <p className="text-xs text-muted-foreground">{creator.handle}</p>
+                        
+                        <div className="mt-3 flex items-center gap-3 flex-wrap">
+                          <span className="text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/5 text-primary border border-primary/10">
+                            {creator.category}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground font-medium">
+                            📍 {creator.location}
+                          </span>
+                        </div>
+
+                        <div className="mt-4 grid grid-cols-3 gap-2 pt-3 border-t border-neutral-100 text-center">
+                          <div>
+                            <p className="text-xs text-muted-foreground">Followers</p>
+                            <p className="font-semibold text-sm mt-0.5">{creator.followers}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">Eng. Rate</p>
+                            <p className="font-semibold text-sm mt-0.5 text-indigo-600">{creator.engagement}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">Credibility</p>
+                            <p className="font-semibold text-sm mt-0.5 text-emerald-600">{creator.credibility}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-16 text-center">
+                  <Users className="w-12 h-12 text-muted-foreground/30 mb-3" />
+                  <h4 className="text-base font-semibold text-muted-foreground">No creators found</h4>
+                  <p className="text-xs text-muted-foreground max-w-xs mt-1">Try expanding your filter parameters or search query.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Feature Grid */}

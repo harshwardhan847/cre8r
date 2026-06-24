@@ -42,6 +42,7 @@ const initialLeads = [
 const LeadGenPage = () => {
   const [leads, setLeads] = useState(initialLeads);
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [demoMode, setDemoMode] = useState<"sandbox" | "outreach" | "scanner">("sandbox");
 
   const activeLead = leads[selectedIdx];
 
@@ -100,89 +101,143 @@ const LeadGenPage = () => {
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
           <h2 className="mt-2 text-3xl font-light tracking-tight">Outreach & Leads Manager</h2>
-          <p className="mt-2 text-muted-foreground">Select a brand below to view notes, update statuses, and check estimated campaign budgets.</p>
+          <p className="mt-2 text-muted-foreground">Select a brand below to view notes, update statuses, and check estimated campaign budgets, or view interactive walkthroughs.</p>
         </div>
 
-        <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
-          {/* Creator list column */}
-          <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
-            <div className="p-4 border-b border-border/15">
-              <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Prospects</span>
-            </div>
-            <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
-              {leads.map((lead, idx) => (
-                <button
-                  key={lead.brand}
-                  onClick={() => setSelectedIdx(idx)}
-                  className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
-                >
-                  <img src={lead.avatar} alt={lead.brand} className="w-10 h-10 rounded-full object-cover" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold truncate">{lead.brand}</p>
-                    <p className="text-xs text-muted-foreground truncate">{lead.industry} • {lead.estBudget}</p>
-                  </div>
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
-                    lead.status === "Closed Deal" ? 'bg-emerald-50 text-emerald-700 border border-emerald-250' : 
-                    lead.status === "In Discussion" ? 'bg-amber-50 text-amber-700 border border-amber-250' : 'bg-blue-50 text-blue-700 border border-blue-250'
-                  }`}>
-                    {lead.status}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Details screen (Colspan 2) */}
-          <div className="col-span-2 p-6 md:p-8 flex flex-col justify-between gap-6 min-h-[350px]">
-            <div>
-              <div className="flex items-center justify-between gap-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <img src={activeLead.avatar} alt={activeLead.brand} className="w-12 h-12 rounded-full object-cover" />
-                  <div>
-                    <h4 className="text-lg font-semibold">{activeLead.brand}</h4>
-                    <p className="text-xs text-muted-foreground">{activeLead.industry}</p>
-                  </div>
-                </div>
-                
-                {/* Actions */}
-                <div className="flex gap-2">
-                  {["Outreached", "In Discussion", "Closed Deal"].map(st => (
-                    <Button 
-                      key={st}
-                      variant={activeLead.status === st ? "default" : "outline"} 
-                      onClick={() => handleUpdateStatus(st)}
-                      className="text-[10px] h-7 px-2.5"
-                    >
-                      {st}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-neutral-50/50 border border-border/10">
-                  <span className="text-[10px] font-semibold text-muted-foreground uppercase block mb-1">Outreach Status Note</span>
-                  <p className="text-sm text-foreground/80 leading-relaxed">{activeLead.outreachNotes}</p>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-2">
-                  <div>
-                    <span className="text-xs text-muted-foreground">Estimated Budget</span>
-                    <p className="font-semibold text-base mt-0.5 text-emerald-600">{activeLead.estBudget}</p>
-                  </div>
-                  <div>
-                    <span className="text-xs text-muted-foreground">Prospect Response</span>
-                    <p className="font-semibold text-base mt-0.5">{activeLead.responded}</p>
-                  </div>
-                  <div>
-                    <span className="text-xs text-muted-foreground">Response Rate</span>
-                    <p className="font-semibold text-base mt-0.5 text-indigo-600">{activeLead.rate}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Demo Mode Switcher */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex flex-wrap rounded-xl p-1 bg-neutral-100 border border-neutral-200/50 gap-1">
+            <button
+              onClick={() => setDemoMode("sandbox")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "sandbox"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Interactive Sandbox
+            </button>
+            <button
+              onClick={() => setDemoMode("outreach")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "outreach"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Outreach Walkthrough
+            </button>
+            <button
+              onClick={() => setDemoMode("scanner")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "scanner"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Competition Scanner Walkthrough
+            </button>
           </div>
         </div>
+
+        {demoMode !== "sandbox" ? (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
+            <iframe
+              src={
+                demoMode === "outreach"
+                  ? CONSTANTS.SUPADEMO.OUTREACH
+                  : CONSTANTS.SUPADEMO.COMPETITION_SCANNER
+              }
+              loading="lazy"
+              title={`${demoMode} Walkthrough`}
+              allow="clipboard-write"
+              frameBorder="0"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        ) : (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
+            {/* Creator list column */}
+            <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
+              <div className="p-4 border-b border-border/15">
+                <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Prospects</span>
+              </div>
+              <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
+                {leads.map((lead, idx) => (
+                  <button
+                    key={lead.brand}
+                    onClick={() => setSelectedIdx(idx)}
+                    className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
+                  >
+                    <img src={lead.avatar} alt={lead.brand} className="w-10 h-10 rounded-full object-cover" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold truncate">{lead.brand}</p>
+                      <p className="text-xs text-muted-foreground truncate">{lead.industry} • {lead.estBudget}</p>
+                    </div>
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
+                      lead.status === "Closed Deal" ? 'bg-emerald-50 text-emerald-700 border border-emerald-250' : 
+                      lead.status === "In Discussion" ? 'bg-amber-50 text-amber-700 border border-amber-250' : 'bg-blue-50 text-blue-700 border border-blue-250'
+                    }`}>
+                      {lead.status}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Details screen (Colspan 2) */}
+            <div className="col-span-2 p-6 md:p-8 flex flex-col justify-between gap-6 min-h-[350px]">
+              <div>
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center gap-3">
+                    <img src={activeLead.avatar} alt={activeLead.brand} className="w-12 h-12 rounded-full object-cover" />
+                    <div>
+                      <h4 className="text-lg font-semibold">{activeLead.brand}</h4>
+                      <p className="text-xs text-muted-foreground">{activeLead.industry}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Actions */}
+                  <div className="flex gap-2">
+                    {["Outreached", "In Discussion", "Closed Deal"].map(st => (
+                      <Button 
+                        key={st}
+                        variant={activeLead.status === st ? "default" : "outline"} 
+                        onClick={() => handleUpdateStatus(st)}
+                        className="text-[10px] h-7 px-2.5"
+                      >
+                        {st}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl bg-neutral-50/50 border border-border/10">
+                    <span className="text-[10px] font-semibold text-muted-foreground uppercase block mb-1">Outreach Status Note</span>
+                    <p className="text-sm text-foreground/80 leading-relaxed">{activeLead.outreachNotes}</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 pt-2">
+                    <div>
+                      <span className="text-xs text-muted-foreground">Estimated Budget</span>
+                      <p className="font-semibold text-base mt-0.5 text-emerald-600">{activeLead.estBudget}</p>
+                    </div>
+                    <div>
+                      <span className="text-xs text-muted-foreground">Prospect Response</span>
+                      <p className="font-semibold text-base mt-0.5">{activeLead.responded}</p>
+                    </div>
+                    <div>
+                      <span className="text-xs text-muted-foreground">Response Rate</span>
+                      <p className="font-semibold text-base mt-0.5 text-indigo-600">{activeLead.rate}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Feature Grid */}

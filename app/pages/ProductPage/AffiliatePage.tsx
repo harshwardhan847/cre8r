@@ -45,6 +45,7 @@ const initialAffiliates = [
 const AffiliatePage = () => {
   const [affiliates] = useState(initialAffiliates);
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [demoMode, setDemoMode] = useState<"sandbox" | "crm" | "collection">("sandbox");
 
   const active = affiliates[selectedIdx];
   
@@ -103,105 +104,161 @@ const AffiliatePage = () => {
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
           <h2 className="mt-2 text-3xl font-light tracking-tight">Campaign ROI & Sales Tracker</h2>
-          <p className="mt-2 text-muted-foreground">Select a creator below to view their specific campaign sales trends and analytics.</p>
+          <p className="mt-2 text-muted-foreground">Select a creator below to view their specific campaign sales trends or view interactive walkthroughs.</p>
         </div>
 
-        {/* Aggregated Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {[
-            { label: "Total Sales", value: `₹${totalSales.toLocaleString()}`, icon: IndianRupee, color: "text-emerald-600 bg-emerald-50" },
-            { label: "Total Conversions", value: totalConversions, icon: Percent, color: "text-indigo-600 bg-indigo-50" },
-            { label: "Total Link Clicks", value: totalClicks.toLocaleString(), icon: Link2, color: "text-sky-600 bg-sky-50" },
-            { label: "Avg. Conv Rate", value: `${averageConversionRate}%`, icon: LineChart, color: "text-violet-600 bg-violet-50" }
-          ].map((stat) => (
-            <div key={stat.label} className="p-5 rounded-2xl bg-white border border-border/15 shadow-2xs">
-              <div className="flex items-center justify-between gap-3 mb-2">
-                <span className="text-xs text-muted-foreground font-medium">{stat.label}</span>
-                <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${stat.color}`}>
-                  <stat.icon className="w-4 h-4" />
-                </div>
-              </div>
-              <p className="text-2xl font-semibold leading-none">{stat.value}</p>
-            </div>
-          ))}
+        {/* Demo Mode Switcher */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex flex-wrap rounded-xl p-1 bg-neutral-100 border border-neutral-200/50 gap-1">
+            <button
+              onClick={() => setDemoMode("sandbox")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "sandbox"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Interactive Sandbox
+            </button>
+            <button
+              onClick={() => setDemoMode("crm")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "crm"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              CRM Walkthrough
+            </button>
+            <button
+              onClick={() => setDemoMode("collection")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "collection"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Collection Walkthrough
+            </button>
+          </div>
         </div>
 
-        {/* Tracker Panel */}
-        <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
-          {/* Creator list column */}
-          <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
-            <div className="p-4 border-b border-border/15">
-              <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Creators Performance</span>
-            </div>
-            <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
-              {affiliates.map((item, idx) => (
-                <button
-                  key={item.name}
-                  onClick={() => setSelectedIdx(idx)}
-                  className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
-                >
-                  <img src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full object-cover" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold truncate">{item.name}</p>
-                    <p className="text-xs text-muted-foreground truncate">{item.code} • {item.roi} ROI</p>
+        {demoMode !== "sandbox" ? (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
+            <iframe
+              src={
+                demoMode === "crm"
+                  ? CONSTANTS.SUPADEMO.CRM
+                  : CONSTANTS.SUPADEMO.COLLECTION
+              }
+              loading="lazy"
+              title={`${demoMode} Walkthrough`}
+              allow="clipboard-write"
+              frameBorder="0"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        ) : (
+          <>
+            {/* Aggregated Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              {[
+                { label: "Total Sales", value: `₹${totalSales.toLocaleString()}`, icon: IndianRupee, color: "text-emerald-600 bg-emerald-50" },
+                { label: "Total Conversions", value: totalConversions, icon: Percent, color: "text-indigo-600 bg-indigo-50" },
+                { label: "Total Link Clicks", value: totalClicks.toLocaleString(), icon: Link2, color: "text-sky-600 bg-sky-50" },
+                { label: "Avg. Conv Rate", value: `${averageConversionRate}%`, icon: LineChart, color: "text-violet-600 bg-violet-55" }
+              ].map((stat) => (
+                <div key={stat.label} className="p-5 rounded-2xl bg-white border border-border/15 shadow-2xs">
+                  <div className="flex items-center justify-between gap-3 mb-2">
+                    <span className="text-xs text-muted-foreground font-medium">{stat.label}</span>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${stat.color}`}>
+                      <stat.icon className="w-4 h-4" />
+                    </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-muted-foreground/60 shrink-0" />
-                </button>
+                  <p className="text-2xl font-semibold leading-none">{stat.value}</p>
+                </div>
               ))}
             </div>
-          </div>
 
-          {/* Details screen (Colspan 2) */}
-          <div className="col-span-2 p-6 md:p-8 flex flex-col justify-between gap-8 min-h-[350px]">
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <img src={active.avatar} alt={active.name} className="w-12 h-12 rounded-full object-cover" />
-                <div>
-                  <h4 className="text-lg font-semibold">{active.name}</h4>
-                  <p className="text-xs text-muted-foreground">{active.category} Creator</p>
+            {/* Tracker Panel */}
+            <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
+              {/* Creator list column */}
+              <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
+                <div className="p-4 border-b border-border/15">
+                  <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Creators Performance</span>
+                </div>
+                <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
+                  {affiliates.map((item, idx) => (
+                    <button
+                      key={item.name}
+                      onClick={() => setSelectedIdx(idx)}
+                      className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
+                    >
+                      <img src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full object-cover" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold truncate">{item.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{item.code} • {item.roi} ROI</p>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-muted-foreground/60 shrink-0" />
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-t border-b border-neutral-100">
+              {/* Details screen (Colspan 2) */}
+              <div className="col-span-2 p-6 md:p-8 flex flex-col justify-between gap-8 min-h-[350px]">
                 <div>
-                  <p className="text-xs text-muted-foreground">Promo Code</p>
-                  <p className="font-mono font-semibold text-sm mt-1 text-primary">{active.code}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Sales Generated</p>
-                  <p className="font-semibold text-sm mt-1 text-emerald-600">₹{active.sales.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Clicks Tracked</p>
-                  <p className="font-semibold text-sm mt-1">{active.clicks.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Campaign ROI</p>
-                  <p className="font-semibold text-sm mt-1 text-indigo-600">{active.roi}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Simulated trend chart */}
-            <div>
-              <div className="flex justify-between items-center mb-3">
-                <span className="text-xs font-semibold text-muted-foreground uppercase">Sales Conversion Trend (Daily)</span>
-                <span className="text-xs text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">UP 18%</span>
-              </div>
-              <div className="h-24 flex items-end gap-2 pt-4">
-                {active.salesTrend.map((val, idx) => (
-                  <div key={idx} className="flex-1 flex flex-col items-center gap-1 group">
-                    <div 
-                      className="w-full bg-primary/20 group-hover:bg-primary/40 rounded-t transition-all duration-305" 
-                      style={{ height: `${val * 1.5}px` }} 
-                    />
-                    <span className="text-[10px] text-muted-foreground">D{idx+1}</span>
+                  <div className="flex items-center gap-3 mb-6">
+                    <img src={active.avatar} alt={active.name} className="w-12 h-12 rounded-full object-cover" />
+                    <div>
+                      <h4 className="text-lg font-semibold">{active.name}</h4>
+                      <p className="text-xs text-muted-foreground">{active.category} Creator</p>
+                    </div>
                   </div>
-                ))}
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-t border-b border-neutral-100">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Promo Code</p>
+                      <p className="font-mono font-semibold text-sm mt-1 text-primary">{active.code}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Sales Generated</p>
+                      <p className="font-semibold text-sm mt-1 text-emerald-600">₹{active.sales.toLocaleString()}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Clicks Tracked</p>
+                      <p className="font-semibold text-sm mt-1">{active.clicks.toLocaleString()}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Campaign ROI</p>
+                      <p className="font-semibold text-sm mt-1 text-indigo-600">{active.roi}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Simulated trend chart */}
+                <div>
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="text-xs font-semibold text-muted-foreground uppercase">Sales Conversion Trend (Daily)</span>
+                    <span className="text-xs text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">UP 18%</span>
+                  </div>
+                  <div className="h-24 flex items-end gap-2 pt-4">
+                    {active.salesTrend.map((val, idx) => (
+                      <div key={idx} className="flex-1 flex flex-col items-center gap-1 group">
+                        <div 
+                          className="w-full bg-primary/20 group-hover:bg-primary/40 rounded-t transition-all duration-305" 
+                          style={{ height: `${val * 1.5}px` }} 
+                        />
+                        <span className="text-[10px] text-muted-foreground">D{idx+1}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
       </section>
 
       {/* Feature Grid */}

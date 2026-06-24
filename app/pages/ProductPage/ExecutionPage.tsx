@@ -51,6 +51,7 @@ const ExecutionPage = () => {
   const [campaigns, setCampaigns] = useState(initialCampaigns);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [newMessage, setNewMessage] = useState("");
+  const [demoMode, setDemoMode] = useState<"sandbox" | "request" | "insights" | "creation">("sandbox");
 
   const activeCamp = campaigns[selectedIdx];
 
@@ -123,93 +124,159 @@ const ExecutionPage = () => {
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
           <h2 className="mt-2 text-3xl font-light tracking-tight">Interactive Workflow Dashboard</h2>
-          <p className="mt-2 text-muted-foreground">Select a creator below to coordinate chat logs, review drafts, and sign-off content assets.</p>
+          <p className="mt-2 text-muted-foreground">Select a creator below to coordinate chat logs, review drafts, or explore interactive feature walkthroughs.</p>
         </div>
 
-        <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
-          {/* Creator list column */}
-          <div className="border-r border-border/15 flex flex-col bg-neutral-50/50">
-            <div className="p-4 border-b border-border/15">
-              <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Active Collaborations</span>
-            </div>
-            <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
-              {campaigns.map((camp, idx) => (
-                <button
-                  key={camp.creator}
-                  onClick={() => setSelectedIdx(idx)}
-                  className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-155/30'}`}
-                >
-                  <img src={camp.avatar} alt={camp.creator} className="w-10 h-10 rounded-full object-cover" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold truncate">{camp.creator}</p>
-                    <p className="text-xs text-muted-foreground truncate">{camp.brief}</p>
-                  </div>
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
-                    camp.stage === "Approved & Scheduled" ? 'bg-emerald-50 text-emerald-700 border border-emerald-250' : 
-                    camp.stage === "In Review" ? 'bg-amber-50 text-amber-700 border border-amber-250' : 'bg-neutral-100 text-neutral-600'
-                  }`}>
-                    {camp.stage}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Central Chat & Details Columns (Colspan 2) */}
-          <div className="col-span-2 flex flex-col min-h-[450px]">
-            {/* Creator details header */}
-            <div className="p-4 border-b border-border/15 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <img src={activeCamp.avatar} alt={activeCamp.creator} className="w-9 h-9 rounded-full object-cover" />
-                <div>
-                  <h4 className="text-sm font-semibold">{activeCamp.creator}</h4>
-                  <p className="text-xs text-muted-foreground">{activeCamp.handle}</p>
-                </div>
-              </div>
-              <div className="flex gap-2">
-                {activeCamp.videoDraft && !activeCamp.approved && (
-                  <Button size="sm" variant="default" onClick={handleApproveDraft} className="text-xs h-8">
-                    <FileCheck className="w-3.5 h-3.5 mr-1" />
-                    Approve Draft
-                  </Button>
-                )}
-                {activeCamp.approved && (
-                  <div className="flex items-center text-xs text-emerald-600 font-semibold bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-lg">
-                    <CheckCircle2 className="w-4 h-4 mr-1" />
-                    Approved
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Chat screen */}
-            <div className="flex-1 p-6 overflow-y-auto space-y-4 max-h-[300px] min-h-[200px] bg-neutral-50/15">
-              {activeCamp.chat.map((msg, i) => (
-                <div key={i} className={`flex ${msg.sender === 'brand' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[75%] p-3 rounded-2xl text-sm leading-relaxed ${
-                    msg.sender === 'brand' ? 'bg-primary text-primary-foreground rounded-tr-none' : 'bg-neutral-100 text-foreground rounded-tl-none'
-                  }`}>
-                    {msg.text}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Input Form */}
-            <form onSubmit={handleSendMessage} className="p-4 border-t border-border/15 flex items-center gap-2">
-              <input
-                type="text"
-                placeholder={`Reply to ${activeCamp.creator}...`}
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                className="flex-1 text-sm bg-white rounded-xl border border-border/30 px-4 py-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
-              />
-              <Button type="submit" size="icon" className="w-9 h-9 shrink-0">
-                <Send className="w-4 h-4" />
-              </Button>
-            </form>
+        {/* Demo Mode Switcher */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex flex-wrap rounded-xl p-1 bg-neutral-100 border border-neutral-200/50 gap-1">
+            <button
+              onClick={() => setDemoMode("sandbox")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "sandbox"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Interactive Sandbox
+            </button>
+            <button
+              onClick={() => setDemoMode("creation")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "creation"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Campaign Creation & Insights
+            </button>
+            <button
+              onClick={() => setDemoMode("request")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "request"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Campaign Request
+            </button>
+            <button
+              onClick={() => setDemoMode("insights")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "insights"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Creator Insights
+            </button>
           </div>
         </div>
+
+        {demoMode !== "sandbox" ? (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
+            <iframe
+              src={
+                demoMode === "creation"
+                  ? CONSTANTS.SUPADEMO.CAMPAIGN_CREATION
+                  : demoMode === "request"
+                  ? CONSTANTS.SUPADEMO.CAMPAIGN_REQUEST
+                  : CONSTANTS.SUPADEMO.CREATOR_INSIGHTS
+              }
+              loading="lazy"
+              title={`${demoMode} Walkthrough`}
+              allow="clipboard-write"
+              frameBorder="0"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full border-0"
+            />
+          </div>
+        ) : (
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
+            {/* Creator list column */}
+            <div className="border-r border-border/15 flex flex-col bg-neutral-50/50">
+              <div className="p-4 border-b border-border/15">
+                <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Active Collaborations</span>
+              </div>
+              <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
+                {campaigns.map((camp, idx) => (
+                  <button
+                    key={camp.creator}
+                    onClick={() => setSelectedIdx(idx)}
+                    className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-155/30'}`}
+                  >
+                    <img src={camp.avatar} alt={camp.creator} className="w-10 h-10 rounded-full object-cover" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold truncate">{camp.creator}</p>
+                      <p className="text-xs text-muted-foreground truncate">{camp.brief}</p>
+                    </div>
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium shrink-0 ${
+                      camp.stage === "Approved & Scheduled" ? 'bg-emerald-50 text-emerald-700 border border-emerald-250' : 
+                      camp.stage === "In Review" ? 'bg-amber-50 text-amber-700 border border-amber-250' : 'bg-neutral-100 text-neutral-600'
+                    }`}>
+                      {camp.stage}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Central Chat & Details Columns (Colspan 2) */}
+            <div className="col-span-2 flex flex-col min-h-[450px]">
+              {/* Creator details header */}
+              <div className="p-4 border-b border-border/15 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <img src={activeCamp.avatar} alt={activeCamp.creator} className="w-9 h-9 rounded-full object-cover" />
+                  <div>
+                    <h4 className="text-sm font-semibold">{activeCamp.creator}</h4>
+                    <p className="text-xs text-muted-foreground">{activeCamp.handle}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  {activeCamp.videoDraft && !activeCamp.approved && (
+                    <Button size="sm" variant="default" onClick={handleApproveDraft} className="text-xs h-8">
+                      <FileCheck className="w-3.5 h-3.5 mr-1" />
+                      Approve Draft
+                    </Button>
+                  )}
+                  {activeCamp.approved && (
+                    <div className="flex items-center text-xs text-emerald-600 font-semibold bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-lg">
+                      <CheckCircle2 className="w-4 h-4 mr-1" />
+                      Approved
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Chat screen */}
+              <div className="flex-1 p-6 overflow-y-auto space-y-4 max-h-[300px] min-h-[200px] bg-neutral-50/15">
+                {activeCamp.chat.map((msg, i) => (
+                  <div key={i} className={`flex ${msg.sender === 'brand' ? 'justify-end' : 'justify-start'}`}>
+                    <div className={`max-w-[75%] p-3 rounded-2xl text-sm leading-relaxed ${
+                      msg.sender === 'brand' ? 'bg-primary text-primary-foreground rounded-tr-none' : 'bg-neutral-100 text-foreground rounded-tl-none'
+                    }`}>
+                      {msg.text}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Input Form */}
+              <form onSubmit={handleSendMessage} className="p-4 border-t border-border/15 flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder={`Reply to ${activeCamp.creator}...`}
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  className="flex-1 text-sm bg-white rounded-xl border border-border/30 px-4 py-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
+                />
+                <Button type="submit" size="icon" className="w-9 h-9 shrink-0">
+                  <Send className="w-4 h-4" />
+                </Button>
+              </form>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Feature Grid */}

@@ -1,30 +1,31 @@
 import React from "react";
+import { CONSTANTS } from "~/constants";
 
 const modules = [
   {
     title: "Discovery Module",
     description: "Find the right creators with 25+ filters, optimizing for engagement, credibility, and brand fit.",
     features: ["Category", "Location", "Followers", "Engagement"],
-    videoPlaceholder: "[20-30s Discovery Module Video Placeholder]"
+    embedUrl: CONSTANTS.SUPADEMO.DISCOVERY,
   },
   {
     title: "Execution Module",
     description: "End-to-end campaign management. Automated applications, built-in messaging, and tracking.",
     features: ["Quick review process", "Messaging", "Application tracking"],
-    videoPlaceholder: "[20-30s Execution Module Video Placeholder]"
+    embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_CREATION,
   },
   {
     title: "Affiliate & ROI",
     description: "Map influencer performance across the content-to-commerce journey.",
     features: ["Real-time tracking", "Performance metrics", "ROI analysis"],
-    videoPlaceholder: "[20-30s Affiliate Module Video Placeholder]"
+    embedUrl: CONSTANTS.SUPADEMO.CRM,
   },
   {
     title: "Lead Generation",
     description: "Scale multi-channel outreach and capture high-intent leads efficiently.",
     features: ["Custom lists", "Campaign tracking", "Status updates"],
-    videoPlaceholder: "[20-30s Lead Gen Module Video Placeholder]"
-  }
+    embedUrl: CONSTANTS.SUPADEMO.OUTREACH,
+  },
 ];
 
 const ProductModules = () => {
@@ -53,13 +54,16 @@ const ProductModules = () => {
                 </ul>
               </div>
               <div className="flex-1 w-full">
-                <div className="aspect-video bg-muted rounded-2xl shadow-sm flex items-center justify-center overflow-hidden">
-                  <div className="text-center text-muted-foreground animate-pulse p-4">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center">
-                      ▶
-                    </div>
-                    {mod.videoPlaceholder}
-                  </div>
+                <div className="aspect-video bg-muted rounded-2xl shadow-sm relative overflow-hidden">
+                  <iframe
+                    src={mod.embedUrl}
+                    loading="lazy"
+                    title={mod.title}
+                    allow="clipboard-write"
+                    frameBorder="0"
+                    allowFullScreen
+                    className="w-full h-full absolute top-0 left-0 border-0"
+                  />
                 </div>
               </div>
             </div>
