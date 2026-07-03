@@ -3,6 +3,7 @@ import EmailCard from "./components/EmailCard";
 import Features from "./components/Features";
 import Header from "./components/Header";
 import CaseStudiesPreview from "./components/CaseStudiesPreview";
+import BlogsPreview from "./components/BlogsPreview";
 import Transform from "./components/Transform";
 import VideoCarousel from "./components/VideoCarousel";
 
@@ -19,6 +20,7 @@ const Home = (props: Props) => {
       {/* <VideoCarousel /> */}
       <Features />
       <CaseStudiesPreview />
+      <BlogsPreview />
       <EmailCard />
     </>
   );
