@@ -218,7 +218,7 @@ export const CONSTANTS = {
       {
           "id": "826b77d466e9",
           "title": "The Hidden Costs of Partnering with Influencers Who Have Fake Followers",
-          "image": "https://miro.medium.com/v2/1*z-r-NkHZyyFVKMbb9CXmsw.png",
+          "image": "/blogs/826b77d466e9.png",
           "author": "Cre8r.ai",
           "date": "Mar 10, 2025",
           "description": "Influencer marketing has exploded into a multi-billion-dollar industry, with brands leveraging social media personalities to build authentic connections with consumers. However, a growing challenge threatens the effectiveness of these partnerships: fake followers.",
@@ -227,7 +227,7 @@ export const CONSTANTS = {
       {
           "id": "feff6ecb2065",
           "title": "Lufthansa Harnesses Influencer Marketing to Redefine Travel Experiences in Milan",
-          "image": "https://miro.medium.com/v2/1*lN8kqX6gAGLcaQdgPZFLCA.png",
+          "image": "/blogs/feff6ecb2065.png",
           "author": "Cre8r.ai",
           "date": "Oct 8, 2024",
           "description": "Traditional marketing strategies are giving way to more authentic and engaging approaches in the rapidly evolving world of travel. Recognizing this shift, Lufthansa has brilliantly utilized influencer marketing to showcase Milan in a fresh and captivating light, setting new standards for the industry.",
@@ -236,7 +236,7 @@ export const CONSTANTS = {
       {
           "id": "13c920667f6d",
           "title": "Paid Influencer Campaigns vs. Barter Campaigns: What's Best for Your Brand?",
-          "image": "https://miro.medium.com/v2/1*sWCCi1sth7iYUHg_dyLJAQ.png",
+          "image": "/blogs/13c920667f6d.png",
           "author": "Cre8r.ai",
           "date": "Jul 31, 2024",
           "description": "While sending weekly emails, running paid ads, and then managing influencer campaigns. Adding another task might seem overwhelming. If your current strategies are effective, why consider influencer marketing?",
@@ -245,7 +245,7 @@ export const CONSTANTS = {
       {
           "id": "90d89e4a9243",
           "title": "New Supreme Court Mandate: What Influencers and Brands Need to Know",
-          "image": "https://miro.medium.com/v2/1*Ain8tI6wZGQtoDcwSlHK9w.png",
+          "image": "/blogs/90d89e4a9243.png",
           "author": "Cre8r.ai",
           "date": "Jun 26, 2024",
           "description": "Starting June 18th, all advertisements on TV, print or online must have a valid Self-Declaration Certificate (SDC). This applies to both print and digital media. To facilitate this, the MIB has updated its Broadcast Seva Portal for TV and Radio ads, and the PCI has done the same for print and digital ads. These portals are operational from June 4, 2024.",
@@ -254,7 +254,7 @@ export const CONSTANTS = {
       {
           "id": "f80ed1d31b20",
           "title": "Shocking Truth: Why Brands Are Obsessed with Regional Influencers!",
-          "image": "https://miro.medium.com/v2/1*5QRKuWaj0QpcPEdA5EtD1Q.png",
+          "image": "/blogs/f80ed1d31b20.png",
           "author": "Cre8r.ai",
           "date": "May 24, 2024",
           "description": "In the bustling world of marketing, there's a buzzworthy trend captivating brands far and wide — the meteoric rise of regional influencers.",
@@ -263,7 +263,7 @@ export const CONSTANTS = {
       {
           "id": "b2367ea5ea85",
           "title": "How to Hire an Influencers to Promote Your Business — Step By Step",
-          "image": "https://miro.medium.com/v2/1*3f-OXZnyEgf8tO2vouiEHw.png",
+          "image": "/blogs/b2367ea5ea85.png",
           "author": "Cre8r.ai",
           "date": "Apr 21, 2024",
           "description": "At cre8r.ai, we get it — the world of influencer marketing can feel like a maze. With so many creators out there, how do you find the ones that genuinely align with your brand? And once you've identified potential partners, building authentic connections while protecting your interests is easier said than done.",
@@ -272,7 +272,7 @@ export const CONSTANTS = {
       {
           "id": "2532beaf9997",
           "title": "KOLs vs. Influencers — What They Are & What Differentiates Them",
-          "image": "https://miro.medium.com/v2/1*MCzEvkS8GeOV79bqqsxzwQ.png",
+          "image": "/blogs/2532beaf9997.png",
           "author": "Cre8r.ai",
           "date": "Apr 15, 2024",
           "description": "Forget the sponsored posts and perfectly curated feeds. The future of brand advocacy lies with the silent giants of the internet — the Key Opinion Leaders (KOLs). These aren't your average social media celebrities; they're the trusted experts, the industry gurus, the voices that hold weight in their respective corners of the web.",
@@ -281,7 +281,7 @@ export const CONSTANTS = {
       {
           "id": "dd1017468e44",
           "title": "How Brands Can Legally Structure Influencer Contracts and Agreements?",
-          "image": "https://miro.medium.com/v2/1*fJYEYuk9ssb5Wjzg24KtSA.png",
+          "image": "/blogs/dd1017468e44.png",
           "author": "Cre8r.ai",
           "date": "Mar 27, 2024",
           "description": "In this digital age, influencer marketing is no longer just an option; it's a necessity. But with great power comes great responsibility — and legality.",
@@ -290,7 +290,7 @@ export const CONSTANTS = {
       {
           "id": "089d6192d425",
           "title": "Influencer Marketing is the Fashion Industry's new Fortune Cookie",
-          "image": "https://miro.medium.com/v2/1*_vvQdExxmPWfs_qovtgHfQ.png",
+          "image": "/blogs/089d6192d425.png",
           "author": "Cre8r.ai",
           "date": "Mar 11, 2024",
           "description": "\"According to Influencer Marketing Hub, the Indian influencer marketing industry is projected to grow at a staggering compound annual growth rate (CAGR) of 25% between 2020 and 2025, reaching a whopping $2.4 billion by 2025.\"",
@@ -299,7 +299,7 @@ export const CONSTANTS = {
       {
           "id": "545dd4ea15b4",
           "title": "How is Influencer marketing revolutionizing the global media landscape today?",
-          "image": "https://miro.medium.com/v2/1*El_HI3HK443l1tZFp4ppLw.png",
+          "image": "/blogs/545dd4ea15b4.png",
           "author": "Cre8r.ai",
           "date": "Jan 19, 2024",
           "description": "There are no two ways around the fact that all businesses need a constant brand push to get consumers to trust them. Advertisement remains to be a substantial part of marketing.",
@@ -308,7 +308,7 @@ export const CONSTANTS = {
       {
           "id": "85ad647702b8",
           "title": "Why Engagement Rate is a Key Metric for Brands to Track Spending?",
-          "image": "https://miro.medium.com/v2/1*4EmlegXChYsP6sA2qddaTw.png",
+          "image": "/blogs/85ad647702b8.png",
           "author": "Cre8r.ai",
           "date": "Jan 10, 2024",
           "description": "You may have stumbled across the quote, 'All that shines is not gold', well it certainly holds when talking about a high follower count. While a sky-high following might add a star to an influencer's badge, it doesn't necessarily affect the way their content is consumed. Yep! You heard that right. It doesn't matter if you are an insanely popular public figure if your followers are not engaging with the content you are posting.",
@@ -317,7 +317,7 @@ export const CONSTANTS = {
       {
           "id": "1201f930b1b1",
           "title": "From Sponsored Posts to Brand Partnerships — The Evolution of Influencer Marketing in a…",
-          "image": "https://miro.medium.com/v2/1*IS6OWumgK9eEoC4Uj2HKgA.png",
+          "image": "/blogs/1201f930b1b1.png",
           "author": "Cre8r.ai",
           "date": "Dec 15, 2023",
           "description": "The world of influencer marketing has come a long way from its humble beginnings, where perfectly curated flat lays and #OOTD selfies reigned supreme. Today's influencer marketing landscape is a far cry from its humble beginnings, evolving into a strategic partnership ecosystem built on mutual respect, shared values, and long-term vision.",
@@ -326,7 +326,7 @@ export const CONSTANTS = {
       {
           "id": "d2226baabc86",
           "title": "Building Authentic Brand-Influencer Relationships — The cre8r.ai Approach",
-          "image": "https://miro.medium.com/v2/1*AiQkzKOSMgOsrHHMSV3trg.png",
+          "image": "/blogs/d2226baabc86.png",
           "author": "Cre8r.ai",
           "date": "Nov 29, 2023",
           "description": "In the dynamic landscape of influencer marketing, authenticity isn't just a buzzword; it's the backbone of every successful campaign. But how do brands and influencers cut through the clutter to create genuine connections in a world awash with options?",
@@ -335,7 +335,7 @@ export const CONSTANTS = {
       {
           "id": "e73e4df1381f",
           "title": "How Long Should Your Medium Article Be?",
-          "image": "https://miro.medium.com/v2/1*YuhQbm1x9zDnyPnJHaQfgw.png",
+          "image": "/blogs/e73e4df1381f.png",
           "author": "Cre8r.ai",
           "date": "Nov 15, 2023",
           "description": "Medium stands as a beacon for writers who seek to share their insights, stories, and expertise. As a platform that celebrates diverse voices and ideas, Medium has become a hub for thought leaders, content creators, and avid readers.",
@@ -344,7 +344,7 @@ export const CONSTANTS = {
       {
           "id": "fe5d95735492",
           "title": "One right hook can make you go viral",
-          "image": "https://miro.medium.com/v2/1*AlfzIrV6X7JXwC3aedAWaA.png",
+          "image": "/blogs/fe5d95735492.png",
           "author": "Cre8r.ai",
           "date": "Oct 9, 2023",
           "description": "Have you ever wondered what makes some content go viral while others barely get any attention? What is the secret to creating content that spreads like wildfire and reaches millions of people?",
@@ -353,7 +353,7 @@ export const CONSTANTS = {
       {
           "id": "7b01e4945d5c",
           "title": "5-Step Strategy for Ensuring your Content is Reaching the Right Audience",
-          "image": "https://miro.medium.com/v2/1*8cz5EZhSKVZoGXvQ_ns6hA.png",
+          "image": "/blogs/7b01e4945d5c.png",
           "author": "Cre8r.ai",
           "date": "Sep 28, 2023",
           "description": "One of the most important aspects of growing your small business is reaching out to your ideal audience. You want to communicate your message to the people who are most likely to be interested in your brand, trust your solutions, and build long-term relationships with you.",
