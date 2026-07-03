@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "~/lib/utils";
 import { CONSTANTS } from "~/constants";
+import { Supademo } from "~/components/Supademo";
 
 type Props = {};
 
@@ -96,14 +97,10 @@ const Features = (props: Props) => {
                     {val.num}
                   </span>
                 </h3>
-                <div className="w-full bg-primary aspect-video rounded-b-lg relative overflow-hidden">
-                  <iframe
+                <div className="w-full bg-transparent aspect-video rounded-b-lg relative overflow-hidden">
+                  <Supademo
                     src={val.embedUrl}
-                    loading="lazy"
                     title={val.title}
-                    allow="clipboard-write"
-                    frameBorder="0"
-                    allowFullScreen
                     className={cn(
                       "w-full h-full absolute top-0 left-0 border-0",
                       pos !== 0 && "pointer-events-none"

@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, Search, SlidersHorizontal, CheckCircle2, ShieldCheck, Users, Eye, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
+import { Supademo } from "~/components/Supademo";
 
 // Mock creators data for interactive widget
 const mockCreators = [
@@ -65,9 +66,9 @@ const DiscoveryPage = () => {
   const filteredCreators = mockCreators.filter((creator) => {
     const matchCategory = selectedCategory === "All" || creator.category === selectedCategory;
     const matchLocation = selectedLocation === "All" || creator.location === selectedLocation;
-    const matchSearch = creator.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          creator.handle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          creator.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchSearch = creator.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      creator.handle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      creator.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchCategory && matchLocation && matchSearch;
   });
 
@@ -128,21 +129,19 @@ const DiscoveryPage = () => {
           <div className="inline-flex rounded-xl p-1 bg-neutral-100 border border-neutral-200/50">
             <button
               onClick={() => setDemoMode("sandbox")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                demoMode === "sandbox"
-                  ? "bg-white text-foreground shadow-xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${demoMode === "sandbox"
+                ? "bg-white text-foreground shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               Interactive Sandbox
             </button>
             <button
               onClick={() => setDemoMode("walkthrough")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                demoMode === "walkthrough"
-                  ? "bg-white text-foreground shadow-xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${demoMode === "walkthrough"
+                ? "bg-white text-foreground shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
+                }`}
             >
               Interactive Video Walkthrough
             </button>
@@ -150,15 +149,10 @@ const DiscoveryPage = () => {
         </div>
 
         {demoMode === "walkthrough" ? (
-          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
-            <iframe
+          <div className="bg-transparent overflow-hidden aspect-video relative w-full">
+            <Supademo
               src={CONSTANTS.SUPADEMO.DISCOVERY}
-              loading="lazy"
               title="Discovery Walkthrough"
-              allow="clipboard-write"
-              frameBorder="0"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full border-0"
             />
           </div>
         ) : (
@@ -175,14 +169,14 @@ const DiscoveryPage = () => {
                   className="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-border/30 bg-white focus:outline-none focus:ring-1 focus:ring-primary/45"
                 />
               </div>
-              
+
               <div className="flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2">
                   <SlidersHorizontal className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm font-medium text-muted-foreground">Niche:</span>
                 </div>
-                <select 
-                  value={selectedCategory} 
+                <select
+                  value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="text-sm rounded-xl border border-border/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
                 >
@@ -190,8 +184,8 @@ const DiscoveryPage = () => {
                 </select>
 
                 <span className="text-sm font-medium text-muted-foreground">Location:</span>
-                <select 
-                  value={selectedLocation} 
+                <select
+                  value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
                   className="text-sm rounded-xl border border-border/30 bg-white p-2 focus:outline-none focus:ring-1 focus:ring-primary/45"
                 >
@@ -205,16 +199,16 @@ const DiscoveryPage = () => {
               {filteredCreators.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {filteredCreators.map((creator, i) => (
-                    <motion.div 
+                    <motion.div
                       key={creator.handle}
                       initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.25, delay: i * 0.05 }}
                       className="p-5 rounded-2xl border border-border/10 bg-neutral-50/30 flex items-start gap-4 hover:shadow-xs transition-all"
                     >
-                      <img 
-                        src={creator.avatar} 
-                        alt={creator.name} 
+                      <img
+                        src={creator.avatar}
+                        alt={creator.name}
                         className="w-12 h-12 rounded-full object-cover border border-border/10"
                       />
                       <div className="flex-1 min-w-0">
@@ -223,7 +217,7 @@ const DiscoveryPage = () => {
                           <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
                         </div>
                         <p className="text-xs text-muted-foreground">{creator.handle}</p>
-                        
+
                         <div className="mt-3 flex items-center gap-3 flex-wrap">
                           <span className="text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/5 text-primary border border-primary/10">
                             {creator.category}

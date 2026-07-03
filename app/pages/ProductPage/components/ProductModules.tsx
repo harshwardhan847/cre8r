@@ -1,5 +1,6 @@
 import React from "react";
 import { CONSTANTS } from "~/constants";
+import { Supademo } from "~/components/Supademo";
 
 const modules = [
   {
@@ -54,15 +55,10 @@ const ProductModules = () => {
                 </ul>
               </div>
               <div className="flex-1 w-full">
-                <div className="aspect-video bg-muted rounded-2xl shadow-sm relative overflow-hidden">
-                  <iframe
+                <div className="aspect-video bg-transparent relative overflow-hidden">
+                  <Supademo
                     src={mod.embedUrl}
-                    loading="lazy"
                     title={mod.title}
-                    allow="clipboard-write"
-                    frameBorder="0"
-                    allowFullScreen
-                    className="w-full h-full absolute top-0 left-0 border-0"
                   />
                 </div>
               </div>

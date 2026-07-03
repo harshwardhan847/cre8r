@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, MessageSquare, Briefcase, FileCheck, Send, CheckCircle2, Star, Play, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
+import { Supademo } from "~/components/Supademo";
 
 // Mock creators campaign pipeline for interactive widget
 const initialCampaigns = [
@@ -174,8 +175,8 @@ const ExecutionPage = () => {
         </div>
 
         {demoMode !== "sandbox" ? (
-          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
-            <iframe
+          <div className="bg-transparent overflow-hidden aspect-video relative w-full">
+            <Supademo
               src={
                 demoMode === "creation"
                   ? CONSTANTS.SUPADEMO.CAMPAIGN_CREATION
@@ -183,12 +184,7 @@ const ExecutionPage = () => {
                   ? CONSTANTS.SUPADEMO.CAMPAIGN_REQUEST
                   : CONSTANTS.SUPADEMO.CREATOR_INSIGHTS
               }
-              loading="lazy"
               title={`${demoMode} Walkthrough`}
-              allow="clipboard-write"
-              frameBorder="0"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full border-0"
             />
           </div>
         ) : (

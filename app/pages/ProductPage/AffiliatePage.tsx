@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, LineChart, Link2, Percent, IndianRupee, Users, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
+import { Supademo } from "~/components/Supademo";
 
 // Mock affiliate sales analytics for interactive widget
 const initialAffiliates = [
@@ -144,19 +145,14 @@ const AffiliatePage = () => {
         </div>
 
         {demoMode !== "sandbox" ? (
-          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden aspect-video relative w-full">
-            <iframe
+          <div className="bg-transparent overflow-hidden aspect-video relative w-full">
+            <Supademo
               src={
                 demoMode === "crm"
                   ? CONSTANTS.SUPADEMO.CRM
                   : CONSTANTS.SUPADEMO.COLLECTION
               }
-              loading="lazy"
               title={`${demoMode} Walkthrough`}
-              allow="clipboard-write"
-              frameBorder="0"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full border-0"
             />
           </div>
         ) : (
