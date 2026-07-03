@@ -14,31 +14,34 @@ const statItems = [
 ];
 
 const brands = [
-  "Nike",
-  "Samsung",
-  "L'Oréal",
-  "Spotify",
-  "Amazon",
-  "Apple",
-  "Google",
-  "Microsoft",
-  "Disney",
-  "Netflix",
+  { name: "Bontress Pro", src: "/brands/Bontress Pro.png" },
+  { name: "Fortune", src: "/brands/Fortune.png" },
+  { name: "IDFC Bank", src: "/brands/IDFC bank.png" },
+  { name: "Reebok", src: "/brands/Reebok Logo.jpg" },
+  { name: "Reequil", src: "/brands/Reequil.png" },
+  { name: "Bontress Pro", src: "/brands/Bontress Pro.png" },
+  { name: "Fortune", src: "/brands/Fortune.png" },
+  { name: "IDFC Bank", src: "/brands/IDFC bank.png" },
+  { name: "Reebok", src: "/brands/Reebok Logo.jpg" },
+  { name: "Reequil", src: "/brands/Reequil.png" },
 ];
 
 const Brands = (props: Props) => {
   return (
     <section className="py-24 overflow-hidden">
-      <div className="w-full flex overflow-hidden mb-24 py-8 border-y border-black/5 bg-white/50 backdrop-blur-sm opacity-60 hover:opacity-100 transition-opacity duration-500">
+      <div className="w-full flex overflow-hidden mb-24 py-8 border-y border-black/5 bg-white transition-opacity duration-500">
         <motion.div
           className="flex whitespace-nowrap gap-16 shrink-0 pr-16 items-center"
           animate={{ x: ["0%", "-100%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
         >
           {brands.map((brand, i) => (
-            <span key={i} className="text-3xl font-bold text-black/30 uppercase tracking-widest">
-              {brand}
-            </span>
+            <img
+              key={i}
+              src={brand.src}
+              alt={brand.name}
+              className="h-14 md:h-20 w-auto object-contain mix-blend-multiply opacity-100 hover:opacity-100 transition-opacity duration-300"
+            />
           ))}
         </motion.div>
         <motion.div
@@ -47,9 +50,12 @@ const Brands = (props: Props) => {
           transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
         >
           {brands.map((brand, i) => (
-            <span key={i} className="text-3xl font-bold text-black/30 uppercase tracking-widest">
-              {brand}
-            </span>
+            <img
+              key={i}
+              src={brand.src}
+              alt={brand.name}
+              className="h-14 md:h-20 w-auto object-contain mix-blend-multiply opacity-100 hover:opacity-100 transition-opacity duration-300"
+            />
           ))}
         </motion.div>
       </div>
