@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import VideoExample from "./VideoExample";
-import EmailInput from "./EmailInput";
+import WhatsAppButton from "./WhatsAppButton";
 
 type Props = {};
 
@@ -33,7 +33,10 @@ const Header = (props: Props) => {
         <h2 className="text-muted-foreground text-2xl max-w-lg font-light text-center">
           From first brief to final conversion. Discover, execute, track affiliates, and generate leads — All in one place.
         </h2>
-        <EmailInput />
+        <div className="flex items-center justify-center">
+
+          <WhatsAppButton />
+        </div>
       </div>
       <VideoExample />
     </header>

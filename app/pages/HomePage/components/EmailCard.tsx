@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { motion } from "motion/react";
 import React from "react";
-import EmailInput from "./EmailInput";
+import WhatsAppButton from "./WhatsAppButton";
 
 type Props = {};
 
@@ -57,7 +57,7 @@ const EmailCard = (props: Props) => {
                 Join thousands of brands already on Cre8r
               </p>
               <div className="w-full">
-                <EmailInput />
+                <WhatsAppButton />
               </div>
             </div>
           </div>

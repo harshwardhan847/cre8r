@@ -10,6 +10,7 @@ export const CONSTANTS = {
     COMPETITION_SCANNER: "https://app.supademo.com/embed/cmhlz91pf16jnla10p5a82iln?embed_v=2&utm_source=embed",
     CAMPAIGN_REQUEST: "https://app.supademo.com/embed/cmhoi69kf00gt0x0ijchk8ujx?embed_v=2&utm_source=embed",
     CRM: "https://app.supademo.com/embed/cmiq61ttw04lgcj0e5jwe3juq?embed_v=2&utm_source=embed",
+    CREATOR_OVERVIEW: "https://app.supademo.com/embed/cms0ag5ra6n3tqmble95beeot?embed_v=2&utm_source=embed",
   },
   HIRING_FORM_URL: "https://forms.google.com/hiring-form-placeholder",
   LINKEDIN_URL: "https://www.linkedin.com/company/cre8r-ai/",

@@ -21,7 +21,7 @@ const Home = (props: Props) => {
       <Features />
       <CaseStudiesPreview />
       <BlogsPreview />
-      <EmailCard />
+      {/* <EmailCard /> */}
     </>
   );
 };

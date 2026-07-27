@@ -1,5 +1,5 @@
 import React from "react";
-import EmailInput from "~/pages/HomePage/components/EmailInput";
+import WhatsAppButton from "~/pages/HomePage/components/WhatsAppButton";
 
 type Props = {};
 
@@ -25,7 +25,7 @@ const Hero = (props: Props) => {
           </p>
 
           <div className="mt-6 w-full flex justify-center lg:justify-start">
-            <EmailInput />
+            <WhatsAppButton />
           </div>
         </div>
 

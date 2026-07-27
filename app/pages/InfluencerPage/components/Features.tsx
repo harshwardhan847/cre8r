@@ -1,11 +1,12 @@
 import React from "react";
+import { motion, useInView, animate } from "motion/react";
 import {
   Activity,
-  BadgeCheck,
-  Megaphone,
+  CheckCircle2,
   Sparkles,
   Target,
-  TrendingUp,
+  Users,
+  Wallet,
 } from "lucide-react";
 
 type Props = {};
@@ -16,146 +17,350 @@ const featureRows = [
     description:
       "Join our community to expand your reach and opportunities. Showcase your content, audience demographics, and engagement metrics to help us match you with the perfect brand partnerships.",
     reverse: false,
-    visual: "hub",
+    visual: "profile",
   },
   {
     title: "Connect with brands that fit your niche",
     description:
       "Our AI helps you connect with brands that align with your audience and content style. Browse vetted opportunities, receive personalized campaign offers, and partner with companies you actually want to work with.",
     reverse: true,
-    visual: "crm",
+    visual: "match",
   },
   {
     title: "Land dream collaborations",
     description:
       "Partner with top brands, boost your engagement, and watch your influence grow. Create authentic content that resonates, meet exciting brands, and build lasting professional relationships.",
     reverse: false,
-    visual: "lead",
+    visual: "collab",
   },
   {
     title: "Get paid seamlessly",
     description:
       "Receive your payment directly in your account as per agreed terms. For barter campaigns, get exclusive products. For paid collaborations, earn competitive rates. Everything handled in one platform.",
     reverse: true,
-    visual: "domain",
+    visual: "payout",
   },
 ];
 
-const HubVisual = () => {
+const Counter = ({
+  value,
+  prefix = "",
+}: {
+  value: number;
+  prefix?: string;
+}) => {
+  const ref = React.useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const [display, setDisplay] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!inView) return;
+    const controls = animate(0, value, {
+      duration: 1.2,
+      ease: "easeOut",
+      onUpdate: (latest) => setDisplay(Math.round(latest)),
+    });
+    return () => controls.stop();
+  }, [inView, value]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {display.toLocaleString("en-IN")}
+    </span>
+  );
+};
+
+const ProfileVisual = () => {
+  const checklist = [
+    { label: "Audience demographics", icon: Users },
+    { label: "Engagement metrics", icon: Activity },
+    { label: "Content style", icon: Sparkles },
+  ];
+
   return (
     <div className="flex h-80 items-center justify-center rounded-2xl bg-card/60 p-6">
-      <div className="relative flex items-center justify-center">
-        <div className="flex size-20 items-center justify-center rounded-3xl bg-blue-600 text-5xl font-bold text-white shadow-lg">
-          Cr
+      <div className="w-full max-w-sm rounded-2xl border border-border/10 bg-card p-5 shadow-sm">
+        <div className="flex items-center gap-3">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-600 text-lg font-semibold text-white"
+          >
+            AS
+          </motion.div>
+          <div className="flex-1">
+            <div className="h-2.5 w-24 rounded-full bg-foreground/70" />
+            <div className="mt-2 h-2 w-16 rounded-full bg-muted" />
+          </div>
+          <div className="relative flex size-11 shrink-0 items-center justify-center">
+            <svg className="size-11 -rotate-90" viewBox="0 0 44 44">
+              <circle
+                cx="22"
+                cy="22"
+                r="18"
+                strokeWidth="4"
+                className="fill-none stroke-muted"
+              />
+              <motion.circle
+                cx="22"
+                cy="22"
+                r="18"
+                strokeWidth="4"
+                strokeLinecap="round"
+                className="fill-none stroke-blue-600"
+                style={{ pathLength: 0.92 }}
+                strokeDasharray="0 1"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 0.92 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              />
+            </svg>
+            <span className="absolute text-[10px] font-semibold text-foreground">
+              92%
+            </span>
+          </div>
         </div>
 
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 rounded-2xl border border-border/10 bg-card p-4 shadow-sm">
-          <Target className="size-8 text-blue-600" />
-        </div>
-        <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 rounded-2xl border border-border/10 bg-card p-4 shadow-sm">
-          <TrendingUp className="size-8 text-blue-600" />
-        </div>
-        <div className="absolute -left-24 top-1/2 -translate-y-1/2 rounded-2xl border border-border/10 bg-card p-4 shadow-sm">
-          <Sparkles className="size-8 text-blue-600" />
-        </div>
-        <div className="absolute -right-24 top-1/2 -translate-y-1/2 rounded-2xl border border-border/10 bg-card p-4 shadow-sm">
-          <Megaphone className="size-8 text-blue-600" />
+        <div className="mt-5 space-y-2.5">
+          {checklist.map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: 0.3 + i * 0.15 }}
+              className="flex items-center gap-3 rounded-xl border border-border/10 bg-card/80 px-3 py-2.5"
+            >
+              <motion.span
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.45 + i * 0.15,
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 15,
+                }}
+                className="flex size-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+              >
+                <CheckCircle2 className="size-3.5" />
+              </motion.span>
+              <item.icon className="size-4 text-blue-600" />
+              <span className="text-xs font-medium text-foreground">
+                {item.label}
+              </span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-const CrmVisual = () => {
+const matchBrands = [
+  { name: "GlowUp Cosmetics", match: "96%", position: "top-4 left-4" },
+  { name: "FitBite Nutrition", match: "91%", position: "top-4 right-4" },
+  {
+    name: "Trailhead Gear",
+    match: "88%",
+    position: "bottom-6 left-1/2 -translate-x-1/2",
+  },
+];
+
+const MatchVisual = () => {
   return (
-    <div className="flex h-80 items-center justify-center rounded-2xl bg-card/60 p-4">
-      <div className="w-full max-w-lg rounded-2xl border border-border/10 bg-card shadow-sm">
-        <div className="flex items-center justify-between border-b border-border/10 px-4 py-3">
-          <div className="text-sm font-medium text-foreground">amplemarket</div>
-          <div className="rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white">
-            HubSpot
-          </div>
-        </div>
-        <div className="space-y-3 p-4">
-          <div className="h-2 w-10/12 rounded-full bg-muted" />
-          <div className="h-2 w-8/12 rounded-full bg-muted" />
-          <div className="h-2 w-9/12 rounded-full bg-muted" />
-          <div className="h-2 w-7/12 rounded-full bg-muted" />
-        </div>
-        <div className="mx-4 mb-4 flex items-center gap-3 rounded-xl border border-blue-200 bg-card px-3 py-2">
-          <span className="rounded bg-emerald-100 px-2 py-1 text-xs font-medium text-emerald-700">
-            Synced
+    <div className="relative flex h-80 items-center justify-center overflow-hidden rounded-2xl bg-card/60 p-6">
+      <svg
+        className="absolute inset-0 size-full"
+        viewBox="0 0 400 320"
+        fill="none"
+      >
+        {[
+          { x2: 90, y2: 60 },
+          { x2: 310, y2: 60 },
+          { x2: 200, y2: 260 },
+        ].map((p, i) => (
+          <motion.line
+            key={p.x2}
+            x1={200}
+            y1={160}
+            x2={p.x2}
+            y2={p.y2}
+            className="stroke-blue-600/30"
+            strokeWidth={2}
+            strokeDasharray="5 5"
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.15 }}
+          />
+        ))}
+      </svg>
+
+      <motion.div
+        initial={{ scale: 0.85, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+        className="z-10 flex size-16 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg"
+      >
+        <Target className="size-7" />
+      </motion.div>
+
+      {matchBrands.map((b, i) => (
+        <motion.div
+          key={b.name}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.35 + i * 0.15 }}
+          className={`absolute flex items-center gap-2 rounded-xl border border-border/10 bg-card px-3 py-2 shadow-sm ${b.position}`}
+        >
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-orange-100 text-[10px] font-semibold text-orange-700">
+            {b.name.charAt(0)}
           </span>
-          <div className="h-2 w-24 rounded-full bg-muted" />
-          <div className="h-2 w-20 rounded-full bg-muted" />
-          <BadgeCheck className="ml-auto size-4 text-blue-600" />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const LeadVisual = () => {
-  return (
-    <div className="flex h-80 items-center justify-center rounded-2xl bg-card/60 p-4">
-      <div className="relative w-full max-w-lg rounded-2xl border border-border/10 bg-card p-4 shadow-sm">
-        <div className="mb-3 flex items-center justify-between">
-          <div className="text-sm font-medium text-foreground">
-            Search leads
-          </div>
-          <div className="rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white">
-            200M Profiles
-          </div>
-        </div>
-        <div className="space-y-3 pb-10 opacity-70">
-          <div className="h-2 w-full rounded-full bg-muted" />
-          <div className="h-2 w-10/12 rounded-full bg-muted" />
-          <div className="h-2 w-11/12 rounded-full bg-muted" />
-          <div className="h-2 w-9/12 rounded-full bg-muted" />
-        </div>
-        <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-xl border border-blue-200 bg-card px-3 py-2 shadow-sm">
-          <span className="rounded bg-emerald-500 px-2 py-1 text-xs font-medium text-white">
-            Verified
+          <span className="text-xs font-medium text-foreground">
+            {b.name}
           </span>
-          <div className="h-2 w-24 rounded-full bg-muted" />
-          <div className="h-2 w-16 rounded-full bg-muted" />
-          <Activity className="ml-auto size-4 text-blue-600" />
-        </div>
-      </div>
+          <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+            {b.match}
+          </span>
+        </motion.div>
+      ))}
     </div>
   );
 };
 
-const DomainVisual = () => {
+const CollabVisual = () => {
   return (
-    <div className="flex h-80 items-center justify-center rounded-2xl bg-card/60 p-4">
-      <div className="w-full max-w-lg rounded-2xl border border-border/10 bg-card p-4 shadow-sm">
-        <div className="mb-4 text-sm font-medium text-foreground">
-          Domain Health Center
+    <div className="relative flex h-80 items-center justify-center rounded-2xl bg-card/60 p-6">
+      <div className="absolute h-56 w-72 -rotate-6 rounded-2xl border border-border/10 bg-card/70 shadow-sm" />
+      <div className="absolute h-56 w-72 rotate-3 rounded-2xl border border-border/10 bg-card/90 shadow-sm" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 20, rotate: -4 }}
+        whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="relative z-10 flex h-56 w-72 flex-col justify-between rounded-2xl border border-border/10 bg-card p-5 shadow-md"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-violet-100 text-sm font-semibold text-violet-700">
+              FN
+            </span>
+            <div>
+              <p className="text-sm font-medium text-foreground">
+                FashionNova India
+              </p>
+              <p className="text-[11px] text-muted-foreground">
+                Reel + Story Bundle
+              </p>
+            </div>
+          </div>
+          <motion.span
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              delay: 0.5,
+              type: "spring",
+              stiffness: 260,
+              damping: 15,
+            }}
+            className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
+          >
+            <CheckCircle2 className="size-4" />
+          </motion.span>
         </div>
-        <div className="grid grid-cols-4 gap-3 border-b border-border/10 pb-3 text-xs text-muted-foreground">
-          <span>Mailboxes</span>
-          <span>Open Rate</span>
-          <span>Emails Sent</span>
-          <span>Outbox Ratio</span>
+
+        <div className="flex flex-wrap gap-2">
+          {["Reels", "Unboxing", "48h turnaround"].map((t) => (
+            <span
+              key={t}
+              className="rounded-full border border-primary/10 bg-primary/5 px-2.5 py-1 text-[10px] font-medium text-primary"
+            >
+              {t}
+            </span>
+          ))}
         </div>
+
+        <div className="flex items-center justify-between border-t border-border/10 pt-3">
+          <span className="text-xs text-muted-foreground">
+            Offer accepted
+          </span>
+          <span className="text-sm font-semibold text-foreground">
+            ₹18,500
+          </span>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+const payoutTransactions = [
+  { brand: "HealthCorp", amount: "₹42,000", status: "Paid" },
+  { brand: "FreshBites", amount: "₹18,500", status: "Paid" },
+  { brand: "Lufthansa", amount: "₹65,000", status: "Processing" },
+];
+
+const PayoutVisual = () => {
+  return (
+    <div className="flex h-80 items-center justify-center rounded-2xl bg-card/60 p-6">
+      <div className="w-full max-w-sm rounded-2xl border border-border/10 bg-card p-5 shadow-sm">
+        <div className="flex items-center justify-between rounded-xl bg-emerald-50 px-4 py-3">
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-wide text-emerald-700/70">
+              Total earned
+            </p>
+            <p className="mt-1 text-2xl font-semibold text-emerald-700">
+              <Counter value={125500} prefix="₹" />
+            </p>
+          </div>
+          <motion.span
+            initial={{ scale: 0.7, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="flex size-11 shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
+          >
+            <Wallet className="size-5" />
+          </motion.span>
+        </div>
+
         <div className="mt-4 space-y-2">
-          <div className="grid grid-cols-4 items-center gap-3 rounded-xl border border-border/10 bg-card px-3 py-3 text-xs text-foreground">
-            <div className="h-2 w-24 rounded-full bg-muted" />
-            <span className="w-fit rounded bg-emerald-100 px-2 py-1 text-emerald-700">
-              63%
-            </span>
-            <div className="h-2 w-10 rounded-full bg-muted" />
-            <div className="h-2 w-10 rounded-full bg-muted" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-3 rounded-xl border border-border/10 bg-card px-3 py-3 text-xs text-foreground">
-            <div className="h-2 w-24 rounded-full bg-muted" />
-            <span className="w-fit rounded bg-amber-100 px-2 py-1 text-amber-700">
-              39%
-            </span>
-            <div className="h-2 w-10 rounded-full bg-muted" />
-            <div className="h-2 w-10 rounded-full bg-muted" />
-          </div>
+          {payoutTransactions.map((t, i) => (
+            <motion.div
+              key={t.brand}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: 0.25 + i * 0.12 }}
+              className="flex items-center justify-between rounded-xl border border-border/10 px-3 py-2.5"
+            >
+              <span className="text-xs font-medium text-foreground">
+                {t.brand}
+              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-foreground">
+                  {t.amount}
+                </span>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${
+                    t.status === "Paid"
+                      ? "bg-emerald-100 text-emerald-700"
+                      : "bg-amber-100 text-amber-700"
+                  }`}
+                >
+                  {t.status}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
@@ -163,10 +368,10 @@ const DomainVisual = () => {
 };
 
 const FeatureVisual = ({ visual }: { visual: string }) => {
-  if (visual === "hub") return <HubVisual />;
-  if (visual === "crm") return <CrmVisual />;
-  if (visual === "lead") return <LeadVisual />;
-  return <DomainVisual />;
+  if (visual === "profile") return <ProfileVisual />;
+  if (visual === "match") return <MatchVisual />;
+  if (visual === "collab") return <CollabVisual />;
+  return <PayoutVisual />;
 };
 
 const Features = (props: Props) => {
@@ -174,9 +379,13 @@ const Features = (props: Props) => {
     <section className="w-full bg-background py-8 md:py-12">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 md:gap-28 md:px-10">
         {featureRows.map((feature) => (
-          <div
+          <motion.div
             key={feature.title}
-            className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16 ${feature.reverse ? "" : ""}`}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16"
           >
             <div className={`${feature.reverse ? "md:order-2" : "md:order-1"}`}>
               <h3 className="text-xl font-medium leading-tight tracking-tight text-foreground md:text-3xl">
@@ -190,7 +399,7 @@ const Features = (props: Props) => {
             <div className={`${feature.reverse ? "md:order-1" : "md:order-2"}`}>
               <FeatureVisual visual={feature.visual} />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
