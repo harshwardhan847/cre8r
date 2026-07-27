@@ -1,3 +1,5 @@
+import { featureFlags } from "./featureFlags";
+
 export const CONSTANTS = {
   CALENDLY_URL: "https://calendly.com/gs_cre8r/30min",
   CREATOR_FORM_URL: "https://forms.google.com/creator-form-placeholder",
@@ -170,17 +172,21 @@ export const CONSTANTS = {
       label: "Resources",
       tagline: "Free tools and playbooks for scaling ROI",
       items: [
-        {
-          label: "Resources Hub",
-          description: "Get all guides, checklist, and toolkits.",
-          to: "/resources"
-        },
-        {
-          label: "ROI Calculator",
-          description: "Estimate campaign sales and CAC before you spend.",
-          to: "/resources",
-          hash: "#roi-calculator"
-        },
+        ...(featureFlags.enableResources ? [
+          {
+            label: "Resources Hub",
+            description: "Get all guides, checklist, and toolkits.",
+            to: "/resources"
+          }
+        ] : []),
+        ...(featureFlags.enableCalculators ? [
+          {
+            label: "ROI Calculator",
+            description: "Estimate campaign sales and CAC before you spend.",
+            to: "/resources",
+            hash: "#roi-calculator"
+          }
+        ] : []),
         {
           label: "Barter Collabs",
           description: "Access premium product-gifting partnerships.",
@@ -202,11 +208,13 @@ export const CONSTANTS = {
           description: "Learn about our mission, values, and team.",
           to: "/about"
         },
-        {
-          label: "Case Studies",
-          description: "See real customer results and campaign ROI.",
-          to: "/case-studies"
-        },
+        ...(featureFlags.enableCaseStudies ? [
+          {
+            label: "Case Studies",
+            description: "See real customer results and campaign ROI.",
+            to: "/case-studies"
+          }
+        ] : []),
         {
           label: "We are hiring",
           description: "Join our fast-growing creator tech startup.",

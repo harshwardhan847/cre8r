@@ -1,3 +1,4 @@
+import { featureFlags } from "../../featureFlags";
 import Brands from "./components/Brands";
 import EmailCard from "./components/EmailCard";
 import Features from "./components/Features";
@@ -19,7 +20,7 @@ const Home = (props: Props) => {
       <Transform />
       {/* <VideoCarousel /> */}
       <Features />
-      <CaseStudiesPreview />
+      {featureFlags.enableCaseStudies && <CaseStudiesPreview />}
       <BlogsPreview />
       {/* <EmailCard /> */}
     </>

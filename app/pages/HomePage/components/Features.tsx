@@ -97,12 +97,12 @@ const Features = (props: Props) => {
                     {val.num}
                   </span>
                 </h3>
-                <div className="w-full bg-transparent aspect-video rounded-b-lg relative overflow-hidden">
+                <div className="w-full bg-transparent aspect-16/10 rounded-b-lg relative overflow-hidden">
                   <Supademo
                     src={val.embedUrl}
                     title={val.title}
                     className={cn(
-                      "w-full h-full absolute top-0 left-0 border-0",
+                      "w-full h-full absolute top-0 left-0 border-0 p-0",
                       pos !== 0 && "pointer-events-none"
                     )}
                   />

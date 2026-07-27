@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
+import { featureFlags } from "../../../featureFlags";
 
 const caseStudies = [
   {
@@ -135,14 +136,16 @@ const Testimonials = () => {
           </div>
         </div>
 
-        <div className="mt-8 text-center">
-          <Link
-            to="/case-studies"
-            className="text-sm text-foreground/80 transition hover:text-foreground"
-          >
-            View all case studies
-          </Link>
-        </div>
+        {featureFlags.enableCaseStudies && (
+          <div className="mt-8 text-center">
+            <Link
+              to="/case-studies"
+              className="text-sm text-foreground/80 transition hover:text-foreground"
+            >
+              View all case studies
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

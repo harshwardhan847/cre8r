@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
+import { featureFlags } from "../../featureFlags";
 import { ArrowRight, Calculator, BookOpen, FileText, TrendingUp, Zap, Users } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
@@ -14,7 +15,9 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   Users
 };
 
-const resources = CONSTANTS.RESOURCES.map((res) => ({
+const resources = CONSTANTS.RESOURCES.filter(
+  (res) => featureFlags.enableCalculators || res.title !== "ROI Calculator"
+).map((res) => ({
   ...res,
   icon: iconMap[res.iconName] || BookOpen
 }));
@@ -120,10 +123,11 @@ const ResourcesPage = () => {
         </motion.div>
       </section>
 
-      {/* ROI Calculator */}
-      <section id="roi-calculator" className="px-6 md:px-8 mx-auto max-w-6xl pb-24 scroll-mt-28">
-        <RoiCalculator />
-      </section>
+      {featureFlags.enableCalculators && (
+        <section id="roi-calculator" className="px-6 md:px-8 mx-auto max-w-6xl pb-24 scroll-mt-28">
+          <RoiCalculator />
+        </section>
+      )}
 
       {/* Resources Grid */}
       <section className="py-24 bg-neutral-50/70 px-6 md:px-8">
@@ -220,12 +224,14 @@ const ResourcesPage = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
-            <Link
-              to="/case-studies"
-              className="text-sm text-primary-foreground/50 hover:text-primary-foreground/80 text-center transition-colors"
-            >
-              Or see our case studies →
-            </Link>
+            {featureFlags.enableCaseStudies && (
+              <Link
+                to="/case-studies"
+                className="text-sm text-primary-foreground/50 hover:text-primary-foreground/80 text-center transition-colors"
+              >
+                Or see our case studies →
+              </Link>
+            )}
           </div>
         </motion.div>
       </section>

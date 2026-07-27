@@ -1,3 +1,4 @@
+import { featureFlags } from "../../featureFlags";
 import FounderMessage from "./components/FounderMessage";
 import Founders from "./components/Founders";
 import Hero from "./components/Hero";
@@ -13,7 +14,7 @@ const About = (props: Props) => {
       <Founders />
       <Team />
       <ScrollingTextAnimationSection />
-      <FounderMessage />
+      {featureFlags.enableFounderVideos && <FounderMessage />}
     </>
   );
 };

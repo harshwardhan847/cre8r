@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { CONSTANTS } from "~/constants";
+import { featureFlags } from "../../../featureFlags";
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -85,8 +86,8 @@ const Footer = () => {
               {[
                 { label: "Home", to: "/" },
                 { label: "Product", to: "/product" },
-                { label: "Case Studies", to: "/case-studies" },
-                { label: "Resources", to: "/resources" },
+                ...(featureFlags.enableCaseStudies ? [{ label: "Case Studies", to: "/case-studies" }] : []),
+                ...(featureFlags.enableResources ? [{ label: "Resources", to: "/resources" }] : []),
                 { label: "Book a Demo", to: CONSTANTS.CALENDLY_URL, ext: true },
               ].map((link) => (
                 link.ext ? (

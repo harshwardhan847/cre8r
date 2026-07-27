@@ -1,4 +1,5 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
+import { featureFlags } from "./featureFlags";
 
 export default [
   index("routes/home.tsx"),
@@ -10,8 +11,8 @@ export default [
   route("/product/affiliate-roi", "routes/product-affiliate.tsx"),
   route("/product/lead-gen", "routes/product-lead-gen.tsx"),
   route("/demo", "routes/demo.tsx"),
-  route("/case-studies", "routes/case-studies.tsx"),
-  route("/resources", "routes/resources.tsx"),
+  ...(featureFlags.enableCaseStudies ? [route("/case-studies", "routes/case-studies.tsx")] : []),
+  ...(featureFlags.enableResources ? [route("/resources", "routes/resources.tsx")] : []),
   route("/barter-collabs", "routes/barter-collabs.tsx"),
   route("/creator", "routes/creator.tsx"),
   route("/hiring", "routes/hiring.tsx"),

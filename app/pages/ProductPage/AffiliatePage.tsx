@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import React, { useState } from "react";
+import { featureFlags } from "../../featureFlags";
 import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, LineChart, Link2, Percent, IndianRupee, Users, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
@@ -93,9 +94,11 @@ const AffiliatePage = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/resources">Try ROI Calculator</Link>
-            </Button>
+            {featureFlags.enableCalculators && (
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/resources">Try ROI Calculator</Link>
+              </Button>
+            )}
           </div>
         </motion.div>
       </section>

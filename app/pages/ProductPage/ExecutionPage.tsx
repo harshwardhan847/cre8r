@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { featureFlags } from "../../featureFlags";
 import React, { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, MessageSquare, Briefcase, FileCheck, Send, CheckCircle2, Star, Play, Sparkles } from "lucide-react";
@@ -113,9 +114,11 @@ const ExecutionPage = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/case-studies">See Creator Results</Link>
-            </Button>
+            {featureFlags.enableCaseStudies && (
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/case-studies">See Creator Results</Link>
+              </Button>
+            )}
           </div>
         </motion.div>
       </section>

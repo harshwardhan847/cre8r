@@ -217,7 +217,7 @@ const Navbar = (props: Props) => {
                       <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Growth Tools</p>
                     </div>
                     <div className="flex flex-col gap-1">
-                      {CONSTANTS.NAV_CATEGORIES.resources.items.slice(0, 2).map((item) => (
+                      {CONSTANTS.NAV_CATEGORIES.resources.items.slice(0, Math.ceil(CONSTANTS.NAV_CATEGORIES.resources.items.length / 2)).map((item) => (
                         <Link
                           key={item.label}
                           to={item.to + (item.hash || "")}
@@ -237,7 +237,7 @@ const Navbar = (props: Props) => {
                       <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Collabs & Creators</p>
                     </div>
                     <div className="flex flex-col gap-1">
-                      {CONSTANTS.NAV_CATEGORIES.resources.items.slice(2).map((item) => (
+                      {CONSTANTS.NAV_CATEGORIES.resources.items.slice(Math.ceil(CONSTANTS.NAV_CATEGORIES.resources.items.length / 2)).map((item) => (
                         <Link
                           key={item.label}
                           to={item.to}
@@ -292,7 +292,7 @@ const Navbar = (props: Props) => {
                       <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">About Cre8r</p>
                     </div>
                     <div className="flex flex-col gap-1">
-                      {CONSTANTS.NAV_CATEGORIES.company.items.slice(0, 2).map((item) => (
+                      {CONSTANTS.NAV_CATEGORIES.company.items.slice(0, Math.ceil(CONSTANTS.NAV_CATEGORIES.company.items.length / 2)).map((item) => (
                         <Link
                           key={item.label}
                           to={item.to}
@@ -312,7 +312,7 @@ const Navbar = (props: Props) => {
                       <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Join Us</p>
                     </div>
                     <div className="flex flex-col gap-1">
-                      {CONSTANTS.NAV_CATEGORIES.company.items.slice(2).map((item) => (
+                      {CONSTANTS.NAV_CATEGORIES.company.items.slice(Math.ceil(CONSTANTS.NAV_CATEGORIES.company.items.length / 2)).map((item) => (
                         <Link
                           key={item.label}
                           to={item.to}
