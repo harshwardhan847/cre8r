@@ -12,7 +12,7 @@ const Header = (props: Props) => {
         <img
           src="./header_bg.png"
           alt="Header Background"
-          className="w-full h-full object-cover object-bottom-left opacity-100"
+          className="w-full h-full object-contain 2xl:object-cover object-bottom-left opacity-100"
         />
       </div>
       <div className="flex flex-col gap-4 z-10 items-center justify-center">

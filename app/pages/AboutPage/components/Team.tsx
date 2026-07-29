@@ -34,7 +34,8 @@ const teamMembers: TeamMember[] = [
   { name: "Tanish Gadodia", avatar: "/team/tanish_gadodia.png" },
   { name: "Aarsh", avatar: "/team/aarsh.png" },
   { name: "Aditya Chaudhary", avatar: "/team/aditya_chaudhary.png" },
-  { name: "Sonam Jattain", avatar: "/team/sonam_jattain.png" },
+  { name: "Tanvi", avatar: "/team/tanvi.png" },
+  { name: "Hitansh", avatar: "/team/hitansh.png" },
 ];
 
 const Team = () => {
