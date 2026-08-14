@@ -28,7 +28,7 @@ const CaseStudiesPage = () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-36 pb-20 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -37,15 +37,15 @@ const CaseStudiesPage = () => {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Case Studies
           </p>
-          <h1 className="mt-4 text-5xl md:text-6xl font-light tracking-tight text-foreground">
+          <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-foreground">
             Proven Results,
             <br />
             Clear ROI
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
             See how leading brands are scaling customer acquisition, driving brand awareness, and measuring real returns with our end-to-end platform.
           </p>
-          <div className="flex items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
               <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 See a Live Demo
@@ -60,9 +60,9 @@ const CaseStudiesPage = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-primary text-primary-foreground py-16">
+      <section className="bg-primary text-primary-foreground py-10 md:py-16">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {metrics.map((m, i) => (
               <motion.div
                 key={m.label}
@@ -72,8 +72,8 @@ const CaseStudiesPage = () => {
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-light">{m.value}</div>
-                <div className="mt-2 text-sm text-primary-foreground/60">{m.label}</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-light">{m.value}</div>
+                <div className="mt-2 text-xs md:text-sm text-primary-foreground/60">{m.label}</div>
               </motion.div>
             ))}
           </div>
@@ -81,8 +81,8 @@ const CaseStudiesPage = () => {
       </section>
 
       {/* Case Studies Grid */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="flex flex-col gap-16">
+      <section className="py-16 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="flex flex-col gap-10 md:gap-16">
           {caseStudies.map((study, idx) => (
             <motion.article
               key={study.id}
@@ -94,13 +94,13 @@ const CaseStudiesPage = () => {
             >
               <div className={`grid md:grid-cols-2 gap-0`}>
                 {/* Content */}
-                <div className="p-10 md:p-14 flex flex-col justify-between gap-8">
+                <div className="p-6 sm:p-8 md:p-14 flex flex-col justify-between gap-8">
                   <div>
                     <div className="flex items-center gap-3 mb-6">
                       <p className={cn("text-xs font-medium uppercase tracking-[0.15em]", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/80")}>{study.industry}</p>
                     </div>
-                    <h2 className="text-3xl font-medium tracking-tight">{study.brand}</h2>
-                    <p className={cn("mt-4 text-base leading-relaxed", idx % 2 === 1 ? "text-primary-foreground/90" : "text-muted-foreground")}>{study.description}</p>
+                    <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">{study.brand}</h2>
+                    <p className={cn("mt-4 text-sm md:text-base leading-relaxed", idx % 2 === 1 ? "text-primary-foreground/90" : "text-muted-foreground")}>{study.description}</p>
                     <div className="flex flex-wrap gap-2 mt-6">
                       {study.tags.map((tag) => (
                         <span
@@ -125,14 +125,14 @@ const CaseStudiesPage = () => {
                 </div>
 
                 {/* Metrics */}
-                <div className={`${idx % 2 === 1 ? "bg-primary-foreground/10" : "bg-neutral-50"} p-10 md:p-14 flex flex-col justify-center gap-8`}>
+                <div className={`${idx % 2 === 1 ? "bg-primary-foreground/10" : "bg-neutral-50"} p-6 sm:p-8 md:p-14 flex flex-col justify-center gap-6 md:gap-8`}>
                   <div>
-                    <div className="text-6xl font-light">{study.metric}</div>
+                    <div className="text-4xl sm:text-5xl md:text-6xl font-light">{study.metric}</div>
                     <div className={cn("text-sm mt-1 uppercase tracking-widest", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/70")}>{study.metricLabel}</div>
                   </div>
                   <div className="h-px opacity-10 bg-current" />
                   <div>
-                    <div className="text-5xl font-light">{study.stat2}</div>
+                    <div className="text-3xl sm:text-4xl md:text-5xl font-light">{study.stat2}</div>
                     <div className={cn("text-sm mt-1 uppercase tracking-widest", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/70")}>{study.stat2Label}</div>
                   </div>
                 </div>
@@ -143,18 +143,18 @@ const CaseStudiesPage = () => {
       </section>
 
       {/* Industries */}
-      <section className="bg-primary py-24 px-6 md:px-8">
+      <section className="bg-primary py-16 md:py-24 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-light text-primary-foreground text-center mb-12"
+            className="text-2xl sm:text-3xl font-light text-primary-foreground text-center mb-8 md:mb-12"
           >
             Industries we actively support
           </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
             {industries.map((ind, i) => (
               <motion.div
                 key={ind.name}
@@ -162,9 +162,9 @@ const CaseStudiesPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.35 }}
-                className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-6 hover:bg-primary-foreground/10 transition-colors"
+                className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-4 md:p-6 hover:bg-primary-foreground/10 transition-colors"
               >
-                <p className="text-lg font-normal text-primary-foreground">{ind.name}</p>
+                <p className="text-base md:text-lg font-normal text-primary-foreground">{ind.name}</p>
                 <p className="text-sm text-primary-foreground/50 mt-1">{ind.count}</p>
               </motion.div>
             ))}
@@ -173,7 +173,7 @@ const CaseStudiesPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl text-center">
+      <section className="py-16 md:py-24 px-6 md:px-8 mx-auto max-w-6xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ const CaseStudiesPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto"
         >
-          <h2 className="text-4xl font-light tracking-tight">Ready to write your own case study?</h2>
+          <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Ready to write your own case study?</h2>
           <p className="mt-4 text-muted-foreground">
             Book a personalized demo and see how Cre8r can transform your influencer marketing strategy.
           </p>

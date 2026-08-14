@@ -7,13 +7,33 @@ import {
 } from "motion/react";
 import React from "react";
 import { Button } from "~/components/ui/button";
+import { useIsMobile } from "~/lib/use-is-mobile";
 
 type Props = {};
+
+const FEATURE_CARDS = [
+  {
+    dot: "bg-green-400",
+    title: "Find & Track Creators",
+    description: "Discover 4mn+ creators filtered by niche, reach and engagement.",
+  },
+  {
+    dot: "bg-orange-400",
+    title: "Intelligent Matchmaking",
+    description: "AI-powered recommendations to connect brands with ideal creators.",
+  },
+  {
+    dot: "bg-pink-400",
+    title: "Live Performance Tracking",
+    description: "Monitor views, engagement and ROI in real-time across campaigns.",
+  },
+];
 
 const Transform = (props: Props) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const videoContainerRef = React.useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const transition = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -23,6 +43,14 @@ const Transform = (props: Props) => {
     const video = videoRef.current;
     const container = videoContainerRef.current;
     if (!video || !container) return;
+
+    // On mobile just play the video muted — skip the scroll-linked
+    // volume/visibility ramp, which reruns on every scroll frame.
+    if (isMobile) {
+      video.muted = true;
+      video.play().catch(() => { });
+      return;
+    }
 
     let ticking = false;
 
@@ -57,7 +85,7 @@ const Transform = (props: Props) => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [isMobile]);
 
   const rawY = useTransform(transition.scrollYProgress, [0, 1], [300, -300]);
 
@@ -93,7 +121,7 @@ const Transform = (props: Props) => {
   return (
     <div
       ref={containerRef}
-      className="min-h-screen bg-primary pt-24 flex flex-col items-center gap-8 justify-start"
+      className="min-h-screen bg-primary pt-16 md:pt-24 px-4 flex flex-col items-center gap-6 md:gap-8 justify-start"
     >
       <h4 className="p-1.5 scale-90 shadow bg-neutral-800 flex border border-neutral-500/20 items-center justify-center gap-2 w-min whitespace-nowrap rounded-xl pr-3 text-[12px] text-primary-foreground font-extralight">
         <span className="p-0.5 px-2 bg-linear-to-br border border-neutral-500/20 shadow from-purple-400 via-background to-orange-400 text-[11px] font-normal rounded-md text-primary">
@@ -103,13 +131,13 @@ const Transform = (props: Props) => {
           Influencer Marketing Platform
         </span>
       </h4>
-      <h2 className="text-5xl font-light leading-none tracking-tight text-primary-foreground text-center">
+      <h2 className="text-3xl md:text-5xl font-light leading-tight md:leading-none tracking-tight text-primary-foreground text-center">
         Understand your audience
-        <br /> through voices they trust.
+        <br className="hidden sm:block" /> through voices they trust.
       </h2>
-      <p className="max-w-md -m-4 text-muted-foreground text-center text-pretty">
+      <p className="max-w-md md:-m-4 text-muted-foreground text-center text-pretty text-sm md:text-base">
         We prioritize authentic influencer relationships
-        <br /> that create lasting impact for your brand.
+        <br className="hidden sm:block" /> that create lasting impact for your brand.
       </p>
       <Button
         className="bg-white text-neutral-900 hover:bg-neutral-100 cursor-pointer text-sm font-normal"
@@ -119,10 +147,12 @@ const Transform = (props: Props) => {
       </Button>
 
       <div className="w-full relative">
+        {/* Decorative floating cards — desktop/tablet only; on mobile they'd
+            overlap the viewport, so a static stacked list replaces them below. */}
         <motion.div
           style={{ rotate: rotateRight, y }}
           whileHover={{ scale: 1.04 }}
-          className="absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(74,222,128,0.08)] z-10 w-xs flex flex-col items-start justify-center gap-1 p-5 top-1/4 right-12"
+          className="hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(74,222,128,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/4 right-12"
         >
           <span className="bg-green-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -135,7 +165,7 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ y }}
           whileHover={{ scale: 1.04 }}
-          className="absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(251,146,60,0.08)] z-10 w-xs flex flex-col items-start justify-center gap-1 p-5 top-full right-1/2 translate-x-1/2 translate-y-full"
+          className="hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(251,146,60,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-full right-1/2 translate-x-1/2 translate-y-full"
         >
           <span className="bg-orange-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -148,7 +178,7 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ rotate, y }}
           whileHover={{ scale: 1.04 }}
-          className="absolute rounded-2xl origin-top-left bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(244,114,182,0.08)] z-10 w-xs flex flex-col items-start justify-center gap-1 p-5 top-1/6 left-12"
+          className="hidden md:flex absolute rounded-2xl origin-top-left bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(244,114,182,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/6 left-12"
         >
           <span className="bg-pink-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <h6 className="font-normal text-xs text-foreground">
@@ -168,10 +198,25 @@ const Transform = (props: Props) => {
             className="w-full h-full object-cover rounded-lg"
             autoPlay
             loop
+            muted
             playsInline
-
+            preload="metadata"
           />
         </motion.div>
+
+        {/* Mobile-only simplified feature list (no parallax/scroll transforms) */}
+        <div className="md:hidden grid grid-cols-1 gap-3 mt-5">
+          {FEATURE_CARDS.map((card) => (
+            <div
+              key={card.title}
+              className="rounded-2xl bg-white/80 shadow-sm flex flex-col items-start gap-1 p-4"
+            >
+              <span className={`${card.dot} rounded-sm shadow w-4 aspect-square mb-1`} />
+              <h6 className="font-normal text-xs text-foreground">{card.title}</h6>
+              <p className="text-xs text-muted-foreground">{card.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="h-20" />
       <div className="mt-20 hidden">

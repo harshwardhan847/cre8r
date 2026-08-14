@@ -38,13 +38,13 @@ const RoiCalculator = () => {
 
   return (
     <div className="rounded-3xl border border-border/20 bg-white overflow-hidden shadow-sm">
-      <div className="p-8 md:p-12 border-b border-border/10">
+      <div className="p-6 md:p-12 border-b border-border/10">
         <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Tool</p>
-        <h2 className="mt-3 text-3xl font-light tracking-tight">Campaign ROI Calculator</h2>
+        <h2 className="mt-3 text-2xl sm:text-3xl font-light tracking-tight">Campaign ROI Calculator</h2>
         <p className="mt-2 text-muted-foreground">Estimate your influencer campaign performance before you launch.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-0">
-        <div className="p-8 md:p-12 flex flex-col gap-6 border-r border-border/10">
+        <div className="p-6 md:p-12 flex flex-col gap-6 border-r border-border/10">
           {[
             { label: "Number of Creators", value: creators, setter: setCreators, min: 1, max: 500, step: 1 },
             { label: "Avg. Creator Reach", value: avgReach, setter: setAvgReach, min: 1000, max: 5000000, step: 1000 },
@@ -70,8 +70,8 @@ const RoiCalculator = () => {
           ))}
         </div>
 
-        <div className="p-8 md:p-12 bg-primary text-primary-foreground flex flex-col justify-center gap-8">
-          <h3 className="text-lg font-light text-primary-foreground/60 uppercase tracking-wider">Estimated Results</h3>
+        <div className="p-6 md:p-12 bg-primary text-primary-foreground flex flex-col justify-center gap-6 md:gap-8">
+          <h3 className="text-base md:text-lg font-light text-primary-foreground/60 uppercase tracking-wider">Estimated Results</h3>
           {[
             { label: "Total Reach", value: totalReach.toLocaleString() },
             { label: "Engagements", value: engagements.toLocaleString() },
@@ -80,7 +80,7 @@ const RoiCalculator = () => {
           ].map(({ label, value }) => (
             <div key={label} className="flex flex-col gap-1">
               <p className="text-sm text-primary-foreground/50">{label}</p>
-              <p className="text-3xl font-light tracking-tight">{value}</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-light tracking-tight break-words">{value}</p>
             </div>
           ))}
           <Button
@@ -103,7 +103,7 @@ const ResourcesPage = () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-36 pb-20 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -112,12 +112,12 @@ const ResourcesPage = () => {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Resources
           </p>
-          <h1 className="mt-4 text-5xl md:text-6xl font-light tracking-tight">
+          <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight">
             Tools & Guides
             <br />
             for Smarter Growth
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-6 max-w-xl text-base md:text-lg text-muted-foreground leading-relaxed">
             Free resources designed to help you master influencer marketing — from discovery to conversion. No fluff, just actionable frameworks.
           </p>
         </motion.div>
@@ -130,16 +130,16 @@ const ResourcesPage = () => {
       )}
 
       {/* Resources Grid */}
-      <section className="py-24 bg-neutral-50/70 px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-neutral-50/70 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-4xl font-light tracking-tight">Free Resources</h2>
+            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Free Resources</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Download guides, templates, and frameworks curated from 200+ campaign learnings.
             </p>
@@ -196,13 +196,13 @@ const ResourcesPage = () => {
       </section>
 
       {/* Lead Capture */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="py-16 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+          className="rounded-3xl bg-primary text-primary-foreground p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
         >
           <div>
             <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">

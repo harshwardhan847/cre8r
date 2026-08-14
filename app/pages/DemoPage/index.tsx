@@ -46,8 +46,8 @@ const DemoPage = () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-36 pb-20 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -56,15 +56,15 @@ const DemoPage = () => {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Book a Demo
             </p>
-            <h1 className="mt-4 text-5xl font-light tracking-tight leading-tight">
+            <h1 className="mt-4 text-4xl sm:text-5xl font-light tracking-tight leading-tight">
               See Cre8r
               <br />
               in Action
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-md">
+            <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
               Schedule a personalized walkthrough of the Cre8r platform. We'll show you how our tools for discovery, campaign execution, affiliate tracking, and lead generation can transform your brand's acquisition strategy.
             </p>
-            <div className="flex items-center gap-4 mt-8">
+            <div className="flex flex-wrap items-center gap-4 mt-8">
               <Button size="lg" asChild>
                 <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 w-4 h-4" />
@@ -84,7 +84,7 @@ const DemoPage = () => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden aspect-[4/3] flex items-center justify-center flex-col gap-4 p-8"
+            className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden aspect-[4/3] flex items-center justify-center flex-col gap-4 p-6 md:p-8"
           >
             <div className="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center">
               <Calendar className="w-8 h-8 text-primary/40" />
@@ -104,16 +104,16 @@ const DemoPage = () => {
       </section>
 
       {/* Demo Modules */}
-      <section className="py-24 bg-neutral-50/70 px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-neutral-50/70 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-4xl font-light tracking-tight">What we'll cover</h2>
+            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">What we'll cover</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               A focused walkthrough of the platform modules most relevant to your use case.
             </p>
@@ -128,7 +128,7 @@ const DemoPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 whileHover={{ y: -3 }}
-                className="rounded-2xl bg-white p-7 flex gap-5 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-300"
+                className="rounded-2xl bg-white p-5 md:p-7 flex gap-5 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] transition-all duration-300"
               >
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${mod.accent}`}>
                   <mod.icon className="w-5 h-5" />
@@ -147,18 +147,18 @@ const DemoPage = () => {
       </section>
 
       {/* How it Works */}
-      <section className="py-24 bg-primary text-primary-foreground px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-light text-center mb-16"
+            className="text-3xl sm:text-4xl font-light text-center mb-10 md:mb-16"
           >
             How the demo works
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {demoSteps.map((step, i) => (
               <motion.div
                 key={step.num}
@@ -168,7 +168,7 @@ const DemoPage = () => {
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 className="flex flex-col gap-4"
               >
-                <div className="text-5xl font-light text-primary-foreground/20">{step.num}</div>
+                <div className="text-4xl sm:text-5xl font-light text-primary-foreground/20">{step.num}</div>
                 <h3 className="text-xl font-medium text-primary-foreground">{step.title}</h3>
                 <p className="text-sm text-primary-foreground/60 leading-relaxed">{step.desc}</p>
               </motion.div>

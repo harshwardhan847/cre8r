@@ -90,7 +90,7 @@ const ExecutionPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="pb-16 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pb-10 md:pb-16 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -100,14 +100,14 @@ const ExecutionPage = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Execution Module
           </div>
-          <h1 className="text-5xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
-            Seamless Campaign <br />
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+            Seamless Campaign <br className="hidden sm:block" />
             Management & Chat
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Move away from messy spreadsheets and messaging apps. Run content approvals, direct communication channels, briefs distribution, and creator contract completions in a single collaborative interface.
           </p>
-          <div className="flex items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
               <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 Request a Demo Walkthrough
@@ -124,10 +124,10 @@ const ExecutionPage = () => {
       </section>
 
       {/* Interactive Tool Section */}
-      <section className="py-16 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+      <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="text-center mb-8 md:mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
-          <h2 className="mt-2 text-3xl font-light tracking-tight">Interactive Workflow Dashboard</h2>
+          <h2 className="mt-2 text-2xl md:text-3xl font-light tracking-tight">Interactive Workflow Dashboard</h2>
           <p className="mt-2 text-muted-foreground">Select a creator below to coordinate chat logs, review drafts, or explore interactive feature walkthroughs.</p>
         </div>
 
@@ -191,7 +191,7 @@ const ExecutionPage = () => {
             />
           </div>
         ) : (
-          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-0">
             {/* Creator list column */}
             <div className="border-r border-border/15 flex flex-col bg-neutral-50/50">
               <div className="p-4 border-b border-border/15">
@@ -221,9 +221,9 @@ const ExecutionPage = () => {
             </div>
 
             {/* Central Chat & Details Columns (Colspan 2) */}
-            <div className="col-span-2 flex flex-col min-h-[450px]">
+            <div className="md:col-span-2 flex flex-col min-h-[450px]">
               {/* Creator details header */}
-              <div className="p-4 border-b border-border/15 flex items-center justify-between">
+              <div className="p-4 border-b border-border/15 flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
                   <img src={activeCamp.avatar} alt={activeCamp.creator} className="w-9 h-9 rounded-full object-cover" />
                   <div>
@@ -279,10 +279,10 @@ const ExecutionPage = () => {
       </section>
 
       {/* Feature Grid */}
-      <section className="py-24 bg-neutral-50/60 px-6 md:px-8">
+      <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light tracking-tight">Full Lifecycle Campaigning</h2>
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Full Lifecycle Campaigning</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Our Execution suite streamlines contract alignment, draft cycles, and post-scheduling to keep outreach programs moving.
             </p>
@@ -326,8 +326,8 @@ const ExecutionPage = () => {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <section className="py-14 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
               Coordinate Your Campaigns Seamlessly

@@ -60,7 +60,7 @@ const TightAboutUs = () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-36 pb-20 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pt-20 pb-14 md:pt-36 md:pb-20 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -69,23 +69,23 @@ const TightAboutUs = () => {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             About Us
           </p>
-          <h1 className="mt-4 text-5xl md:text-6xl font-light tracking-tight leading-tight max-w-2xl">
+          <h1 className="mt-4 text-3xl md:text-6xl font-light tracking-tight leading-tight max-w-2xl">
             We exist to make
             <br />
             influencer marketing
             <br />
             actually work.
           </h1>
-          <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-xl">
+          <p className="mt-6 text-base md:text-xl text-muted-foreground leading-relaxed max-w-xl">
             Cre8r was founded with a simple belief: authentic creator relationships drive measurable business outcomes. We built the platform to prove it.
           </p>
         </motion.div>
       </section>
 
       {/* Stats */}
-      <section className="bg-primary text-primary-foreground py-16">
+      <section className="bg-primary text-primary-foreground py-10 md:py-16">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
               { value: "4Mn+", label: "Creator Profiles" },
               { value: "200+", label: "Campaigns Delivered" },
@@ -100,8 +100,8 @@ const TightAboutUs = () => {
                 transition={{ delay: i * 0.08, duration: 0.4 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-light">{stat.value}</div>
-                <div className="mt-2 text-sm text-primary-foreground/60">{stat.label}</div>
+                <div className="text-2xl md:text-5xl font-light">{stat.value}</div>
+                <div className="mt-2 text-xs md:text-sm text-primary-foreground/60">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -109,15 +109,15 @@ const TightAboutUs = () => {
       </section>
 
       {/* Story */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <section className="py-16 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-light tracking-tight">Our Story</h2>
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Our Story</h2>
             <div className="mt-6 flex flex-col gap-4 text-muted-foreground leading-relaxed">
               <p>
                 Cre8r started in 2021 when our founders kept seeing the same problem: brands were spending huge budgets on influencer campaigns with zero way to measure what actually worked.
@@ -155,16 +155,16 @@ const TightAboutUs = () => {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-neutral-50/70 px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-neutral-50/70 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-4xl font-light tracking-tight">What we believe in</h2>
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight">What we believe in</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {values.map((val, i) => (
@@ -185,18 +185,18 @@ const TightAboutUs = () => {
       </section>
 
       {/* Leadership */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="py-16 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl font-light tracking-tight">Leadership</h2>
+          <h2 className="text-3xl md:text-4xl font-light tracking-tight">Leadership</h2>
           <p className="mt-3 text-muted-foreground">The team building the future of influencer marketing.</p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {leadership.map((leader, i) => (
             <motion.div
               key={leader.name}
@@ -221,7 +221,7 @@ const TightAboutUs = () => {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-primary-foreground py-24 px-6 md:px-8">
+      <section className="bg-primary text-primary-foreground py-16 md:py-24 px-6 md:px-8">
         <div className="mx-auto max-w-6xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -229,11 +229,11 @@ const TightAboutUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-light">Ready to work with us?</h2>
+            <h2 className="text-3xl md:text-4xl font-light">Ready to work with us?</h2>
             <p className="mt-4 text-primary-foreground/60 max-w-lg mx-auto">
               Whether you're a brand looking to scale or a creator looking to grow — Cre8r is built for you.
             </p>
-            <div className="flex items-center justify-center gap-4 mt-10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
               <Button
                 variant="ghost"
                 size="lg"

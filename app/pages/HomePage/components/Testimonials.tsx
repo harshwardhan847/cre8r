@@ -78,13 +78,13 @@ const TestimonialCard = ({
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-neutral-50/60">
+    <section className="py-12 md:py-24 bg-neutral-50/60">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-3">
             Credibility
           </p>
-          <h2 className="text-4xl font-light tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-light tracking-tight">
             Case-study previews
           </h2>
           <p className="mt-3 text-sm text-muted-foreground">
@@ -107,9 +107,9 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05, duration: 0.4 }}
-              className={`p-8 rounded-xl bg-white border border-neutral-100 border-t-4 ${caseStudies[2].topBorder} shadow-md flex flex-col gap-4`}
+              className={`p-6 md:p-8 rounded-xl bg-white border border-neutral-100 border-t-4 ${caseStudies[2].topBorder} shadow-md flex flex-col gap-4`}
             >
-              <span className="text-5xl text-neutral-200 font-serif leading-none select-none">
+              <span className="text-4xl md:text-5xl text-neutral-200 font-serif leading-none select-none">
                 &ldquo;
               </span>
               <p className="text-base text-foreground leading-relaxed -mt-2">

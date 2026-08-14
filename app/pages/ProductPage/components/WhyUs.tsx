@@ -116,7 +116,7 @@ const WhyUs = () => {
 
         <div className="mt-16 w-full">
           <motion.p
-            className="text-center text-lg mb-12 mt-24 text-primary-foreground/70"
+            className="text-center text-lg mb-12 mt-12 md:mt-24 text-primary-foreground/70"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}

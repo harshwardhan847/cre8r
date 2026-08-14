@@ -4,9 +4,9 @@ type Props = {};
 
 const BrandsTc = (props: Props) => {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 pt-32">
-      <header className="mb-14 border-b border-stone-200 pb-10">
-        <h1 className="text-5xl text-stone-900 leading-tight mb-4">
+    <div className="max-w-3xl mx-auto px-6 py-10 md:py-16 pt-24 md:pt-32">
+      <header className="mb-10 md:mb-14 border-b border-stone-200 pb-8 md:pb-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl text-stone-900 leading-tight mb-4">
           Terms & Conditions - Brands
         </h1>
       </header>

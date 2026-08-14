@@ -7,6 +7,7 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 import { Button } from "~/components/ui/button";
+import { useIsMobile } from "~/lib/use-is-mobile";
 
 type PayoutCard = {
   title: string;
@@ -99,6 +100,7 @@ const cards: PayoutCard[] = [
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -113,7 +115,7 @@ const Hero = () => {
     <section className="">
       <div
         ref={heroRef}
-        className="relative mx-auto min-h-215 w-full max-w-7xl px-6 sm:px-10 md:min-h-screen lg:px-16"
+        className="relative mx-auto min-h-0 w-full max-w-7xl px-6 sm:min-h-215 sm:px-10 md:min-h-screen lg:px-16"
       >
         <motion.div
           className="relative z-20 mx-auto flex max-w-162.5 flex-col items-center pt-28 text-center md:pt-48"
@@ -140,16 +142,46 @@ const Hero = () => {
           >
             Request a call back
           </Button>
+
+          {/* Mobile-only static replacement for the floating parallax stat
+              cards below — same key numbers, no scroll-linked transforms. */}
+          <div className="mt-10 grid w-full grid-cols-3 gap-3 md:hidden">
+            {cards
+              .filter((card) => !card.hiddenOnMobile)
+              .map((card) => {
+                const borderClass =
+                  card.bgClass.match(/border-\S+-400/)?.[0] ??
+                  "border-rose-400";
+                return (
+                  <div
+                    key={card.title}
+                    className={`flex flex-col items-center justify-center gap-1 rounded-2xl border-t-4 bg-white/80 p-3 text-center shadow-sm backdrop-blur-sm ${borderClass}`}
+                  >
+                    <p className="text-base font-bold leading-none text-foreground">
+                      {card.title}
+                    </p>
+                    <p className="mt-1 text-[10px] font-medium uppercase text-foreground/60">
+                      {card.label}
+                    </p>
+                  </div>
+                );
+              })}
+          </div>
         </motion.div>
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-195 origin-top scale-90 sm:scale-95 lg:scale-100">
-          {cards.map((card) => (
-            <PayoutMotionCard
-              key={card.title}
-              card={card}
-              scrollYProgress={smoothProgress}
-            />
-          ))}
-        </div>
+        {/* Decorative floating stat cards — desktop/tablet only. Skipped
+            entirely on mobile so the per-card scroll-linked transforms never
+            mount; `hidden md:block` also hides them pre-hydration. */}
+        {!isMobile && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-195 origin-top scale-95 md:block lg:scale-100">
+            {cards.map((card) => (
+              <PayoutMotionCard
+                key={card.title}
+                card={card}
+                scrollYProgress={smoothProgress}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <Stats />
     </section>
@@ -204,7 +236,7 @@ const PayoutMotionCard = ({
 
 const Stats = () => {
   return (
-    <section className="w-full py-24">
+    <section className="w-full py-12 md:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <motion.div
           className="flex flex-col items-center text-center"
@@ -214,7 +246,7 @@ const Stats = () => {
           viewport={{ once: true, amount: 0.6 }}
         >
           <motion.h2
-            className="text-7xl sm:text-8xl md:text-9xl font-light font-sans tracking-tight text-foreground"
+            className="text-6xl sm:text-8xl md:text-9xl font-light font-sans tracking-tight text-foreground"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >

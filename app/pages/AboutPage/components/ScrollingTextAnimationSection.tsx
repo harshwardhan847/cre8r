@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { cn } from "~/lib/utils";
+import { useIsMobile } from "~/lib/use-is-mobile";
 
 type TextBlock = {
   id: string;
@@ -37,8 +38,15 @@ const ScrollingTextAnimationSection = () => {
   const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
   const buttonRef = useRef<HTMLDivElement>(null);
   const [focusedIndex, setFocusedIndex] = useState<number | "button" | null>(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    // Skip the scroll-position tracking on mobile — it recalculates
+    // getBoundingClientRect for every block on every scroll frame, which is
+    // unnecessary jank on small screens. Mobile renders all text at full
+    // opacity instead (see isMobile check below).
+    if (isMobile) return;
+
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -80,18 +88,18 @@ const ScrollingTextAnimationSection = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div
       ref={containerRef}
-      className="w-full py-32 md:py-48"
+      className="w-full py-16 md:py-48"
       style={{ minHeight: "40vh" }}
     >
       <div className="sticky top-0 h-[40vh] flex flex-col items-center justify-center px-4">
-        <div className="max-w-2xl mx-auto space-y-24">
+        <div className="max-w-2xl mx-auto space-y-10 md:space-y-24">
           {textBlocks.map((block, index) => {
-            const isHighlighted = focusedIndex === index;
+            const isHighlighted = isMobile || focusedIndex === index;
 
             return (
               <motion.div
@@ -105,7 +113,7 @@ const ScrollingTextAnimationSection = () => {
               >
                 <p
                   className={cn(
-                    "text-2xl md:text-3xl font-light transition-colors leading-relaxed text-foreground",
+                    "text-lg sm:text-2xl md:text-3xl font-light transition-colors leading-relaxed text-foreground",
                   )}
                 >
                   {block.content}
@@ -116,9 +124,9 @@ const ScrollingTextAnimationSection = () => {
 
           <motion.div
             ref={buttonRef}
-            animate={{ opacity: focusedIndex === "button" ? 1 : 0.25 }}
+            animate={{ opacity: isMobile || focusedIndex === "button" ? 1 : 0.25 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="flex justify-center pt-8 -mt-24"
+            className="flex justify-center pt-8 -mt-10 md:-mt-24"
           >
             <motion.button
               className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary-hover transition-colors"

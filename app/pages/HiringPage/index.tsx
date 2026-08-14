@@ -60,7 +60,7 @@ const HiringPage = () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-36 pb-20 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -70,13 +70,13 @@ const HiringPage = () => {
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
             Careers at Cre8r
           </p>
-          <h1 className="mt-4 text-5xl md:text-6xl font-light tracking-tight leading-tight">
+          <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-tight">
             Join Our Mission
           </h1>
-          <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-xl">
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
             We're building the future of end-to-end influencer marketing. If you're passionate about the creator economy, data, and building scalable products, we want to hear from you.
           </p>
-          <div className="flex items-center gap-6 mt-8 pt-8 border-t border-border/20">
+          <div className="flex items-center gap-4 sm:gap-6 mt-8 pt-8 border-t border-border/20">
             <div>
               <div className="text-2xl font-light">{openPositions.length}</div>
               <div className="text-xs text-muted-foreground">Open Positions</div>
@@ -96,16 +96,16 @@ const HiringPage = () => {
       </section>
 
       {/* Open Positions */}
-      <section className="py-24 bg-neutral-50/70 px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-neutral-50/70 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-12"
+            className="mb-8 md:mb-12"
           >
-            <h2 className="text-4xl font-light tracking-tight">Open Positions</h2>
+            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Open Positions</h2>
             <p className="mt-3 text-muted-foreground max-w-lg">
               All roles include competitive compensation, equity, and the opportunity to shape a fast-growing platform.
             </p>
@@ -120,7 +120,7 @@ const HiringPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 whileHover={{ y: -2 }}
-                className="rounded-2xl border border-border/20 bg-white p-7 transition-all hover:shadow-md"
+                className="rounded-2xl border border-border/20 bg-white p-5 md:p-7 transition-all hover:shadow-md"
               >
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                   <div className="flex-1">
@@ -163,14 +163,14 @@ const HiringPage = () => {
       </section>
 
       {/* Perks */}
-      <section className="py-24 bg-primary text-primary-foreground px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-light text-center mb-16"
+            className="text-3xl sm:text-4xl font-light text-center mb-10 md:mb-16"
           >
             Why you'll love working here
           </motion.h2>
@@ -182,7 +182,7 @@ const HiringPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
-                className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-6 hover:bg-primary-foreground/10 transition-colors"
+                className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-5 md:p-6 hover:bg-primary-foreground/10 transition-colors"
               >
                 <h3 className="text-lg font-medium text-primary-foreground">{perk.title}</h3>
                 <p className="text-sm text-primary-foreground/60 mt-2 leading-relaxed">{perk.desc}</p>
@@ -193,7 +193,7 @@ const HiringPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl text-center">
+      <section className="py-16 md:py-24 px-6 md:px-8 mx-auto max-w-6xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,11 +201,11 @@ const HiringPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto"
         >
-          <h2 className="text-4xl font-light tracking-tight">Don't see the right role?</h2>
+          <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Don't see the right role?</h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             We're always open to exceptional talent. Send us your profile and tell us how you'd contribute to the team.
           </p>
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
             <Button size="lg" asChild>
               <a href={`mailto:${CONSTANTS.CONTACT_EMAIL_BRANDS}`}>
                 Send Your Profile

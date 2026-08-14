@@ -39,7 +39,7 @@ const Hero = (_props: Props) => {
       <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-linear-to-b from-transparent via-foreground/12 to-transparent" />
 
       <motion.div
-        className="absolute h-[520px] w-[520px] rounded-full border border-foreground/8 sm:h-[640px] sm:w-[640px]"
+        className="absolute h-[280px] w-[280px] rounded-full border border-foreground/8 sm:h-[520px] sm:w-[520px] md:h-[640px] md:w-[640px]"
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1, rotate: 360 }}
         transition={{
@@ -49,7 +49,7 @@ const Hero = (_props: Props) => {
         }}
       />
       <motion.div
-        className="absolute h-[340px] w-[340px] rounded-full border border-dashed border-foreground/10 sm:h-[460px] sm:w-[460px]"
+        className="absolute h-[190px] w-[190px] rounded-full border border-dashed border-foreground/10 sm:h-[340px] sm:w-[340px] md:h-[460px] md:w-[460px]"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1, rotate: -360 }}
         transition={{
@@ -110,15 +110,34 @@ const Hero = (_props: Props) => {
         transition={{ duration: 0.65, ease: "easeOut" }}
       >
         <h2 className="text-lg font-light">About Us</h2>
-        <h1 className="text-5xl font-light leading-tight text-center sm:text-6xl">
+        <h1 className="text-3xl font-light leading-tight text-center sm:text-5xl md:text-6xl">
           Reimagining Influencer Marketing
           <br />
           One campaign at a time
         </h1>
-        <p className="max-w-lg text-center text-lg font-light text-muted-foreground">
+        <p className="max-w-lg text-center text-base font-light text-muted-foreground sm:text-lg">
           From concept to scale, we help brands discover top influencers, design
           impactful campaigns, and grow their reach effortlessly.
         </p>
+
+        {/* Mobile-only static stats — the parallax proof cards above are
+            hidden below sm, so this keeps the same content visible without
+            the absolute-positioned/floating motion effects. */}
+        <div className="mt-4 grid w-full max-w-sm grid-cols-2 gap-3 sm:hidden">
+          {proofItems.map((item) => (
+            <div
+              key={item.value}
+              className="rounded-xl border border-border/10 bg-white/75 p-3 text-center shadow-sm backdrop-blur-sm"
+            >
+              <p className="text-xl font-light leading-none text-foreground">
+                {item.value}
+              </p>
+              <p className="mt-1.5 text-xs font-light leading-tight text-muted-foreground">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );

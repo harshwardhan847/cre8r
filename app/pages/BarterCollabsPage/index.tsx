@@ -52,8 +52,8 @@ const BarterCollabsPage = () => {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="pt-36 pb-20 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -62,15 +62,15 @@ const BarterCollabsPage = () => {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               Barter Collaborations
             </p>
-            <h1 className="mt-4 text-5xl md:text-6xl font-light tracking-tight leading-tight">
+            <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-tight">
               Collaborate for
               <br />
               Products
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-md">
+            <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
               Access exclusive barter collaboration opportunities with premium brands. Create authentic content, grow your portfolio, and get premium products — no cash required to start.
             </p>
-            <div className="flex items-center gap-4 mt-8">
+            <div className="flex flex-wrap items-center gap-4 mt-8">
               <Button size="lg" asChild>
                 <a href={CONSTANTS.CREATOR_FORM_URL} target="_blank" rel="noopener noreferrer">
                   Apply as Creator
@@ -88,12 +88,12 @@ const BarterCollabsPage = () => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-8 flex flex-col gap-6"
+            className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6 md:p-8 flex flex-col gap-6"
           >
             <h3 className="text-lg font-medium">Program at a glance</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
               {requirements.map((req) => (
-                <div key={req.label} className="p-4 rounded-xl bg-neutral-50/70 shadow-xs">
+                <div key={req.label} className="p-3 md:p-4 rounded-xl bg-neutral-50/70 shadow-xs">
                   <div className="text-xs text-muted-foreground mb-1">{req.label}</div>
                   <div className="text-sm font-medium">{req.value}</div>
                 </div>
@@ -104,16 +104,16 @@ const BarterCollabsPage = () => {
       </section>
 
       {/* Collab Types */}
-      <section className="py-24 bg-neutral-50/70 px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-neutral-50/70 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-4xl font-light tracking-tight">Types of Collabs</h2>
+            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Types of Collabs</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Choose the collab format that works best for your content style and audience.
             </p>
@@ -127,7 +127,7 @@ const BarterCollabsPage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.4 }}
                 whileHover={{ y: -3 }}
-                className="rounded-2xl bg-white p-7 flex flex-col gap-4 shadow-sm hover:shadow-md transition-all"
+                className="rounded-2xl bg-white p-5 md:p-7 flex flex-col gap-4 shadow-sm hover:shadow-md transition-all"
               >
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${type.colorClass}`}>
                   <type.icon className="w-5 h-5" />
@@ -150,14 +150,14 @@ const BarterCollabsPage = () => {
       </section>
 
       {/* Brands */}
-      <section className="py-24 bg-primary text-primary-foreground px-6 md:px-8">
+      <section className="py-16 md:py-24 bg-primary text-primary-foreground px-6 md:px-8">
         <div className="mx-auto max-w-6xl text-center">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-light mb-4"
+            className="text-3xl sm:text-4xl font-light mb-4"
           >
             Brands actively seeking barter creators
           </motion.h2>

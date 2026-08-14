@@ -85,7 +85,7 @@ const DiscoveryPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="pb-16 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pb-10 md:pb-16 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -95,14 +95,14 @@ const DiscoveryPage = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Discovery Module
           </div>
-          <h1 className="text-5xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
-            Pinpoint the Perfect <br />
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+            Pinpoint the Perfect <br className="hidden sm:block" />
             Creators in Seconds
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Stop guessing. Search across our pre-vetted index of 4.1Mn+ global creators. Refine by niche, audience location, engagement rate, and verified credibility scores to maximize your match rate.
           </p>
-          <div className="flex items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
               <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 Book a Walkthrough
@@ -117,16 +117,16 @@ const DiscoveryPage = () => {
       </section>
 
       {/* Interactive Tool Section */}
-      <section className="py-16 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+      <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="text-center mb-8 md:mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
-          <h2 className="mt-2 text-3xl font-light tracking-tight">Test-drive the Filter Engine</h2>
+          <h2 className="mt-2 text-2xl md:text-3xl font-light tracking-tight">Test-drive the Filter Engine</h2>
           <p className="mt-2 text-muted-foreground">Adjust filters or watch an interactive walkthrough of our Discovery Module.</p>
         </div>
 
         {/* Demo Mode Switcher */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex rounded-xl p-1 bg-neutral-100 border border-neutral-200/50">
+          <div className="inline-flex flex-wrap justify-center gap-1 rounded-xl p-1 bg-neutral-100 border border-neutral-200/50">
             <button
               onClick={() => setDemoMode("sandbox")}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${demoMode === "sandbox"
@@ -258,10 +258,10 @@ const DiscoveryPage = () => {
       </section>
 
       {/* Feature Grid */}
-      <section className="py-24 bg-neutral-50/60 px-6 md:px-8">
+      <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light tracking-tight">Engineered for Precision</h2>
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Engineered for Precision</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Our Discovery features enable brands to access clean, accurate datasets and bypass inflated bot accounts.
             </p>
@@ -305,8 +305,8 @@ const DiscoveryPage = () => {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <section className="py-14 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
               Unlock the Discovery Suite

@@ -6,7 +6,7 @@ const Cta = () => {
     <section className="py-10 sm:py-14">
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-12">
         <motion.div
-          className="relative overflow-hidden rounded-2xl bg-white shadow-sm px-6 py-20 text-center sm:rounded-3xl sm:py-24 lg:py-28"
+          className="relative overflow-hidden rounded-2xl bg-white shadow-sm px-6 py-14 text-center sm:rounded-3xl sm:py-24 lg:py-28"
           initial={{ opacity: 0, y: 24, filter: "blur(0px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -14,7 +14,7 @@ const Cta = () => {
         >
           <div className="mx-auto max-w-4xl">
             <motion.h2
-              className="text-5xl font-medium uppercase leading-none tracking-wide text-foreground sm:text-6xl md:text-7xl lg:text-7xl"
+              className="text-3xl font-medium uppercase leading-none tracking-wide text-foreground sm:text-6xl md:text-7xl lg:text-7xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.1 }}
@@ -23,7 +23,7 @@ const Cta = () => {
               Scale influencer
             </motion.h2>
             <motion.p
-              className="mt-2 text-5xl font-medium uppercase leading-none tracking-wide text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-400 to-blue-400 sm:text-6xl md:text-7xl lg:text-7xl"
+              className="mt-2 text-3xl font-medium uppercase leading-none tracking-wide text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-400 to-blue-400 sm:text-6xl md:text-7xl lg:text-7xl"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.16 }}

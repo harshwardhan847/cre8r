@@ -37,22 +37,22 @@ const VideoExample = (props: Props) => {
         scale: scale,
       }}
       ref={ref}
-      className="max-w-7xl w-full p-6 mt-24 rounded-2xl relative backdrop-blur-md bg-white/10 border border-white/20 shadow-lg overflow-hidden"
+      className="max-w-7xl w-full p-3 md:p-6 mt-12 md:mt-24 rounded-2xl relative backdrop-blur-md bg-white/10 border border-white/20 shadow-lg overflow-hidden"
     >
       {/* Edge gradient overlays for smooth fade out */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white/10 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white/10 to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-10 md:w-24 bg-linear-to-r from-white/10 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-10 md:w-24 bg-linear-to-l from-white/10 to-transparent z-10 pointer-events-none" />
 
       <div className="w-full overflow-hidden">
         <motion.div
-          className="flex gap-6 px-4"
+          className="flex gap-3 md:gap-6 px-2 md:px-4"
           animate={{ x: [0, -2160] }} // 10 cards * (192px width + 24px gap) = 2160px
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         >
           {[...videos, ...videos].map((video, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-48 rounded-xl overflow-hidden bg-neutral-900 aspect-9/16 relative shadow-md group/card "
+              className="flex-shrink-0 w-32 md:w-48 rounded-xl overflow-hidden bg-neutral-900 aspect-9/16 relative shadow-md group/card "
             >
               <iframe
                 width="560"

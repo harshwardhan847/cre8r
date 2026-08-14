@@ -158,14 +158,14 @@ export default function PrivacyPolicy() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased pt-32">
+    <div className="min-h-screen bg-stone-50 text-stone-800 antialiased pt-24 md:pt-32">
       {/* Page Header */}
       <header className="border-b border-stone-200 bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-10">
+        <div className="max-w-6xl mx-auto px-6 py-8 md:py-10">
           <p className="text-xs font-semibold tracking-widest uppercase text-amber-600 mb-3">
             Grunmech Technologies Private Limited
           </p>
-          <h1 className="text-5xl font-serif text-stone-900 leading-tight mb-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-stone-900 leading-tight mb-2">
             Privacy Policy
           </h1>
           <p className="text-sm text-stone-500">
@@ -177,10 +177,10 @@ export default function PrivacyPolicy() {
       </header>
 
       {/* Body */}
-      <div className="max-w-6xl mx-auto px-6 py-14 flex gap-12 items-start">
+      <div className="max-w-6xl mx-auto px-6 py-10 md:py-14 flex gap-12 items-start">
         <TableOfContents active={activeSection} onSelect={scrollTo} />
 
-        <main className="flex-1 space-y-12 min-w-0">
+        <main className="flex-1 space-y-10 md:space-y-12 min-w-0">
           {/* Copyright Notice */}
           <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-xs leading-relaxed text-amber-800">
             <strong>PLEASE READ THIS INFLUENCER AGREEMENT CAREFULLY.</strong>

@@ -57,7 +57,7 @@ const Positives = (props: Props) => {
           ))}
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:mt-20 md:grid-cols-3 md:items-start">
           <div className="flex items-center gap-3 md:col-span-1 md:justify-center">
             <button
               type="button"

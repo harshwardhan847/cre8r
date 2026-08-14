@@ -97,9 +97,10 @@ const FounderMessage = () => {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-260">
-        {/* Decoration Icon */}
+        {/* Decoration Icon — purely decorative, hidden on mobile to avoid
+            overlapping the video card on small screens. */}
         <motion.div
-          className="absolute right-8 top-32 md:right-16"
+          className="absolute right-8 top-32 hidden md:right-16 md:block"
           initial={{ opacity: 0, scale: 0.8, rotate: -20 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           viewport={{ once: true, amount: 0.5 }}

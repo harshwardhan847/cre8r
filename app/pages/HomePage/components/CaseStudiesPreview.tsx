@@ -23,31 +23,31 @@ const caseStudies = [
 
 const CaseStudiesPreview = () => {
   return (
-    <div className="w-full py-24 bg-background flex flex-col items-center justify-center">
-      <div className="container px-4 md:px-8 mx-auto flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+    <div className="w-full py-12 md:py-24 bg-background flex flex-col items-center justify-center">
+      <div className="container px-4 md:px-8 mx-auto flex flex-col gap-6 md:gap-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <h2 className="text-4xl font-medium tracking-tight text-foreground">Proven Results</h2>
-            <p className="text-muted-foreground mt-2 text-lg">See how brands are scaling acquisition and ROI with us.</p>
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground">Proven Results</h2>
+            <p className="text-muted-foreground mt-2 text-base md:text-lg">See how brands are scaling acquisition and ROI with us.</p>
           </div>
           <Button variant="outline" size="lg" asChild>
             <Link to="/case-studies">View All Case Studies</Link>
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-4 md:mt-8">
           {caseStudies.map((study) => (
             <div key={study.id} className="group relative rounded-2xl overflow-hidden shadow bg-card hover:shadow-xl transition-all duration-300">
               <div className="aspect-video w-full bg-muted overflow-hidden">
-                <div className="w-full h-full bg-neutral-200 animate-pulse flex items-center justify-center text-muted-foreground">
+                <div className="w-full h-full bg-neutral-200 animate-pulse flex items-center justify-center text-muted-foreground text-sm text-center px-4">
                   [Case Study Image Placeholder]
                 </div>
               </div>
-              <div className="p-8 flex flex-col gap-4">
-                <h3 className="text-2xl font-semibold">{study.brand}</h3>
-                <p className="text-muted-foreground">{study.description}</p>
-                <div className="mt-4 flex flex-col">
-                  <span className="text-4xl font-bold text-primary">{study.metric}</span>
+              <div className="p-5 md:p-8 flex flex-col gap-3 md:gap-4">
+                <h3 className="text-xl md:text-2xl font-semibold">{study.brand}</h3>
+                <p className="text-muted-foreground text-sm md:text-base">{study.description}</p>
+                <div className="mt-2 md:mt-4 flex flex-col">
+                  <span className="text-3xl md:text-4xl font-bold text-primary">{study.metric}</span>
                   <span className="text-sm font-medium uppercase tracking-wider text-muted-foreground">{study.metricLabel}</span>
                 </div>
               </div>

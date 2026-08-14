@@ -173,9 +173,11 @@ const matchBrands = [
 
 const MatchVisual = () => {
   return (
-    <div className="relative flex h-80 items-center justify-center overflow-hidden rounded-2xl bg-card/60 p-6">
+    <div className="relative flex h-80 flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl bg-card/60 p-6 md:flex-row md:gap-0">
+      {/* Connector lines only make sense alongside the floating desktop
+          badges below — hidden on mobile along with them. */}
       <svg
-        className="absolute inset-0 size-full"
+        className="hidden md:block absolute inset-0 size-full"
         viewBox="0 0 400 320"
         fill="none"
       >
@@ -206,11 +208,14 @@ const MatchVisual = () => {
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="z-10 flex size-16 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg"
+        className="z-10 flex size-16 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg"
       >
         <Target className="size-7" />
       </motion.div>
 
+      {/* Desktop: floating badges positioned around the target icon.
+          On a 375px viewport these overlap each other, so they're hidden
+          in favor of the static wrapped list below. */}
       {matchBrands.map((b, i) => (
         <motion.div
           key={b.name}
@@ -218,7 +223,7 @@ const MatchVisual = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.35 + i * 0.15 }}
-          className={`absolute flex items-center gap-2 rounded-xl border border-border/10 bg-card px-3 py-2 shadow-sm ${b.position}`}
+          className={`hidden items-center gap-2 rounded-xl border border-border/10 bg-card px-3 py-2 shadow-sm md:absolute md:flex ${b.position}`}
         >
           <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-orange-100 text-[10px] font-semibold text-orange-700">
             {b.name.charAt(0)}
@@ -231,22 +236,45 @@ const MatchVisual = () => {
           </span>
         </motion.div>
       ))}
+
+      {/* Mobile-only static replacement — same info, no absolute
+          positioning/parallax so nothing overlaps on narrow screens. */}
+      <div className="flex flex-wrap items-center justify-center gap-2 md:hidden">
+        {matchBrands.map((b) => (
+          <div
+            key={b.name}
+            className="flex items-center gap-2 rounded-xl border border-border/10 bg-card px-3 py-2 shadow-sm"
+          >
+            <span className="flex size-6 shrink-0 items-center justify-center rounded-lg bg-orange-100 text-[10px] font-semibold text-orange-700">
+              {b.name.charAt(0)}
+            </span>
+            <span className="text-xs font-medium text-foreground">
+              {b.name}
+            </span>
+            <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-700">
+              {b.match}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
 const CollabVisual = () => {
   return (
-    <div className="relative flex h-80 items-center justify-center rounded-2xl bg-card/60 p-6">
-      <div className="absolute h-56 w-72 -rotate-6 rounded-2xl border border-border/10 bg-card/70 shadow-sm" />
-      <div className="absolute h-56 w-72 rotate-3 rounded-2xl border border-border/10 bg-card/90 shadow-sm" />
+    <div className="relative flex h-80 items-center justify-center overflow-hidden rounded-2xl bg-card/60 p-6">
+      {/* Decorative offset background cards — desktop only; their fixed
+          w-72 would otherwise bleed past a 375px viewport. */}
+      <div className="hidden md:block absolute h-56 w-72 -rotate-6 rounded-2xl border border-border/10 bg-card/70 shadow-sm" />
+      <div className="hidden md:block absolute h-56 w-72 rotate-3 rounded-2xl border border-border/10 bg-card/90 shadow-sm" />
 
       <motion.div
         initial={{ opacity: 0, y: 20, rotate: -4 }}
         whileInView={{ opacity: 1, y: 0, rotate: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="relative z-10 flex h-56 w-72 flex-col justify-between rounded-2xl border border-border/10 bg-card p-5 shadow-md"
+        className="relative z-10 flex h-56 w-full max-w-72 flex-col justify-between rounded-2xl border border-border/10 bg-card p-5 shadow-md md:w-72"
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

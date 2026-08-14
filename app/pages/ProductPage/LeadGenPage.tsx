@@ -66,7 +66,7 @@ const LeadGenPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="pb-16 px-6 md:px-8 mx-auto max-w-6xl">
+      <section className="pb-10 md:pb-16 px-6 md:px-8 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -76,14 +76,14 @@ const LeadGenPage = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Lead Generation Module
           </div>
-          <h1 className="text-5xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
-            Scale High-Intent <br />
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+            Scale High-Intent <br className="hidden sm:block" />
             Brand Outreach Pipelines
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Acquire high-intent sponsor partners and manage outbound pipelines. Identify target brands, monitor response metrics, and organize creator sponsorships efficiently in a structured pipeline.
           </p>
-          <div className="flex items-center gap-4 mt-8">
+          <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
               <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 Book a Pipeline Demo
@@ -98,10 +98,10 @@ const LeadGenPage = () => {
       </section>
 
       {/* Interactive Tool Section */}
-      <section className="py-16 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+      <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="text-center mb-8 md:mb-12">
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
-          <h2 className="mt-2 text-3xl font-light tracking-tight">Outreach & Leads Manager</h2>
+          <h2 className="mt-2 text-2xl md:text-3xl font-light tracking-tight">Outreach & Leads Manager</h2>
           <p className="mt-2 text-muted-foreground">Select a brand below to view notes, update statuses, and check estimated campaign budgets, or view interactive walkthroughs.</p>
         </div>
 
@@ -153,7 +153,7 @@ const LeadGenPage = () => {
             />
           </div>
         ) : (
-          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid md:grid-cols-3 gap-0">
+          <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-0">
             {/* Creator list column */}
             <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
               <div className="p-4 border-b border-border/15">
@@ -183,9 +183,9 @@ const LeadGenPage = () => {
             </div>
 
             {/* Details screen (Colspan 2) */}
-            <div className="col-span-2 p-6 md:p-8 flex flex-col justify-between gap-6 min-h-[350px]">
+            <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between gap-6 min-h-[350px]">
               <div>
-                <div className="flex items-center justify-between gap-4 mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
                     <img src={activeLead.avatar} alt={activeLead.brand} className="w-12 h-12 rounded-full object-cover" />
                     <div>
@@ -193,9 +193,9 @@ const LeadGenPage = () => {
                       <p className="text-xs text-muted-foreground">{activeLead.industry}</p>
                     </div>
                   </div>
-                  
+
                   {/* Actions */}
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {["Outreached", "In Discussion", "Closed Deal"].map(st => (
                       <Button 
                         key={st}
@@ -237,10 +237,10 @@ const LeadGenPage = () => {
       </section>
 
       {/* Feature Grid */}
-      <section className="py-24 bg-neutral-50/60 px-6 md:px-8">
+      <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light tracking-tight">Structured Pipeline Operations</h2>
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Structured Pipeline Operations</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Our Lead Generation tools help creator networks and media hubs source brand opportunities efficiently.
             </p>
@@ -284,8 +284,8 @@ const LeadGenPage = () => {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-24 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="rounded-3xl bg-primary text-primary-foreground p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <section className="py-14 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
+        <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
               Unlock Your Outreach Potential

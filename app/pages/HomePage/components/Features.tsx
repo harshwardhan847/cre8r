@@ -50,13 +50,49 @@ const Features = (props: Props) => {
   const [order, setOrder] = React.useState(() => featuresList.map((_, i) => i));
 
   return (
-    <div className="w-full my-24 flex flex-col items-center gap-4 justify-center">
-      <h2 className="text-4xl font-normal text-center">How it works?</h2>
-      <p className="text-center text-muted-foreground text-sm -m-2">
+    <div className="w-full my-12 md:my-24 flex flex-col items-center gap-4 justify-center">
+      <h2 className="text-3xl md:text-4xl font-normal text-center">How it works?</h2>
+      <p className="text-center text-muted-foreground text-sm -m-2 px-4">
         Find your ideal influencers in seconds —
         <br /> no matter the niche, reach or region.
       </p>
-      <div className="h-screen pt-24 w-full">
+
+      {/* Mobile: plain vertical list of steps — no absolute 3D stack,
+          no hover/scroll-driven motion, no simultaneously-mounted iframes. */}
+      <div className="md:hidden w-full flex flex-col gap-4 px-4 mt-4">
+        {featuresList.map((val) => (
+          <div
+            key={val.title}
+            className="w-full bg-white rounded-lg shadow-sm border border-border/10 overflow-hidden flex flex-col"
+          >
+            <div className="w-full aspect-16/10 bg-muted overflow-hidden">
+              <img
+                src={`/${val.image}`}
+                alt={val.title}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="p-4 flex flex-col gap-1.5">
+              <div className="flex items-center justify-between gap-2">
+                <span className="flex items-center gap-2 text-sm font-medium">
+                  <span
+                    className={`rounded-sm border border-border/10 ${val.accent} inline-flex rotate-45 w-3 h-3 aspect-square shrink-0`}
+                  />
+                  {val.title}
+                </span>
+                <span className="text-xs font-medium text-muted-foreground/50 tabular-nums shrink-0">
+                  {val.num}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">{val.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop/tablet: interactive stacked-card version */}
+      <div className="hidden md:block h-screen pt-24 w-full">
         <div className="w-full grid grid-cols-1 relative container md:max-w-6xl mx-auto perspective-distant">
           {featuresList.map((val, featureIdx) => {
             const pos = order.indexOf(featureIdx);

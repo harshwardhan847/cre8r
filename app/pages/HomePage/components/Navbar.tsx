@@ -1,7 +1,7 @@
 import { useScroll, motion, AnimatePresence } from "motion/react";
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router";
-import { ChevronDown, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
 import { cn } from "~/lib/utils";
@@ -13,6 +13,8 @@ const Navbar = (props: Props) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [hoveredProduct, setHoveredProduct] = useState("discovery");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileOpenSection, setMobileOpenSection] = useState<string | null>(null);
   const location = useLocation();
   const leaveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -44,10 +46,33 @@ const Navbar = (props: Props) => {
     };
   }, []);
 
+  // Close the mobile drawer whenever the route changes.
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setMobileOpenSection(null);
+  }, [location.pathname]);
+
+  // Lock body scroll while the mobile drawer is open.
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [isMobileMenuOpen]);
+
+  const mobileSections = [
+    { id: "product", ...CONSTANTS.NAV_CATEGORIES.product },
+    { id: "resources", ...CONSTANTS.NAV_CATEGORIES.resources },
+    { id: "company", ...CONSTANTS.NAV_CATEGORIES.company },
+  ];
+
   return (
     <nav
       className={cn(
-        "flex items-center justify-between px-4 py-2 z-50 transition-all fixed top-4 w-full left-1/2 -translate-x-1/2 ease-in duration-200 md:px-8 md:max-w-350 md:mx-auto",
+        "flex items-center justify-between px-4 py-2 z-50 transition-all fixed top-4 w-[calc(100%-2rem)] left-1/2 -translate-x-1/2 ease-in duration-200 md:w-full md:px-8 md:max-w-350 md:mx-auto",
         isScrolled
           ? "bg-background/95 backdrop-blur-sm py-1 md:px-2 z-50 top-4 -translate-x-1/2 w-min rounded-xl shadow"
           : "bg-transparent",
@@ -65,7 +90,7 @@ const Navbar = (props: Props) => {
             alt="Logo"
             className={cn(
               "w-auto mix-blend-multiply saturate-0 contrast-500 transition-all duration-300 ease-in-out origin-left",
-              isScrolled ? "h-8" : "h-16"
+              isScrolled ? "h-7 md:h-8" : "h-12 md:h-16"
             )}
           />
         </Link>
@@ -333,12 +358,12 @@ const Navbar = (props: Props) => {
       </div>
 
       {/* Right Side */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 md:gap-3">
         <Button
           variant="ghost"
           size="lg"
           className={cn(
-            "font-normal text-sm h-10",
+            "hidden md:inline-flex font-normal text-sm h-10",
             isActive("/influencer")
               ? "text-foreground"
               : "text-muted-foreground hover:text-foreground"
@@ -350,7 +375,7 @@ const Navbar = (props: Props) => {
         <Button
           variant="default"
           size="lg"
-          className="font-light text-sm h-10"
+          className="font-light text-xs md:text-sm h-9 md:h-10 px-3 md:px-5"
         >
           <Link
             to={CONSTANTS.CALENDLY_URL}
@@ -360,7 +385,109 @@ const Navbar = (props: Props) => {
             Book a Demo
           </Link>
         </Button>
+
+        {/* Mobile menu toggle */}
+        <button
+          type="button"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((v) => !v)}
+          className="md:hidden relative z-50 inline-flex items-center justify-center size-9 rounded-lg text-foreground hover:bg-muted transition-colors shrink-0"
+        >
+          {isMobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
       </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 top-0 left-0 z-40 bg-black/40 md:hidden"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-h-[75vh] overflow-y-auto bg-white rounded-2xl shadow-xl border border-border/15 p-3 md:hidden"
+            >
+              <Button
+                variant="ghost"
+                size="lg"
+                className={cn(
+                  "w-full justify-start font-normal h-11 text-base",
+                  isActive("/") ? "text-foreground" : "text-muted-foreground"
+                )}
+                asChild
+              >
+                <Link to="/">Home</Link>
+              </Button>
+
+              {mobileSections.map((section) => (
+                <div key={section.id} className="border-t border-border/10 first:border-t-0">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setMobileOpenSection((cur) => (cur === section.id ? null : section.id))
+                    }
+                    className="w-full flex items-center justify-between px-2.5 h-11 text-base text-foreground font-normal"
+                  >
+                    {section.label}
+                    <ChevronDown
+                      className={cn(
+                        "size-4 text-muted-foreground transition-transform duration-200",
+                        mobileOpenSection === section.id && "rotate-180"
+                      )}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {mobileOpenSection === section.id && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="flex flex-col gap-0.5 pb-2 pl-1">
+                          {section.items.map((item) => (
+                            <Link
+                              key={item.label}
+                              to={item.to + ("hash" in item && item.hash ? item.hash : "")}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="px-2.5 py-2.5 rounded-xl active:bg-neutral-50 transition-colors"
+                            >
+                              <p className="text-sm font-medium text-foreground">{item.label}</p>
+                              <p className="text-xs text-muted-foreground mt-0.5">{item.description}</p>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+
+              <div className="border-t border-border/10 mt-1 pt-2 flex flex-col gap-1">
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="w-full justify-start font-normal h-11 text-base text-muted-foreground"
+                  asChild
+                >
+                  <Link to="/influencer">For Influencers</Link>
+                </Button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

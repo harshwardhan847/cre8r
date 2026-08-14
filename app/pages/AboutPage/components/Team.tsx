@@ -8,6 +8,7 @@ import {
   CarouselItem,
 } from "~/components/ui/carousel";
 import { CONSTANTS } from "~/constants";
+import { useIsMobile } from "~/lib/use-is-mobile";
 
 type TeamMember = {
   name: string;
@@ -40,9 +41,13 @@ const teamMembers: TeamMember[] = [
 
 const Team = () => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
-    if (!carouselApi) {
+    // Skip the autoplay interval on mobile — let people swipe manually
+    // instead of fighting a continuously auto-advancing carousel while
+    // they're trying to scroll the page on a touch device.
+    if (!carouselApi || isMobile) {
       return;
     }
 
@@ -53,7 +58,7 @@ const Team = () => {
     return () => {
       window.clearInterval(intervalId);
     };
-  }, [carouselApi]);
+  }, [carouselApi, isMobile]);
 
   return (
     <motion.section
