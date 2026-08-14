@@ -80,7 +80,7 @@ const Founders = () => {
           </h2>
         </motion.div>
 
-        <div className="mt-10 md:mt-14 flex flex-col xl:flex-row xl:items-end gap-6 md:gap-8 xl:gap-10">
+        <div className="mt-10 md:mt-14 hidden flex flex-col xl:flex-row xl:items-end gap-6 md:gap-8 xl:gap-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-5 flex-1">
             {founders.map((founder, index) => (
               <motion.article

@@ -16,9 +16,9 @@ type TeamMember = {
 };
 
 const teamMembers: TeamMember[] = [
-  // { name: "Gaurav Sharma", avatar: "/team/gaurav_sharma.png" },
-  // { name: "Priya Kumar", avatar: "/team/priya_kumar.png" },
-  // { name: "Riddhi Mehta", avatar: "/team/riddhi_mehta.png" },
+  { name: "Gaurav Sharma", avatar: "/team/gaurav_sharma.png" },
+  { name: "Priya Kumar", avatar: "/team/priya_kumar.png" },
+  { name: "Riddhi Mehta", avatar: "/team/riddhi_mehta.png" },
   { name: "Sangeeta Kushwaha", avatar: "/team/sangeeta_kushwaha.png" },
   { name: "Shyam Panicker", avatar: "/team/shyam_panicker.png" },
   { name: "Maahi Jumnani", avatar: "/team/maahi_jumnani.png" },
