@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { CONSTANTS } from "~/constants";
+import { featureFlags } from "~/featureFlags";
 
 type Props = {};
 
@@ -110,12 +112,23 @@ const CreatorFAQ = (props: Props) => {
             >
               collabs@cre8r.ai
             </a>
-            <a
-              href="https://wa.me/917754900652"
-              className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
-            >
-              WhatsApp: +91 7754900652
-            </a>
+            {featureFlags.enableWhatsApp ? (
+              <a
+                href="https://wa.me/917754900652"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+              >
+                WhatsApp: +91 7754900652
+              </a>
+            ) : (
+              <a
+                href={CONSTANTS.CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+              >
+                Book a Demo
+              </a>
+            )}
           </div>
         </div>
       </div>

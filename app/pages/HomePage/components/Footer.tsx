@@ -35,15 +35,17 @@ const Footer = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link
-              to={CONSTANTS.WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-            >
-              <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
-              Chat on WhatsApp
-            </Link>
+            {featureFlags.enableWhatsApp && (
+              <Link
+                to={CONSTANTS.WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
+              >
+                <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
+                Chat on WhatsApp
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -73,9 +75,11 @@ const Footer = () => {
               <a href={CONSTANTS.MEDIUM_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
                 <img src="/icons/medium.png" alt="Medium" className="w-4 h-4" />
               </a>
-              <a href={CONSTANTS.WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
-                <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
-              </a>
+              {featureFlags.enableWhatsApp && (
+                <a href={CONSTANTS.WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
+                  <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
+                </a>
+              )}
             </div>
           </div>
 

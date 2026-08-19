@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowRight, Calendar, Video, Users, Zap } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
+import { featureFlags } from "~/featureFlags";
 
 const demoModules = [
   {
@@ -71,11 +72,13 @@ const DemoPage = () => {
                   Book a Live Demo
                 </Link>
               </Button>
-              <Button variant="ghost" size="lg" asChild>
-                <Link to={CONSTANTS.WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                  Chat on WhatsApp
-                </Link>
-              </Button>
+              {featureFlags.enableWhatsApp && (
+                <Button variant="ghost" size="lg" asChild>
+                  <Link to={CONSTANTS.WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                    Chat on WhatsApp
+                  </Link>
+                </Button>
+              )}
             </div>
           </motion.div>
 
