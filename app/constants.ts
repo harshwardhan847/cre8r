@@ -2,7 +2,10 @@ import { featureFlags } from "./featureFlags";
 
 export const CONSTANTS = {
   CALENDLY_URL: "https://calendly.com/gs_cre8r/30min",
-  CREATOR_FORM_URL: "https://forms.google.com/creator-form-placeholder",
+  // Creator onboarding lives on the Ylytic platform — every "sign up / apply as
+  // a creator" CTA and the legacy /influencer-sign-up URL point here.
+  CREATOR_SIGNUP_URL: "https://ylytic.com/signUp/creator",
+  CREATOR_FORM_URL: "https://ylytic.com/signUp/creator",
   SUPADEMO: {
     DISCOVERY: "https://app.supademo.com/embed/cmhbmkvoz0jr1fatigxf20w6o?embed_v=2&utm_source=embed",
     CAMPAIGN_CREATION: "https://app.supademo.com/embed/cmhd8z96e2ke7fatisiomh2yr?embed_v=2&utm_source=embed",
@@ -24,6 +27,111 @@ export const CONSTANTS = {
   CONTACT_EMAIL_CREATORS: "collabs@cre8r.ai",
   CONTACT_NUMBER_BRANDS: "+91 8800 411 522",
   CONTACT_NUMBER_CREATORS: "+91 7754900652",
+
+  OFFICES: [
+    {
+      city: "Gurgaon",
+      label: "Corporate Office",
+      address: "6th Floor, Good Earth Business Bay 1, Gurgaon — 122001",
+    },
+    {
+      city: "Mumbai",
+      label: "Regional Office",
+      address: "Quest CoWorks, 5th Floor, Andheri East, Mumbai — 400093",
+    },
+  ],
+
+  FAQS: {
+    brands: [
+      {
+        question: "How long does it take for a campaign to go live?",
+        answer:
+          "If we have to capture the entire project from finalizing the influencer pool, it typically takes 2-4 weeks from influencer discovery, selection, payments, and product shipping to the campaign going live.",
+      },
+      {
+        question: "What industries does Cre8r focus on?",
+        answer:
+          "Cre8r primarily works in the beauty, fashion, food, beverage, health, fitness, travel and retail industries.",
+      },
+      {
+        question: "How does Cre8r ensure a high-quality creator network?",
+        answer:
+          "Cre8r's vetting process thoroughly screens and onboards only creators who produce relevant, trustworthy and high-value content.",
+      },
+      {
+        question: "How is Cre8r different from other platforms?",
+        answer:
+          "Cre8r is a data-driven, DIY platform that helps brands discover and collaborate with high-quality influencers. Unlike other subscription-based platforms, Cre8r enables direct brand-influencer interaction, content approval and scheduling — all in one place.",
+      },
+      {
+        question: "What is Cre8r's revenue model?",
+        answer:
+          "For barter campaigns, Cre8r charges a fixed platform fee per influencer. For paid campaigns, the margins are bundled in the influencer pricing.",
+      },
+      {
+        question: "How do brands communicate with influencers?",
+        answer:
+          "All communication happens through the Cre8r platform, eliminating the need for emails or DMs. Brands can provide briefs, and influencers share content for approval.",
+      },
+      {
+        question: "How are products shipped to influencers?",
+        answer:
+          "Cre8r has API integrations with Shiprocket, and brands can track shipments from the platform. Brands bear the shipping cost and a nominal convenience fee.",
+      },
+      {
+        question: "What happens if a brand doesn't like the influencer content?",
+        answer:
+          "Brands can reject content if it doesn't align with their requirements. They get two rounds of iterations with the influencer to provide feedback.",
+      },
+      {
+        question: "Why choose the Cre8r network over a database provider?",
+        answer:
+          "Cre8r offers a curated network of registered influencers who provide authorized data, unlike database providers that use scraped Instagram/YouTube IDs without the influencers' knowledge or consent.",
+      },
+    ],
+    creators: [
+      {
+        question: "How much time do I have to respond to a campaign?",
+        answer:
+          "You have up to 48 hours to decide if you want to participate in a campaign on a first-come, first-served basis. This gives you enough time to review the brand, content requirements, and compensation.",
+      },
+      {
+        question: "Can I choose my own pricing?",
+        answer:
+          "No, Cre8r evaluates various data sets and performance insights to determine optimal pricing for you. This ensures fair compensation based on your audience reach, engagement, and content quality.",
+      },
+      {
+        question: "Is there a registration charge?",
+        answer:
+          "No, your registration at Cre8r is completely free. We're here to provide a platform that helps you escalate your growth as an influencer and earn money for the content you create.",
+      },
+      {
+        question: "What are the requirements to join Cre8r?",
+        answer:
+          "You must be at least 13 years old, have an Instagram or YouTube account with 5,000-100,000 followers/subscribers, and be located in India.",
+      },
+      {
+        question: "Can I search for particular campaigns?",
+        answer:
+          "No, you can't search for particular campaigns. The platform is designed to surface the campaigns that fit your profile, so the right collaborations come to you.",
+      },
+      {
+        question: "How do I get paid?",
+        answer:
+          "Creators receive payments as per the agreed terms. For barter campaigns, you receive products. For paid campaigns, you earn a fee directly into your account.",
+      },
+      {
+        question: "How will I know about new campaign opportunities?",
+        answer:
+          "Cre8r notifies you about new campaign opportunities via phone call and email. You'll receive alerts for campaigns that match your profile and interests.",
+      },
+      {
+        question: "Does Cre8r have a mobile app?",
+        answer:
+          "Cre8r's mobile app is currently in development. Until then, everything works from the web platform on both desktop and mobile.",
+      },
+    ],
+  },
 
   CASE_STUDIES: [
     {
@@ -188,6 +296,11 @@ export const CONSTANTS = {
           }
         ] : []),
         {
+          label: "Blog",
+          description: "Insights on influencer marketing, trends, and ROI.",
+          to: "/blog"
+        },
+        {
           label: "Barter Collabs",
           description: "Access premium product-gifting partnerships.",
           to: "/barter-collabs"
@@ -196,6 +309,11 @@ export const CONSTANTS = {
           label: "Creator Community",
           description: "Network of 4.1Mn+ creators monetizing influence.",
           to: "/creator"
+        },
+        {
+          label: "Creator FAQs",
+          description: "How campaigns, payouts, and eligibility work.",
+          to: "/faq-influencers"
         }
       ]
     },
@@ -206,7 +324,17 @@ export const CONSTANTS = {
         {
           label: "About Us",
           description: "Learn about our mission, values, and team.",
-          to: "/about"
+          to: "/about-us"
+        },
+        {
+          label: "Contact Us",
+          description: "Reach our brand and creator teams directly.",
+          to: "/contact-us"
+        },
+        {
+          label: "Brand FAQs",
+          description: "Timelines, pricing, shipping, and content approvals.",
+          to: "/faq-brands"
         },
         ...(featureFlags.enableCaseStudies ? [
           {

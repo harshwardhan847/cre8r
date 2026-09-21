@@ -5,38 +5,7 @@ import { featureFlags } from "~/featureFlags";
 
 type Props = {};
 
-const faqs = [
-  {
-    question: "How much time do I have to respond to a campaign?",
-    answer:
-      "You have up to 48 hours to decide if you want to participate in a campaign on a first-come, first-served basis. This gives you enough time to review the brand, content requirements, and compensation.",
-  },
-  {
-    question: "Can I choose my own pricing?",
-    answer:
-      "No, Cre8r evaluates various data sets and performance insights to determine optimal pricing for you. This ensures fair compensation based on your audience reach, engagement, and content quality.",
-  },
-  {
-    question: "Is there a registration charge?",
-    answer:
-      "No, your registration at Cre8r is completely free. We're here to provide a platform that helps you escalate your growth as an influencer and earn money for the content you create.",
-  },
-  {
-    question: "What are the requirements to join Cre8r?",
-    answer:
-      "You must be at least 13 years old, have an Instagram or YouTube account with 5,000-100,000 followers/subscribers, and be located in India.",
-  },
-  {
-    question: "How do I get paid?",
-    answer:
-      "Creators receive payments as per the agreed terms. For barter campaigns, you receive products. For paid campaigns, you earn a fee directly into your account.",
-  },
-  {
-    question: "How will I know about new campaign opportunities?",
-    answer:
-      "Cre8r notifies you about new campaign opportunities via phone call and email. You'll receive alerts for campaigns that match your profile and interests.",
-  },
-];
+const faqs = CONSTANTS.FAQS.creators;
 
 const FAQItem = ({
   question,

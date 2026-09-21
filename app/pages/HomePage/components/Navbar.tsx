@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router";
 import { ChevronDown, ChevronRight, ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS } from "~/constants";
+import { featureFlags } from "~/featureFlags";
 import { cn } from "~/lib/utils";
 
 type Props = {};
@@ -62,6 +63,11 @@ const Navbar = (props: Props) => {
       };
     }
   }, [isMobileMenuOpen]);
+
+  // The Resources hub sits behind a feature flag; while it is off the dropdown
+  // trigger would link to a route that is never registered, so fall back to the
+  // blog (the first thing under that menu that always exists).
+  const resourcesHref = featureFlags.enableResources ? "/resources" : "/blog";
 
   const mobileSections = [
     { id: "product", ...CONSTANTS.NAV_CATEGORIES.product },
@@ -211,13 +217,17 @@ const Navbar = (props: Props) => {
             onMouseEnter={() => handleMouseEnter("resources")}
             onMouseLeave={handleMouseLeave}
           >
-            <Link to="/resources">
+            <Link to={resourcesHref}>
               <Button
                 variant="ghost"
                 size="lg"
                 className={cn(
                   "font-normal h-10 text-sm gap-1 relative",
-                  isActive("/resources") || isActive("/barter-collabs") || isActive("/creator")
+                  isActive("/resources") ||
+                    isActive("/blog") ||
+                    isActive("/barter-collabs") ||
+                    isActive("/creator") ||
+                    isActive("/faq-influencers")
                     ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
                     : "text-muted-foreground hover:text-foreground"
                 )}
@@ -286,13 +296,17 @@ const Navbar = (props: Props) => {
             onMouseEnter={() => handleMouseEnter("company")}
             onMouseLeave={handleMouseLeave}
           >
-            <Link to={'/about'}>
+            <Link to="/about-us">
               <Button
                 variant="ghost"
                 size="lg"
                 className={cn(
                   "font-normal h-10 text-sm gap-1 relative",
-                  isActive("/about") || isActive("/case-studies") || isActive("/hiring")
+                  isActive("/about-us") ||
+                    isActive("/contact-us") ||
+                    isActive("/faq-brands") ||
+                    isActive("/case-studies") ||
+                    isActive("/hiring")
                     ? "text-foreground after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-foreground after:rounded-full"
                     : "text-muted-foreground hover:text-foreground"
                 )}

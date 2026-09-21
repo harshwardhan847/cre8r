@@ -91,7 +91,7 @@ const LeadGenPage = () => {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link to="/about">Explore Company</Link>
+              <Link to="/about-us">Explore Company</Link>
             </Button>
           </div>
         </motion.div>

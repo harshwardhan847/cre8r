@@ -90,8 +90,10 @@ const Footer = () => {
               {[
                 { label: "Home", to: "/" },
                 { label: "Product", to: "/product" },
+                { label: "For Influencers", to: "/influencer" },
                 ...(featureFlags.enableCaseStudies ? [{ label: "Case Studies", to: "/case-studies" }] : []),
                 ...(featureFlags.enableResources ? [{ label: "Resources", to: "/resources" }] : []),
+                { label: "Creator Sign Up", to: CONSTANTS.CREATOR_SIGNUP_URL, ext: true },
                 { label: "Book a Demo", to: CONSTANTS.CALENDLY_URL, ext: true },
               ].map((link) => (
                 link.ext ? (
@@ -112,8 +114,12 @@ const Footer = () => {
             <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Company</h3>
             <div className="flex flex-col gap-3">
               {[
-                { label: "About Us", to: "/about" },
+                { label: "About Us", to: "/about-us" },
+                { label: "Contact Us", to: "/contact-us" },
+                { label: "Blog", to: "/blog" },
                 { label: "Barter Collabs", to: "/barter-collabs" },
+                { label: "Brand FAQs", to: "/faq-brands" },
+                { label: "Creator FAQs", to: "/faq-influencers" },
                 { label: "We're Hiring!", to: "/hiring" },
               ].map((link) => (
                 <Link key={link.label} to={link.to} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">

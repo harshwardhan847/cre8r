@@ -1,3 +1,50 @@
 {
+  "redirects": [
+    {
+      "source": "/influencer-sign-up",
+      "destination": "https://ylytic.com/signUp/creator",
+      "statusCode": 301
+    },
+    { "source": "/about", "destination": "/about-us", "statusCode": 301 },
+    { "source": "/contact", "destination": "/contact-us", "statusCode": 301 },
+    { "source": "/blogs", "destination": "/blog", "statusCode": 301 },
+    { "source": "/cre8r-ai-blogs", "destination": "/blog", "statusCode": 301 },
+    { "source": "/post/:slug*", "destination": "/blog", "statusCode": 301 },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy_policy",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-conditions-brand",
+      "destination": "/brands_tc",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-conditions-brands",
+      "destination": "/brands_tc",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-conditions-creator",
+      "destination": "/creators_tc",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-conditions-creators",
+      "destination": "/creators_tc",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-conditions-influencer",
+      "destination": "/creators_tc",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms-conditions-influencers",
+      "destination": "/creators_tc",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }

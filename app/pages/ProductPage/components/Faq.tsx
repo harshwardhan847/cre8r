@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
+import { CONSTANTS } from "~/constants";
 
 type FaqItem = {
   id: number;
@@ -7,44 +8,10 @@ type FaqItem = {
   answer: string;
 };
 
-const faqItems: FaqItem[] = [
-  {
-    id: 1,
-    question: "How long does it take for a campaign to go live?",
-    answer:
-      "If we have to capture the entire project from finalizing the influencer pool, it typically takes 2-4 weeks from influencer discovery, selection, payments, and product shipping to the campaign going live.",
-  },
-  {
-    id: 2,
-    question: "What industries does Cre8r focus on?",
-    answer:
-      "Cre8r primarily works in the beauty, fashion, food, beverage, health, fitness, travel and retail industries.",
-  },
-  {
-    id: 3,
-    question: "How does Cre8r ensure a high-quality creator network?",
-    answer:
-      "Cre8r's vetting process thoroughly screens and onboards only creators who produce relevant, trustworthy and high-value content.",
-  },
-  {
-    id: 4,
-    question: "What is Cre8r's revenue model?",
-    answer:
-      "For barter campaigns, Cre8r charges a fixed platform fee per influencer. For paid campaigns, the margins are bundled in the influencer pricing.",
-  },
-  {
-    id: 5,
-    question: "How do brands communicate with influencers?",
-    answer:
-      "All communication happens through the Cre8r platform, eliminating the need for emails or DMs. Brands can provide briefs, and influencers share content for approval.",
-  },
-  {
-    id: 6,
-    question: "What happens if a brand doesn't like the influencer content?",
-    answer:
-      "Brands can reject content if it doesn't align with their requirements. They get two rounds of iterations with the influencer to provide feedback.",
-  },
-];
+const faqItems: FaqItem[] = CONSTANTS.FAQS.brands.map((faq, i) => ({
+  id: i + 1,
+  ...faq,
+}));
 
 const Faq = () => {
   const [openId, setOpenId] = useState<number>(1);
