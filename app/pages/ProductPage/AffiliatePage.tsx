@@ -194,7 +194,9 @@ const AffiliatePage = () => {
                       onClick={() => setSelectedIdx(idx)}
                       className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
                     >
-                      <img src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full object-cover" />
+                      <img
+          loading="lazy"
+          decoding="async" src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full object-cover" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-semibold truncate">{item.name}</p>
                         <p className="text-xs text-muted-foreground truncate">{item.code} • {item.roi} ROI</p>
@@ -209,9 +211,11 @@ const AffiliatePage = () => {
               <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between gap-8 min-h-[350px]">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
-                    <img src={active.avatar} alt={active.name} className="w-12 h-12 rounded-full object-cover" />
+                    <img
+          loading="lazy"
+          decoding="async" src={active.avatar} alt={active.name} className="w-12 h-12 rounded-full object-cover" />
                     <div>
-                      <h4 className="text-lg font-semibold">{active.name}</h4>
+                      <p className="text-lg font-semibold">{active.name}</p>
                       <p className="text-xs text-muted-foreground">{active.category} Creator</p>
                     </div>
                   </div>

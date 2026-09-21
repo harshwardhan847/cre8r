@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { CONSTANTS } from "~/constants";
 
@@ -74,21 +74,17 @@ const Faq = () => {
                   </motion.span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen ? (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-4 pb-3 pt-4 text-sm leading-relaxed text-foreground/55 sm:text-base">
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
+                {/* Kept in the DOM while collapsed so crawlers read every answer. */}
+                <motion.div
+                  initial={false}
+                  animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? "auto" : 0 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-4 pb-3 pt-4 text-sm leading-relaxed text-foreground/55 sm:text-base">
+                    {item.answer}
+                  </p>
+                </motion.div>
               </motion.div>
             );
           })}

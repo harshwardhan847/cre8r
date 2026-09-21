@@ -1,12 +1,16 @@
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { featureFlags } from "~/featureFlags";
+import { seo } from "~/seo";
 
 export function meta() {
-  return [
-    { title: "Page not found · Cre8r AI" },
-    { name: "robots", content: "noindex" },
-  ];
+  return seo({
+    title: "Page not found",
+    description:
+      "The page you were looking for could not be found on Cre8r.ai.",
+    path: "/404",
+    noindex: true,
+  });
 }
 
 /**

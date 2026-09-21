@@ -207,13 +207,15 @@ const DiscoveryPage = () => {
                       className="p-5 rounded-2xl border border-border/10 bg-neutral-50/30 flex items-start gap-4 hover:shadow-xs transition-all"
                     >
                       <img
+          loading="lazy"
+          decoding="async"
                         src={creator.avatar}
                         alt={creator.name}
                         className="w-12 h-12 rounded-full object-cover border border-border/10"
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5">
-                          <h4 className="font-semibold text-sm truncate">{creator.name}</h4>
+                          <p className="font-semibold text-sm truncate">{creator.name}</p>
                           <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
                         </div>
                         <p className="text-xs text-muted-foreground">{creator.handle}</p>
@@ -248,7 +250,7 @@ const DiscoveryPage = () => {
               ) : (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <Users className="w-12 h-12 text-muted-foreground/30 mb-3" />
-                  <h4 className="text-base font-semibold text-muted-foreground">No creators found</h4>
+                  <p className="text-base font-semibold text-muted-foreground">No creators found</p>
                   <p className="text-xs text-muted-foreground max-w-xs mt-1">Try expanding your filter parameters or search query.</p>
                 </div>
               )}

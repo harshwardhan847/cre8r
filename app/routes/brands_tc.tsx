@@ -1,5 +1,23 @@
 import React from "react";
 
+import { seo, webPageSchema } from "~/seo";
+
+const SEO_DESCRIPTION =
+  "The terms of use governing brand access to the Cre8r platform, operated by Grunmech Technologies Private Limited — accounts, campaigns, payments and liability.";
+
+export function meta() {
+  return seo({
+    title: "Terms & Conditions for Brands",
+    description: SEO_DESCRIPTION,
+    path: "/brands_tc",
+    jsonLd: webPageSchema({
+      name: "Terms & Conditions for Brands",
+      description: SEO_DESCRIPTION,
+      path: "/brands_tc",
+    }),
+  });
+}
+
 type Props = {};
 
 const BrandsTc = (props: Props) => {

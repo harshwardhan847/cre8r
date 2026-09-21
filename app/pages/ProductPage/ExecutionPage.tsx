@@ -204,7 +204,9 @@ const ExecutionPage = () => {
                     onClick={() => setSelectedIdx(idx)}
                     className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-155/30'}`}
                   >
-                    <img src={camp.avatar} alt={camp.creator} className="w-10 h-10 rounded-full object-cover" />
+                    <img
+          loading="lazy"
+          decoding="async" src={camp.avatar} alt={camp.creator} className="w-10 h-10 rounded-full object-cover" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold truncate">{camp.creator}</p>
                       <p className="text-xs text-muted-foreground truncate">{camp.brief}</p>
@@ -225,9 +227,11 @@ const ExecutionPage = () => {
               {/* Creator details header */}
               <div className="p-4 border-b border-border/15 flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
-                  <img src={activeCamp.avatar} alt={activeCamp.creator} className="w-9 h-9 rounded-full object-cover" />
+                  <img
+          loading="lazy"
+          decoding="async" src={activeCamp.avatar} alt={activeCamp.creator} className="w-9 h-9 rounded-full object-cover" />
                   <div>
-                    <h4 className="text-sm font-semibold">{activeCamp.creator}</h4>
+                    <p className="text-sm font-semibold">{activeCamp.creator}</p>
                     <p className="text-xs text-muted-foreground">{activeCamp.handle}</p>
                   </div>
                 </div>

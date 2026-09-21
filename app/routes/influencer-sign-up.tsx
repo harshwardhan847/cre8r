@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { CONSTANTS } from "~/constants";
+import { seo } from "~/seo";
 
 export function meta() {
-  return [
-    { title: "Creator Sign Up · Cre8r AI" },
-    {
-      name: "description",
-      content:
-        "Sign up as a creator on Cre8r and start collaborating with brands.",
-    },
-    { name: "robots", content: "noindex" },
-  ];
+  return seo({
+    title: "Creator Sign Up",
+    description:
+      "Sign up as a creator on Cre8r and start collaborating with brands.",
+    path: "/influencer-sign-up",
+    noindex: true,
+  });
 }
 
 /**

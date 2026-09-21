@@ -93,7 +93,7 @@ const Navbar = (props: Props) => {
         <Link to="/" className="flex items-center justify-center">
           <img
             src="/logo.png"
-            alt="Logo"
+            alt="Cre8r.ai"
             className={cn(
               "w-auto mix-blend-multiply saturate-0 contrast-500 transition-all duration-300 ease-in-out origin-left",
               isScrolled ? "h-7 md:h-8" : "h-12 md:h-16"
@@ -177,9 +177,9 @@ const Navbar = (props: Props) => {
                       return (
                         <>
                           <div>
-                            <h4 className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                            <p className="text-sm font-semibold text-foreground flex items-center gap-1.5">
                               {activeItem.label}
-                            </h4>
+                            </p>
                             <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
                               {activeItem.description}
                             </p>

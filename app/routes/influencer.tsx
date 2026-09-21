@@ -1,11 +1,23 @@
-import type { Route } from "./+types/home";
 import InfluencerPage from "~/pages/InfluencerPage";
+import { seo, webPageSchema, breadcrumbSchema } from "~/seo";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Cre8r AI" },
-    { name: "description", content: "Your AI-powered creative assistant" },
-  ];
+const DESCRIPTION =
+  "Get paid brand collaborations without chasing agencies. Join free with 5,000+ Instagram or YouTube followers in India and get campaigns matched to your profile.";
+
+export function meta() {
+  return seo({
+    title: "Brand Collaborations for Creators",
+    description: DESCRIPTION,
+    path: "/influencer",
+    jsonLd: [
+      webPageSchema({
+        name: "Brand Collaborations for Creators",
+        description: DESCRIPTION,
+        path: "/influencer",
+      }),
+      breadcrumbSchema([{ name: "For Influencers", path: "/influencer" }]),
+    ],
+  });
 }
 
 export default function Influencer() {

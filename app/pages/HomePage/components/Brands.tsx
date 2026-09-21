@@ -38,6 +38,8 @@ const Brands = (props: Props) => {
           <div className="w-full flex flex-wrap items-center justify-center gap-6 px-6">
             {brands.slice(0, 5).map((brand, i) => (
               <img
+          loading="lazy"
+          decoding="async"
                 key={i}
                 src={brand.src}
                 alt={brand.name}
@@ -54,6 +56,8 @@ const Brands = (props: Props) => {
             >
               {brands.map((brand, i) => (
                 <img
+          loading="lazy"
+          decoding="async"
                   key={i}
                   src={brand.src}
                   alt={brand.name}
@@ -68,6 +72,8 @@ const Brands = (props: Props) => {
             >
               {brands.map((brand, i) => (
                 <img
+          loading="lazy"
+          decoding="async"
                   key={i}
                   src={brand.src}
                   alt={brand.name}

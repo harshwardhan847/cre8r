@@ -33,11 +33,18 @@ const FAQItem = ({
           }`}
         />
       </button>
-      {isOpen && (
-        <div className="px-6 pb-5 text-base font-light leading-relaxed text-muted-foreground">
-          {answer}
+      {/* Kept in the DOM while collapsed so crawlers read every answer. */}
+      <div
+        className={`grid transition-[grid-template-rows] duration-250 ease-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-6 pb-5 text-base font-light leading-relaxed text-muted-foreground">
+            {answer}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

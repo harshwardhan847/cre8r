@@ -1,15 +1,22 @@
 import FaqPage from "~/pages/FaqPage";
 import { CONSTANTS } from "~/constants";
+import { seo, faqPageSchema, breadcrumbSchema } from "~/seo";
+
+const DESCRIPTION =
+  "How long creators get to accept a campaign, whether you can set your own rate, who is eligible to join, how payouts work for barter and paid campaigns, and more.";
 
 export function meta() {
-  return [
-    { title: "FAQ - Influencers · Cre8r AI" },
-    {
-      name: "description",
-      content:
-        "Answers for creators on joining Cre8r, campaign response times, pricing, eligibility, and how payouts work.",
-    },
-  ];
+  return seo({
+    title: "Creator FAQs — Campaigns & Payouts",
+    description: DESCRIPTION,
+    path: "/faq-influencers",
+    jsonLd: [
+      faqPageSchema(CONSTANTS.FAQS.creators, "/faq-influencers"),
+      breadcrumbSchema([
+        { name: "Creator FAQs", path: "/faq-influencers" },
+      ]),
+    ],
+  });
 }
 
 export default function FaqInfluencers() {

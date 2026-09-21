@@ -91,6 +91,8 @@ const Positives = (props: Props) => {
           <div className="md:col-span-1 md:justify-self-center">
             <div className="overflow-hidden rounded-xl border border-border/10 bg-card">
               <img
+          loading="lazy"
+          decoding="async"
                 src="https://placehold.co/300x230/png"
                 alt="Customer portrait"
                 className="h-40 w-full object-cover"

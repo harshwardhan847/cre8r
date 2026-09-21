@@ -25,7 +25,9 @@ const WhatsAppButton = ({ dark }: Props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="/icons/whatsapp.png" alt="" className="w-5 h-5 mr-1" />
+            <img
+          loading="lazy"
+          decoding="async" src="/icons/whatsapp.png" alt="" className="w-5 h-5 mr-1" />
             Chat on WhatsApp
           </Link>
         ) : (

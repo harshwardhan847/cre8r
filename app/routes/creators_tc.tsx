@@ -1,5 +1,23 @@
 import React, { useState } from "react";
 
+import { seo, webPageSchema } from "~/seo";
+
+const SEO_DESCRIPTION =
+  "The influencer agreement covering creator participation on Cre8r — campaign acceptance, content ownership, disclosure obligations, payouts and termination.";
+
+export function meta() {
+  return seo({
+    title: "Terms & Conditions for Creators",
+    description: SEO_DESCRIPTION,
+    path: "/creators_tc",
+    jsonLd: webPageSchema({
+      name: "Terms & Conditions for Creators",
+      description: SEO_DESCRIPTION,
+      path: "/creators_tc",
+    }),
+  });
+}
+
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 const SectionHeading = ({

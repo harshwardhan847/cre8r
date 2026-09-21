@@ -123,14 +123,14 @@ const Transform = (props: Props) => {
       ref={containerRef}
       className="min-h-screen bg-primary pt-16 md:pt-24 px-4 flex flex-col items-center gap-6 md:gap-8 justify-start"
     >
-      <h4 className="p-1.5 scale-90 shadow bg-neutral-800 flex border border-neutral-500/20 items-center justify-center gap-2 w-min whitespace-nowrap rounded-xl pr-3 text-[12px] text-primary-foreground font-extralight">
+      <p className="p-1.5 scale-90 shadow bg-neutral-800 flex border border-neutral-500/20 items-center justify-center gap-2 w-min whitespace-nowrap rounded-xl pr-3 text-[12px] text-primary-foreground font-extralight">
         <span className="p-0.5 px-2 bg-linear-to-br border border-neutral-500/20 shadow from-purple-400 via-background to-orange-400 text-[11px] font-normal rounded-md text-primary">
           AI
         </span>
         <span className="text-primary-foreground/70 font-normal tracking-wide ">
           Influencer Marketing Platform
         </span>
-      </h4>
+      </p>
       <h2 className="text-3xl md:text-5xl font-light leading-tight md:leading-none tracking-tight text-primary-foreground text-center">
         Understand your audience
         <br className="hidden sm:block" /> through voices they trust.
@@ -155,9 +155,9 @@ const Transform = (props: Props) => {
           className="hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(74,222,128,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/4 right-12"
         >
           <span className="bg-green-400 rounded-sm shadow w-4 aspect-square mb-1" />
-          <h6 className="font-normal text-xs text-foreground">
+          <p className="font-normal text-xs text-foreground">
             Find & Track Creators
-          </h6>
+          </p>
           <p className="text-xs text-muted-foreground">
             Discover 4mn+ creators filtered by niche, reach and engagement.
           </p>
@@ -168,9 +168,9 @@ const Transform = (props: Props) => {
           className="hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(251,146,60,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-full right-1/2 translate-x-1/2 translate-y-full"
         >
           <span className="bg-orange-400 rounded-sm shadow w-4 aspect-square mb-1" />
-          <h6 className="font-normal text-xs text-foreground">
+          <p className="font-normal text-xs text-foreground">
             Intelligent Matchmaking
-          </h6>
+          </p>
           <p className="text-xs text-muted-foreground">
             AI-powered recommendations to connect brands with ideal creators.
           </p>
@@ -181,9 +181,9 @@ const Transform = (props: Props) => {
           className="hidden md:flex absolute rounded-2xl origin-top-left bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(244,114,182,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/6 left-12"
         >
           <span className="bg-pink-400 rounded-sm shadow w-4 aspect-square mb-1" />
-          <h6 className="font-normal text-xs text-foreground">
+          <p className="font-normal text-xs text-foreground">
             Live Performance Tracking
-          </h6>
+          </p>
           <p className="text-xs text-muted-foreground">
             Monitor views, engagement and ROI in real-time across campaigns.
           </p>
@@ -212,7 +212,7 @@ const Transform = (props: Props) => {
               className="rounded-2xl bg-white/80 shadow-sm flex flex-col items-start gap-1 p-4"
             >
               <span className={`${card.dot} rounded-sm shadow w-4 aspect-square mb-1`} />
-              <h6 className="font-normal text-xs text-foreground">{card.title}</h6>
+              <p className="font-normal text-xs text-foreground">{card.title}</p>
               <p className="text-xs text-muted-foreground">{card.description}</p>
             </div>
           ))}

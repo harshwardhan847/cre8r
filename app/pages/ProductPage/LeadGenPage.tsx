@@ -166,7 +166,9 @@ const LeadGenPage = () => {
                     onClick={() => setSelectedIdx(idx)}
                     className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
                   >
-                    <img src={lead.avatar} alt={lead.brand} className="w-10 h-10 rounded-full object-cover" />
+                    <img
+          loading="lazy"
+          decoding="async" src={lead.avatar} alt={lead.brand} className="w-10 h-10 rounded-full object-cover" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold truncate">{lead.brand}</p>
                       <p className="text-xs text-muted-foreground truncate">{lead.industry} • {lead.estBudget}</p>
@@ -187,9 +189,11 @@ const LeadGenPage = () => {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <img src={activeLead.avatar} alt={activeLead.brand} className="w-12 h-12 rounded-full object-cover" />
+                    <img
+          loading="lazy"
+          decoding="async" src={activeLead.avatar} alt={activeLead.brand} className="w-12 h-12 rounded-full object-cover" />
                     <div>
-                      <h4 className="text-lg font-semibold">{activeLead.brand}</h4>
+                      <p className="text-lg font-semibold">{activeLead.brand}</p>
                       <p className="text-xs text-muted-foreground">{activeLead.industry}</p>
                     </div>
                   </div>

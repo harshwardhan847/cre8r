@@ -42,7 +42,9 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
               >
-                <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
+                <img
+          loading="lazy"
+          decoding="async" src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
                 Chat on WhatsApp
               </Link>
             )}
@@ -58,7 +60,7 @@ const Footer = () => {
             <Link to="/">
               <img
                 src="/logo.png"
-                alt="Cre8r.ai Logo"
+                alt="Cre8r.ai"
                 className="h-14 w-auto object-contain"
               />
             </Link>
@@ -67,17 +69,25 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-3 mt-2">
               <a href={CONSTANTS.INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
-                <img src="/icons/instagram.png" alt="Instagram" className="w-4 h-4" />
+                <img
+          loading="lazy"
+          decoding="async" src="/icons/instagram.png" alt="Instagram" className="w-4 h-4" />
               </a>
               <a href={CONSTANTS.LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
-                <img src="/icons/linkedin.png" alt="LinkedIn" className="w-4 h-4" />
+                <img
+          loading="lazy"
+          decoding="async" src="/icons/linkedin.png" alt="LinkedIn" className="w-4 h-4" />
               </a>
               <a href={CONSTANTS.MEDIUM_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
-                <img src="/icons/medium.png" alt="Medium" className="w-4 h-4" />
+                <img
+          loading="lazy"
+          decoding="async" src="/icons/medium.png" alt="Medium" className="w-4 h-4" />
               </a>
               {featureFlags.enableWhatsApp && (
                 <a href={CONSTANTS.WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors flex items-center justify-center">
-                  <img src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
+                  <img
+          loading="lazy"
+          decoding="async" src="/icons/whatsapp.png" alt="WhatsApp" className="w-4 h-4" />
                 </a>
               )}
             </div>

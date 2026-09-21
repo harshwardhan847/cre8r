@@ -1,5 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { seo, webPageSchema } from "~/seo";
+
+const SEO_DESCRIPTION =
+  "How Cre8r.ai collects, uses, stores and shares personal data for brands and creators, including your rights, retention periods and how to contact us.";
+
+export function meta() {
+  return seo({
+    title: "Privacy Policy",
+    description: SEO_DESCRIPTION,
+    path: "/privacy_policy",
+    jsonLd: webPageSchema({
+      name: "Privacy Policy",
+      description: SEO_DESCRIPTION,
+      path: "/privacy_policy",
+    }),
+  });
+}
+
 // ─── Reusable Sub-components ──────────────────────────────────────────────────
 
 const SectionHeading = ({

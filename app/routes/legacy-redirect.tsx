@@ -1,5 +1,15 @@
 import { Navigate, useLocation } from "react-router";
 import { resolveLegacyPath } from "~/redirects";
+import { seo } from "~/seo";
+
+export function meta() {
+  return seo({
+    title: "Redirecting",
+    description: "This page has moved.",
+    path: "/",
+    noindex: true,
+  });
+}
 
 /**
  * Shared handler for every legacy cre8r.ai path. The app runs as an SPA, so the

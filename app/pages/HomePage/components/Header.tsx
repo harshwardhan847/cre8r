@@ -10,8 +10,11 @@ const Header = (props: Props) => {
     <header className="w-full mx-auto mt-24 flex flex-col items-center justify-start px-4 md:pt-12 relative md:min-h-[80vh]">
       <div className="w-full absolute -top-20 left-0 scale-100 hue-rotate-180 h-full z-0">
         <img
-          src="./header_bg.png"
-          alt="Header Background"
+          src="/header_bg.png"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-contain 2xl:object-cover object-bottom-left opacity-100"
         />
       </div>
@@ -21,9 +24,9 @@ const Header = (props: Props) => {
           <p className="bg-primary text-primary-foreground rounded-sm px-2 flex w-min h-6 text-xs font-medium items-center mr-1 justify-center">
             New
           </p>
-          <h4 className="text-xs md:text-sm font-light whitespace-nowrap">
+          <span className="text-xs md:text-sm font-light whitespace-nowrap">
             135K+ Registered creators on Cre8r
-          </h4>
+          </span>
           <ArrowRight className="size-4 text-muted-foreground" />
         </button>
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium text-center tracking-normal leading-tight md:leading-16">

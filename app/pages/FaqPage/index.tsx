@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 
@@ -101,21 +101,21 @@ const FaqPage = ({
                   </motion.span>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen ? (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-4 pb-3 pl-12 pt-2 text-sm leading-relaxed text-foreground/55 sm:text-base">
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
+                {/*
+                  Answers stay mounted and collapse with CSS rather than
+                  unmounting, so crawlers and answer engines read every answer
+                  in the HTML instead of just the open one.
+                */}
+                <motion.div
+                  initial={false}
+                  animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? "auto" : 0 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="overflow-hidden"
+                >
+                  <p className="px-4 pb-3 pl-12 pt-2 text-sm leading-relaxed text-foreground/55 sm:text-base">
+                    {item.answer}
+                  </p>
+                </motion.div>
               </motion.div>
             );
           })}

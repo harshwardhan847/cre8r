@@ -1,15 +1,20 @@
 import FaqPage from "~/pages/FaqPage";
 import { CONSTANTS } from "~/constants";
+import { seo, faqPageSchema, breadcrumbSchema } from "~/seo";
+
+const DESCRIPTION =
+  "How long campaigns take to go live, what Cre8r charges, how creators are vetted, how products ship to influencers and how content approvals work — answered.";
 
 export function meta() {
-  return [
-    { title: "FAQ - Brands · Cre8r AI" },
-    {
-      name: "description",
-      content:
-        "Answers for brands on campaign timelines, pricing, creator vetting, product shipping, and content approvals.",
-    },
-  ];
+  return seo({
+    title: "Influencer Marketing FAQs for Brands",
+    description: DESCRIPTION,
+    path: "/faq-brands",
+    jsonLd: [
+      faqPageSchema(CONSTANTS.FAQS.brands, "/faq-brands"),
+      breadcrumbSchema([{ name: "Brand FAQs", path: "/faq-brands" }]),
+    ],
+  });
 }
 
 export default function FaqBrands() {

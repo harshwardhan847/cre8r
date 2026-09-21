@@ -90,7 +90,7 @@ const BarterCollabsPage = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6 md:p-8 flex flex-col gap-6"
           >
-            <h3 className="text-lg font-medium">Program at a glance</h3>
+            <h2 className="text-lg font-medium">Program at a glance</h2>
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               {requirements.map((req) => (
                 <div key={req.label} className="p-3 md:p-4 rounded-xl bg-neutral-50/70 shadow-xs">
