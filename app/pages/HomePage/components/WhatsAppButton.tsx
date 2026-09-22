@@ -9,7 +9,7 @@ type Props = {
 
 const WhatsAppButton = ({ dark }: Props) => {
   return (
-    <div className="flex flex-col items-start gap-2 w-full">
+    <div className="flex flex-col items-center gap-2 w-full">
       <Button
         className={
           dark
@@ -26,8 +26,8 @@ const WhatsAppButton = ({ dark }: Props) => {
             rel="noopener noreferrer"
           >
             <img
-          loading="lazy"
-          decoding="async" src="/icons/whatsapp.png" alt="" className="w-5 h-5 mr-1" />
+              loading="lazy"
+              decoding="async" src="/icons/whatsapp.png" alt="" className="w-5 h-5 mr-1" />
             Chat on WhatsApp
           </Link>
         ) : (

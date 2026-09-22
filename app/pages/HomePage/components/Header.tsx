@@ -18,7 +18,7 @@ const Header = (props: Props) => {
       </div>
       <div className="flex flex-col gap-4 z-10 items-center justify-center">
         {/* header heading */}
-        <h1 className="h1 text-center">
+        <h1 className="h1 text-center font-semibold leading-[1.15]">
           End-to-End Influencer Marketing <br className="hidden sm:block" />
           Powered by AI
         </h1>
