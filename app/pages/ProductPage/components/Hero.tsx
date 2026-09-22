@@ -7,7 +7,9 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 import { Button } from "~/components/ui/button";
+import { CTA } from "~/constants";
 import { useIsMobile } from "~/lib/use-is-mobile";
+import { STATS } from "~/constants";
 
 type PayoutCard = {
   title: string;
@@ -23,7 +25,7 @@ type PayoutCard = {
 
 const cards: PayoutCard[] = [
   {
-    title: "4.1Mn+",
+    title: STATS.CREATORS,
     label: "Creators",
     badge: "F",
     bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(244,63,94,0.08)] transition-all duration-300 border-rose-400",
@@ -55,7 +57,7 @@ const cards: PayoutCard[] = [
     hiddenOnMobile: true,
   },
   {
-    title: "200+",
+    title: STATS.CAMPAIGNS,
     label: "Campaigns",
     badge: "C",
     bgClass: "bg-white shadow-[0_8px_32px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.08)] transition-all duration-300 border-purple-400",
@@ -127,20 +129,26 @@ const Hero = () => {
           <p className="text-[13px] font-medium tracking-sm text-muted-foreground">
             INFLUENCER PLATFORM
           </p>
-          <h1 className="mt-4 text-balance text-[42px] font-normal leading-[0.96] text-foreground sm:text-[54px] md:text-5xl">
+          <h1 className="h1 mt-4 text-balance">
             Let AI build your next influencer campaign
           </h1>
           <p className="mt-6 max-w-125 text-pretty text-lg leading-[1.35] text-muted-foreground">
-            Discover 4.1mn+ creators. Execute campaigns. Track performance - all
+            Discover {STATS.CREATORS} creators. Execute campaigns. Track performance — all
             in one place.
           </p>
           <Button
-            type="button"
             variant={"default"}
             size={"lg"}
             className="mt-10 h-12 px-6 text-lg font-light"
+            asChild
           >
-            Request a call back
+            <a
+              href={CTA.BRAND.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {CTA.BRAND.label}
+            </a>
           </Button>
 
           {/* Mobile-only static replacement for the floating parallax stat
@@ -246,7 +254,7 @@ const Stats = () => {
           viewport={{ once: true, amount: 0.6 }}
         >
           <motion.h2
-            className="text-6xl sm:text-8xl md:text-9xl font-light font-sans tracking-tight text-foreground"
+            className="display font-sans"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >

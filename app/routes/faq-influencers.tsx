@@ -1,5 +1,5 @@
 import FaqPage from "~/pages/FaqPage";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { seo, faqPageSchema, breadcrumbSchema } from "~/seo";
 
 const DESCRIPTION =
@@ -28,7 +28,7 @@ export default function FaqInfluencers() {
       faqs={CONSTANTS.FAQS.creators}
       contactEmail={CONSTANTS.CONTACT_EMAIL_CREATORS}
       contactNumber={CONSTANTS.CONTACT_NUMBER_CREATORS}
-      primaryCta={{ label: "Sign Up as a Creator", href: CONSTANTS.CREATOR_SIGNUP_URL }}
+      primaryCta={{ label: CTA.CREATOR.label, href: CTA.CREATOR.href }}
       secondaryCta={{ label: "For Influencers", to: "/influencer" }}
     />
   );

@@ -7,7 +7,9 @@ import {
 } from "motion/react";
 import React from "react";
 import { Button } from "~/components/ui/button";
+import { CTA } from "~/constants";
 import { useIsMobile } from "~/lib/use-is-mobile";
+import { STATS } from "~/constants";
 
 type Props = {};
 
@@ -15,7 +17,7 @@ const FEATURE_CARDS = [
   {
     dot: "bg-green-400",
     title: "Find & Track Creators",
-    description: "Discover 4mn+ creators filtered by niche, reach and engagement.",
+    description: `Discover ${STATS.CREATORS} creators filtered by niche, reach and engagement.`,
   },
   {
     dot: "bg-orange-400",
@@ -131,7 +133,7 @@ const Transform = (props: Props) => {
           Influencer Marketing Platform
         </span>
       </p>
-      <h2 className="text-3xl md:text-5xl font-light leading-tight md:leading-none tracking-tight text-primary-foreground text-center">
+      <h2 className="h2 text-primary-foreground text-center">
         Understand your audience
         <br className="hidden sm:block" /> through voices they trust.
       </h2>
@@ -142,8 +144,15 @@ const Transform = (props: Props) => {
       <Button
         className="bg-white text-neutral-900 hover:bg-neutral-100 cursor-pointer text-sm font-normal"
         size={"lg"}
+        asChild
       >
-        Request a call back
+        <a
+          href={CTA.BRAND.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {CTA.BRAND.label}
+        </a>
       </Button>
 
       <div className="w-full relative">
@@ -159,7 +168,7 @@ const Transform = (props: Props) => {
             Find & Track Creators
           </p>
           <p className="text-xs text-muted-foreground">
-            Discover 4mn+ creators filtered by niche, reach and engagement.
+            Discover {STATS.CREATORS} creators filtered by niche, reach and engagement.
           </p>
         </motion.div>
         <motion.div
@@ -220,7 +229,7 @@ const Transform = (props: Props) => {
       </div>
       <div className="h-20" />
       <div className="mt-20 hidden">
-        <h3 className="text-2xl font-normal text-muted-foreground text-center mb-8">
+        <h3 className="h3 text-center mb-8">
           Never miss a campaign opportunity
         </h3>
 

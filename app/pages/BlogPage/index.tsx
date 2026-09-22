@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 
 const BlogPage = () => {
   const [featured, ...rest] = CONSTANTS.BLOGS;
@@ -15,10 +15,10 @@ const BlogPage = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="eyebrow">
             Blog
           </p>
-          <h1 className="mt-4 text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="h1 mt-4">
             Insights on influencer marketing
           </h1>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -34,11 +34,11 @@ const BlogPage = () => {
             </Button>
             <Button variant="outline" size="lg" asChild>
               <a
-                href={CONSTANTS.CALENDLY_URL}
+                href={CTA.BRAND.href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Book a Demo
+                {CTA.BRAND.label}
               </a>
             </Button>
           </div>
@@ -69,7 +69,7 @@ const BlogPage = () => {
               </span>
               <span>{featured.date}</span>
             </div>
-            <h2 className="text-2xl font-semibold leading-snug transition-colors group-hover:text-primary md:text-3xl lg:text-4xl">
+            <h2 className="h2 transition-colors group-hover:text-primary">
               {featured.title}
             </h2>
             <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -84,7 +84,7 @@ const BlogPage = () => {
 
       {/* All posts */}
       <section className="mx-auto w-full max-w-7xl px-4 py-12 md:px-8 md:py-20">
-        <h2 className="text-xl font-normal tracking-tight text-foreground/50 md:text-2xl">
+        <h2 className="h2">
           All articles
         </h2>
 
@@ -112,7 +112,7 @@ const BlogPage = () => {
                   <span className="h-1 w-1 rounded-full bg-border" />
                   <span>{blog.author}</span>
                 </div>
-                <h3 className="text-lg font-semibold leading-snug transition-colors line-clamp-3 group-hover:text-primary md:text-xl">
+                <h3 className="h3 transition-colors line-clamp-3 group-hover:text-primary">
                   {blog.title}
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-3">

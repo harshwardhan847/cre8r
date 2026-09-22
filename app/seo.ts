@@ -1,4 +1,5 @@
 import { CONSTANTS } from "./constants";
+import { STATS } from "./constants";
 
 /**
  * Single source of truth for everything crawlers and answer engines read.
@@ -266,7 +267,7 @@ export function softwareApplicationSchema() {
     description: SITE.description,
     publisher: { "@id": ORG_ID },
     featureList: [
-      "Creator discovery across 4.1M+ Instagram and YouTube profiles",
+      `Creator discovery across ${STATS.CREATORS} Instagram and YouTube profiles`,
       "25+ audience and engagement filters with credibility scoring",
       "Campaign execution with briefs, content approvals and contracts",
       "Affiliate links, promo codes and attributed revenue tracking",

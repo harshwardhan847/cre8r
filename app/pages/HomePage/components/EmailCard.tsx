@@ -2,11 +2,12 @@ import { Check } from "lucide-react";
 import { motion } from "motion/react";
 import React from "react";
 import WhatsAppButton from "./WhatsAppButton";
+import { STATS } from "~/constants";
 
 type Props = {};
 
 const perks = [
-  "Access 4Mn+ verified creator profiles instantly",
+  `Access ${STATS.CREATORS} verified creator profiles instantly`,
   "Launch campaigns in minutes, not weeks",
   "Real-time ROI and performance analytics",
 ];
@@ -23,10 +24,10 @@ const EmailCard = (props: Props) => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="p-6 md:p-16 flex flex-col justify-center gap-4 md:gap-6">
-            <p className="text-xs uppercase tracking-widest text-foreground/40 font-medium">
+            <p className="eyebrow">
               Get started free
             </p>
-            <h2 className="text-3xl md:text-5xl font-normal tracking-tight text-foreground leading-tight">
+            <h2 className="h2">
               Build{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-500 via-blue-500 to-sky-500">
                 sustainable
@@ -54,7 +55,7 @@ const EmailCard = (props: Props) => {
           <div className="flex items-center justify-center p-6 md:p-16 bg-white/5 border-t md:border-t-0 md:border-l border-white/5">
             <div className="w-full max-w-md flex flex-col gap-4">
               <p className="text-foreground/50 text-sm text-center leading-relaxed">
-                Join thousands of brands already on Cre8r
+                Join the leading brands already on Cre8r
               </p>
               <div className="w-full">
                 <WhatsAppButton />

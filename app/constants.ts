@@ -1,11 +1,127 @@
 import { featureFlags } from "./featureFlags";
 
+// Destination URLs are hoisted out of CONSTANTS so the CTA definitions below
+// can reference them. They are still exposed on CONSTANTS unchanged.
+const CALENDLY_URL = "https://calendly.com/gs_cre8r/30min";
+// Creator onboarding lives on the Ylytic platform — every "sign up / apply as
+// a creator" CTA and the legacy /influencer-sign-up URL point here.
+const CREATOR_SIGNUP_URL = "https://ylytic.com/signUp/creator";
+// No application form exists yet, so Apply Now opens an email to HR. Swap in
+// the real form URL when there is one.
+const HIRING_FORM_URL = "mailto:careers@cre8r.ai?subject=Application%20to%20Cre8r";
+
+/**
+ * Every headline figure the site quotes about Cre8r.
+ *
+ * These are the numbers that used to drift — the same claim appeared as `4Mn+`
+ * on one page and `4.1Mn+` on another. Change a value here and it updates
+ * everywhere at once, in stat blocks and in prose. Copy that quotes a figure
+ * interpolates it from here rather than spelling it out.
+ */
+export const STATS = {
+  /** Discoverable creator profiles in the index. */
+  CREATORS: "4Mn+",
+  /** Views generated across delivered campaigns. */
+  VIEWS: "500Mn+",
+  /** Content pieces published. */
+  CONTENT: "6,000+",
+  /** Campaigns delivered end to end. */
+  CAMPAIGNS: "200+",
+  /** Brands served. */
+  BRANDS: "100+",
+  /** Filters available in Discovery. */
+  FILTERS: "25+",
+  /** Revenue attributed to campaigns. */
+  REVENUE: "₹50Cr+",
+} as const;
+
+/**
+ * The canonical wording for each figure. Pages differ in how they lay a stat
+ * block out, but the label text and its casing come from here so the same
+ * number is never described two different ways.
+ */
+export const STAT_LABELS = {
+  CREATORS: "Discoverable profiles",
+  VIEWS: "Views generated",
+  CONTENT: "Content published",
+  CAMPAIGNS: "Campaigns delivered",
+  REVENUE: "Revenue attributed",
+} as const;
+
+/**
+ * Creator eligibility and campaign policy. MIN_FOLLOWERS in particular is
+ * quoted on the creator page, the barter page and in the terms — keeping it
+ * here means a change to the threshold is a one-line edit.
+ */
+export const ELIGIBILITY = {
+  /** Minimum followers to join, as shown in marketing copy. */
+  MIN_FOLLOWERS: "5,000+",
+  /** The accepted range, as shown in the creator FAQ. */
+  FOLLOWER_RANGE: "5,000–100,000",
+  /** Minimum age in years. */
+  MIN_AGE: 13,
+  /** Minimum engagement rate. */
+  MIN_ENGAGEMENT: "2%",
+  /** How long a creator has to accept a campaign. */
+  RESPONSE_WINDOW: "48 hours",
+  /** How long after a post goes live a creator is paid. */
+  PAYOUT_WINDOW: "45 days",
+  /** Content revision rounds included. */
+  CONTENT_ITERATIONS: "two rounds",
+  /** How long a campaign takes to go live. */
+  CAMPAIGN_TIMELINE: "2–4 weeks",
+} as const;
+
+/**
+ * The three journeys the site funnels people into. Every call to action uses
+ * one of these, so labels stay identical across pages and a destination change
+ * lands everywhere at once.
+ */
+export const CTA = {
+  BRAND: { label: "Book a Demo", href: CALENDLY_URL },
+  CREATOR: { label: "Join Cre8r", href: CREATOR_SIGNUP_URL },
+  CAREERS: { label: "Apply Now", href: HIRING_FORM_URL },
+} as const;
+
+/** Claims about Cre8r that appear in more than one place. */
+export const CLAIMS = {
+  BRAND_TRUST: "Leading brands trust Cre8r",
+} as const;
+
+/** Campaign videos, shared by the homepage hero and the video carousel. */
+export const CAMPAIGN_VIDEOS = [
+  { url: "https://www.youtube.com/embed/PNFbo5tpO9c", brand: "Reebok" },
+  { url: "https://www.youtube.com/embed/MjfTaozFBuE", brand: "Reebok" },
+  { url: "https://www.youtube.com/embed/Kg3YlLT9Fys", brand: "Reebok" },
+  { url: "https://www.youtube.com/embed/E-Ge8ehnIE8", brand: "IDFC" },
+  { url: "https://www.youtube.com/embed/2Gq2mI7RySk", brand: "Bontress Pro" },
+  { url: "https://www.youtube.com/embed/1-7BVYDIlRA", brand: "Reequil" },
+  { url: "https://www.youtube.com/embed/zfS6wiQWjXc", brand: "Reequil" },
+  { url: "https://www.youtube.com/embed/e3TPXyF-jP0", brand: "Reequil" },
+  { url: "https://www.youtube.com/embed/4GQGr17Ace4", brand: "Fortune" },
+  { url: "https://www.youtube.com/embed/8qNf9_hYSkA", brand: "Fortune" },
+];
+
+/** Client logos shown in the homepage marquee. */
+export const BRAND_LOGOS = [
+  { name: "Bontress Pro", src: "/brands/Bontress Pro.png" },
+  { name: "Fortune", src: "/brands/Fortune.png" },
+  { name: "IDFC Bank", src: "/brands/IDFC bank.png" },
+  { name: "Reebok", src: "/brands/Reebok Logo.jpg" },
+  { name: "Reequil", src: "/brands/Reequil.png" },
+];
+
 export const CONSTANTS = {
-  CALENDLY_URL: "https://calendly.com/gs_cre8r/30min",
-  // Creator onboarding lives on the Ylytic platform — every "sign up / apply as
-  // a creator" CTA and the legacy /influencer-sign-up URL point here.
-  CREATOR_SIGNUP_URL: "https://ylytic.com/signUp/creator",
-  CREATOR_FORM_URL: "https://ylytic.com/signUp/creator",
+  CALENDLY_URL,
+  CREATOR_SIGNUP_URL,
+  HIRING_FORM_URL,
+  STATS,
+  STAT_LABELS,
+  ELIGIBILITY,
+  CTA,
+  CLAIMS,
+  CAMPAIGN_VIDEOS,
+  BRAND_LOGOS,
   SUPADEMO: {
     DISCOVERY: "https://app.supademo.com/embed/cmhbmkvoz0jr1fatigxf20w6o?embed_v=2&utm_source=embed",
     CAMPAIGN_CREATION: "https://app.supademo.com/embed/cmhd8z96e2ke7fatisiomh2yr?embed_v=2&utm_source=embed",
@@ -17,7 +133,6 @@ export const CONSTANTS = {
     CRM: "https://app.supademo.com/embed/cmiq61ttw04lgcj0e5jwe3juq?embed_v=2&utm_source=embed",
     CREATOR_OVERVIEW: "https://app.supademo.com/embed/cms0ag5ra6n3tqmble95beeot?embed_v=2&utm_source=embed",
   },
-  HIRING_FORM_URL: "https://forms.google.com/hiring-form-placeholder",
   LINKEDIN_URL: "https://www.linkedin.com/company/cre8r-ai/",
   INSTAGRAM_URL: "https://www.instagram.com/cre8r.community/",
   WHATSAPP_URL:
@@ -27,6 +142,21 @@ export const CONSTANTS = {
   CONTACT_EMAIL_CREATORS: "collabs@cre8r.ai",
   CONTACT_NUMBER_BRANDS: "+91 8800 411 522",
   CONTACT_NUMBER_CREATORS: "+91 7754900652",
+
+  /**
+   * Live roles shown on /hiring. This is the single place to edit when a role
+   * opens or closes — add an entry to list it, delete the entry to take it
+   * down. An empty array is a valid state: the page then shows the general
+   * "we're always hiring" card instead of a job list.
+   *
+   * `applyUrl` is optional; roles without one fall back to HIRING_FORM_URL.
+   */
+  JOB_OPENINGS: [] as Array<{
+    role: string;
+    location: string;
+    experience: string;
+    applyUrl?: string;
+  }>,
 
   OFFICES: [
     {
@@ -46,7 +176,7 @@ export const CONSTANTS = {
       {
         question: "How long does it take for a campaign to go live?",
         answer:
-          "If we have to capture the entire project from finalizing the influencer pool, it typically takes 2-4 weeks from influencer discovery, selection, payments, and product shipping to the campaign going live.",
+          `If we have to capture the entire project from finalizing the influencer pool, it typically takes ${ELIGIBILITY.CAMPAIGN_TIMELINE} from influencer discovery, selection, payments, and product shipping to the campaign going live.`,
       },
       {
         question: "What industries does Cre8r focus on?",
@@ -59,7 +189,8 @@ export const CONSTANTS = {
           "Cre8r's vetting process thoroughly screens and onboards only creators who produce relevant, trustworthy and high-value content.",
       },
       {
-        question: "How is Cre8r different from other platforms?",
+        question:
+          "How is Cre8r different from other influencer marketing platforms?",
         answer:
           "Cre8r is a data-driven, DIY platform that helps brands discover and collaborate with high-quality influencers. Unlike other subscription-based platforms, Cre8r enables direct brand-influencer interaction, content approval and scheduling — all in one place.",
       },
@@ -81,7 +212,7 @@ export const CONSTANTS = {
       {
         question: "What happens if a brand doesn't like the influencer content?",
         answer:
-          "Brands can reject content if it doesn't align with their requirements. They get two rounds of iterations with the influencer to provide feedback.",
+          `Brands can reject content if it doesn't align with their requirements. They get ${ELIGIBILITY.CONTENT_ITERATIONS} of iterations with the influencer to provide feedback.`,
       },
       {
         question: "Why choose the Cre8r network over a database provider?",
@@ -93,7 +224,7 @@ export const CONSTANTS = {
       {
         question: "How much time do I have to respond to a campaign?",
         answer:
-          "You have up to 48 hours to decide if you want to participate in a campaign on a first-come, first-served basis. This gives you enough time to review the brand, content requirements, and compensation.",
+          `You have up to ${ELIGIBILITY.RESPONSE_WINDOW} to decide if you want to participate in a campaign on a first-come, first-served basis. This gives you enough time to review the brand, content requirements, and compensation.`,
       },
       {
         question: "Can I choose my own pricing?",
@@ -108,7 +239,7 @@ export const CONSTANTS = {
       {
         question: "What are the requirements to join Cre8r?",
         answer:
-          "You must be at least 13 years old, have an Instagram or YouTube account with 5,000-100,000 followers/subscribers, and be located in India.",
+          `You must be at least ${ELIGIBILITY.MIN_AGE} years old, have an Instagram or YouTube account with ${ELIGIBILITY.FOLLOWER_RANGE} followers/subscribers, and be located in India.`,
       },
       {
         question: "Can I search for particular campaigns?",
@@ -251,7 +382,7 @@ export const CONSTANTS = {
           label: "Discovery Module",
           description: "Find pre-vetted creators matching your demographics.",
           to: "/product/discovery",
-          features: ["25+ deep filters", "4.1Mn+ creator database", "Audience credibility scores", "Engagement auditing"]
+          features: [`${STATS.FILTERS} deep filters`, `${STATS.CREATORS} creator database`, "Audience credibility scores", "Engagement auditing"]
         },
         {
           id: "execution",
@@ -307,7 +438,7 @@ export const CONSTANTS = {
         },
         {
           label: "Creator Community",
-          description: "Network of 4.1Mn+ creators monetizing influence.",
+          description: `Network of ${STATS.CREATORS} creators monetizing influence.`,
           to: "/creator"
         },
         {

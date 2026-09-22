@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { STATS } from "~/constants";
 
 type Founder = {
   name: string;
@@ -35,7 +36,7 @@ const founders: Founder[] = [
 const recognitions: Recognition[] = [
   {
     title: "AI-powered creator discovery",
-    source: "4.1Mn+ creator profiles",
+    source: `${STATS.CREATORS} creator profiles`,
     logo: "AI",
     logoAlt: "AI Matchmaking",
     logoBgClass: "bg-[#111] text-white",
@@ -73,7 +74,7 @@ const Founders = () => {
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
         >
-          <h2 className="text-[2.1rem] md:text-[3.15rem] leading-[1.1] tracking-[-0.02em] font-light text-[#9f9f9f]">
+          <h2 className="h2 text-[#9f9f9f]">
             <span className="font-medium text-[#161616]">Our story.</span> We
             are a team of passionate marketers building influencer campaigns
             with performance, transparency, and genuine connections at the core.

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { CONSTANTS } from "~/constants";
+import { CTA } from "~/constants";
 import { seo } from "~/seo";
 
 export function meta() {
@@ -19,12 +19,12 @@ export function meta() {
  */
 export default function InfluencerSignUp() {
   useEffect(() => {
-    window.location.replace(CONSTANTS.CREATOR_SIGNUP_URL);
+    window.location.replace(CTA.CREATOR.href);
   }, []);
 
   return (
     <main className="mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-2xl font-light tracking-tight md:text-3xl">
+      <h1 className="h1">
         Taking you to creator sign up
       </h1>
       <p className="mt-3 text-base leading-relaxed text-muted-foreground">
@@ -32,7 +32,7 @@ export default function InfluencerSignUp() {
         moment.
       </p>
       <a
-        href={CONSTANTS.CREATOR_SIGNUP_URL}
+        href={CTA.CREATOR.href}
         className="mt-6 text-sm font-medium text-foreground underline underline-offset-4"
       >
         Continue to sign up

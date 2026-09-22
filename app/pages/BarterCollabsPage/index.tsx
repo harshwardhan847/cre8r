@@ -2,7 +2,8 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { ArrowRight, Package, Camera, Star, Handshake } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CTA } from "~/constants";
+import { ELIGIBILITY } from "~/constants";
 
 const collabTypes = [
   {
@@ -36,10 +37,10 @@ const collabTypes = [
 ];
 
 const requirements = [
-  { label: "Minimum Followers", value: "5,000+" },
+  { label: "Minimum Followers", value: ELIGIBILITY.MIN_FOLLOWERS },
   { label: "Platforms Supported", value: "Instagram, YouTube" },
   { label: "Content Quality", value: "Original & Authentic" },
-  { label: "Engagement Rate", value: "Above 2%" },
+  { label: "Engagement Rate", value: `Above ${ELIGIBILITY.MIN_ENGAGEMENT}` },
   { label: "Niches Covered", value: "All categories" },
   { label: "Payout Method", value: "Products / Cash" },
 ];
@@ -59,21 +60,21 @@ const BarterCollabsPage = () => {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="eyebrow">
               Barter Collaborations
             </p>
-            <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-tight">
+            <h1 className="h1 mt-4">
               Collaborate for
               <br />
               Products
             </h1>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
-              Access exclusive barter collaboration opportunities with premium brands. Create authentic content, grow your portfolio, and get premium products — no cash required to start.
+              Access exclusive barter collaboration opportunities with premium brands. Create authentic content, grow your portfolio, and get rewarded in products, cash, or both — depending on the campaign. Free to join, always.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-8">
               <Button size="lg" asChild>
-                <a href={CONSTANTS.CREATOR_FORM_URL} target="_blank" rel="noopener noreferrer">
-                  Apply as Creator
+                <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">
+                  {CTA.CREATOR.label}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
@@ -90,7 +91,7 @@ const BarterCollabsPage = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="rounded-3xl bg-white shadow-[0_8px_30px_rgba(0,0,0,0.04)] p-6 md:p-8 flex flex-col gap-6"
           >
-            <h2 className="text-lg font-medium">Program at a glance</h2>
+            <h2 className="h3">Program at a glance</h2>
             <div className="grid grid-cols-2 gap-3 md:gap-4">
               {requirements.map((req) => (
                 <div key={req.label} className="p-3 md:p-4 rounded-xl bg-neutral-50/70 shadow-xs">
@@ -113,7 +114,7 @@ const BarterCollabsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Types of Collabs</h2>
+            <h2 className="h2">Types of Collabs</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Choose the collab format that works best for your content style and audience.
             </p>
@@ -133,7 +134,7 @@ const BarterCollabsPage = () => {
                   <type.icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-medium">{type.title}</h3>
+                  <h3 className="h3">{type.title}</h3>
                   <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{type.description}</p>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border/10">
@@ -157,7 +158,7 @@ const BarterCollabsPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl font-light mb-4"
+            className="h2 mb-4"
           >
             Brands actively seeking barter creators
           </motion.h2>
@@ -184,8 +185,8 @@ const BarterCollabsPage = () => {
             className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
             asChild
           >
-            <a href={CONSTANTS.CREATOR_FORM_URL} target="_blank" rel="noopener noreferrer">
-              Apply to Collaborate
+            <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">
+              {CTA.CREATOR.label}
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
           </Button>

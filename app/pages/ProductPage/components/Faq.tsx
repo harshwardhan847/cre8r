@@ -20,7 +20,7 @@ const Faq = () => {
     <section className=" py-20 sm:py-24">
       <div className="mx-auto w-full max-w-3xl px-6 sm:px-8">
         <motion.h2
-          className="text-center text-3xl font-normal leading-tight text-foreground sm:text-5xl"
+          className="h2 text-center"
           initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}

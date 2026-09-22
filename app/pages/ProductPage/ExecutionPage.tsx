@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, MessageSquare, Briefcase, FileCheck, Send, CheckCircle2, Star, Play, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { Supademo } from "~/components/Supademo";
 
 // Mock creators campaign pipeline for interactive widget
@@ -100,7 +100,7 @@ const ExecutionPage = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Execution Module
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+          <h1 className="h1">
             Seamless Campaign <br className="hidden sm:block" />
             Management & Chat
           </h1>
@@ -109,8 +109,8 @@ const ExecutionPage = () => {
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Request a Demo Walkthrough
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
+                {CTA.BRAND.label}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
@@ -126,8 +126,8 @@ const ExecutionPage = () => {
       {/* Interactive Tool Section */}
       <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-light tracking-tight">Interactive Workflow Dashboard</h2>
+          <p className="eyebrow">Interactive Demo</p>
+          <h2 className="h2 mt-2">Interactive Workflow Dashboard</h2>
           <p className="mt-2 text-muted-foreground">Select a creator below to coordinate chat logs, review drafts, or explore interactive feature walkthroughs.</p>
         </div>
 
@@ -195,7 +195,7 @@ const ExecutionPage = () => {
             {/* Creator list column */}
             <div className="border-r border-border/15 flex flex-col bg-neutral-50/50">
               <div className="p-4 border-b border-border/15">
-                <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Active Collaborations</span>
+                <span className="eyebrow">Active Collaborations</span>
               </div>
               <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
                 {campaigns.map((camp, idx) => (
@@ -286,7 +286,7 @@ const ExecutionPage = () => {
       <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Full Lifecycle Campaigning</h2>
+            <h2 className="h2">Full Lifecycle Campaigning</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Our Execution suite streamlines contract alignment, draft cycles, and post-scheduling to keep outreach programs moving.
             </p>
@@ -321,7 +321,7 @@ const ExecutionPage = () => {
                 <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-6">
                   <feat.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-medium">{feat.title}</h3>
+                <h3 className="h3">{feat.title}</h3>
                 <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{feat.description}</p>
               </motion.div>
             ))}
@@ -333,7 +333,7 @@ const ExecutionPage = () => {
       <section className="py-14 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
+            <h2 className="h2 max-w-lg">
               Coordinate Your Campaigns Seamlessly
             </h2>
             <p className="mt-4 text-primary-foreground/60 max-w-md">
@@ -346,8 +346,8 @@ const ExecutionPage = () => {
             className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground shrink-0"
             asChild
           >
-            <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Book a Strategy Walkthrough
+            <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
+              {CTA.BRAND.label}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </Button>

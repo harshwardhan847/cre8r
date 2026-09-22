@@ -1,8 +1,9 @@
 import InfluencerPage from "~/pages/InfluencerPage";
 import { seo, webPageSchema, breadcrumbSchema } from "~/seo";
+import { ELIGIBILITY } from "~/constants";
 
 const DESCRIPTION =
-  "Get paid brand collaborations without chasing agencies. Join free with 5,000+ Instagram or YouTube followers in India and get campaigns matched to your profile.";
+  `Get paid brand collaborations without chasing agencies. Join free with ${ELIGIBILITY.MIN_FOLLOWERS} Instagram or YouTube followers in India and get campaigns matched to your profile.`;
 
 export function meta() {
   return seo({

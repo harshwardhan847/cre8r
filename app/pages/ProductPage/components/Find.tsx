@@ -1,6 +1,7 @@
 import { motion, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "~/components/ui/button";
+import { CTA, STATS } from "~/constants";
 
 type ProgramCard = {
   title: string;
@@ -11,7 +12,7 @@ type ProgramCard = {
 
 const programCards: ProgramCard[] = [
   {
-    title: "Find & Track 4mn+ Creators",
+    title: `Find & Track ${STATS.CREATORS} Creators`,
     description:
       "Filter by engagement metrics, niche, audience demographics and more to discover the right voices quickly.",
     cardClass: "bg-white shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.08)] transition-all duration-300",
@@ -92,7 +93,7 @@ const Find = () => {
     <section className="py-20 sm:py-24 min-h-screen">
       <div className="mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10">
         <motion.h2
-          className="mx-auto max-w-auto text-center text-4xl font-medium leading-tight text-foreground sm:text-5xl"
+          className="h2 mx-auto max-w-auto text-center"
           initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
@@ -118,7 +119,7 @@ const Find = () => {
               }}
               viewport={{ once: true, amount: 0.35 }}
             >
-              <h3 className="text-3xl font-medium tracking-tight text-foreground">
+              <h3 className="h3">
                 {program.title}
               </h3>
               <p className="mt-4 max-w-md text-xl leading-relaxed text-foreground/70">
@@ -130,11 +131,17 @@ const Find = () => {
                 className="h-full flex items-end justify-start"
               >
                 <Button
-                  type="button"
                   variant="outline"
                   className={`mt-auto w-fit rounded-xl px-6 py-5 text-base font-normal shadow-none ${program.buttonClass}`}
+                  asChild
                 >
-                  Request a call back
+                  <a
+                    href={CTA.BRAND.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {CTA.BRAND.label}
+                  </a>
                 </Button>
               </motion.div>
             </motion.article>
@@ -147,7 +154,7 @@ const Find = () => {
         className="mx-auto mt-28 hidden w-full max-w-2xl px-6 text-center sm:px-8"
       >
         <motion.h3
-          className="text-4xl font-medium leading-tight text-foreground sm:text-5xl"
+          className="h2"
           initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}

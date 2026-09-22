@@ -27,7 +27,7 @@ const CaseStudiesPreview = () => {
       <div className="container px-4 md:px-8 mx-auto flex flex-col gap-6 md:gap-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground">Proven Results</h2>
+            <h2 className="h2">Proven Results</h2>
             <p className="text-muted-foreground mt-2 text-base md:text-lg">See how brands are scaling acquisition and ROI with us.</p>
           </div>
           <Button variant="outline" size="lg" asChild>
@@ -44,11 +44,11 @@ const CaseStudiesPreview = () => {
                 </div>
               </div>
               <div className="p-5 md:p-8 flex flex-col gap-3 md:gap-4">
-                <h3 className="text-xl md:text-2xl font-semibold">{study.brand}</h3>
+                <h3 className="h3">{study.brand}</h3>
                 <p className="text-muted-foreground text-sm md:text-base">{study.description}</p>
                 <div className="mt-2 md:mt-4 flex flex-col">
                   <span className="text-3xl md:text-4xl font-bold text-primary">{study.metric}</span>
-                  <span className="text-sm font-medium uppercase tracking-wider text-muted-foreground">{study.metricLabel}</span>
+                  <span className="eyebrow">{study.metricLabel}</span>
                 </div>
               </div>
             </div>

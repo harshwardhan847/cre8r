@@ -44,10 +44,10 @@ const FaqPage = ({
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="eyebrow">
             {eyebrow}
           </p>
-          <h1 className="mt-4 text-4xl font-light leading-tight tracking-tight sm:text-5xl">
+          <h1 className="h1 mt-4">
             {title}
           </h1>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -122,7 +122,7 @@ const FaqPage = ({
         </div>
 
         <div className="mt-14 rounded-3xl border border-border/20 bg-card p-8 text-center md:p-12">
-          <h2 className="text-xl font-medium text-foreground md:text-2xl">
+          <h2 className="h2">
             Still have questions?
           </h2>
           <p className="mt-3 text-base font-light text-muted-foreground">

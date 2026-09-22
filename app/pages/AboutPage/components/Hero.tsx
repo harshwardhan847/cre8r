@@ -1,26 +1,27 @@
 import { motion } from "motion/react";
+import { STAT_LABELS, STATS } from "~/constants";
 
 type Props = {};
 
 const proofItems = [
   {
-    value: "4Mn+",
-    label: "Creator profiles",
+    value: STATS.CREATORS,
+    label: STAT_LABELS.CREATORS,
     className: "left-4 top-24 sm:left-10 lg:left-[8%] lg:top-[22%]",
   },
   {
-    value: "500Mn+",
-    label: "Campaign views",
+    value: STATS.VIEWS,
+    label: STAT_LABELS.VIEWS,
     className: "right-4 top-28 sm:right-10 lg:right-[9%] lg:top-[24%]",
   },
   {
-    value: "6000+",
-    label: "Content pieces",
+    value: STATS.CONTENT,
+    label: STAT_LABELS.CONTENT,
     className: "left-6 bottom-24 sm:left-16 lg:left-[15%] lg:bottom-[18%]",
   },
   {
-    value: "200+",
-    label: "Campaigns delivered",
+    value: STATS.CAMPAIGNS,
+    label: STAT_LABELS.CAMPAIGNS,
     className: "right-6 bottom-24 sm:right-16 lg:right-[14%] lg:bottom-[18%]",
   },
 ];
@@ -109,8 +110,8 @@ const Hero = (_props: Props) => {
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.65, ease: "easeOut" }}
       >
-        <h2 className="text-lg font-light">About Us</h2>
-        <h1 className="text-3xl font-light leading-tight text-center sm:text-5xl md:text-6xl">
+        <h2 className="eyebrow">About Us</h2>
+        <h1 className="h1 text-center">
           Reimagining Influencer Marketing
           <br />
           One campaign at a time

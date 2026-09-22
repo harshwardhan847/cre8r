@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "~/featureFlags";
 
 type Props = {};
@@ -24,7 +24,7 @@ const FAQItem = ({
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between px-6 py-5 text-left transition hover:bg-card/30"
       >
-        <h3 className="text-lg font-medium tracking-tight text-foreground">
+        <h3 className="h3">
           {question}
         </h3>
         <ChevronDown
@@ -54,7 +54,7 @@ const CreatorFAQ = (props: Props) => {
     <section className="w-full bg-background py-20 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
         <div className="mb-12 max-w-2xl">
-          <h2 className="text-xl font-normal leading-tight tracking-tight text-foreground/50 md:text-3xl">
+          <h2 className="h2">
             Creator FAQs
           </h2>
           <p className="mt-3 text-base font-light text-muted-foreground">
@@ -75,7 +75,7 @@ const CreatorFAQ = (props: Props) => {
         </div>
 
         <div className="mt-12 rounded-2xl border border-border/10 bg-card p-8 text-center md:p-12">
-          <h3 className="text-xl font-medium text-foreground md:text-2xl">
+          <h3 className="h3">
             Still have questions?
           </h3>
           <p className="mt-3 text-base font-light text-muted-foreground">
@@ -97,12 +97,12 @@ const CreatorFAQ = (props: Props) => {
               </a>
             ) : (
               <a
-                href={CONSTANTS.CALENDLY_URL}
+                href={CTA.CREATOR.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
               >
-                Book a Demo
+                {CTA.CREATOR.label}
               </a>
             )}
           </div>

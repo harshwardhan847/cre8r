@@ -2,8 +2,9 @@ import { motion } from "motion/react";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "~/featureFlags";
+import { STATS } from "~/constants";
 
 const ContactPage = () => {
   const desks = [
@@ -32,25 +33,25 @@ const ContactPage = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="eyebrow">
             Contact Us
           </p>
-          <h1 className="mt-4 text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="h1 mt-4">
             Get in touch
           </h1>
           <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Build your next campaign with access to 4.1Mn+ influencers and their
+            Build your next campaign with access to {STATS.CREATORS} influencers and their
             real-time data. Pick the fastest route below, or book a slot with the
             team.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button size="lg" asChild>
               <a
-                href={CONSTANTS.CALENDLY_URL}
+                href={CTA.BRAND.href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Book a Demo
+                {CTA.BRAND.label}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
@@ -67,11 +68,11 @@ const ContactPage = () => {
             ) : (
               <Button variant="outline" size="lg" asChild>
                 <a
-                  href={CONSTANTS.CREATOR_SIGNUP_URL}
+                  href={CTA.CREATOR.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Creator Sign Up
+                  {CTA.CREATOR.label}
                 </a>
               </Button>
             )}
@@ -87,7 +88,7 @@ const ContactPage = () => {
               key={desk.label}
               className="flex flex-col gap-4 rounded-3xl border border-border/20 bg-card p-7 md:p-9"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="eyebrow">
                 {desk.label}
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
@@ -116,7 +117,7 @@ const ContactPage = () => {
 
       {/* Offices */}
       <section className="mx-auto w-full max-w-6xl px-6 py-12 md:px-8 md:py-16">
-        <h2 className="text-xl font-normal tracking-tight text-foreground/50 md:text-2xl">
+        <h2 className="h2">
           Our offices
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
@@ -130,7 +131,7 @@ const ContactPage = () => {
                 <p className="text-base font-medium text-foreground">
                   {office.city}
                 </p>
-                <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                <p className="eyebrow">
                   {office.label}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

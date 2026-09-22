@@ -81,10 +81,10 @@ const Testimonials = () => {
     <section className="py-12 md:py-24 bg-neutral-50/60">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium mb-3">
+          <p className="eyebrow mb-3">
             Credibility
           </p>
-          <h2 className="text-3xl md:text-4xl font-light tracking-tight">
+          <h2 className="h2">
             Case-study previews
           </h2>
           <p className="mt-3 text-sm text-muted-foreground">

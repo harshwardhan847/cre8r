@@ -149,3 +149,72 @@ body {
   }
 
 }
+/* ─── Design system ──────────────────────────────────────────────────────────
+   One definition per text role and one per button style, so the same level
+   looks identical on Homepage, Product, About, Creator and everywhere else.
+
+   Use these instead of ad-hoc utility stacks:
+
+     .eyebrow   small uppercase label above a heading
+     .display   oversized statement type (big CTA lines, hero stat figures)
+     .h1        page title — one per page
+     .h2        section heading
+     .h3        card / sub-section heading
+     .body-lg   lead paragraph under an h1
+     .body      default paragraph
+     .caption   supporting or secondary text
+
+   Headings inherit their colour, so a section on a dark background still works
+   without an override. Body styles set muted-foreground because that is what
+   nearly every existing paragraph already did.
+
+   The legal pages (/privacy_policy, /brands_tc, /creators_tc) deliberately use
+   a separate serif document style and are intentionally not covered here.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Vertical rhythm for a top-level page section. */
+  --spacing-section: 3.5rem;
+  --spacing-section-lg: 6rem;
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  /* Oversized statement type — big CTA headlines and hero stat figures.
+     Larger than .h1 on purpose; use sparingly, never for a page title. */
+  .display {
+    @apply text-5xl font-medium leading-none tracking-tight sm:text-7xl md:text-8xl;
+  }
+
+  .h1 {
+    @apply text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl;
+  }
+
+  .h2 {
+    @apply text-3xl font-light leading-tight tracking-tight md:text-4xl;
+  }
+
+  .h3 {
+    @apply text-xl font-medium leading-snug tracking-tight md:text-2xl;
+  }
+
+  .body-lg {
+    @apply text-base leading-relaxed text-muted-foreground md:text-lg;
+  }
+
+  .body {
+    @apply text-base leading-relaxed text-muted-foreground;
+  }
+
+  .caption {
+    @apply text-sm leading-relaxed text-muted-foreground;
+  }
+
+  /* Standard vertical padding for a page section. */
+  .section {
+    @apply py-(--spacing-section) md:py-(--spacing-section-lg);
+  }
+}

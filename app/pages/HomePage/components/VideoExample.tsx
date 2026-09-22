@@ -1,20 +1,10 @@
 import { useScroll, motion, useTransform, useSpring } from "motion/react";
 import { useRef } from "react";
+import { CAMPAIGN_VIDEOS } from "~/constants";
 
 type Props = {};
 
-const videos = [
-  { url: "https://www.youtube.com/embed/PNFbo5tpO9c", brand: "Reebok" },
-  { url: "https://www.youtube.com/embed/MjfTaozFBuE", brand: "Reebok" },
-  { url: "https://www.youtube.com/embed/Kg3YlLT9Fys", brand: "Reebok" },
-  { url: "https://www.youtube.com/embed/E-Ge8ehnIE8", brand: "IDFC" },
-  { url: "https://www.youtube.com/embed/2Gq2mI7RySk", brand: "Bontress Pro" },
-  { url: "https://www.youtube.com/embed/1-7BVYDIlRA", brand: "Reequil" },
-  { url: "https://www.youtube.com/embed/zfS6wiQWjXc", brand: "Reequil" },
-  { url: "https://www.youtube.com/embed/e3TPXyF-jP0", brand: "Reequil" },
-  { url: "https://www.youtube.com/embed/4GQGr17Ace4", brand: "Fortune" },
-  { url: "https://www.youtube.com/embed/8qNf9_hYSkA", brand: "Fortune" },
-];
+const videos = CAMPAIGN_VIDEOS;
 
 const VideoExample = (props: Props) => {
   const ref = useRef<HTMLDivElement>(null);

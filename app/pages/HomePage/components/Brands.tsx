@@ -1,31 +1,18 @@
 import { motion } from "motion/react";
 import { useIsMobile } from "~/lib/use-is-mobile";
+import { BRAND_LOGOS, CLAIMS, STAT_LABELS, STATS } from "~/constants";
 
 type Props = {};
 
 const statItems = [
-  {
-    stat: "4Mn+",
-    label: "Discoverable profiles",
-    border: "border-l-violet-400",
-  },
-  { stat: "500Mn+", label: "Views generated", border: "border-l-emerald-400" },
-  { stat: "6000+", label: "Content published", border: "border-l-amber-400" },
-  { stat: "200+", label: "Campaigns delivered", border: "border-l-rose-400" },
+  { stat: STATS.CREATORS, label: STAT_LABELS.CREATORS, border: "border-l-violet-400" },
+  { stat: STATS.VIEWS, label: STAT_LABELS.VIEWS, border: "border-l-emerald-400" },
+  { stat: STATS.CONTENT, label: STAT_LABELS.CONTENT, border: "border-l-amber-400" },
+  { stat: STATS.CAMPAIGNS, label: STAT_LABELS.CAMPAIGNS, border: "border-l-rose-400" },
 ];
 
-const brands = [
-  { name: "Bontress Pro", src: "/brands/Bontress Pro.png" },
-  { name: "Fortune", src: "/brands/Fortune.png" },
-  { name: "IDFC Bank", src: "/brands/IDFC bank.png" },
-  { name: "Reebok", src: "/brands/Reebok Logo.jpg" },
-  { name: "Reequil", src: "/brands/Reequil.png" },
-  { name: "Bontress Pro", src: "/brands/Bontress Pro.png" },
-  { name: "Fortune", src: "/brands/Fortune.png" },
-  { name: "IDFC Bank", src: "/brands/IDFC bank.png" },
-  { name: "Reebok", src: "/brands/Reebok Logo.jpg" },
-  { name: "Reequil", src: "/brands/Reequil.png" },
-];
+// Duplicated so the marquee loops seamlessly without a visible seam.
+const brands = [...BRAND_LOGOS, ...BRAND_LOGOS];
 
 const Brands = (props: Props) => {
   const isMobile = useIsMobile();
@@ -94,16 +81,16 @@ const Brands = (props: Props) => {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-4"
           >
-            <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
+            <p className="eyebrow">
               Traction
             </p>
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-tight">
+            <h2 className="h2">
               Automate Influencer Marketing
               <br /> to Drive ROI
             </h2>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              Thousands of brands trust Cre8r to discover creators, run
-              campaigns and measure what matters most.
+              {CLAIMS.BRAND_TRUST} to discover creators, run campaigns and measure
+              what matters most.
             </p>
           </motion.div>
 

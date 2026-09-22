@@ -416,7 +416,7 @@ const Features = (props: Props) => {
             className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16"
           >
             <div className={`${feature.reverse ? "md:order-2" : "md:order-1"}`}>
-              <h3 className="text-xl font-medium leading-tight tracking-tight text-foreground md:text-3xl">
+              <h3 className="h3">
                 {feature.title}
               </h3>
               <p className="mt-4 max-w-xl text-base font-light leading-relaxed text-muted-foreground">

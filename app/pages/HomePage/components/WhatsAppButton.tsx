@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "~/featureFlags";
 
 type Props = {
@@ -32,11 +32,11 @@ const WhatsAppButton = ({ dark }: Props) => {
           </Link>
         ) : (
           <Link
-            to={CONSTANTS.CALENDLY_URL}
+            to={CTA.BRAND.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book a Demo
+            {CTA.BRAND.label}
           </Link>
         )}
       </Button>

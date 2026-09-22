@@ -1,5 +1,6 @@
 import { CircleDashed, MoveUpRight, UsersRound } from "lucide-react";
 import { motion } from "motion/react";
+import { STATS } from "~/constants";
 
 type ReasonCard = {
   title: string;
@@ -9,7 +10,7 @@ type ReasonCard = {
 
 const reasonCards: ReasonCard[] = [
   {
-    title: "Find & track 4mn+ creators",
+    title: `Find & track ${STATS.CREATORS} creators`,
     description:
       "Filter by engagement metrics, niche, audience demographics, and more to shortlist creators faster.",
     Icon: MoveUpRight,
@@ -44,7 +45,7 @@ const WhyUs = () => {
     <section className="bg-primary py-20 text-primary-foreground sm:py-24">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-6 sm:px-10">
         <motion.h2
-          className="max-w-sm text-center text-3xl font-medium leading-tight sm:text-5xl"
+          className="h2 max-w-sm text-center"
           initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.55, ease: "easeOut" }}
@@ -74,7 +75,7 @@ const WhyUs = () => {
                   strokeWidth={1.4}
                 />
               </div>
-              <h3 className="text-xl font-normal text-primary-foreground">
+              <h3 className="h3 text-primary-foreground">
                 {title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-primary-foreground/60">

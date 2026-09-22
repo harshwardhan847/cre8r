@@ -12,7 +12,7 @@ const Hero = (props: Props) => {
             CRE8R FOR CREATORS
           </p>
 
-          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.02] tracking-[-0.02em] text-foreground">
+          <h1 className="h1 mt-4">
             Discover campaigns.
             <br /> Create content.
             <br /> Get paid.

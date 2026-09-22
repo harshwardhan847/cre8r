@@ -7,7 +7,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "~/components/ui/carousel";
-import { CONSTANTS } from "~/constants";
+import { CTA } from "~/constants";
 import { useIsMobile } from "~/lib/use-is-mobile";
 
 type TeamMember = {
@@ -70,7 +70,7 @@ const Team = () => {
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-360">
         <motion.a
-          href={CONSTANTS.HIRING_FORM_URL}
+          href={CTA.CAREERS.href}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-full bg-white px-2 py-1 text-xs font-medium text-[#3a3a3a] shadow-sm ring-1 ring-black/8"
@@ -91,7 +91,7 @@ const Team = () => {
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.45, ease: "easeOut", delay: 0.06 }}
         >
-          <h2 className="text-[2rem] leading-[1.08] tracking-[-0.02em] font-light text-[#9f9f9f] md:text-[3.05rem]">
+          <h2 className="h2 text-[#9f9f9f]">
             <span className="font-medium text-[#171717]">Meet our team.</span>{" "}
             Join us as we build sustainable audience relationships and scale
             meaningful influencer campaigns.

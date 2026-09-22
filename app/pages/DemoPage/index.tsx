@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { ArrowRight, Calendar, Video, Users, Zap } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "~/featureFlags";
 
 const demoModules = [
@@ -54,10 +54,10 @@ const DemoPage = () => {
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Book a Demo
+            <p className="eyebrow">
+              {CTA.BRAND.label}
             </p>
-            <h1 className="mt-4 text-4xl sm:text-5xl font-light tracking-tight leading-tight">
+            <h1 className="h1 mt-4">
               See Cre8r
               <br />
               in Action
@@ -67,9 +67,9 @@ const DemoPage = () => {
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-8">
               <Button size="lg" asChild>
-                <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 w-4 h-4" />
-                  Book a Live Demo
+                  {CTA.BRAND.label}
                 </Link>
               </Button>
               {featureFlags.enableWhatsApp && (
@@ -97,7 +97,7 @@ const DemoPage = () => {
               <p className="text-sm text-muted-foreground mt-1">30 min · Online · Free</p>
             </div>
             <Button size="lg" asChild>
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                 Open Calendly
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
@@ -116,7 +116,7 @@ const DemoPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">What we'll cover</h2>
+            <h2 className="h2">What we'll cover</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               A focused walkthrough of the platform modules most relevant to your use case.
             </p>
@@ -138,7 +138,7 @@ const DemoPage = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-3 mb-1">
-                    <h3 className="text-lg font-medium">{mod.title}</h3>
+                    <h3 className="h3">{mod.title}</h3>
                     <span className="text-xs text-muted-foreground">{mod.duration}</span>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{mod.description}</p>
@@ -157,7 +157,7 @@ const DemoPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl font-light text-center mb-10 md:mb-16"
+            className="h2 text-center mb-10 md:mb-16"
           >
             How the demo works
           </motion.h2>
@@ -172,7 +172,7 @@ const DemoPage = () => {
                 className="flex flex-col gap-4"
               >
                 <div className="text-4xl sm:text-5xl font-light text-primary-foreground/20">{step.num}</div>
-                <h3 className="text-xl font-medium text-primary-foreground">{step.title}</h3>
+                <h3 className="h3 text-primary-foreground">{step.title}</h3>
                 <p className="text-sm text-primary-foreground/60 leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
@@ -184,7 +184,7 @@ const DemoPage = () => {
               className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               asChild
             >
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                 Schedule Now
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>

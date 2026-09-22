@@ -2,6 +2,7 @@ import { Play, PartyPopper } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { BlurCounter } from "../../../components/ui/blur-counter";
+import { ELIGIBILITY, STATS } from "~/constants";
 
 type Stat = {
   entries: {
@@ -26,26 +27,26 @@ const founderData: FounderMessageData = {
 const stats: Stat[] = [
   {
     entries: [
-      { value: "4Mn+", subheading: "discoverable profiles" },
-      { value: "4.1Mn+", subheading: "creator profiles discovered" },
-      { value: "3Mn+", subheading: "creators tracked by brands" },
-      { value: "135K+", subheading: "registered creators" },
+      { value: STATS.CREATORS, subheading: "discoverable profiles" },
+      { value: STATS.FILTERS, subheading: "audience and engagement filters" },
+      { value: `${ELIGIBILITY.MIN_ENGAGEMENT}+`, subheading: "minimum creator engagement rate" },
+      { value: STATS.BRANDS, subheading: "brands served" },
     ],
   },
   {
     entries: [
-      { value: "500Mn+", subheading: "views generated" },
-      { value: "6000+", subheading: "content published" },
-      { value: "200+", subheading: "campaigns delivered" },
-      { value: "200+", subheading: "campaigns executed" },
+      { value: STATS.VIEWS, subheading: "views generated" },
+      { value: STATS.CONTENT, subheading: "content published" },
+      { value: STATS.CAMPAIGNS, subheading: "campaigns delivered" },
+      { value: "2-Way", subheading: "brand and creator messaging" },
     ],
   },
   {
     entries: [
-      { value: "2-4 Weeks", subheading: "average campaign go-live timeline" },
-      { value: "48 Hours", subheading: "creator response window" },
+      { value: ELIGIBILITY.CAMPAIGN_TIMELINE, subheading: "average campaign go-live timeline" },
+      { value: ELIGIBILITY.RESPONSE_WINDOW, subheading: "creator response window" },
       { value: "100%", subheading: "platform-led communication" },
-      { value: "2 Rounds", subheading: "content iteration support" },
+      { value: ELIGIBILITY.CONTENT_ITERATIONS, subheading: "content iteration support" },
     ],
   },
   {

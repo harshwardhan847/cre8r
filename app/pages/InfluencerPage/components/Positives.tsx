@@ -34,7 +34,7 @@ const Positives = (props: Props) => {
   return (
     <section className="w-full bg-background py-20 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
-        <h2 className=" text-xl font-normal leading-tight tracking-tight text-foreground/50 md:text-3xl">
+        <h2 className="h2">
           Why creators choose Cre8r
         </h2>
 
@@ -47,7 +47,7 @@ const Positives = (props: Props) => {
               <span
                 className={`mb-5 inline-flex size-4 rotate-45 rounded-sm ${item.accent}`}
               />
-              <h3 className="text-xl font-medium tracking-light text-foreground">
+              <h3 className="h3">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-normal text-muted-foreground font-light">

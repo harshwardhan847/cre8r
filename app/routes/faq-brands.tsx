@@ -1,5 +1,5 @@
 import FaqPage from "~/pages/FaqPage";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { seo, faqPageSchema, breadcrumbSchema } from "~/seo";
 
 const DESCRIPTION =
@@ -26,7 +26,7 @@ export default function FaqBrands() {
       faqs={CONSTANTS.FAQS.brands}
       contactEmail={CONSTANTS.CONTACT_EMAIL_BRANDS}
       contactNumber={CONSTANTS.CONTACT_NUMBER_BRANDS}
-      primaryCta={{ label: "Book a Demo", href: CONSTANTS.CALENDLY_URL }}
+      primaryCta={{ label: CTA.BRAND.label, href: CTA.BRAND.href }}
       secondaryCta={{ label: "Explore the Platform", to: "/product" }}
     />
   );

@@ -13,7 +13,7 @@ const BlogsPreview = () => {
       <div className="container px-4 md:px-8 mx-auto flex flex-col gap-6 md:gap-8 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground">Latest Insights</h2>
+            <h2 className="h2">Latest Insights</h2>
             <p className="text-muted-foreground mt-2 text-base md:text-lg">Stay updated with the latest in influencer marketing, trends, and strategies.</p>
           </div>
           <Button variant="outline" size="lg" className="rounded-full shrink-0" asChild>
@@ -47,7 +47,7 @@ const BlogsPreview = () => {
                   <span className="w-1 h-1 rounded-full bg-border" />
                   <span>{blog.author}</span>
                 </div>
-                <h3 className="text-lg md:text-2xl font-semibold leading-snug group-hover:text-primary transition-colors line-clamp-3">
+                <h3 className="h3 group-hover:text-primary transition-colors line-clamp-3">
                   {blog.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">

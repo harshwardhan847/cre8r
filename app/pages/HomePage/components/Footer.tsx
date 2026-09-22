@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "../../../featureFlags";
 
 const Footer = () => {
@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="border-b border-primary-foreground/10">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-light leading-tight tracking-tight">
+            <h2 className="h2">
               Intelligent influencer
               <br />
               matchmaking{" "}
@@ -25,12 +25,12 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-3 items-start md:items-end shrink-0">
             <Link
-              to={CONSTANTS.CALENDLY_URL}
+              to={CTA.BRAND.href}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-medium px-6 py-3 rounded-xl hover:bg-primary-foreground/90 transition-colors"
             >
-              Book a Demo
+              {CTA.BRAND.label}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -95,7 +95,7 @@ const Footer = () => {
 
           {/* Platform */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Platform</h3>
+            <h3 className="eyebrow text-primary-foreground/40">Platform</h3>
             <div className="flex flex-col gap-3">
               {[
                 { label: "Home", to: "/" },
@@ -103,8 +103,8 @@ const Footer = () => {
                 { label: "For Influencers", to: "/influencer" },
                 ...(featureFlags.enableCaseStudies ? [{ label: "Case Studies", to: "/case-studies" }] : []),
                 ...(featureFlags.enableResources ? [{ label: "Resources", to: "/resources" }] : []),
-                { label: "Creator Sign Up", to: CONSTANTS.CREATOR_SIGNUP_URL, ext: true },
-                { label: "Book a Demo", to: CONSTANTS.CALENDLY_URL, ext: true },
+                { label: CTA.CREATOR.label, to: CTA.CREATOR.href, ext: true },
+                { label: CTA.BRAND.label, to: CTA.BRAND.href, ext: true },
               ].map((link) => (
                 link.ext ? (
                   <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
@@ -121,7 +121,7 @@ const Footer = () => {
 
           {/* Company */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Company</h3>
+            <h3 className="eyebrow text-primary-foreground/40">Company</h3>
             <div className="flex flex-col gap-3">
               {[
                 { label: "About Us", to: "/about-us" },
@@ -146,7 +146,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/40">Contact</h3>
+            <h3 className="eyebrow text-primary-foreground/40">Contact</h3>
             <div className="flex flex-col gap-3">
               <a href={`mailto:${CONSTANTS.CONTACT_EMAIL_BRANDS}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 {CONSTANTS.CONTACT_EMAIL_BRANDS}

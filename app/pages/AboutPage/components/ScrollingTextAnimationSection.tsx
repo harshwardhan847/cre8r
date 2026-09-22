@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { cn } from "~/lib/utils";
+import { CTA } from "~/constants";
 import { useIsMobile } from "~/lib/use-is-mobile";
 
 type TextBlock = {
@@ -128,13 +129,16 @@ const ScrollingTextAnimationSection = () => {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="flex justify-center pt-8 -mt-10 md:-mt-24"
           >
-            <motion.button
-              className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary-hover transition-colors"
+            <motion.a
+              href={CTA.BRAND.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Request a call back
-            </motion.button>
+              {CTA.BRAND.label}
+            </motion.a>
           </motion.div>
         </div>
       </div>

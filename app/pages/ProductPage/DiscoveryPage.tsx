@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, Search, SlidersHorizontal, CheckCircle2, ShieldCheck, Users, Eye, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA, STATS } from "~/constants";
 import { Supademo } from "~/components/Supademo";
 
 // Mock creators data for interactive widget
@@ -95,22 +95,22 @@ const DiscoveryPage = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Discovery Module
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+          <h1 className="h1">
             Pinpoint the Perfect <br className="hidden sm:block" />
             Creators in Seconds
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Stop guessing. Search across our pre-vetted index of 4.1Mn+ global creators. Refine by niche, audience location, engagement rate, and verified credibility scores to maximize your match rate.
+            Stop guessing. Search across our pre-vetted index of {STATS.CREATORS} global creators. Refine by niche, audience location, engagement rate, and verified credibility scores to maximize your match rate.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                Book a Walkthrough
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
+                {CTA.BRAND.label}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href={CONSTANTS.CREATOR_FORM_URL} target="_blank" rel="noopener noreferrer">Join Creator Pool</a>
+              <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">{CTA.CREATOR.label}</a>
             </Button>
           </div>
         </motion.div>
@@ -119,8 +119,8 @@ const DiscoveryPage = () => {
       {/* Interactive Tool Section */}
       <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-light tracking-tight">Test-drive the Filter Engine</h2>
+          <p className="eyebrow">Interactive Demo</p>
+          <h2 className="h2 mt-2">Test-drive the Filter Engine</h2>
           <p className="mt-2 text-muted-foreground">Adjust filters or watch an interactive walkthrough of our Discovery Module.</p>
         </div>
 
@@ -263,7 +263,7 @@ const DiscoveryPage = () => {
       <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Engineered for Precision</h2>
+            <h2 className="h2">Engineered for Precision</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Our Discovery features enable brands to access clean, accurate datasets and bypass inflated bot accounts.
             </p>
@@ -298,7 +298,7 @@ const DiscoveryPage = () => {
                 <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-6">
                   <feat.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-medium">{feat.title}</h3>
+                <h3 className="h3">{feat.title}</h3>
                 <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{feat.description}</p>
               </motion.div>
             ))}
@@ -310,7 +310,7 @@ const DiscoveryPage = () => {
       <section className="py-14 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
+            <h2 className="h2 max-w-lg">
               Unlock the Discovery Suite
             </h2>
             <p className="mt-4 text-primary-foreground/60 max-w-md">
@@ -323,8 +323,8 @@ const DiscoveryPage = () => {
             className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground shrink-0"
             asChild
           >
-            <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Book a Custom Walkthrough
+            <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
+              {CTA.BRAND.label}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </Button>

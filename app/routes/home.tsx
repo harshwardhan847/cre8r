@@ -5,9 +5,10 @@ import {
   softwareApplicationSchema,
   SITE,
 } from "~/seo";
+import { STATS } from "~/constants";
 
 const DESCRIPTION =
-  "Run influencer marketing end to end. Discover from 4.1M+ vetted Instagram and YouTube creators, manage campaigns and content approvals, and attribute real revenue.";
+  `Run influencer marketing end to end. Discover from ${STATS.CREATORS} vetted Instagram and YouTube creators, manage campaigns and content approvals, and attribute real revenue.`;
 
 export function meta() {
   return seo({

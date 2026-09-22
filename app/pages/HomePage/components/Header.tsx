@@ -1,5 +1,3 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "~/components/ui/button";
 import VideoExample from "./VideoExample";
 import WhatsAppButton from "./WhatsAppButton";
 
@@ -20,20 +18,11 @@ const Header = (props: Props) => {
       </div>
       <div className="flex flex-col gap-4 z-10 items-center justify-center">
         {/* header heading */}
-        <button className="bg-white/80 scale-85 cursor-pointer hover:scale-88 duration-500 transition rounded-xl shadow-sm px-2 py-2 flex items-center justify-center gap-1 w-min mb-2 md:mb-4">
-          <p className="bg-primary text-primary-foreground rounded-sm px-2 flex w-min h-6 text-xs font-medium items-center mr-1 justify-center">
-            New
-          </p>
-          <span className="text-xs md:text-sm font-light whitespace-nowrap">
-            135K+ Registered creators on Cre8r
-          </span>
-          <ArrowRight className="size-4 text-muted-foreground" />
-        </button>
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium text-center tracking-normal leading-tight md:leading-16">
+        <h1 className="h1 text-center">
           End-to-End Influencer Marketing <br className="hidden sm:block" />
           Powered by AI
         </h1>
-        <h2 className="text-muted-foreground text-base md:text-2xl max-w-lg font-light text-center">
+        <h2 className="body-lg max-w-lg text-center">
           From first brief to final conversion. Discover, execute, track affiliates, and generate leads — All in one place.
         </h2>
         <div className="flex items-center justify-center">

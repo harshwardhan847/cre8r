@@ -1,8 +1,9 @@
 import AboutPage from "~/pages/AboutPage";
 import { seo, webPageSchema, breadcrumbSchema } from "~/seo";
+import { STATS } from "~/constants";
 
 const DESCRIPTION =
-  "Cre8r.ai is building India's end-to-end influencer marketing platform. Meet the founders and team behind the creator network powering campaigns for 100+ brands.";
+  `Cre8r.ai is building India's end-to-end influencer marketing platform. Meet the founders and team behind the creator network powering campaigns for ${STATS.BRANDS} brands.`;
 
 export function meta() {
   return seo({

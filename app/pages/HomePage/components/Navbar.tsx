@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router";
 import { ChevronDown, ChevronRight, ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "~/featureFlags";
 import { cn } from "~/lib/utils";
 
@@ -392,11 +392,11 @@ const Navbar = (props: Props) => {
           className="font-light text-xs md:text-sm h-9 md:h-10 px-3 md:px-5"
         >
           <Link
-            to={CONSTANTS.CALENDLY_URL}
+            to={CTA.BRAND.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book a Demo
+            {CTA.BRAND.label}
           </Link>
         </Button>
 

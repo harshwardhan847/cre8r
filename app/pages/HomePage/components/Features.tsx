@@ -2,12 +2,13 @@ import React from "react";
 import { cn } from "~/lib/utils";
 import { CONSTANTS } from "~/constants";
 import { Supademo } from "~/components/Supademo";
+import { STATS } from "~/constants";
 
 type Props = {};
 
 const featuresList = [
   {
-    title: "Find & Track 4mn+ Creators",
+    title: `Find & Track ${STATS.CREATORS} Creators`,
     image: "platform/discovery.png",
     embedUrl: CONSTANTS.SUPADEMO.DISCOVERY,
     description:
@@ -51,7 +52,7 @@ const Features = (props: Props) => {
 
   return (
     <div className="w-full my-12 md:my-24 flex flex-col items-center gap-4 justify-center">
-      <h2 className="text-3xl md:text-4xl font-normal text-center">How it works?</h2>
+      <h2 className="h2 text-center">How it works?</h2>
       <p className="text-center text-muted-foreground text-sm -m-2 px-4">
         Find your ideal influencers in seconds —
         <br /> no matter the niche, reach or region.

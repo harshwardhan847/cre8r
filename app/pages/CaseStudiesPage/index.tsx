@@ -2,17 +2,18 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { cn } from "~/lib/utils";
+import { STAT_LABELS, STATS } from "~/constants";
 
 const caseStudies = CONSTANTS.CASE_STUDIES;
 
 
 const metrics = [
-  { value: "200+", label: "Campaigns Delivered" },
-  { value: "4Mn+", label: "Creators Tracked" },
-  { value: "500Mn+", label: "Views Generated" },
-  { value: "₹50Cr+", label: "Revenue Attributed" },
+  { value: STATS.CAMPAIGNS, label: STAT_LABELS.CAMPAIGNS },
+  { value: STATS.CREATORS, label: STAT_LABELS.CREATORS },
+  { value: STATS.VIEWS, label: STAT_LABELS.VIEWS },
+  { value: STATS.REVENUE, label: STAT_LABELS.REVENUE },
 ];
 
 const industries = [
@@ -34,10 +35,10 @@ const CaseStudiesPage = () => {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="eyebrow">
             Case Studies
           </p>
-          <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight text-foreground">
+          <h1 className="h1 mt-4">
             Proven Results,
             <br />
             Clear ROI
@@ -47,7 +48,7 @@ const CaseStudiesPage = () => {
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                 See a Live Demo
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
@@ -99,7 +100,7 @@ const CaseStudiesPage = () => {
                     <div className="flex items-center gap-3 mb-6">
                       <p className={cn("text-xs font-medium uppercase tracking-[0.15em]", idx % 2 === 1 ? "text-primary-foreground/75" : "text-muted-foreground/80")}>{study.industry}</p>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">{study.brand}</h2>
+                    <h2 className="h2">{study.brand}</h2>
                     <p className={cn("mt-4 text-sm md:text-base leading-relaxed", idx % 2 === 1 ? "text-primary-foreground/90" : "text-muted-foreground")}>{study.description}</p>
                     <div className="flex flex-wrap gap-2 mt-6">
                       {study.tags.map((tag) => (
@@ -117,8 +118,8 @@ const CaseStudiesPage = () => {
                     className={idx % 2 === 1 ? "bg-white text-neutral-900 hover:bg-neutral-100 hover:text-neutral-950 w-fit font-normal" : "w-fit"}
                     asChild
                   >
-                    <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                      Request a walkthrough
+                    <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
+                      {CTA.BRAND.label}
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   </Button>
@@ -181,13 +182,13 @@ const CaseStudiesPage = () => {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mx-auto"
         >
-          <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Ready to write your own case study?</h2>
+          <h2 className="h2">Ready to write your own case study?</h2>
           <p className="mt-4 text-muted-foreground">
             Book a personalized demo and see how Cre8r can transform your influencer marketing strategy.
           </p>
           <Button size="lg" className="mt-8" asChild>
-            <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-              Book a Demo
+            <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
+              {CTA.BRAND.label}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </Button>

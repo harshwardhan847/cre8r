@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { featureFlags } from "../../featureFlags";
 import { ArrowRight, Calculator, BookOpen, FileText, TrendingUp, Zap, Users } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import React, { useState } from "react";
 
 const iconMap: Record<string, React.ComponentType<any>> = {
@@ -39,8 +39,8 @@ const RoiCalculator = () => {
   return (
     <div className="rounded-3xl border border-border/20 bg-white overflow-hidden shadow-sm">
       <div className="p-6 md:p-12 border-b border-border/10">
-        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Tool</p>
-        <h2 className="mt-3 text-2xl sm:text-3xl font-light tracking-tight">Campaign ROI Calculator</h2>
+        <p className="eyebrow">Interactive Tool</p>
+        <h2 className="h2 mt-3">Campaign ROI Calculator</h2>
         <p className="mt-2 text-muted-foreground">Estimate your influencer campaign performance before you launch.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-0">
@@ -71,7 +71,7 @@ const RoiCalculator = () => {
         </div>
 
         <div className="p-6 md:p-12 bg-primary text-primary-foreground flex flex-col justify-center gap-6 md:gap-8">
-          <h3 className="text-base md:text-lg font-light text-primary-foreground/60 uppercase tracking-wider">Estimated Results</h3>
+          <h3 className="eyebrow text-primary-foreground/60">Estimated Results</h3>
           {[
             { label: "Total Reach", value: totalReach.toLocaleString() },
             { label: "Engagements", value: engagements.toLocaleString() },
@@ -88,7 +88,7 @@ const RoiCalculator = () => {
             className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground w-fit mt-4"
             asChild
           >
-            <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+            <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
               Discuss with our team
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
@@ -109,10 +109,10 @@ const ResourcesPage = () => {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="eyebrow">
             Resources
           </p>
-          <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-light tracking-tight">
+          <h1 className="h1 mt-4">
             Tools & Guides
             <br />
             for Smarter Growth
@@ -139,7 +139,7 @@ const ResourcesPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-10 md:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">Free Resources</h2>
+            <h2 className="h2">Free Resources</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Download guides, templates, and frameworks curated from 200+ campaign learnings.
             </p>
@@ -170,7 +170,7 @@ const ResourcesPage = () => {
                       </span>
                     )}
                   </div>
-                  <h3 className="text-lg font-medium">{res.title}</h3>
+                  <h3 className="h3">{res.title}</h3>
                   <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{res.description}</p>
                 </div>
                 <Button
@@ -181,7 +181,7 @@ const ResourcesPage = () => {
                   asChild={res.available}
                 >
                   {res.available ? (
-                    <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+                    <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                       {res.cta}
                       <ArrowRight className="ml-1.5 w-3.5 h-3.5" />
                     </Link>
@@ -205,7 +205,7 @@ const ResourcesPage = () => {
           className="rounded-3xl bg-primary text-primary-foreground p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
         >
           <div>
-            <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
+            <h2 className="h2 max-w-lg">
               Want a custom strategy for your brand?
             </h2>
             <p className="mt-4 text-primary-foreground/60 max-w-md">
@@ -219,7 +219,7 @@ const ResourcesPage = () => {
               className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
               asChild
             >
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                 Book Strategy Call
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>

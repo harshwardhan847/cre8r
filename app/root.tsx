@@ -46,6 +46,34 @@ export const meta: Route.MetaFunction = () =>
     noindex: true,
   });
 
+/**
+ * Google Analytics measurement ID, supplied at build time. The site is a static
+ * prerender with no runtime server, so gtag loads client-side. Leaving the
+ * variable unset emits nothing at all — which is the state until the property
+ * is created — so this is safe to ship before the ID exists.
+ */
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as
+  | string
+  | undefined;
+
+function GoogleAnalytics() {
+  if (!GA_MEASUREMENT_ID) return null;
+
+  return (
+    <>
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`,
+        }}
+      />
+    </>
+  );
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-IN">
@@ -56,6 +84,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="author" content={SITE.legalName} />
         <Meta />
         <Links />
+        <GoogleAnalytics />
         {/*
           Organisation and WebSite identity, emitted on every page so answer
           engines resolve one entity across the site. Page-level schema is added
@@ -111,7 +140,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-2xl flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-4xl font-light tracking-tight sm:text-5xl">
+      <h1 className="h1">
         {message}
       </h1>
       <p className="mt-5 text-base leading-relaxed text-muted-foreground">

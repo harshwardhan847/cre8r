@@ -4,7 +4,7 @@ import { featureFlags } from "../../featureFlags";
 import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, LineChart, Link2, Percent, IndianRupee, Users, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { CONSTANTS, CTA } from "~/constants";
 import { Supademo } from "~/components/Supademo";
 
 // Mock affiliate sales analytics for interactive widget
@@ -80,7 +80,7 @@ const AffiliatePage = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Affiliate & ROI Module
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-light tracking-tight text-foreground leading-[1.1]">
+          <h1 className="h1">
             Content to Commerce <br className="hidden sm:block" />
             Attribution & Sales
           </h1>
@@ -89,7 +89,7 @@ const AffiliatePage = () => {
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
-              <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
                 Schedule a Platform Walkthrough
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
@@ -106,8 +106,8 @@ const AffiliatePage = () => {
       {/* Interactive Tool Section */}
       <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground font-medium">Interactive Demo</p>
-          <h2 className="mt-2 text-2xl md:text-3xl font-light tracking-tight">Campaign ROI & Sales Tracker</h2>
+          <p className="eyebrow">Interactive Demo</p>
+          <h2 className="h2 mt-2">Campaign ROI & Sales Tracker</h2>
           <p className="mt-2 text-muted-foreground">Select a creator below to view their specific campaign sales trends or view interactive walkthroughs.</p>
         </div>
 
@@ -185,7 +185,7 @@ const AffiliatePage = () => {
               {/* Creator list column */}
               <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
                 <div className="p-4 border-b border-border/15">
-                  <span className="text-xs uppercase tracking-[0.1em] font-semibold text-muted-foreground">Creators Performance</span>
+                  <span className="eyebrow">Creators Performance</span>
                 </div>
                 <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
                   {affiliates.map((item, idx) => (
@@ -268,7 +268,7 @@ const AffiliatePage = () => {
       <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-light tracking-tight">Enterprise Attribution Tech</h2>
+            <h2 className="h2">Enterprise Attribution Tech</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
               Our Affiliate module integrates deeply to capture clean, non-duplicative conversion events.
             </p>
@@ -303,7 +303,7 @@ const AffiliatePage = () => {
                 <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center mb-6">
                   <feat.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-medium">{feat.title}</h3>
+                <h3 className="h3">{feat.title}</h3>
                 <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{feat.description}</p>
               </motion.div>
             ))}
@@ -315,7 +315,7 @@ const AffiliatePage = () => {
       <section className="py-14 md:py-24 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <h2 className="text-3xl md:text-4xl font-light leading-tight max-w-lg">
+            <h2 className="h2 max-w-lg">
               Start Tracking Campaigns By ROI
             </h2>
             <p className="mt-4 text-primary-foreground/60 max-w-md">
@@ -328,7 +328,7 @@ const AffiliatePage = () => {
             className="border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground shrink-0"
             asChild
           >
-            <Link to={CONSTANTS.CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+            <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
               Schedule an Attribution Demo
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>

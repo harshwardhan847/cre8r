@@ -19,10 +19,10 @@ const PlatformDemo = (props: Props) => {
     <section className="w-full bg-background py-16 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
         <div className="mb-10 text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="eyebrow">
             Interactive Demo
           </p>
-          <h2 className="mt-2 text-3xl font-light tracking-tight text-foreground md:text-4xl">
+          <h2 className="h2 mt-2">
             See how Cre8r works
           </h2>
           <p className="mt-2 text-muted-foreground">
