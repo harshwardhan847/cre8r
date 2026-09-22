@@ -8,7 +8,6 @@ import {
 import React from "react";
 import { Button } from "~/components/ui/button";
 import { CTA } from "~/constants";
-import { useIsMobile } from "~/lib/use-is-mobile";
 import { STATS } from "~/constants";
 
 type Props = {};
@@ -33,61 +32,10 @@ const FEATURE_CARDS = [
 
 const Transform = (props: Props) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  const videoContainerRef = React.useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
   const transition = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
-
-  React.useEffect(() => {
-    const video = videoRef.current;
-    const container = videoContainerRef.current;
-    if (!video || !container) return;
-
-    // On mobile just play the video muted — skip the scroll-linked
-    // volume/visibility ramp, which reruns on every scroll frame.
-    if (isMobile) {
-      video.muted = true;
-      video.play().catch(() => { });
-      return;
-    }
-
-    let ticking = false;
-
-    const updateVolume = () => {
-      ticking = false;
-      const rect = container.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      const visibleHeight =
-        Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-      const ratio = Math.max(0, Math.min(1, visibleHeight / rect.height));
-
-      video.volume = ratio;
-      video.muted = ratio <= 0;
-      if (ratio > 0 && video.paused) {
-        video.play().catch(() => { });
-      }
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateVolume);
-      }
-    };
-
-    updateVolume();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [isMobile]);
 
   const rawY = useTransform(transition.scrollYProgress, [0, 1], [300, -300]);
 
@@ -197,21 +145,20 @@ const Transform = (props: Props) => {
             Monitor views, engagement and ROI in real-time across campaigns.
           </p>
         </motion.div>
-        <motion.div
-          ref={videoContainerRef}
-          className="aspect-video mx-auto max-w-6xl w-full h-full overflow-hidden mt-8 shadow rounded-lg relative backdrop-blur-lg bg-white/20"
-        >
+        <div className="aspect-video mx-auto max-w-6xl w-full h-full overflow-hidden mt-8 shadow rounded-lg relative backdrop-blur-lg bg-white/20">
+          {/* An ordinary player: nothing plays until the viewer presses play.
+              `preload="metadata"` fetches the header rather than the file, so
+              the 9.9MB download only happens for someone who asked for it; the
+              poster is what they look at until then. */}
           <video
-            ref={videoRef}
             src="/video_assets/video.mp4"
+            poster="/video_assets/video-poster.webp"
             className="w-full h-full object-cover rounded-lg"
-            autoPlay
-            loop
-            muted
+            controls
             playsInline
             preload="metadata"
           />
-        </motion.div>
+        </div>
 
         {/* Mobile-only simplified feature list (no parallax/scroll transforms) */}
         <div className="md:hidden grid grid-cols-1 gap-3 mt-5">
