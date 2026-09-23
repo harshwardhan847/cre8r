@@ -1,5 +1,7 @@
 import React from "react";
-import WhatsAppButton from "~/pages/HomePage/components/WhatsAppButton";
+import { ArrowRight } from "lucide-react";
+import { Button } from "~/components/ui/button";
+import { CTA, ELIGIBILITY } from "~/constants";
 
 type Props = {};
 
@@ -24,8 +26,16 @@ const Hero = (props: Props) => {
             influence.
           </p>
 
-          <div className="mt-6 w-full flex justify-center lg:justify-start">
-            <WhatsAppButton />
+          <div className="mt-8 flex w-full flex-col items-center gap-3 lg:items-start">
+            <Button size="lg" className="h-12 px-6 font-normal" asChild>
+              <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">
+                {CTA.CREATOR.label}
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </a>
+            </Button>
+            <p className="text-xs font-medium text-muted-foreground">
+              Free to join · {ELIGIBILITY.MIN_FOLLOWERS} Instagram or YouTube followers
+            </p>
           </div>
         </div>
 

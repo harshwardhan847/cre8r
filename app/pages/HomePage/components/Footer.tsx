@@ -1,9 +1,13 @@
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { CONSTANTS, CTA } from "~/constants";
 import { featureFlags } from "../../../featureFlags";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  // On the creator page every call to action is the creator sign-up, never the
+  // brand demo.
+  const isCreatorPage = useLocation().pathname.startsWith("/influencer");
+  const primaryCta = isCreatorPage ? CTA.CREATOR : CTA.BRAND;
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -25,12 +29,12 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-3 items-start md:items-end shrink-0">
             <Link
-              to={CTA.BRAND.href}
+              to={primaryCta.href}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-medium px-6 py-3 rounded-xl hover:bg-primary-foreground/90 transition-colors"
             >
-              {CTA.BRAND.label}
+              {primaryCta.label}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -104,7 +108,7 @@ const Footer = () => {
                 ...(featureFlags.enableCaseStudies ? [{ label: "Case Studies", to: "/case-studies" }] : []),
                 ...(featureFlags.enableResources ? [{ label: "Resources", to: "/resources" }] : []),
                 { label: CTA.CREATOR.label, to: CTA.CREATOR.href, ext: true },
-                { label: CTA.BRAND.label, to: CTA.BRAND.href, ext: true },
+                ...(isCreatorPage ? [] : [{ label: CTA.BRAND.label, to: CTA.BRAND.href, ext: true }]),
               ].map((link) => (
                 link.ext ? (
                   <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">

@@ -69,6 +69,10 @@ const Navbar = (props: Props) => {
   // blog (the first thing under that menu that always exists).
   const resourcesHref = featureFlags.enableResources ? "/resources" : "/blog";
 
+  // The creator page speaks to influencers, so its primary action is signing
+  // up rather than booking a brand demo.
+  const primaryCta = isActive("/influencer") ? CTA.CREATOR : CTA.BRAND;
+
   const mobileSections = [
     { id: "product", ...CONSTANTS.NAV_CATEGORIES.product },
     { id: "resources", ...CONSTANTS.NAV_CATEGORIES.resources },
@@ -390,13 +394,14 @@ const Navbar = (props: Props) => {
           variant="default"
           size="lg"
           className="font-light text-xs md:text-sm h-9 md:h-10 px-3 md:px-5"
+          asChild
         >
           <Link
-            to={CTA.BRAND.href}
+            to={primaryCta.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {CTA.BRAND.label}
+            {primaryCta.label}
           </Link>
         </Button>
 
