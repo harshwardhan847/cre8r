@@ -6,9 +6,8 @@ const CALENDLY_URL = "https://calendly.com/gs_cre8r/30min";
 // Creator onboarding lives on the Ylytic platform — every "sign up / apply as
 // a creator" CTA and the legacy /influencer-sign-up URL point here.
 const CREATOR_SIGNUP_URL = "https://ylytic.com/signUp/creator";
-// No application form exists yet, so Apply Now opens an email to HR. Swap in
-// the real form URL when there is one.
-const HIRING_FORM_URL = "mailto:careers@cre8r.ai?subject=Application%20to%20Cre8r";
+// Job application Google Form — every "Apply Now" CTA points here.
+const HIRING_FORM_URL = "https://forms.gle/z2MqTsVaRnC8y6tA9";
 
 /**
  * Every headline figure the site quotes about Cre8r.
@@ -149,12 +148,18 @@ export const CONSTANTS = {
    * down. An empty array is a valid state: the page then shows the general
    * "we're always hiring" card instead of a job list.
    *
-   * `applyUrl` is optional; roles without one fall back to HIRING_FORM_URL.
+   * `experience` and `applyUrl` are optional; roles without an `applyUrl`
+   * fall back to HIRING_FORM_URL.
    */
-  JOB_OPENINGS: [] as Array<{
+  JOB_OPENINGS: [
+    { role: "Associate, Data Sourcing", location: "Gurugram" },
+    { role: "Associate, Campaign Management & Ops Support", location: "Gurugram" },
+    { role: "Product Operations Manager", location: "Gurugram" },
+    { role: "Affiliate Lead", location: "Gurugram" },
+  ] as Array<{
     role: string;
     location: string;
-    experience: string;
+    experience?: string;
     applyUrl?: string;
   }>,
 

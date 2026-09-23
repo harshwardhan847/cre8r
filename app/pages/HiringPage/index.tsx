@@ -54,10 +54,12 @@ const OpeningsList = () => (
               <MapPin className="w-3.5 h-3.5 shrink-0" />
               {job.location}
             </span>
-            <span className="caption inline-flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 shrink-0" />
-              {job.experience}
-            </span>
+            {job.experience && (
+              <span className="caption inline-flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 shrink-0" />
+                {job.experience}
+              </span>
+            )}
           </div>
         </div>
         <Button size="lg" className="shrink-0" asChild>
