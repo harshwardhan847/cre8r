@@ -310,13 +310,12 @@ export function serviceSchema({
 
 export function blogSchema(
   posts: readonly {
-    id: string;
+    slug: string;
     title: string;
-    description: string;
-    date: string;
+    excerpt: string;
+    publishedAt: string;
     author: string;
     image: string;
-    blog_link: string;
   }[],
 ) {
   return {
@@ -331,22 +330,42 @@ export function blogSchema(
     publisher: { "@id": ORG_ID },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
-      "@id": `${absoluteUrl("/blog")}#post-${post.id}`,
+      "@id": `${absoluteUrl(`/blog/${post.slug}`)}#post`,
       headline: post.title,
-      description: post.description,
-      datePublished: toIsoDate(post.date),
+      description: post.excerpt,
+      datePublished: post.publishedAt,
       image: absoluteUrl(post.image),
-      url: post.blog_link,
-      mainEntityOfPage: post.blog_link,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
       author: { "@type": "Organization", name: post.author, "@id": ORG_ID },
       publisher: { "@id": ORG_ID },
     })),
   };
 }
 
-/** "Mar 10, 2025" -> "2025-03-10". Returns undefined for anything unparseable. */
-export function toIsoDate(human: string): string | undefined {
-  const parsed = new Date(human);
-  if (Number.isNaN(parsed.getTime())) return undefined;
-  return parsed.toISOString().slice(0, 10);
+/** A single post's own BlogPosting markup, for its /blog/:slug page. */
+export function blogPostingSchema(post: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishedAt: string;
+  author: string;
+  image: string;
+}) {
+  const path = `/blog/${post.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${absoluteUrl(path)}#post`,
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    image: absoluteUrl(post.image),
+    url: absoluteUrl(path),
+    mainEntityOfPage: absoluteUrl(path),
+    inLanguage: "en-IN",
+    isPartOf: { "@id": `${absoluteUrl("/blog")}#blog` },
+    author: { "@type": "Organization", name: post.author, "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+  };
 }

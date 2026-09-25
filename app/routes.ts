@@ -7,6 +7,7 @@ export default [
   route("/about-us", "routes/about-us.tsx"),
   route("/contact-us", "routes/contact-us.tsx"),
   route("/blog", "routes/blog.tsx"),
+  route("/blog/:slug", "routes/blog.$slug.tsx"),
   route("/faq-brands", "routes/faq-brands.tsx"),
   route("/faq-influencers", "routes/faq-influencers.tsx"),
   route("/influencer", "routes/influencer.tsx"),

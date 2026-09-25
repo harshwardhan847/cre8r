@@ -1,12 +1,14 @@
-import React from "react";
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS } from "~/constants";
+import { formatBlogDate, type BlogCard } from "~/lib/blog";
 
-const BlogsPreview = () => {
-  // Take the first 3 blogs for the preview
-  const previewBlogs = CONSTANTS.BLOGS.slice(0, 3);
+type BlogsPreviewProps = {
+  posts: BlogCard[];
+};
+
+const BlogsPreview = ({ posts }: BlogsPreviewProps) => {
+  if (posts.length === 0) return null;
 
   return (
     <div className="w-full py-12 md:py-24 bg-background flex flex-col items-center justify-center border-t border-border/10">
@@ -17,19 +19,15 @@ const BlogsPreview = () => {
             <p className="text-muted-foreground mt-2 text-base md:text-lg">Stay updated with the latest in influencer marketing, trends, and strategies.</p>
           </div>
           <Button variant="outline" size="lg" className="rounded-full shrink-0" asChild>
-            <a href="https://medium.com/@cre8r.ai" target="_blank" rel="noreferrer">
-              View All Posts
-            </a>
+            <Link to="/blog">View All Posts</Link>
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-4 md:mt-8">
-          {previewBlogs.map((blog) => (
-            <a
+          {posts.map((blog) => (
+            <Link
               key={blog.id}
-              href={blog.blog_link}
-              target="_blank"
-              rel="noreferrer"
+              to={`/blog/${blog.slug}`}
               className="group relative rounded-3xl overflow-hidden shadow-sm border border-border/40 bg-white hover:shadow-xl hover:border-primary/20 transition-all duration-300 flex flex-col h-full"
             >
               <div className="aspect-[16/10] w-full bg-neutral-100 overflow-hidden relative">
@@ -43,7 +41,7 @@ const BlogsPreview = () => {
               </div>
               <div className="p-5 md:p-8 flex flex-col flex-1 gap-3 md:gap-4">
                 <div className="flex items-center gap-3 text-xs font-semibold tracking-wide text-muted-foreground/80 uppercase">
-                  <span>{blog.date}</span>
+                  <span>{formatBlogDate(blog.publishedAt)}</span>
                   <span className="w-1 h-1 rounded-full bg-border" />
                   <span>{blog.author}</span>
                 </div>
@@ -51,14 +49,14 @@ const BlogsPreview = () => {
                   {blog.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">
-                  {blog.description}
+                  {blog.excerpt}
                 </p>
 
                 <div className="flex items-center gap-2 text-primary text-sm font-semibold mt-4 group-hover:gap-3 transition-all duration-300">
                   Read Article <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

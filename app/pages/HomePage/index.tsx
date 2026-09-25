@@ -1,4 +1,5 @@
 import { featureFlags } from "../../featureFlags";
+import type { BlogCard } from "~/lib/blog";
 import Brands from "./components/Brands";
 import EmailCard from "./components/EmailCard";
 import Features from "./components/Features";
@@ -8,9 +9,11 @@ import BlogsPreview from "./components/BlogsPreview";
 import Transform from "./components/Transform";
 import VideoCarousel from "./components/VideoCarousel";
 
-type Props = {};
+type Props = {
+  latestPosts: BlogCard[];
+};
 
-const Home = (props: Props) => {
+const Home = ({ latestPosts }: Props) => {
   return (
     <>
       <header className="w-full h-full min-h-screen bg-background">
@@ -21,7 +24,7 @@ const Home = (props: Props) => {
       {/* <VideoCarousel /> */}
       <Features />
       {featureFlags.enableCaseStudies && <CaseStudiesPreview />}
-      <BlogsPreview />
+      <BlogsPreview posts={latestPosts} />
       {/* <EmailCard /> */}
     </>
   );
