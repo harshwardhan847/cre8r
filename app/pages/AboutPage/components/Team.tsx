@@ -32,7 +32,6 @@ const teamMembers: TeamMember[] = [
   { name: "Niharika Mittal", avatar: "/team/niharika_mittal.png" },
   { name: "Simran Sharma", avatar: "/team/simran_sharma.png" },
   { name: "Aditya Mathur", avatar: "/team/aditya_mathur.png" },
-  { name: "Tanish Gadodia", avatar: "/team/tanish_gadodia.png" },
   { name: "Aarsh", avatar: "/team/aarsh.png" },
   { name: "Aditya Chaudhary", avatar: "/team/aditya_chaudhary.png" },
   { name: "Tanvi", avatar: "/team/tanvi.png" },
