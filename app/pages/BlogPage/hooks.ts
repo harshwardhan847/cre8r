@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  BLOG_FIRST_PAGE_SIZE,
   BLOG_PAGE_SIZE,
   getPostsPage,
   searchPosts,
@@ -7,15 +8,35 @@ import {
   type BlogPostsPage,
 } from "~/lib/blog";
 
-/** Newest-first listing that starts from the prerendered first page. */
+/**
+ * Newest-first listing that starts from the prerendered first page, then
+ * swaps in the live first page from Sanity — the prerendered one is only as
+ * fresh as the last deploy.
+ */
 export function usePaginatedPosts(firstPage: BlogPostsPage) {
   const [posts, setPosts] = useState(firstPage.posts);
   const [cursor, setCursor] = useState(firstPage.nextCursor);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
+  // Once the reader has paged past the first page, replacing it would drop
+  // the posts they loaded, so a late-arriving refresh is ignored.
+  const pagedRef = useRef(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    getPostsPage({ limit: BLOG_FIRST_PAGE_SIZE }, { signal: controller.signal })
+      .then((page) => {
+        if (pagedRef.current) return;
+        setPosts(page.posts);
+        setCursor(page.nextCursor);
+      })
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
 
   const loadMore = useCallback(async () => {
     if (!cursor || loading) return;
+    pagedRef.current = true;
     setLoading(true);
     setFailed(false);
     try {

@@ -29,8 +29,10 @@ type RawJobOpening = {
   applyUrl: string | null;
 };
 
-export async function getJobOpenings(): Promise<JobOpening[]> {
-  const raw = await sanityFetch<RawJobOpening[]>(JOB_OPENINGS_QUERY);
+export async function getJobOpenings(
+  options: { signal?: AbortSignal } = {},
+): Promise<JobOpening[]> {
+  const raw = await sanityFetch<RawJobOpening[]>(JOB_OPENINGS_QUERY, {}, options);
   return raw.map(({ experience, applyUrl, ...job }) => ({
     ...job,
     experience: experience ?? undefined,

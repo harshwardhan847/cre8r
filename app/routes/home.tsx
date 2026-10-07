@@ -6,14 +6,12 @@ import {
   SITE,
 } from "~/seo";
 import { STATS } from "~/constants";
-import { getPostsPage } from "~/lib/blog";
+import { LATEST_POSTS_COUNT, getPostsPage } from "~/lib/blog";
 import type { Route } from "./+types/home";
 
-const LATEST_POSTS_COUNT = 3;
-
 // Build time only — the "Latest Insights" section is baked into the
-// prerendered homepage, so it's in the HTML crawlers read and needs no
-// request to Sanity from the visitor's browser.
+// prerendered homepage, so it's in the HTML crawlers read. BlogsPreview then
+// refetches it in the browser to pick up posts published since the deploy.
 export async function loader() {
   const { posts } = await getPostsPage({ limit: LATEST_POSTS_COUNT });
   return { latestPosts: posts };

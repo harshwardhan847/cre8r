@@ -7,8 +7,8 @@ const DESCRIPTION =
   "We're hiring across engineering, growth and creator operations at Cre8r.ai. Join a fast-growing creator-tech team building India's influencer marketing platform.";
 
 // Build time only — openings are edited in Sanity Studio and baked into the
-// prerendered page. The Sanity publish webhook redeploys the site, so a role
-// added or removed in Studio goes live within a minute or two.
+// prerendered page, which then refetches them in the browser so a role added
+// or removed since the last deploy shows up straight away.
 export async function loader() {
   return { openings: await getJobOpenings() };
 }

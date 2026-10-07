@@ -24,6 +24,10 @@ export function formatBlogDate(iso: string): string {
 
 /** Grid posts per page; the list's first page adds one featured post on top. */
 export const BLOG_PAGE_SIZE = 9;
+export const BLOG_FIRST_PAGE_SIZE = BLOG_PAGE_SIZE + 1;
+
+/** Posts shown in the homepage's "Latest Insights" section. */
+export const LATEST_POSTS_COUNT = 3;
 
 // `publishedAt` is required in the schema, but ordering and cursors break on
 // a document without it, so the filter enforces it rather than trusting that.

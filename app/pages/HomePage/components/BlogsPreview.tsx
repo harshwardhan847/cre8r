@@ -1,13 +1,23 @@
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { formatBlogDate, type BlogCard } from "~/lib/blog";
+import {
+  LATEST_POSTS_COUNT,
+  formatBlogDate,
+  getPostsPage,
+  type BlogCard,
+} from "~/lib/blog";
+import { useFreshData } from "~/lib/use-fresh-data";
+
+const fetchLatestPosts = async (signal: AbortSignal) =>
+  (await getPostsPage({ limit: LATEST_POSTS_COUNT }, { signal })).posts;
 
 type BlogsPreviewProps = {
   posts: BlogCard[];
 };
 
-const BlogsPreview = ({ posts }: BlogsPreviewProps) => {
+const BlogsPreview = ({ posts: prerenderedPosts }: BlogsPreviewProps) => {
+  const posts = useFreshData(prerenderedPosts, fetchLatestPosts);
   if (posts.length === 0) return null;
 
   return (

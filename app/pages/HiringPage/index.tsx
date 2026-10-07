@@ -2,7 +2,10 @@ import { motion } from "motion/react";
 import { ArrowRight, Briefcase, MapPin, Clock } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CTA } from "~/constants";
-import type { JobOpening } from "~/lib/jobs";
+import { getJobOpenings, type JobOpening } from "~/lib/jobs";
+import { useFreshData } from "~/lib/use-fresh-data";
+
+const fetchJobOpenings = (signal: AbortSignal) => getJobOpenings({ signal });
 
 /**
  * Shown when there are no live roles. Closed positions are removed by
@@ -76,7 +79,8 @@ const OpeningsList = ({ openings }: { openings: JobOpening[] }) => (
   </div>
 );
 
-const HiringPage = ({ openings }: { openings: JobOpening[] }) => {
+const HiringPage = ({ openings: prerenderedOpenings }: { openings: JobOpening[] }) => {
+  const openings = useFreshData(prerenderedOpenings, fetchJobOpenings);
   const hasOpenings = openings.length > 0;
 
   return (
