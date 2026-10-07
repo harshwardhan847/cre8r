@@ -5,7 +5,7 @@ import { schemaTypes } from "./schemaTypes";
 
 export default defineConfig({
   name: "default",
-  title: "Cre8r.ai Blog",
+  title: "Cre8r.ai",
 
   projectId: process.env.SANITY_STUDIO_PROJECT_ID || "qg8bn70f",
   dataset: process.env.SANITY_STUDIO_DATASET || "production",

@@ -54,11 +54,9 @@ export const STAT_LABELS = {
  */
 export const ELIGIBILITY = {
   /** Minimum followers to join, as shown in marketing copy. */
-  MIN_FOLLOWERS: "5,000+",
-  /** The accepted range, as shown in the creator FAQ. */
-  FOLLOWER_RANGE: "5,000–100,000",
+  MIN_FOLLOWERS: "2,000+",
   /** Minimum age in years. */
-  MIN_AGE: 13,
+  MIN_AGE: 18,
   /** Minimum engagement rate. */
   MIN_ENGAGEMENT: "2%",
   /** How long a creator has to accept a campaign. */
@@ -142,27 +140,6 @@ export const CONSTANTS = {
   CONTACT_NUMBER_BRANDS: "+91 8800 411 522",
   CONTACT_NUMBER_CREATORS: "+91 7754900652",
 
-  /**
-   * Live roles shown on /hiring. This is the single place to edit when a role
-   * opens or closes — add an entry to list it, delete the entry to take it
-   * down. An empty array is a valid state: the page then shows the general
-   * "we're always hiring" card instead of a job list.
-   *
-   * `experience` and `applyUrl` are optional; roles without an `applyUrl`
-   * fall back to HIRING_FORM_URL.
-   */
-  JOB_OPENINGS: [
-    { role: "Associate, Data Sourcing", location: "Gurugram" },
-    { role: "Associate, Campaign Management & Ops Support", location: "Gurugram" },
-    { role: "Product Operations Manager", location: "Gurugram" },
-    { role: "Affiliate Lead", location: "Gurugram" },
-  ] as Array<{
-    role: string;
-    location: string;
-    experience?: string;
-    applyUrl?: string;
-  }>,
-
   OFFICES: [
     {
       city: "Gurgaon",
@@ -244,7 +221,7 @@ export const CONSTANTS = {
       {
         question: "What are the requirements to join Cre8r?",
         answer:
-          `You must be at least ${ELIGIBILITY.MIN_AGE} years old, have an Instagram or YouTube account with ${ELIGIBILITY.FOLLOWER_RANGE} followers/subscribers, and be located in India.`,
+          `You must be at least ${ELIGIBILITY.MIN_AGE} years old, have an Instagram or YouTube account with ${ELIGIBILITY.MIN_FOLLOWERS} followers/subscribers, and be located in India.`,
       },
       {
         question: "Can I search for particular campaigns?",

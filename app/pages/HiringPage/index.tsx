@@ -1,14 +1,13 @@
 import { motion } from "motion/react";
 import { ArrowRight, Briefcase, MapPin, Clock } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS, CTA } from "~/constants";
-
-const openings = CONSTANTS.JOB_OPENINGS;
+import { CTA } from "~/constants";
+import type { JobOpening } from "~/lib/jobs";
 
 /**
- * Shown when there are no live roles. Closed positions are removed by deleting
- * them from CONSTANTS.JOB_OPENINGS, so the page never advertises a role that
- * is no longer open.
+ * Shown when there are no live roles. Closed positions are removed by
+ * unpublishing them in Sanity Studio, so the page never advertises a role
+ * that is no longer open.
  */
 const NoOpenings = () => (
   <motion.div
@@ -36,11 +35,11 @@ const NoOpenings = () => (
   </motion.div>
 );
 
-const OpeningsList = () => (
+const OpeningsList = ({ openings }: { openings: JobOpening[] }) => (
   <div className="mt-10 md:mt-14 mx-auto max-w-3xl flex flex-col gap-4">
     {openings.map((job, i) => (
       <motion.div
-        key={`${job.role}-${job.location}`}
+        key={job.id}
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
@@ -77,7 +76,7 @@ const OpeningsList = () => (
   </div>
 );
 
-const HiringPage = () => {
+const HiringPage = ({ openings }: { openings: JobOpening[] }) => {
   const hasOpenings = openings.length > 0;
 
   return (
@@ -100,7 +99,7 @@ const HiringPage = () => {
           </p>
         </motion.div>
 
-        {hasOpenings ? <OpeningsList /> : <NoOpenings />}
+        {hasOpenings ? <OpeningsList openings={openings} /> : <NoOpenings />}
       </section>
     </main>
   );
