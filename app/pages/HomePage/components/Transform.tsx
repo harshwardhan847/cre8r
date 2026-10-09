@@ -68,6 +68,15 @@ const Transform = (props: Props) => {
     mass: 2,
   });
 
+  // The floating cards sit above the player, so they step aside while the
+  // video is playing instead of covering it.
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const cardVisibility = {
+    animate: { opacity: isPlaying ? 0 : 1 },
+    transition: { duration: 0.25 },
+    className: isPlaying ? "pointer-events-none" : "",
+  };
+
   return (
     <div
       ref={containerRef}
@@ -109,7 +118,9 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ rotate: rotateRight, y }}
           whileHover={{ scale: 1.04 }}
-          className="hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(74,222,128,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/4 right-12"
+          animate={cardVisibility.animate}
+          transition={cardVisibility.transition}
+          className={`${cardVisibility.className} hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(74,222,128,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/4 right-12`}
         >
           <span className="bg-green-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <p className="font-normal text-xs text-foreground">
@@ -122,7 +133,9 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ y }}
           whileHover={{ scale: 1.04 }}
-          className="hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(251,146,60,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-full right-1/2 translate-x-1/2 translate-y-full"
+          animate={cardVisibility.animate}
+          transition={cardVisibility.transition}
+          className={`${cardVisibility.className} hidden md:flex absolute rounded-2xl origin-top-right bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(251,146,60,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2`}
         >
           <span className="bg-orange-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <p className="font-normal text-xs text-foreground">
@@ -135,7 +148,9 @@ const Transform = (props: Props) => {
         <motion.div
           style={{ rotate, y }}
           whileHover={{ scale: 1.04 }}
-          className="hidden md:flex absolute rounded-2xl origin-top-left bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(244,114,182,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/6 left-12"
+          animate={cardVisibility.animate}
+          transition={cardVisibility.transition}
+          className={`${cardVisibility.className} hidden md:flex absolute rounded-2xl origin-top-left bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(244,114,182,0.08)] z-10 w-xs flex-col items-start justify-center gap-1 p-5 top-1/6 left-12`}
         >
           <span className="bg-pink-400 rounded-sm shadow w-4 aspect-square mb-1" />
           <p className="font-normal text-xs text-foreground">
@@ -145,7 +160,7 @@ const Transform = (props: Props) => {
             Monitor views, engagement and ROI in real-time across campaigns.
           </p>
         </motion.div>
-        <div className="aspect-video mx-auto max-w-6xl w-full h-full overflow-hidden mt-8 shadow rounded-lg relative backdrop-blur-lg bg-white/20">
+        <div className="aspect-video mx-auto max-w-6xl w-full overflow-hidden mt-8 shadow rounded-lg relative bg-white/20">
           {/* An ordinary player: nothing plays until the viewer presses play.
               `preload="metadata"` fetches the header rather than the file, so
               the 9.9MB download only happens for someone who asked for it; the
@@ -157,6 +172,9 @@ const Transform = (props: Props) => {
             controls
             playsInline
             preload="metadata"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onEnded={() => setIsPlaying(false)}
           />
         </div>
 
@@ -174,7 +192,7 @@ const Transform = (props: Props) => {
           ))}
         </div>
       </div>
-      <div className="h-20" />
+      <div className="h-20 md:h-40" />
       <div className="mt-20 hidden">
         <h3 className="h3 text-center mb-8">
           Never miss a campaign opportunity

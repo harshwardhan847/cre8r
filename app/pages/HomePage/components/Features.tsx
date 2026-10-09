@@ -28,7 +28,7 @@ const featuresList = [
   {
     title: "Intelligent Matchmaking",
     image: "platform/creators.png",
-    embedUrl: CONSTANTS.SUPADEMO.CRM,
+    embedUrl: CONSTANTS.SUPADEMO.COLLECTION,
     description:
       "Make data-driven decisions with every click, every view, every comment.",
     accent: "bg-amber-400",

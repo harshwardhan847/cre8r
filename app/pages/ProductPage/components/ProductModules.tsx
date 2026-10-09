@@ -1,4 +1,5 @@
-import React from "react";
+import { Link } from "react-router";
+import { ArrowRight, Clock } from "lucide-react";
 import { CONSTANTS } from "~/constants";
 import { Supademo } from "~/components/Supademo";
 
@@ -11,21 +12,21 @@ const modules = [
   },
   {
     title: "Execution Module",
-    description: "End-to-end campaign management. Automated applications, built-in messaging, and tracking.",
-    features: ["Quick review process", "Messaging", "Application tracking"],
+    description: "Turn your shortlist into confirmed creators with the Outreach module.",
+    features: ["Creator outreach", "Response tracking", "Outreach pipeline"],
+    embedUrl: CONSTANTS.SUPADEMO.OUTREACH,
+  },
+  {
+    title: "Campaign Tracking Module",
+    description: "Track every post as it goes live — views, likes, comments and engagement per creator.",
+    features: ["Live post performance", "Campaign insights", "Creator breakdown"],
     embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_CREATION,
   },
   {
-    title: "Affiliate & ROI",
-    description: "Map influencer performance across the content-to-commerce journey.",
-    features: ["Real-time tracking", "Performance metrics", "ROI analysis"],
-    embedUrl: CONSTANTS.SUPADEMO.CRM,
-  },
-  {
-    title: "Lead Generation",
-    description: "Scale multi-channel outreach and capture high-intent leads efficiently.",
-    features: ["Custom lists", "Campaign tracking", "Status updates"],
-    embedUrl: CONSTANTS.SUPADEMO.OUTREACH,
+    title: "Sentiment Analysis Module",
+    description: "Understand how audiences reacted to your campaign and see what competitors are running.",
+    features: ["Comment sentiment", "Audience feedback", "Competition scanner"],
+    embedUrl: CONSTANTS.SUPADEMO.COMPETITION_SCANNER,
   },
 ];
 
@@ -65,6 +66,28 @@ const ProductModules = () => {
             </div>
           ))}
         </div>
+
+        {/* Announced, not live — kept out of the module list above on purpose. */}
+        <div className="mt-14 md:mt-24 rounded-3xl border border-dashed border-amber-300/70 bg-amber-50/40 p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium uppercase tracking-wider">
+              <Clock className="w-3.5 h-3.5" />
+              Coming Soon
+            </span>
+            <h3 className="h3">Affiliate & Lead Gen*</h3>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
+              Creator promo codes, referral tracking, attributed revenue and lead generation from influencer campaigns.
+            </p>
+          </div>
+          <Link
+            to="/product/affiliate-roi"
+            className="inline-flex items-center text-sm font-medium text-foreground shrink-0 hover:underline underline-offset-4"
+          >
+            Learn more
+            <ArrowRight className="ml-1.5 w-4 h-4" />
+          </Link>
+        </div>
+        <p className="mt-3 text-xs text-muted-foreground">* Not yet available on the platform.</p>
       </div>
     </div>
   );

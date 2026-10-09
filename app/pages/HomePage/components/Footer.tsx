@@ -107,8 +107,7 @@ const Footer = () => {
                 { label: "For Influencers", to: "/influencer" },
                 ...(featureFlags.enableCaseStudies ? [{ label: "Case Studies", to: "/case-studies" }] : []),
                 ...(featureFlags.enableResources ? [{ label: "Resources", to: "/resources" }] : []),
-                { label: CTA.CREATOR.label, to: CTA.CREATOR.href, ext: true },
-                ...(isCreatorPage ? [] : [{ label: CTA.BRAND.label, to: CTA.BRAND.href, ext: true }]),
+                { label: primaryCta.label, to: primaryCta.href, ext: true },
               ].map((link) => (
                 link.ext ? (
                   <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
@@ -131,7 +130,7 @@ const Footer = () => {
                 { label: "About Us", to: "/about-us" },
                 { label: "Contact Us", to: "/contact-us" },
                 { label: "Blog", to: "/blog" },
-                { label: "Barter Collabs", to: "/barter-collabs" },
+                ...(featureFlags.enableBarterCollabs ? [{ label: "Barter Collabs", to: "/barter-collabs" }] : []),
                 { label: "Brand FAQs", to: "/faq-brands" },
                 { label: "Creator FAQs", to: "/faq-influencers" },
                 { label: "We're Hiring!", to: "/hiring" },

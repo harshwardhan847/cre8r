@@ -1,13 +1,13 @@
 import AffiliatePage from "~/pages/ProductPage/AffiliatePage";
 import { seo, breadcrumbSchema, serviceSchema } from "~/seo";
 
-const NAME = "Affiliate & ROI Module";
+const NAME = "Affiliate & Lead Gen Module";
 const DESCRIPTION =
-  "Attribute revenue to individual creators with tracked referral links and promo codes, then measure sales, conversions and ROI per campaign in a live dashboard.";
+  "Coming soon to Cre8r: creator promo codes, referral tracking, revenue attributed to individual creators and lead generation from influencer campaigns.";
 
 export function meta() {
   return seo({
-    title: "Influencer Affiliate Tracking & ROI",
+    title: "Influencer Affiliate & Lead Gen — Coming Soon",
     description: DESCRIPTION,
     path: "/product/affiliate-roi",
     jsonLd: [
@@ -18,7 +18,7 @@ export function meta() {
       }),
       breadcrumbSchema([
         { name: "Product", path: "/product" },
-        { name: "Affiliate & ROI", path: "/product/affiliate-roi" },
+        { name: "Affiliate & Lead Gen", path: "/product/affiliate-roi" },
       ]),
     ],
   });

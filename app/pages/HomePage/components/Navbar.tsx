@@ -166,7 +166,10 @@ const Navbar = (props: Props) => {
                         )}
                       >
                         <Link to={item.to} className="flex-1 min-w-0">
-                          <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                          <p className="text-xs font-semibold text-foreground flex items-center gap-1.5">
+                            {item.label}
+                            {"comingSoon" in item && item.comingSoon === true && <ComingSoonBadge />}
+                          </p>
                           <p className="text-[10px] text-muted-foreground mt-0.5 line-clamp-1">{item.description}</p>
                         </Link>
                         <ChevronRight className={cn("w-3.5 h-3.5 text-muted-foreground/60 transition-transform", hoveredProduct === item.id && "translate-x-0.5 text-primary")} />
@@ -183,6 +186,7 @@ const Navbar = (props: Props) => {
                           <div>
                             <p className="text-sm font-semibold text-foreground flex items-center gap-1.5">
                               {activeItem.label}
+                              {"comingSoon" in activeItem && activeItem.comingSoon && <ComingSoonBadge />}
                             </p>
                             <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
                               {activeItem.description}
@@ -482,7 +486,10 @@ const Navbar = (props: Props) => {
                               onClick={() => setIsMobileMenuOpen(false)}
                               className="px-2.5 py-2.5 rounded-xl active:bg-neutral-50 transition-colors"
                             >
-                              <p className="text-sm font-medium text-foreground">{item.label}</p>
+                              <p className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                                {item.label}
+                                {"comingSoon" in item && item.comingSoon === true && <ComingSoonBadge />}
+                              </p>
                               <p className="text-xs text-muted-foreground mt-0.5">{item.description}</p>
                             </Link>
                           ))}
@@ -510,5 +517,12 @@ const Navbar = (props: Props) => {
     </nav>
   );
 };
+
+/** Marks a product module that is announced but not live yet. */
+const ComingSoonBadge = () => (
+  <span className="px-1.5 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-[9px] font-medium uppercase tracking-wider leading-none">
+    Soon
+  </span>
+);
 
 export default Navbar;

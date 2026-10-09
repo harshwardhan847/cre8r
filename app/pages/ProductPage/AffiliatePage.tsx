@@ -1,62 +1,14 @@
 import { motion } from "motion/react";
-import React, { useState } from "react";
-import { featureFlags } from "../../featureFlags";
 import { Link } from "react-router";
-import { ArrowLeft, ArrowRight, LineChart, Link2, Percent, IndianRupee, Users, CheckCircle2, ChevronRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Link2, IndianRupee, Target, Clock } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS, CTA } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { CTA } from "~/constants";
 
-// Mock affiliate sales analytics for interactive widget
-const initialAffiliates = [
-  {
-    name: "Rohan Varma",
-    code: "ROHAN20",
-    clicks: 4500,
-    conversions: 180,
-    sales: 270000,
-    roi: "5.4x",
-    category: "Fashion",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
-    salesTrend: [12, 18, 15, 24, 32, 28, 42]
-  },
-  {
-    name: "Anjali Mehta",
-    code: "ANJALI15",
-    clicks: 6200,
-    conversions: 248,
-    sales: 372000,
-    roi: "4.2x",
-    category: "Beauty & Skincare",
-    avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80",
-    salesTrend: [18, 22, 20, 28, 38, 45, 52]
-  },
-  {
-    name: "Divya Das",
-    code: "DIVYAFIT",
-    clicks: 3100,
-    conversions: 95,
-    sales: 190000,
-    roi: "6.1x",
-    category: "Fitness",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
-    salesTrend: [5, 8, 12, 18, 15, 22, 29]
-  }
-];
-
+/**
+ * Affiliate & Lead Gen is announced but not live yet, so this page describes
+ * what is coming and offers a walkthrough call rather than a product demo.
+ */
 const AffiliatePage = () => {
-  const [affiliates] = useState(initialAffiliates);
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  const [demoMode, setDemoMode] = useState<"sandbox" | "crm" | "collection">("sandbox");
-
-  const active = affiliates[selectedIdx];
-  
-  // Calculate aggregate stats
-  const totalSales = affiliates.reduce((sum, item) => sum + item.sales, 0);
-  const totalConversions = affiliates.reduce((sum, item) => sum + item.conversions, 0);
-  const totalClicks = affiliates.reduce((sum, item) => sum + item.clicks, 0);
-  const averageConversionRate = ((totalConversions / totalClicks) * 100).toFixed(1);
-
   return (
     <main className="min-h-screen bg-background">
       {/* Back to product button */}
@@ -76,16 +28,16 @@ const AffiliatePage = () => {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-250 text-amber-700 text-xs font-medium uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            Affiliate & ROI Module
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium uppercase tracking-wider mb-4">
+            <Clock className="w-3.5 h-3.5" />
+            Affiliate & Lead Gen · Coming Soon
           </div>
           <h1 className="h1">
             Content to Commerce <br className="hidden sm:block" />
-            Attribution & Sales
+            Attribution & Leads
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Measure what actually impacts your bottom line. Generate custom referral links, track exclusive coupon promo codes, and monitor sales conversions in real-time, attributing ROI directly to each creator.
+            We're building attribution and lead generation into Cre8r — creator promo codes, referral tracking and revenue attributed to each creator. Book a walkthrough to hear what's coming and get early access.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
@@ -94,183 +46,20 @@ const AffiliatePage = () => {
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
-            {featureFlags.enableCalculators && (
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/resources">Try ROI Calculator</Link>
-              </Button>
-            )}
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/product/campaign-tracking">See Campaign Tracking</Link>
+            </Button>
           </div>
         </motion.div>
-      </section>
-
-      {/* Interactive Tool Section */}
-      <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
-        <div className="text-center mb-8 md:mb-12">
-          <p className="eyebrow">Interactive Demo</p>
-          <h2 className="h2 mt-2">Campaign ROI & Sales Tracker</h2>
-          <p className="mt-2 text-muted-foreground">Select a creator below to view their specific campaign sales trends or view interactive walkthroughs.</p>
-        </div>
-
-        {/* Demo Mode Switcher */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex flex-wrap rounded-xl p-1 bg-neutral-100 border border-neutral-200/50 gap-1">
-            <button
-              onClick={() => setDemoMode("sandbox")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                demoMode === "sandbox"
-                  ? "bg-white text-foreground shadow-xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Interactive Sandbox
-            </button>
-            <button
-              onClick={() => setDemoMode("crm")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                demoMode === "crm"
-                  ? "bg-white text-foreground shadow-xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              CRM Walkthrough
-            </button>
-            <button
-              onClick={() => setDemoMode("collection")}
-              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                demoMode === "collection"
-                  ? "bg-white text-foreground shadow-xs"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Collection Walkthrough
-            </button>
-          </div>
-        </div>
-
-        {demoMode !== "sandbox" ? (
-          <div className="bg-transparent overflow-hidden aspect-video relative w-full">
-            <Supademo
-              src={
-                demoMode === "crm"
-                  ? CONSTANTS.SUPADEMO.CRM
-                  : CONSTANTS.SUPADEMO.COLLECTION
-              }
-              title={`${demoMode} Walkthrough`}
-            />
-          </div>
-        ) : (
-          <>
-            {/* Aggregated Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {[
-                { label: "Total Sales", value: `₹${totalSales.toLocaleString()}`, icon: IndianRupee, color: "text-emerald-600 bg-emerald-50" },
-                { label: "Total Conversions", value: totalConversions, icon: Percent, color: "text-indigo-600 bg-indigo-50" },
-                { label: "Total Link Clicks", value: totalClicks.toLocaleString(), icon: Link2, color: "text-sky-600 bg-sky-50" },
-                { label: "Avg. Conv Rate", value: `${averageConversionRate}%`, icon: LineChart, color: "text-violet-600 bg-violet-55" }
-              ].map((stat) => (
-                <div key={stat.label} className="p-5 rounded-2xl bg-white border border-border/15 shadow-2xs">
-                  <div className="flex items-center justify-between gap-3 mb-2">
-                    <span className="text-xs text-muted-foreground font-medium">{stat.label}</span>
-                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${stat.color}`}>
-                      <stat.icon className="w-4 h-4" />
-                    </div>
-                  </div>
-                  <p className="text-2xl font-semibold leading-none">{stat.value}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Tracker Panel */}
-            <div className="rounded-3xl border border-border/20 bg-white shadow-xs overflow-hidden grid grid-cols-1 md:grid-cols-3 gap-0">
-              {/* Creator list column */}
-              <div className="border-r border-border/15 flex flex-col bg-neutral-50/50 md:col-span-1">
-                <div className="p-4 border-b border-border/15">
-                  <span className="eyebrow">Creators Performance</span>
-                </div>
-                <div className="flex-1 divide-y divide-neutral-100 overflow-y-auto">
-                  {affiliates.map((item, idx) => (
-                    <button
-                      key={item.name}
-                      onClick={() => setSelectedIdx(idx)}
-                      className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-100/50'}`}
-                    >
-                      <img
-          loading="lazy"
-          decoding="async" src={item.avatar} alt={item.name} className="w-10 h-10 rounded-full object-cover" />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold truncate">{item.name}</p>
-                        <p className="text-xs text-muted-foreground truncate">{item.code} • {item.roi} ROI</p>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground/60 shrink-0" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Details screen (Colspan 2) */}
-              <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between gap-8 min-h-[350px]">
-                <div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <img
-          loading="lazy"
-          decoding="async" src={active.avatar} alt={active.name} className="w-12 h-12 rounded-full object-cover" />
-                    <div>
-                      <p className="text-lg font-semibold">{active.name}</p>
-                      <p className="text-xs text-muted-foreground">{active.category} Creator</p>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-t border-b border-neutral-100">
-                    <div>
-                      <p className="text-xs text-muted-foreground">Promo Code</p>
-                      <p className="font-mono font-semibold text-sm mt-1 text-primary">{active.code}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Sales Generated</p>
-                      <p className="font-semibold text-sm mt-1 text-emerald-600">₹{active.sales.toLocaleString()}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Clicks Tracked</p>
-                      <p className="font-semibold text-sm mt-1">{active.clicks.toLocaleString()}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Campaign ROI</p>
-                      <p className="font-semibold text-sm mt-1 text-indigo-600">{active.roi}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Simulated trend chart */}
-                <div>
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs font-semibold text-muted-foreground uppercase">Sales Conversion Trend (Daily)</span>
-                    <span className="text-xs text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">UP 18%</span>
-                  </div>
-                  <div className="h-24 flex items-end gap-2 pt-4">
-                    {active.salesTrend.map((val, idx) => (
-                      <div key={idx} className="flex-1 flex flex-col items-center gap-1 group">
-                        <div 
-                          className="w-full bg-primary/20 group-hover:bg-primary/40 rounded-t transition-all duration-305" 
-                          style={{ height: `${val * 1.5}px` }} 
-                        />
-                        <span className="text-[10px] text-muted-foreground">D{idx+1}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
       </section>
 
       {/* Feature Grid */}
       <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="h2">Enterprise Attribution Tech</h2>
+            <h2 className="h2">What's Coming</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-              Our Affiliate module integrates deeply to capture clean, non-duplicative conversion events.
+              Tie creator content to the sales and leads it drives.
             </p>
           </div>
 
@@ -279,17 +68,17 @@ const AffiliatePage = () => {
               {
                 icon: Link2,
                 title: "Dynamic Promo Codes",
-                description: "Issue customizable influencer codes and sync tracking directly with popular platforms (Shopify, WooCommerce) to monitor checkout events."
+                description: "Issue a unique code or referral link to each creator and see which ones drive checkouts."
               },
               {
                 icon: IndianRupee,
                 title: "Attributed ROI Charts",
-                description: "Understand CAC and ROI per campaign. Our analytics show clear cost-per-click, cost-per-acquisition, and total attributed values."
+                description: "Understand CAC and ROI per campaign, with revenue attributed back to individual creators."
               },
               {
-                icon: LineChart,
-                title: "Live Post Performance",
-                description: "Watch click patterns spike in real-time as influencers post. Compare results across channels (Instagram vs YouTube)."
+                icon: Target,
+                title: "Lead Generation",
+                description: "Capture high-intent leads from creator campaigns and see which creators bring them in."
               }
             ].map((feat, i) => (
               <motion.div
@@ -316,10 +105,10 @@ const AffiliatePage = () => {
         <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="h2 max-w-lg">
-              Start Tracking Campaigns By ROI
+              Get Early Access
             </h2>
             <p className="mt-4 text-primary-foreground/60 max-w-md">
-              Attribute conversions seamlessly and optimize creator partnerships based on performance.
+              Talk to the team about attribution and lead generation for your campaigns.
             </p>
           </div>
           <Button
@@ -329,7 +118,7 @@ const AffiliatePage = () => {
             asChild
           >
             <Link to={CTA.BRAND.href} target="_blank" rel="noopener noreferrer">
-              Schedule an Attribution Demo
+              {CTA.BRAND.label}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </Button>

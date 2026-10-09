@@ -2,21 +2,21 @@ import { motion } from "motion/react";
 import { featureFlags } from "../../featureFlags";
 import React, { useState } from "react";
 import { Link } from "react-router";
-import { ArrowLeft, ArrowRight, MessageSquare, Briefcase, FileCheck, Send, CheckCircle2, Star, Play, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Users, Inbox, ListChecks, FileCheck, Send, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA } from "~/constants";
 import { Supademo } from "~/components/Supademo";
+import CreatorAvatar from "./components/CreatorAvatar";
 
 // Mock creators campaign pipeline for interactive widget
 const initialCampaigns = [
   {
-    creator: "Maya Patel",
-    handle: "@mayacreates",
+    creator: "Meera Joshi",
+    handle: "@meerajoshi",
     stage: "In Review",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80",
     brief: "Summer Lookbook Reel",
     chat: [
-      { sender: "brand", text: "Hi Maya! Love the initial draft structure. Can we add the discount code text overlay in the first 3 seconds to capture attention?" },
+      { sender: "brand", text: "Hi Meera! Love the initial draft structure. Can we add the discount code text overlay in the first 3 seconds to capture attention?" },
       { sender: "creator", text: "Hey! Definitely, I will edit the overlay and re-upload the draft in an hour." }
     ],
     videoDraft: "summer_reel_v1_draft.mp4",
@@ -26,7 +26,6 @@ const initialCampaigns = [
     creator: "Rohit Sen",
     handle: "@rohitsen_tech",
     stage: "Approved & Scheduled",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80",
     brief: "SaaS App Review Video",
     chat: [
       { sender: "creator", text: "Uploaded the final render. Let me know if we are good to go." },
@@ -39,7 +38,6 @@ const initialCampaigns = [
     creator: "Sanya Gupta",
     handle: "@sanyaeats",
     stage: "Brief Shared",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
     brief: "Healthy Snack Review",
     chat: [
       { sender: "brand", text: "Hey Sanya, the brief for the snack brand is attached. Please confirm if the delivery date works." }
@@ -53,7 +51,7 @@ const ExecutionPage = () => {
   const [campaigns, setCampaigns] = useState(initialCampaigns);
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [newMessage, setNewMessage] = useState("");
-  const [demoMode, setDemoMode] = useState<"sandbox" | "request" | "insights" | "creation">("sandbox");
+  const [demoMode, setDemoMode] = useState<"outreach" | "sandbox" | "request" | "insights" | "creation">("outreach");
 
   const activeCamp = campaigns[selectedIdx];
 
@@ -101,11 +99,11 @@ const ExecutionPage = () => {
             Execution Module
           </div>
           <h1 className="h1">
-            Seamless Campaign <br className="hidden sm:block" />
-            Management & Chat
+            Reach the Right Creators <br className="hidden sm:block" />
+            with Outreach
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Move away from messy spreadsheets and messaging apps. Run content approvals, direct communication channels, briefs distribution, and creator contract completions in a single collaborative interface.
+            Turn a Discovery shortlist into confirmed creators. The Outreach module lets you reach out to creators from one place and keep track of who has responded — no spreadsheets or scattered DMs.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
@@ -127,13 +125,23 @@ const ExecutionPage = () => {
       <section className="py-10 md:py-16 px-6 md:px-8 mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-12">
           <p className="eyebrow">Interactive Demo</p>
-          <h2 className="h2 mt-2">Interactive Workflow Dashboard</h2>
-          <p className="mt-2 text-muted-foreground">Select a creator below to coordinate chat logs, review drafts, or explore interactive feature walkthroughs.</p>
+          <h2 className="h2 mt-2">See Outreach in Action</h2>
+          <p className="mt-2 text-muted-foreground">Walk through the Outreach module, or try the sandbox and explore other feature walkthroughs.</p>
         </div>
 
         {/* Demo Mode Switcher */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex flex-wrap rounded-xl p-1 bg-neutral-100 border border-neutral-200/50 gap-1">
+            <button
+              onClick={() => setDemoMode("outreach")}
+              className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                demoMode === "outreach"
+                  ? "bg-white text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Outreach Walkthrough
+            </button>
             <button
               onClick={() => setDemoMode("sandbox")}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
@@ -181,7 +189,9 @@ const ExecutionPage = () => {
           <div className="bg-transparent overflow-hidden aspect-video relative w-full">
             <Supademo
               src={
-                demoMode === "creation"
+                demoMode === "outreach"
+                  ? CONSTANTS.SUPADEMO.OUTREACH
+                  : demoMode === "creation"
                   ? CONSTANTS.SUPADEMO.CAMPAIGN_CREATION
                   : demoMode === "request"
                   ? CONSTANTS.SUPADEMO.CAMPAIGN_REQUEST
@@ -204,9 +214,7 @@ const ExecutionPage = () => {
                     onClick={() => setSelectedIdx(idx)}
                     className={`w-full text-left p-4 flex items-center gap-3 transition-colors ${selectedIdx === idx ? 'bg-white font-medium' : 'hover:bg-neutral-155/30'}`}
                   >
-                    <img
-          loading="lazy"
-          decoding="async" src={camp.avatar} alt={camp.creator} className="w-10 h-10 rounded-full object-cover" />
+                    <CreatorAvatar name={camp.creator} className="w-10 h-10" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold truncate">{camp.creator}</p>
                       <p className="text-xs text-muted-foreground truncate">{camp.brief}</p>
@@ -227,9 +235,7 @@ const ExecutionPage = () => {
               {/* Creator details header */}
               <div className="p-4 border-b border-border/15 flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
-                  <img
-          loading="lazy"
-          decoding="async" src={activeCamp.avatar} alt={activeCamp.creator} className="w-9 h-9 rounded-full object-cover" />
+                  <CreatorAvatar name={activeCamp.creator} className="w-9 h-9 text-xs" />
                   <div>
                     <p className="text-sm font-semibold">{activeCamp.creator}</p>
                     <p className="text-xs text-muted-foreground">{activeCamp.handle}</p>
@@ -286,28 +292,28 @@ const ExecutionPage = () => {
       <section className="py-14 md:py-24 bg-neutral-50/60 px-6 md:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-10 md:mb-16">
-            <h2 className="h2">Full Lifecycle Campaigning</h2>
+            <h2 className="h2">From Shortlist to Confirmed</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-              Our Execution suite streamlines contract alignment, draft cycles, and post-scheduling to keep outreach programs moving.
+              Outreach picks up where Discovery leaves off, so the creators you shortlist are the creators you reach.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                icon: Briefcase,
-                title: "Brief Distribution",
-                description: "Upload campaign guidelines, audio tracks, key highlights, and legal compliance checkboxes to automatically update shortlist creators."
+                icon: Users,
+                title: "Outreach to Shortlists",
+                description: "Reach out to the creators you shortlisted in Discovery in one go, instead of messaging each one by hand."
               },
               {
-                icon: MessageSquare,
-                title: "Unified Creator Inbox",
-                description: "Message multiple creators in bulk or keep structured chat logs next to contract approvals and content preview links."
+                icon: Inbox,
+                title: "Response Tracking",
+                description: "See which creators have responded and which still need a follow-up, all in one view."
               },
               {
-                icon: FileCheck,
-                title: "Draft Review Engine",
-                description: "Preview creator uploaded media (vlogs, Reels, static posts). Add comments directly timestamped to videos or click single-button approval."
+                icon: ListChecks,
+                title: "Outreach Pipeline",
+                description: "Keep every creator's status clear as they move from contacted to interested to confirmed."
               }
             ].map((feat, i) => (
               <motion.div
@@ -334,10 +340,10 @@ const ExecutionPage = () => {
         <div className="rounded-3xl bg-primary text-primary-foreground p-8 md:p-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="h2 max-w-lg">
-              Coordinate Your Campaigns Seamlessly
+              Reach Creators Without the Chaos
             </h2>
             <p className="mt-4 text-primary-foreground/60 max-w-md">
-              Start building templates and launching campaigns without spreadsheet clutter.
+              See how Outreach takes your shortlist to confirmed creators without spreadsheet clutter.
             </p>
           </div>
           <Button

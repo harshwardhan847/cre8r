@@ -269,9 +269,9 @@ export function softwareApplicationSchema() {
     featureList: [
       `Creator discovery across ${STATS.CREATORS} Instagram and YouTube profiles`,
       "25+ audience and engagement filters with credibility scoring",
-      "Campaign execution with briefs, content approvals and contracts",
-      "Affiliate links, promo codes and attributed revenue tracking",
-      "Influencer-led lead generation and outreach pipelines",
+      "Campaign execution with creator outreach and response tracking",
+      "Live campaign tracking of views, likes, comments and engagement",
+      "Comment sentiment analysis and competition scanning",
     ],
     offers: {
       "@type": "Offer",

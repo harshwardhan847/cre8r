@@ -14,6 +14,26 @@ const statItems = [
 // Duplicated so the marquee loops seamlessly without a visible seam.
 const brands = [...BRAND_LOGOS, ...BRAND_LOGOS];
 
+/**
+ * Every logo file is a square canvas with the mark floating in different
+ * amounts of padding, so sizing by height alone made some marks look much
+ * larger than others. Each logo instead fills an identical landscape box:
+ * `object-cover` scales the square to the box width and trims the empty
+ * padding above and below, so every mark gets the same width and the same
+ * centre line.
+ */
+const BrandLogo = ({ brand, className }: { brand: (typeof BRAND_LOGOS)[number]; className: string }) => (
+  <div className={`shrink-0 flex items-center justify-center overflow-hidden ${className}`}>
+    <img
+      loading="lazy"
+      decoding="async"
+      src={brand.src}
+      alt={brand.name}
+      className="w-full h-full object-cover object-center mix-blend-multiply"
+    />
+  </div>
+);
+
 const Brands = (props: Props) => {
   const isMobile = useIsMobile();
 
@@ -22,16 +42,9 @@ const Brands = (props: Props) => {
       <div className="w-full flex overflow-hidden mb-12 md:mb-24 py-6 md:py-8 border-y border-black/5 bg-white transition-opacity duration-500">
         {isMobile ? (
           // Mobile: simple static wrapped row, no continuous JS-driven marquee.
-          <div className="w-full flex flex-wrap items-center justify-center gap-6 px-6">
-            {brands.slice(0, 5).map((brand, i) => (
-              <img
-          loading="lazy"
-          decoding="async"
-                key={i}
-                src={brand.src}
-                alt={brand.name}
-                className="h-8 w-auto object-contain mix-blend-multiply"
-              />
+          <div className="w-full flex flex-wrap items-center justify-center gap-x-6 gap-y-4 px-6">
+            {BRAND_LOGOS.map((brand) => (
+              <BrandLogo key={brand.name} brand={brand} className="w-24 h-11" />
             ))}
           </div>
         ) : (
@@ -42,14 +55,7 @@ const Brands = (props: Props) => {
               transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
             >
               {brands.map((brand, i) => (
-                <img
-          loading="lazy"
-          decoding="async"
-                  key={i}
-                  src={brand.src}
-                  alt={brand.name}
-                  className="h-14 md:h-20 w-auto object-contain mix-blend-multiply opacity-100 hover:opacity-100 transition-opacity duration-300"
-                />
+                <BrandLogo key={i} brand={brand} className="w-40 h-[72px]" />
               ))}
             </motion.div>
             <motion.div
@@ -58,14 +64,7 @@ const Brands = (props: Props) => {
               transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
             >
               {brands.map((brand, i) => (
-                <img
-          loading="lazy"
-          decoding="async"
-                  key={i}
-                  src={brand.src}
-                  alt={brand.name}
-                  className="h-14 md:h-20 w-auto object-contain mix-blend-multiply opacity-100 hover:opacity-100 transition-opacity duration-300"
-                />
+                <BrandLogo key={i} brand={brand} className="w-40 h-[72px]" />
               ))}
             </motion.div>
           </>

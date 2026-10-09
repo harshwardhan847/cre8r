@@ -5,8 +5,8 @@
  * new route is listed the moment it is prerendered and a route that stops
  * existing disappears on the next build. A page is included only if it is
  * genuinely indexable: it must not carry a noindex robots tag, and its
- * canonical must point at itself (which drops duplicate URLs such as /creator,
- * whose canonical is /influencer).
+ * canonical must point at itself (which drops any URL that canonicalises to
+ * another page).
  *
  * Run automatically after `react-router build`.
  */
@@ -126,9 +126,8 @@ function buildLlmsTxt(pages) {
     "",
     "> Cre8r.ai is an end-to-end influencer marketing platform for brands in India.",
     "> Brands discover creators from a network of 4.1M+ vetted Instagram and YouTube",
-    "> profiles, run campaigns with briefs and content approvals, and attribute",
-    "> revenue to individual creators. Creators join free and receive paid and barter",
-    "> collaborations matched to their profile.",
+    "> profiles, run creator outreach, and track campaign performance and sentiment",
+    "> in one place.",
     "",
     "Operated by Grunmech Technologies Private Limited, with offices in Gurgaon and Mumbai.",
     "Brand enquiries: campaign@cre8r.ai · Creator support: collabs@cre8r.ai",

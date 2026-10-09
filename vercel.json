@@ -5,7 +5,7 @@
   "redirects": [
     {
       "source": "/influencer-sign-up",
-      "destination": "https://ylytic.com/signUp/creator",
+      "destination": "https://discovery.cre8r.ai/signIn/creator",
       "statusCode": 301
     },
     { "source": "/about", "destination": "/about-us", "statusCode": 301 },

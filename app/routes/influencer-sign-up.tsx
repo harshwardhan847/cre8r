@@ -13,9 +13,9 @@ export function meta() {
 }
 
 /**
- * Legacy URL from the old site. Creator onboarding now lives on the Ylytic
- * platform, so this sends visitors straight there with a link as a fallback for
- * anyone whose browser blocks the automatic redirect.
+ * Legacy URL from the old site. Creator sign-in now lives on the Cre8r
+ * discovery platform, so this sends visitors straight there with a link as a
+ * fallback for anyone whose browser blocks the automatic redirect.
  */
 export default function InfluencerSignUp() {
   useEffect(() => {

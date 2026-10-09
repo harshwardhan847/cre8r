@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Search, SlidersHorizontal, CheckCircle2, ShieldC
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA, STATS } from "~/constants";
 import { Supademo } from "~/components/Supademo";
+import CreatorAvatar from "./components/CreatorAvatar";
 
 // Mock creators data for interactive widget
 const mockCreators = [
@@ -16,7 +17,6 @@ const mockCreators = [
     followers: "84K",
     engagement: "4.8%",
     credibility: "98%",
-    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80",
     tags: ["Unboxing", "Gadgets", "Python"]
   },
   {
@@ -27,18 +27,16 @@ const mockCreators = [
     followers: "120K",
     engagement: "5.2%",
     credibility: "95%",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
     tags: ["Yoga", "Vegan Diet", "Activewear"]
   },
   {
-    name: "Karan Johar (Chef)",
+    name: "Karan Malhotra",
     handle: "@chef_karan",
     category: "Food & Cooking",
     location: "Delhi",
     followers: "45K",
     engagement: "6.7%",
     credibility: "99%",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
     tags: ["Baking", "Street Food", "Recipes"]
   },
   {
@@ -49,7 +47,6 @@ const mockCreators = [
     followers: "240K",
     engagement: "3.9%",
     credibility: "93%",
-    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80",
     tags: ["Solo Travel", "Luxury Stays", "Vlogs"]
   }
 ];
@@ -100,7 +97,7 @@ const DiscoveryPage = () => {
             Creators in Seconds
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Stop guessing. Search across our pre-vetted index of {STATS.CREATORS} global creators. Refine by niche, audience location, engagement rate, and verified credibility scores to maximize your match rate.
+            Stop guessing. Search across our pre-vetted index of {STATS.CREATORS} creators. Refine by niche, audience location, engagement rate, and verified credibility scores to maximize your match rate.
           </p>
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <Button size="lg" asChild>
@@ -108,9 +105,6 @@ const DiscoveryPage = () => {
                 {CTA.BRAND.label}
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">{CTA.CREATOR.label}</a>
             </Button>
           </div>
         </motion.div>
@@ -206,13 +200,7 @@ const DiscoveryPage = () => {
                       transition={{ duration: 0.25, delay: i * 0.05 }}
                       className="p-5 rounded-2xl border border-border/10 bg-neutral-50/30 flex items-start gap-4 hover:shadow-xs transition-all"
                     >
-                      <img
-          loading="lazy"
-          decoding="async"
-                        src={creator.avatar}
-                        alt={creator.name}
-                        className="w-12 h-12 rounded-full object-cover border border-border/10"
-                      />
+                      <CreatorAvatar name={creator.name} className="w-12 h-12" />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5">
                           <p className="font-semibold text-sm truncate">{creator.name}</p>

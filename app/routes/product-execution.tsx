@@ -3,11 +3,11 @@ import { seo, breadcrumbSchema, serviceSchema } from "~/seo";
 
 const NAME = "Campaign Execution Module";
 const DESCRIPTION =
-  "Run influencer campaigns in one place: distribute briefs, track applications, message creators directly, review content in two approval rounds, and sign contracts.";
+  "Turn a creator shortlist into confirmed collaborations with Cre8r's Outreach module: reach out to shortlisted creators and track who has responded, in one place.";
 
 export function meta() {
   return seo({
-    title: "Influencer Campaign Management Software",
+    title: "Influencer Outreach & Campaign Execution",
     description: DESCRIPTION,
     path: "/product/execution",
     jsonLd: [

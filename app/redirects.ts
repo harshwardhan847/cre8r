@@ -1,3 +1,5 @@
+import { featureFlags } from "./featureFlags";
+
 /**
  * Paths that belonged to the previous cre8r.ai site. They are still indexed by
  * search engines and linked from social bios, so instead of dropping visitors
@@ -8,6 +10,12 @@
  */
 export const LEGACY_REDIRECTS: Record<string, string> = {
   "/about": "/about-us",
+  // Pages hidden behind a feature flag forward somewhere sensible until they
+  // come back. Each entry drops out as soon as its flag is on, so the real
+  // route takes over.
+  ...(featureFlags.enableCreatorCommunity ? {} : { "/creator": "/" }),
+  ...(featureFlags.enableBarterCollabs ? {} : { "/barter-collabs": "/" }),
+  ...(featureFlags.enableLeadGen ? {} : { "/product/lead-gen": "/product/affiliate-roi" }),
   "/blogs": "/blog",
   "/cre8r-ai-blogs": "/blog",
   "/contact": "/contact-us",

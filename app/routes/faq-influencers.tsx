@@ -1,5 +1,5 @@
 import FaqPage from "~/pages/FaqPage";
-import { CONSTANTS, CTA } from "~/constants";
+import { CONSTANTS } from "~/constants";
 import { seo, faqPageSchema, breadcrumbSchema } from "~/seo";
 
 const DESCRIPTION =
@@ -22,14 +22,12 @@ export function meta() {
 export default function FaqInfluencers() {
   return (
     <FaqPage
-      eyebrow="For Influencers"
+      eyebrow="For Creators"
       title="Creator FAQs"
-      description="How campaigns reach you, what you get paid, who can join, and everything else creators ask before signing up with Cre8r."
+      description="How campaigns reach you, what you get paid, who can join, and everything else creators ask about working with Cre8r."
       faqs={CONSTANTS.FAQS.creators}
       contactEmail={CONSTANTS.CONTACT_EMAIL_CREATORS}
       contactNumber={CONSTANTS.CONTACT_NUMBER_CREATORS}
-      primaryCta={{ label: CTA.CREATOR.label, href: CTA.CREATOR.href }}
-      secondaryCta={{ label: "For Influencers", to: "/influencer" }}
     />
   );
 }

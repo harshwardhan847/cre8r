@@ -23,7 +23,7 @@ const Header = (props: Props) => {
           Powered by AI
         </h1>
         <h2 className="body-lg max-w-lg text-center">
-          From first brief to final conversion. Discover, execute, track affiliates, and generate leads — All in one place.
+          From first brief to final results. Discover creators, run outreach, track campaigns and read audience sentiment — all in one place.
         </h2>
         <div className="flex items-center justify-center">
 

@@ -16,7 +16,8 @@ type FaqPageProps = {
   /** Email shown in the "still have questions" card. */
   contactEmail: string;
   contactNumber: string;
-  primaryCta: { label: string; href: string };
+  /** Omitted on the creator FAQs — there is no creator sign-up to push. */
+  primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; to: string };
 };
 
@@ -128,22 +129,26 @@ const FaqPage = ({
           <p className="mt-3 text-base font-light text-muted-foreground">
             Talk to the team — we usually reply the same working day.
           </p>
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button size="lg" asChild>
-              <a
-                href={primaryCta.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {primaryCta.label}
-              </a>
-            </Button>
-            {secondaryCta ? (
-              <Button variant="outline" size="lg" asChild>
-                <Link to={secondaryCta.to}>{secondaryCta.label}</Link>
-              </Button>
-            ) : null}
-          </div>
+          {primaryCta || secondaryCta ? (
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              {primaryCta ? (
+                <Button size="lg" asChild>
+                  <a
+                    href={primaryCta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {primaryCta.label}
+                  </a>
+                </Button>
+              ) : null}
+              {secondaryCta ? (
+                <Button variant="outline" size="lg" asChild>
+                  <Link to={secondaryCta.to}>{secondaryCta.label}</Link>
+                </Button>
+              ) : null}
+            </div>
+          ) : null}
           <div className="mt-6 flex flex-col items-center justify-center gap-2 text-sm text-muted-foreground sm:flex-row sm:gap-6">
             <a
               href={`mailto:${contactEmail}`}

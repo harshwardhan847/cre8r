@@ -65,17 +65,7 @@ const ContactPage = () => {
                   Chat on WhatsApp
                 </a>
               </Button>
-            ) : (
-              <Button variant="outline" size="lg" asChild>
-                <a
-                  href={CTA.CREATOR.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {CTA.CREATOR.label}
-                </a>
-              </Button>
-            )}
+            ) : null}
           </div>
         </motion.div>
       </section>

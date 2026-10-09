@@ -3,9 +3,9 @@ import { featureFlags } from "./featureFlags";
 // Destination URLs are hoisted out of CONSTANTS so the CTA definitions below
 // can reference them. They are still exposed on CONSTANTS unchanged.
 const CALENDLY_URL = "https://calendly.com/gs_cre8r/30min";
-// Creator onboarding lives on the Ylytic platform — every "sign up / apply as
-// a creator" CTA and the legacy /influencer-sign-up URL point here.
-const CREATOR_SIGNUP_URL = "https://ylytic.com/signUp/creator";
+// Creator sign-in on the Cre8r discovery platform — the legacy
+// /influencer-sign-up URL and any remaining creator CTA point here.
+const CREATOR_SIGNUP_URL = "https://discovery.cre8r.ai/signIn/creator";
 // Job application Google Form — every "Apply Now" CTA points here.
 const HIRING_FORM_URL = "https://forms.gle/z2MqTsVaRnC8y6tA9";
 
@@ -127,7 +127,6 @@ export const CONSTANTS = {
     OUTREACH: "https://app.supademo.com/embed/cmhet3bm44cabfatizw9me1tb?embed_v=2&utm_source=embed",
     COMPETITION_SCANNER: "https://app.supademo.com/embed/cmhlz91pf16jnla10p5a82iln?embed_v=2&utm_source=embed",
     CAMPAIGN_REQUEST: "https://app.supademo.com/embed/cmhoi69kf00gt0x0ijchk8ujx?embed_v=2&utm_source=embed",
-    CRM: "https://app.supademo.com/embed/cmiq61ttw04lgcj0e5jwe3juq?embed_v=2&utm_source=embed",
     CREATOR_OVERVIEW: "https://app.supademo.com/embed/cms0ag5ra6n3tqmble95beeot?embed_v=2&utm_source=embed",
   },
   LINKEDIN_URL: "https://www.linkedin.com/company/cre8r-ai/",
@@ -369,23 +368,31 @@ export const CONSTANTS = {
         {
           id: "execution",
           label: "Execution Module",
-          description: "Streamline campaigns, reviews, and messaging.",
+          description: "Reach shortlisted creators through Outreach.",
           to: "/product/execution",
-          features: ["Application tracking", "Unified direct messages", "Content review workflows", "Secure contracts"]
+          features: ["Creator outreach", "Bulk outreach to shortlists", "Response tracking", "Outreach pipeline"]
+        },
+        {
+          id: "campaign-tracking",
+          label: "Campaign Tracking",
+          description: "Track live posts, views, and engagement.",
+          to: "/product/campaign-tracking",
+          features: ["Live post performance", "Views & engagement", "Creator-level breakdown", "Campaign insights"]
+        },
+        {
+          id: "sentiment-analysis",
+          label: "Sentiment Analysis",
+          description: "Read audience sentiment and scan competitors.",
+          to: "/product/sentiment-analysis",
+          features: ["Comment sentiment", "Positive vs negative split", "Competition scanner", "Competitor campaigns"]
         },
         {
           id: "affiliate",
-          label: "Affiliate & ROI",
-          description: "Track conversions, sales, and referral traffic.",
+          label: "Affiliate & Lead Gen",
+          description: "Attribution and lead generation — coming soon.",
           to: "/product/affiliate-roi",
-          features: ["Attributed revenue", "Referral link tracking", "Creator promo codes", "ROI performance dashboards"]
-        },
-        {
-          id: "lead-gen",
-          label: "Lead Generation",
-          description: "Scale target outreach to capture high-intent leads.",
-          to: "/product/lead-gen",
-          features: ["Outreach pipeline", "Target list builder", "Campaign response rates", "Live feedback tracking"]
+          features: ["Attributed revenue", "Creator promo codes", "Referral link tracking", "Lead capture"],
+          comingSoon: true
         }
       ]
     },
@@ -413,16 +420,20 @@ export const CONSTANTS = {
           description: "Insights on influencer marketing, trends, and ROI.",
           to: "/blog"
         },
-        {
-          label: "Barter Collabs",
-          description: "Access premium product-gifting partnerships.",
-          to: "/barter-collabs"
-        },
-        {
-          label: "Creator Community",
-          description: `Network of ${STATS.CREATORS} creators monetizing influence.`,
-          to: "/creator"
-        },
+        ...(featureFlags.enableBarterCollabs ? [
+          {
+            label: "Barter Collabs",
+            description: "Access premium product-gifting partnerships.",
+            to: "/barter-collabs"
+          }
+        ] : []),
+        ...(featureFlags.enableCreatorCommunity ? [
+          {
+            label: "Creator Community",
+            description: `Network of ${STATS.CREATORS} creators monetizing influence.`,
+            to: "/creator"
+          }
+        ] : []),
         {
           label: "Creator FAQs",
           description: "How campaigns, payouts, and eligibility work.",
