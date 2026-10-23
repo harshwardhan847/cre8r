@@ -2,7 +2,7 @@ import ContactPage from "~/pages/ContactPage";
 import { seo, webPageSchema, breadcrumbSchema } from "~/seo";
 
 const DESCRIPTION =
-  "Talk to Cre8r.ai. Brand campaigns: campaign@cre8r.ai, +91 8800 411 522. Creators: collabs@cre8r.ai. Offices in Gurgaon and Mumbai, or book a demo online.";
+  "Talk to Cre8r.ai. Brand campaigns: campaign@cre8r.ai. Creators: collabs@cre8r.ai. Office in Gurgaon, or book a demo online.";
 
 export function meta() {
   return seo({

@@ -133,12 +133,8 @@ export const CONSTANTS = {
     {
       city: "Gurgaon",
       label: "Corporate Office",
-      address: "6th Floor, Good Earth Business Bay 1, Gurgaon — 122001",
-    },
-    {
-      city: "Mumbai",
-      label: "Regional Office",
-      address: "Quest CoWorks, 5th Floor, Andheri East, Mumbai — 400093",
+      address:
+        "Coworking, Orchid Business Park, AltF, Badshahpur Sohna Rd, Islampur Village, Sector 38, Gurugram, Haryana 122018",
     },
   ],
 

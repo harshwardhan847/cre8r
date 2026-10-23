@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA } from "~/constants";
@@ -13,14 +13,12 @@ const ContactPage = () => {
       description:
         "Campaign planning, pricing, and platform access for marketing teams and agencies.",
       email: CONSTANTS.CONTACT_EMAIL_BRANDS,
-      phone: CONSTANTS.CONTACT_NUMBER_BRANDS,
     },
     {
       label: "For creators",
       description:
         "Collaborations, barter campaigns, payouts, and anything about your creator profile.",
       email: CONSTANTS.CONTACT_EMAIL_CREATORS,
-      phone: CONSTANTS.CONTACT_NUMBER_CREATORS,
     },
   ];
 
@@ -91,13 +89,6 @@ const ContactPage = () => {
                 >
                   <Mail className="h-4 w-4 shrink-0 text-muted-foreground" />
                   {desk.email}
-                </a>
-                <a
-                  href={`tel:${desk.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-3 text-base font-medium text-foreground transition-colors hover:text-primary"
-                >
-                  <Phone className="h-4 w-4 shrink-0 text-muted-foreground" />
-                  {desk.phone}
                 </a>
               </div>
             </div>

@@ -154,9 +154,6 @@ const Footer = () => {
               <a href={`mailto:${CONSTANTS.CONTACT_EMAIL_BRANDS}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 {CONSTANTS.CONTACT_EMAIL_BRANDS}
               </a>
-              <a href={`tel:${CONSTANTS.CONTACT_NUMBER_BRANDS.replace(/\s/g, "")}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                {CONSTANTS.CONTACT_NUMBER_BRANDS}
-              </a>
               <p className="text-sm text-primary-foreground/40 mt-1">For Creators:</p>
               <a href={`mailto:${CONSTANTS.CONTACT_EMAIL_CREATORS}`} className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                 {CONSTANTS.CONTACT_EMAIL_CREATORS}

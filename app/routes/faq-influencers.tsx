@@ -27,7 +27,6 @@ export default function FaqInfluencers() {
       description="How campaigns reach you, what you get paid, who can join, and everything else creators ask about working with Cre8r."
       faqs={CONSTANTS.FAQS.creators}
       contactEmail={CONSTANTS.CONTACT_EMAIL_CREATORS}
-      contactNumber={CONSTANTS.CONTACT_NUMBER_CREATORS}
     />
   );
 }

@@ -25,7 +25,6 @@ export default function FaqBrands() {
       description="Everything marketing teams ask before running their first campaign on Cre8r — timelines, pricing, creator quality, shipping, and content approvals."
       faqs={CONSTANTS.FAQS.brands}
       contactEmail={CONSTANTS.CONTACT_EMAIL_BRANDS}
-      contactNumber={CONSTANTS.CONTACT_NUMBER_BRANDS}
       primaryCta={{ label: CTA.BRAND.label, href: CTA.BRAND.href }}
       secondaryCta={{ label: "Explore the Platform", to: "/product" }}
     />

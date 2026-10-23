@@ -15,7 +15,6 @@ type FaqPageProps = {
   faqs: FaqEntry[];
   /** Email shown in the "still have questions" card. */
   contactEmail: string;
-  contactNumber: string;
   /** Omitted on the creator FAQs — there is no creator sign-up to push. */
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; to: string };
@@ -31,7 +30,6 @@ const FaqPage = ({
   description,
   faqs,
   contactEmail,
-  contactNumber,
   primaryCta,
   secondaryCta,
 }: FaqPageProps) => {
@@ -155,12 +153,6 @@ const FaqPage = ({
               className="transition-colors hover:text-foreground"
             >
               {contactEmail}
-            </a>
-            <a
-              href={`tel:${contactNumber.replace(/\s/g, "")}`}
-              className="transition-colors hover:text-foreground"
-            >
-              {contactNumber}
             </a>
           </div>
         </div>
