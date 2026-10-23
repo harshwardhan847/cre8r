@@ -21,15 +21,13 @@ const DEMO_VIDEO_MAP = {
     title: "Campaign creation and insights",
   },
   campaignRequest: {
-    embedUrl:
-      "https://app.supademo.com/embed/cmhoi69kf00gt0x0ijchk8ujx?embed_v=2&utm_source=embed",
+    videoSrc: `${DEMO_VIDEO_BASE}/campaign-requests.mp4`,
     title: "Campaign Request Demo",
   },
 
   // Collections walkthrough
   collection: {
-    embedUrl:
-      "https://app.supademo.com/embed/cmhepmh4c45x0fati8nn5kvj3?embed_v=2&utm_source=embed",
+    videoSrc: `${DEMO_VIDEO_BASE}/collections.mp4`,
     title: "Collection Demo",
   },
 
