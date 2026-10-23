@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, Smile, Meh, Frown, MessageCircle, ScanSearch, PieChart, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 import CreatorAvatar from "./components/CreatorAvatar";
 
 type Sentiment = "positive" | "neutral" | "negative";
@@ -135,8 +135,8 @@ const SentimentAnalysisPage = () => {
 
         {demoMode === "scanner" ? (
           <div className="bg-transparent overflow-hidden aspect-video relative w-full">
-            <Supademo
-              src={CONSTANTS.SUPADEMO.COMPETITION_SCANNER}
+            <DemoPlayer
+              demo={"compscan"}
               title="Competition Scanner Walkthrough"
             />
           </div>

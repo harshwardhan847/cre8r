@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, Eye, Heart, MessageCircle, LineChart, ChevronRight, Activity, Users, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 import CreatorAvatar from "./components/CreatorAvatar";
 
 // Mock live campaign posts for interactive widget
@@ -143,11 +143,11 @@ const CampaignTrackingPage = () => {
 
         {demoMode !== "sandbox" ? (
           <div className="bg-transparent overflow-hidden aspect-video relative w-full">
-            <Supademo
-              src={
+            <DemoPlayer
+              demo={
                 demoMode === "insights"
-                  ? CONSTANTS.SUPADEMO.CAMPAIGN_CREATION
-                  : CONSTANTS.SUPADEMO.CREATOR_INSIGHTS
+                  ? "campaignCreation"
+                  : "creator"
               }
               title={`${demoMode} Walkthrough`}
             />

@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, Users, Inbox, ListChecks, FileCheck, Send, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 import CreatorAvatar from "./components/CreatorAvatar";
 
 // Mock creators campaign pipeline for interactive widget
@@ -187,15 +187,15 @@ const ExecutionPage = () => {
 
         {demoMode !== "sandbox" ? (
           <div className="bg-transparent overflow-hidden aspect-video relative w-full">
-            <Supademo
-              src={
+            <DemoPlayer
+              demo={
                 demoMode === "outreach"
-                  ? CONSTANTS.SUPADEMO.OUTREACH
+                  ? "outreach"
                   : demoMode === "creation"
-                  ? CONSTANTS.SUPADEMO.CAMPAIGN_CREATION
+                  ? "campaignCreation"
                   : demoMode === "request"
-                  ? CONSTANTS.SUPADEMO.CAMPAIGN_REQUEST
-                  : CONSTANTS.SUPADEMO.CREATOR_INSIGHTS
+                  ? "campaignRequest"
+                  : "creator"
               }
               title={`${demoMode} Walkthrough`}
             />

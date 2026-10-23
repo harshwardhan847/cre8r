@@ -1,32 +1,32 @@
 import { Link } from "react-router";
 import { ArrowRight, Clock } from "lucide-react";
 import { CONSTANTS } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 
 const modules = [
   {
     title: "Discovery Module",
     description: "Find the right creators with 25+ filters, optimizing for engagement, credibility, and brand fit.",
     features: ["Category", "Location", "Followers", "Engagement"],
-    embedUrl: CONSTANTS.SUPADEMO.DISCOVERY,
+    demo: "discovery" as const,
   },
   {
     title: "Execution Module",
     description: "Turn your shortlist into confirmed creators with the Outreach module.",
     features: ["Creator outreach", "Response tracking", "Outreach pipeline"],
-    embedUrl: CONSTANTS.SUPADEMO.OUTREACH,
+    demo: "outreach" as const,
   },
   {
     title: "Campaign Tracking Module",
     description: "Track every post as it goes live — views, likes, comments and engagement per creator.",
     features: ["Live post performance", "Campaign insights", "Creator breakdown"],
-    embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_CREATION,
+    demo: "campaignCreation" as const,
   },
   {
     title: "Sentiment Analysis Module",
     description: "Understand how audiences reacted to your campaign and see what competitors are running.",
     features: ["Comment sentiment", "Audience feedback", "Competition scanner"],
-    embedUrl: CONSTANTS.SUPADEMO.COMPETITION_SCANNER,
+    demo: "compscan" as const,
   },
 ];
 
@@ -57,8 +57,8 @@ const ProductModules = () => {
               </div>
               <div className="flex-1 w-full">
                 <div className="aspect-video bg-transparent relative overflow-hidden">
-                  <Supademo
-                    src={mod.embedUrl}
+                  <DemoPlayer
+                    demo={mod.demo}
                     title={mod.title}
                   />
                 </div>

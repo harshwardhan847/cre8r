@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Play } from "lucide-react";
 import { CONSTANTS } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 import { useIsMobile } from "~/lib/use-is-mobile";
 
 type Props = {};
@@ -34,8 +34,8 @@ const PlatformDemo = (props: Props) => {
         <div className="overflow-hidden rounded-[24px] border border-border/10 bg-card shadow-[0_12px_32px_rgba(0,0,0,0.06)]">
           <div className="relative aspect-video w-full">
             {showEmbed ? (
-              <Supademo
-                src={CONSTANTS.SUPADEMO.CREATOR_OVERVIEW}
+              <DemoPlayer
+                demo={"creator"}
                 title="Cre8r Platform Walkthrough"
               />
             ) : (

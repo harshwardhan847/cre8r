@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "~/lib/utils";
 import { CONSTANTS } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 import { STATS } from "~/constants";
 
 type Props = {};
@@ -10,7 +10,7 @@ const featuresList = [
   {
     title: `Find & Track ${STATS.CREATORS} Creators`,
     image: "platform/discovery.png",
-    embedUrl: CONSTANTS.SUPADEMO.DISCOVERY,
+    demo: "discovery" as const,
     description:
       "Filter by engagement metrics, niche, audience demographics & more.",
     accent: "bg-violet-400",
@@ -19,7 +19,7 @@ const featuresList = [
   {
     title: "Advanced Creator Briefing System",
     image: "platform/creator_insights.png",
-    embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_REQUEST,
+    demo: "campaignRequest" as const,
     description:
       "The intuitive briefing system helps you set clear goals and share detailed guidelines.",
     accent: "bg-emerald-400",
@@ -28,7 +28,7 @@ const featuresList = [
   {
     title: "Intelligent Matchmaking",
     image: "platform/creators.png",
-    embedUrl: CONSTANTS.SUPADEMO.COLLECTION,
+    demo: "collection" as const,
     description:
       "Make data-driven decisions with every click, every view, every comment.",
     accent: "bg-amber-400",
@@ -37,7 +37,7 @@ const featuresList = [
   {
     title: "Live Performance Tracking",
     image: "platform/campaign_insights.png",
-    embedUrl: CONSTANTS.SUPADEMO.CAMPAIGN_CREATION,
+    demo: "campaignCreation" as const,
     description:
       "Monitor views, engagement and ROI in real-time across campaigns.",
     accent: "bg-rose-400",
@@ -135,8 +135,8 @@ const Features = (props: Props) => {
                   </span>
                 </h3>
                 <div className="w-full bg-transparent aspect-16/10 rounded-b-lg relative overflow-hidden">
-                  <Supademo
-                    src={val.embedUrl}
+                  <DemoPlayer
+                    demo={val.demo}
                     title={val.title}
                     className={cn(
                       "w-full h-full absolute top-0 left-0 border-0 p-0",

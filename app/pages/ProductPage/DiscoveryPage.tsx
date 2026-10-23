@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, Search, SlidersHorizontal, CheckCircle2, ShieldCheck, Users, Eye, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA, STATS } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 import CreatorAvatar from "./components/CreatorAvatar";
 
 // Mock creators data for interactive widget
@@ -144,8 +144,8 @@ const DiscoveryPage = () => {
 
         {demoMode === "walkthrough" ? (
           <div className="bg-transparent overflow-hidden aspect-video relative w-full">
-            <Supademo
-              src={CONSTANTS.SUPADEMO.DISCOVERY}
+            <DemoPlayer
+              demo={"discovery"}
               title="Discovery Walkthrough"
             />
           </div>

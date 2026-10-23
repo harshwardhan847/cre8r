@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { ArrowLeft, ArrowRight, UserPlus, ClipboardList, CheckCircle2, ChevronRight, Mail, BarChart3, Users, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CONSTANTS, CTA } from "~/constants";
-import { Supademo } from "~/components/Supademo";
+import { DemoPlayer } from "~/components/DemoPlayer";
 
 // Mock lead generation lists for interactive widget
 const initialLeads = [
@@ -143,11 +143,11 @@ const LeadGenPage = () => {
 
         {demoMode !== "sandbox" ? (
           <div className="bg-transparent overflow-hidden aspect-video relative w-full">
-            <Supademo
-              src={
+            <DemoPlayer
+              demo={
                 demoMode === "outreach"
-                  ? CONSTANTS.SUPADEMO.OUTREACH
-                  : CONSTANTS.SUPADEMO.COMPETITION_SCANNER
+                  ? "outreach"
+                  : "compscan"
               }
               title={`${demoMode} Walkthrough`}
             />
