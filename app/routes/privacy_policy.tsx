@@ -41,46 +41,6 @@ const Prose = ({ children }: { children: React.ReactNode }) => (
   <p className="text-sm leading-relaxed text-stone-600">{children}</p>
 );
 
-const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-white rounded-xl border border-stone-200 p-6">
-    {children}
-  </div>
-);
-
-const CardTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-sm font-semibold text-stone-800 mb-2">{children}</h3>
-);
-
-const LetterItem = ({
-  letter,
-  children,
-}: {
-  letter: string;
-  children: React.ReactNode;
-}) => (
-  <li className="flex gap-4 text-sm leading-relaxed text-stone-600">
-    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-100 text-amber-700 text-xs font-semibold flex items-center justify-center mt-0.5">
-      {letter}
-    </span>
-    <p>{children}</p>
-  </li>
-);
-
-const NumItem = ({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) => (
-  <li className="flex gap-3 text-sm leading-relaxed text-stone-600">
-    <span className="flex-shrink-0 font-semibold text-stone-400 min-w-[2rem]">
-      {label}
-    </span>
-    <p>{children}</p>
-  </li>
-);
-
 const BulletItem = ({ children }: { children: React.ReactNode }) => (
   <li className="flex gap-3 text-sm leading-relaxed text-stone-600">
     <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-amber-400 mt-2" />
@@ -90,27 +50,71 @@ const BulletItem = ({ children }: { children: React.ReactNode }) => (
 
 const Divider = () => <hr className="border-stone-200 my-12" />;
 
+const MailLink = ({ email }: { email: string }) => (
+  <a
+    href={`mailto:${email}`}
+    className="text-amber-600 underline underline-offset-2 hover:text-amber-700 transition-colors"
+  >
+    {email}
+  </a>
+);
+
+const Table = ({
+  columns,
+  rows,
+}: {
+  columns: string[];
+  rows: string[][];
+}) => (
+  <div className="overflow-x-auto rounded-xl border border-stone-200">
+    <table className="w-full text-sm text-left border-collapse">
+      <thead>
+        <tr className="bg-stone-100">
+          {columns.map((c) => (
+            <th
+              key={c}
+              className="px-4 py-3 font-semibold text-stone-700 border-b border-stone-200"
+            >
+              {c}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, i) => (
+          <tr key={i} className="odd:bg-white even:bg-stone-50">
+            {row.map((cell, j) => (
+              <td
+                key={j}
+                className="px-4 py-3 align-top text-stone-600 border-b border-stone-100 leading-relaxed"
+              >
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
 // ─── Table of Contents ────────────────────────────────────────────────────────
 
 const sections = [
   { id: "intro", label: "Introduction" },
-  { id: "definition", label: "Definition" },
-  { id: "non-exclusivity", label: "Non-Exclusivity" },
-  { id: "obligations", label: "Influencer's Obligation" },
-  { id: "eligibility", label: "Influencer Eligibility" },
-  { id: "submission", label: "Submission of Content" },
-  { id: "third-party", label: "Third Party Websites" },
-  { id: "rights-granted", label: "Rights Granted by CRE8R" },
-  { id: "ip", label: "Intellectual Property" },
-  { id: "influencer-rights", label: "Influencer Rights in Posts" },
-  { id: "consideration", label: "Consideration" },
-  { id: "cre8r-ip", label: "CRE8R's Intellectual Property" },
-  { id: "confidentiality", label: "Confidentiality" },
-  { id: "indemnification", label: "Indemnification" },
-  { id: "liability", label: "Limitation of Liability" },
-  { id: "disclaimers", label: "Disclaimers" },
-  { id: "dispute", label: "Dispute Resolution" },
-  { id: "jurisdiction", label: "Jurisdiction" },
+  { id: "collect", label: "What We Collect" },
+  { id: "why", label: "Why We Use It" },
+  { id: "social", label: "Instagram and YouTube Data" },
+  { id: "discovery", label: "Public Creator Profiles" },
+  { id: "sharing", label: "Who We Share Data With" },
+  { id: "storage", label: "Where Your Data Is Stored" },
+  { id: "retention", label: "How Long We Keep Data" },
+  { id: "security", label: "Security and Breaches" },
+  { id: "rights", label: "Your Rights" },
+  { id: "children", label: "Children" },
+  { id: "cookies", label: "Cookies and Analytics" },
+  { id: "contact", label: "Contact and Grievance Officer" },
+  { id: "changes", label: "Changes to This Policy" },
 ];
 
 const TableOfContents = ({
@@ -149,7 +153,6 @@ export default function PrivacyPolicy() {
   const [activeSection, setActiveSection] = useState("intro");
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  // Intersection observer to auto-highlight active ToC item on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -189,7 +192,8 @@ export default function PrivacyPolicy() {
           <p className="text-sm text-stone-500">
             Platform:{" "}
             <span className="font-medium text-stone-700">www.cre8r.ai</span>
-            &nbsp;·&nbsp;©CRE8R {new Date().getFullYear()}. All rights reserved.
+            &nbsp;·&nbsp;©Cre8r {new Date().getFullYear()}. All rights
+            reserved.
           </p>
         </div>
       </header>
@@ -199,656 +203,611 @@ export default function PrivacyPolicy() {
         <TableOfContents active={activeSection} onSelect={scrollTo} />
 
         <main className="flex-1 space-y-10 md:space-y-12 min-w-0">
-          {/* Copyright Notice */}
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-4 text-xs leading-relaxed text-amber-800">
-            <strong>PLEASE READ THIS INFLUENCER AGREEMENT CAREFULLY.</strong>
-            <br />
-            <strong>©CRE8R [{new Date().getFullYear()}].</strong> All rights
-            reserved; reproduction, adaptation, or translation without
-            permission is prohibited except as allowed under the International
-            copyright laws. All the text, graphics, design, content, and other
-            works on the website and app are trademarked works of CRE8R.
-          </div>
-
-          <Prose>
-            CRE8R has created the CRE8R Platform to allow Brands and influencers
-            to interact, form relationships, buy and sell Paid Content, and
-            create and distribute sponsored Posts through the influencer's
-            Channels (Instagram, YouTube, Twitter and/or Facebook), with
-            facilitation, support, control, and direction provided by CRE8R and
-            in accordance with these Terms of Use.
-          </Prose>
-
-          <Divider />
-
-          {/* Introduction */}
+          {/* Intro */}
           <section id="intro" className="scroll-mt-8">
-            <SectionHeading title="Introduction" />
             <div className="space-y-4">
               <Prose>
-                By accessing or using CRE8R services, you agree to be bound by
-                these terms, including our Privacy and Cookies Policies, upon
-                creating an account. We may update the terms from time to time,
-                so you should check this page regularly for updates.
+                This policy explains what personal data Grunmech Technologies
+                Private Limited collects through Cre8r.ai ("Cre8r", "we",
+                "us"), why, who we share it with, and the choices and rights
+                you have. We are the Data Fiduciary for this data under
+                India's Digital Personal Data Protection Act, 2023 (DPDP Act).
               </Prose>
               <Prose>
-                Welcome to CRE8R, operated for users globally. As used in this
-                Agreement, the terms "CRE8R," "us," "we," the "Company", and
-                "our" shall refer as appropriate.
+                Who this covers: creators who sign up, people at brands and
+                agencies who use Cre8r, visitors to cre8r.ai, and creators
+                whose public social media profiles appear in our discovery
+                tool.
+              </Prose>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-xl px-6 py-5">
+                <p className="text-xs font-semibold tracking-widest uppercase text-amber-700 mb-3">
+                  The short version
+                </p>
+                <ul className="space-y-2">
+                  {[
+                    "We collect what we need to match brands with creators, run campaigns, pay creators and report results.",
+                    "When you connect Instagram or YouTube, we read your account statistics through the platforms' official tools. We never post for you or read your private messages.",
+                    "We share creator profiles and campaign results with brands. We don't sell your personal data.",
+                    "You can see, correct or delete your data, withdraw consent, and complain to us or to the Data Protection Board of India.",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-3 text-sm leading-relaxed text-amber-900"
+                    >
+                      <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-amber-500 mt-2" />
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Prose>This policy is available in English.</Prose>
+            </div>
+          </section>
+
+          <Divider />
+
+          {/* What we collect */}
+          <section id="collect" className="scroll-mt-8">
+            <SectionHeading number="1" title="What We Collect" />
+            <Table
+              columns={["Who You Are", "What We Collect", "Where It Comes From"]}
+              rows={[
+                [
+                  "Creator who signs up",
+                  "Name, email, phone, city, date of birth, gender (optional), languages, niche, profile photo, social handles, rates",
+                  "You",
+                ],
+                [
+                  "Creator who signs up",
+                  "Follower counts, audience age, gender and location, reach, impressions, engagement, post and video performance",
+                  "Instagram and YouTube, when you connect your account (section 3)",
+                ],
+                [
+                  "Creator who signs up",
+                  "PAN, bank account or UPI ID, GSTIN (if registered), delivery address",
+                  "You, when you get paid or receive products",
+                ],
+                [
+                  "Creator who signs up",
+                  "Briefs, drafts, messages, approvals, posting links, campaign results and payment history",
+                  "Your use of the platform",
+                ],
+                [
+                  "Brand or agency user",
+                  "Name, work email, phone, company, job title, billing and GST details, campaign briefs",
+                  "You or your company",
+                ],
+                [
+                  "Creator in our discovery tool (not signed up)",
+                  "Name or handle, public bio, public posts, follower counts, public engagement and contact details listed publicly for business",
+                  "Public social media profiles (section 4)",
+                ],
+                [
+                  "Website visitor",
+                  "IP address, device and browser type, pages viewed, referring site, cookie identifiers; anything you type into a demo or contact form",
+                  "Your browser, cookies (section 11), and you",
+                ],
+              ]}
+            />
+            <div className="mt-6 space-y-3">
+              <Prose>
+                <strong className="text-stone-800">Audience data.</strong>{" "}
+                Audience statistics from Instagram and YouTube are
+                aggregated, such as "62% of followers are aged 18–24". We
+                don't collect the names or profiles of your individual
+                followers.
               </Prose>
               <Prose>
-                By accessing or using our Services on CRE8R (the "Website"), We
-                reserve the right to modify, amend, or change the Terms at any
-                time. Notice of any material change will be posted on this page
-                with an updated effective date. Responsibility for regularly
-                checking this page for notice of any change shall solely be of
-                the user. Your continued use of our Services to construe your
-                acceptance of any change, and you will be legally bound by the
-                updated Terms. If you do not accept a change to the terms, you
-                should stop using our Services immediately.
-              </Prose>
-              <Prose>
-                You further acknowledge that you are willing to interact with
-                the brands, advertisers, marketing agencies. By including your
-                name as an influencer, you may get requests from brands,
-                advertisers, marketing agencies asking you to support them in
-                their brand promotions by making suitable social media postings
-                in return for some fees or products. You have the liberty to
-                accept/refuse these requests from brands, advertisers, and
-                marketing agencies. You may understand that CRE8r is merely a
-                facilitator/medium (intermediary) to connect.
-              </Prose>
-              <Prose>
-                We do not provide any assurance about brands, advertisers, and
-                marketing agencies in any aspects. You understand that CRE8r is
-                a digital platform that (a) collects your data/Personal
-                information available in various social media platforms like
-                Instagram, Facebook, Twitter, YouTube etc., (b) monetize the
-                Content of your Personal information through our Application
-                Program Interface (API) and web crawlers and (c) showcase your
-                ability, creativity and passion to various brands, advertisers,
-                market agencies and thereby helping you to monetise your social
-                media presence.
-              </Prose>
-              <Prose>
-                CRE8r website is an Influencer marketplace platform. This
-                agreement set forth is legally binding for all the users of the
-                website. This Terms of Use is published in accordance with the
-                provisions of Rule 3 (1) of the Information Technology
-                (Intermediaries Guidelines) Rules, 2011.
+                <strong className="text-stone-800">Sensitive data.</strong>{" "}
+                We don't ask for religion, caste, health, sexual orientation
+                or political views. Please don't put them in your profile.
               </Prose>
             </div>
           </section>
 
           <Divider />
 
-          {/* Definitions */}
-          <section id="definition" className="scroll-mt-8">
-            <SectionHeading title="Definition" />
-            <div className="grid grid-cols-1 gap-4">
-              {[
-                {
-                  term: "Services",
-                  def: 'Any services offered on or through the Site, to a guest or a registered user (hereafter "Agreement").',
-                },
-                {
-                  term: "Content",
-                  def: "Shall mean and include any inputs on specific brands/topics by any user including any blogger/individuals/social media influencers which may be in the form of text, reviews, comments, data, information, images, photographs, music, sound, video or any other material or any reactions thereto.",
-                },
-                {
-                  term: "User",
-                  def: "Shall mean and include digital marketing companies/brands, individuals, and influencers.",
-                },
-                {
-                  term: "Influencer",
-                  def: "Shall mean persons who is active in social medias (like Facebook, Twitter, Instagram, YouTube etc and/or who has substantial followers, subscribers, and who has the ability to influence other social media users who have been included in CRE8R database either as registered influencers or unregistered influencers.",
-                },
-                {
-                  term: "Registered Influencer",
-                  def: "Shall mean those who have volunteered to provide their personal details into the CRE8R database and registered on the platform as an influencer.",
-                },
-                {
-                  term: "Unregistered Influencers",
-                  def: "Shall mean influencer identified by CRE8R from its own research whose insights and coordinates are extracted from various public sources.",
-                },
-                {
-                  term: "Personal Information",
-                  def: "Shall mean and include any information relating to the user's Instagram Handle including name, email id, phone number, location, gender, IP address, address, photograph and economic, cultural, or social identity of the user along with user's audience data and any other information that the influencer may choose to share or be available in the public domain.",
-                },
-                {
-                  term: "We / Us / Our / CRE8R",
-                  def: 'Means CRE8R. "You" and "Influencer" means the party, other than CRE8R, entering into this Agreement.',
-                },
-              ].map(({ term, def }) => (
-                <Card key={term}>
-                  <CardTitle>{term}</CardTitle>
-                  <Prose>{def}</Prose>
-                </Card>
-              ))}
-            </div>
-          </section>
-
-          <Divider />
-
-          {/* Non-Exclusivity */}
-          <section id="non-exclusivity" className="scroll-mt-8">
-            <SectionHeading title="Non-Exclusivity" />
-            <Prose>
-              This Agreement does not create an exclusive agreement between the
-              parties and both parties reserve the right to recommend similar
-              products and services of third parties and to work with other
-              parties in connection with the design, sale, installation,
-              implementation and use of similar services and products of third
-              parties, though without express or implied disclosures of
-              confidential information of the other party.
-            </Prose>
-          </section>
-
-          <Divider />
-
-          {/* Influencer Obligations */}
-          <section id="obligations" className="scroll-mt-8">
-            <SectionHeading title="Influencer's Obligation" />
-            <p className="text-sm text-stone-600 mb-5">
-              By accepting all the terms influencer is liable for the following
-              obligations:
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Influencer's profile shall accurately represent his/her experience, skills, expertise, and personal information.",
-                "Influencer's profile photos shall be clear and appropriate for a professional, global community.",
-                "Heavily digitally manipulated pictures are prohibited.",
-                "Each Influencer shall be allowed to have only one account.",
-                "Influencer's account shall not be shared or duplicated in any way.",
-                "Attempting to mislead by falsely implying a relationship with the Company or any Advertiser shall not be allowed.",
-                "The Influencer must abide by the Advertising Standards Council of India (ASCI) guidelines in all the posts.",
-                "Any offer of Services that is spam in nature shall be strictly prohibited.",
-                "The Influencer shall never post and/or say any kind of negative communication including but not limited to the defamatory, derogatory, abusive, false or incorrect comments, bad words, misrepresentations, complaints, grievances etc., in any media including but not limited to TV, newspapers, radio, social media including tweets, Facebook posts, digital platforms, blogs etc., or in person before any third party or any individuals; pertaining to or in relation to the Company, Advertiser(s), its employees, representatives, group companies, clients or affiliates, the Campaign, Brands/Topics, Consideration, remuneration, payments process etc.",
-                "The Influencer shall not edit a Post after Brand has approved the Post.",
-                "The Influencer is solely responsible for all the content published and which remains unapproved by the brand.",
-                "The Influencer must keep the post on the social media on their page for at least 30 days or as specified in campaign brief and uptime and agreed mutually.",
-                "After a Post is published, the Influencer will not publish any Post where the effect of publishing such additional Posts would be to reduce the prominence of the earlier Post.",
-                "Brand has the right at any time to moderate any Post after publication for a valid reason and the Influencer will immediately make any reasonable modification or amendment requested by Brand.",
-                "Brand has the right at any time to request that the Post be removed, and the Influencer will comply with such a request immediately upon receipt of such notification.",
-                "In case of any defect or shortcomings in the agreed deliverables, Influencer shall remove such defect or shortcoming post receipt of request from Brand.",
-                "You should keep up to speed with the latest developments and best practice on how to label your posts in a transparent way to show that it is paid for by the brand. Normally, that will mean labelling your content with #ad or ADVERT in the title or thumbnail of your content. Don't try to hide the fact that the content is paid for; both you and the Brand will lose credibility if you do.",
-                "We work exclusively with influencers who've organically grown their audience. If you're misrepresenting the size of your audience or engagement in your content, we reserve the right to terminate your account.",
-                "You must clearly disclose in each sponsored Post your relationship with the Brand. We require that you make such disclosures in such a way that it is clear to the ordinary consumer viewing your Channels that there is a commercial relationship between you and the Brand. This may be achieved through the prominent use of hashtags such as #advertisement or #ad or through other means suitable to your circumstances, Community and Channels.",
-              ].map((item, i) => (
-                <BulletItem key={i}>{item}</BulletItem>
-              ))}
-            </ul>
-          </section>
-
-          <Divider />
-
-          {/* Influencer Eligibility */}
-          <section id="eligibility" className="scroll-mt-8">
-            <SectionHeading title="Influencer Eligibility" />
-            <p className="text-sm text-stone-600 mb-5">
-              Before you create an account, make sure you are eligible to use
-              our Services. This Section also details with what you can and
-              can't do when using the Services, as well as the rights you grant
-              CRE8R. By using our Services, you represent and warrant that you
-              possess following eligibility:
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Any person over the age of 18 years, or over the age of 13 years with the written consent of a parent or legal guardian.",
-                "You are legally qualified to enter a binding contract with CRE8R.",
-                "You must be eligible to use each of the social media platforms through which you sign in to the Application (under the relevant platform's prevailing terms and conditions).",
-                "You must have at least 1000 followers on Instagram while signing up to the Application.",
-                "Your account should be public (viewable by anyone); and either a business account or creator account and all the prerequisite pages are linked with your account/profile as required by social media platforms.",
-                "The said Channels may not contain content that is contrary to these Terms of Use or to the terms of use of the relevant social media platform.",
-                "You must not misrepresent the size of your audience or your numbers of followers or level of engagement. You must have obtained your followers organically and not through unethical or unsportsmanlike behaviour such as (but not limited to) purchasing or fabricating followers, likes or engagement.",
-              ].map((item, i) => (
-                <BulletItem key={i}>{item}</BulletItem>
-              ))}
-            </ul>
-          </section>
-
-          <Divider />
-
-          {/* Submission of Content */}
-          <section id="submission" className="scroll-mt-8">
-            <SectionHeading number="6" title="Submission of Content" />
-            <div className="space-y-4 mb-8">
+          {/* Why we use it */}
+          <section id="why" className="scroll-mt-8">
+            <SectionHeading number="2" title="Why We Use It" />
+            <Table
+              columns={["Purpose", "Data Used", "Legal Basis Under the DPDP Act"]}
+              rows={[
+                [
+                  "Create and run your account",
+                  "Account and contact details",
+                  "Consent, and data you gave us for this purpose",
+                ],
+                [
+                  "Show your creator profile to brands and match you with campaigns",
+                  "Profile, audience and performance data",
+                  "Consent",
+                ],
+                [
+                  "Run campaigns: briefs, approvals, shipping, messages",
+                  "Contact details, address, campaign content",
+                  "Consent, and data you gave us for this purpose",
+                ],
+                [
+                  "Measure and report campaign results to brands",
+                  "Post links and performance data",
+                  "Consent",
+                ],
+                [
+                  "Pay creators, deduct TDS, issue TDS certificates, keep tax records",
+                  "PAN, bank or UPI details, GSTIN, payment history",
+                  "Legal obligation under tax laws",
+                ],
+                [
+                  "Detect fake followers, fraud and misuse",
+                  "Profile, audience and engagement data, device and log data",
+                  "Consent, and legitimate uses permitted by the Act",
+                ],
+                [
+                  "Show brands public creator profiles in discovery",
+                  "Publicly available profile data",
+                  "Data the creator made public (section 4)",
+                ],
+                [
+                  "Reply to demo and contact requests",
+                  "Contact details, message",
+                  "Data you gave us for this purpose",
+                ],
+                [
+                  "Improve the website and platform",
+                  "Usage and cookie data",
+                  "Consent (non-essential cookies)",
+                ],
+                [
+                  "Send updates and marketing emails",
+                  "Email, name",
+                  "Consent. Unsubscribe any time",
+                ],
+                [
+                  "Meet legal requests and protect our rights",
+                  "Any relevant data",
+                  "Legal obligation",
+                ],
+              ]}
+            />
+            <div className="mt-6 space-y-3">
               <Prose>
-                It is important that you understand your rights and
-                responsibilities with regard to the content on our Services,
-                including any content you provide or post. You are expressly
-                prohibited from posting inappropriate content. Each Post or Paid
-                Content that you upload should be submitted to the brand for the
-                prior approval to a Brand or publish to a Channel must adhere to
-                the requirements contained in these Terms of Use. We are not
-                obliged to submit any Post or Paid Content that you upload to
-                the Application to the Brand. Posts and Paid Content that do not
-                comply with the above-mentioned clause should otherwise be
-                considered unsuitable for the Campaign may be made inaccessible
-                by the Brand and/or removed.
-              </Prose>
-            </div>
-            <p className="text-sm font-medium text-stone-700 mb-4">
-              You must not:
-            </p>
-            <ul className="space-y-3">
-              {[
-                {
-                  label: "i.",
-                  text: "That any content provided must not defame, abuse, harass, stalk, threaten or otherwise violate the legal rights of any Person, including but not limited to the Brands/Topics, Campaign(s), Company, Advertiser(s), employees, directors, or representatives of the Company and/or Advertiser(s).",
-                },
-                {
-                  label: "ii.",
-                  text: "That you must publish, post, upload, distribute or disseminate any inappropriate, profane, offensive (including personal comment), defamatory, derogatory, negative, abusive, infringing, obscene, indecent, or unlawful topic, name, material or information through any blog, tag, or keyword.",
-                },
-                {
-                  label: "iii.",
-                  text: "Post Content or items in inappropriate categories.",
-                },
-                {
-                  label: "iv.",
-                  text: "Publish, post, or upload any Content with an intent to cause any harm to the reputation of any other brand/topics.",
-                },
-                {
-                  label: "v.",
-                  text: "Upload Content that shall infringe upon or misappropriate any Intellectual Property Rights or proprietary rights or rights of publicity or privacy of any Person or contain software or other material protected by Intellectual Property Rights of any third party, unless the Influencer owns or controls the said rights or has received all necessary consents thereto.",
-                },
-                {
-                  label: "vi.",
-                  text: "Transmit, access, or communicate any data that he/she/they do not have a right to transmit under any law or under contractual or fiduciary relationships (such as inside information, proprietary and confidential information learned or disclosed as part of employment relationships or under non-disclosure agreements).",
-                },
-                {
-                  label: "vii.",
-                  text: "Transfer his/her account, username and/or password to a third party.",
-                },
-                {
-                  label: "viii.",
-                  text: "Distribute or post spam, unsolicited, or bulk electronic communications, chain letters, or pyramid schemes.",
-                },
-                {
-                  label: "ix.",
-                  text: "In any manual or automated way copy, appropriate, use or disclose any copyrighted text, or other intellectual property, rights of publicity, privacy, or contract rights or otherwise misuse or misappropriate CRE8R Platform information or content including but not limited to, use on a mirrored, competitive, or third-party site.",
-                },
-                {
-                  label: "x.",
-                  text: "Upload or distribute Content that contain viruses, corrupted files, 'Trojan horses' or any other similar software or programs that may interrupt, harm, overload, collapse, destroy, detrimentally interfere with, surreptitiously intercept, or expropriate any system, data, or personal information, limit the functionality, or damage the operation of the website or any third party's computer.",
-                },
-                {
-                  label: "xi.",
-                  text: "Use any automated system including but not limited to robots, spiders, offline readers, crawlers, scrapers to access, copy, maintain or compile the CRE8R Platform or content thereon for any purpose without CRE8R's prior written approval.",
-                },
-                {
-                  label: "xii.",
-                  text: "Impersonate any person or entity or falsely state or otherwise misrepresent his/her affiliation with a person or entity.",
-                },
-                { label: "xiii.", text: "Engage any illegal activity." },
-                {
-                  label: "xiv.",
-                  text: "Share or disseminate material linked to terrorist activities.",
-                },
-                {
-                  label: "xv.",
-                  text: "Share or disseminate information on development, design, manufacture, or production of missiles, or nuclear, chemical, or biological weapons.",
-                },
-                {
-                  label: "xvi.",
-                  text: "Violate any applicable laws or regulations for the time being in force in or outside India.",
-                },
-                {
-                  label: "xvii.",
-                  text: "By act, word, deed or otherwise make any statement to the effect that the Influencer is associated with the Company in any manner.",
-                },
-                {
-                  label: "xviii.",
-                  text: "Threaten the unity, integrity, defence, security or sovereignty of India, friendly relations with foreign states, or public order or causes incitement to the commission of any cognizable offence or prevent investigation of any offence or is insulting any other nation.",
-                },
-                {
-                  label: "xix.",
-                  text: "Violate the terms of engagement, terms of use, privacy policy or any other terms and conditions as may be applicable to him/her.",
-                },
-              ].map(({ label, text }) => (
-                <NumItem key={label} label={label}>
-                  {text}
-                </NumItem>
-              ))}
-            </ul>
-            <div className="mt-6 space-y-4">
-              <Prose>
-                This license shall automatically terminate if you violate any of
-                the above restrictions. Upon termination of the license, you
-                must destroy any downloaded materials in your possession in any
-                format whatsoever including in electronic or printed format.
+                <strong className="text-stone-800">
+                  Withdrawing consent.
+                </strong>{" "}
+                You can withdraw consent as easily as you gave it, from your
+                account settings or by writing to us (section 12). Withdrawal
+                doesn't affect what we did before. If you withdraw consent
+                needed to run your account, we may have to close it. We will
+                still keep records the law requires, such as tax records.
               </Prose>
               <Prose>
-                We may alter, suspend, or discontinue any aspect of the Services
-                at any time, including the availability of any feature,
-                database, or content. We may also impose limits on certain
-                features and aspects of the Services or restrict your access to
-                parts or all of the Services without notice or liability.
+                <strong className="text-stone-800">
+                  Automated matching.
+                </strong>{" "}
+                We use software, including AI, to suggest creators for a
+                brief and to flag unusual engagement patterns. A person at
+                Cre8r or the brand makes the final decision about who is
+                offered a campaign. If you think a flag on your account is
+                wrong, ask us to review it.
               </Prose>
             </div>
           </section>
 
           <Divider />
 
-          {/* Third Party */}
-          <section id="third-party" className="scroll-mt-8">
+          {/* Data from Instagram and YouTube */}
+          <section id="social" className="scroll-mt-8">
+            <SectionHeading number="3" title="Data From Instagram and YouTube" />
+            <div className="space-y-4">
+              <Prose>
+                When you connect an account, you sign in on Meta's or
+                Google's own page and choose what to allow. We never see your
+                password.
+              </Prose>
+              <Prose>
+                <strong className="text-stone-800">What we read:</strong>{" "}
+                your profile details, follower and subscriber counts,
+                aggregated audience demographics, reach, impressions, views,
+                likes, comments, saves, and the performance of your posts and
+                videos, including campaign posts.
+              </Prose>
+              <Prose>
+                <strong className="text-stone-800">What we don't do:</strong>{" "}
+                we don't post, comment, like or message on your behalf. We
+                don't read your private messages, and we don't collect your
+                followers' individual identities.
+              </Prose>
+              <Prose>
+                <strong className="text-stone-800">YouTube.</strong> Cre8r
+                uses YouTube API Services. By connecting YouTube, you agree
+                to the YouTube Terms of Service, and Google's use of your
+                data is covered by the Google Privacy Policy. You can revoke
+                Cre8r's access at any time from your Google security
+                settings.
+              </Prose>
+              <Prose>
+                <strong className="text-stone-800">
+                  Instagram and Facebook.
+                </strong>{" "}
+                We access Instagram data through Meta's official APIs, under
+                Meta's Platform Terms and the Meta Privacy Policy. You can
+                remove Cre8r from Instagram under Settings → Website
+                permissions → Apps and websites, or from Facebook's Business
+                Integrations settings.
+              </Prose>
+              <Prose>
+                <strong className="text-stone-800">
+                  When you disconnect
+                </strong>{" "}
+                an account, we stop collecting new data from it straight
+                away. We delete the stored platform data within 30 days,
+                except campaign results already reported to a brand and data
+                we must keep by law. You can also ask us to delete it sooner
+                (section 9).
+              </Prose>
+            </div>
+          </section>
+
+          <Divider />
+
+          {/* Public creator profiles */}
+          <section id="discovery" className="scroll-mt-8">
             <SectionHeading
-              number="7"
-              title="Third Party Websites / Mobile Applications, Goods and Services"
+              number="4"
+              title="Public Creator Profiles in Our Discovery Tool"
             />
             <div className="space-y-4">
               <Prose>
-                The Platform provides links to third party websites and/or
-                mobile applications. We make no representations as to the
-                quality, suitability, functionality, or legality of any sites to
-                which we may provide links, or any goods or services available
-                from such sites. You acknowledge that when you access a link
-                that leaves the website of the Platform, the site you will enter
-                into is not controlled by us and different terms of use and
-                privacy policies may apply. By accessing links to other sites,
-                you acknowledge that We are not responsible for those sites.
-                Cre8r reserves the right to disable links from third-party sites
-                to the Platform, although we are under no obligation to do so.
+                To help brands find creators, our discovery tool includes
+                profiles built from information that creators have made
+                public on Instagram and YouTube for promotion and business.
+                This includes their handle, bio, public posts, follower
+                counts, public engagement and any business contact details
+                they list publicly.
               </Prose>
               <Prose>
-                All matters concerning any goods and/or services that you
-                purchase from a third party site, including without limitation
-                all contract terms, are solely between you and the owner of that
-                site and you agree not to hold us responsible or liable for any
-                costs or damages to you or any third party arising directly or
-                indirectly out of the purchase/availing by you of goods and/or
-                services from any third party website and/or mobile application.
+                We only use data that is publicly visible without logging in
+                or passing a privacy setting. We don't include private
+                accounts, and we use this data only to help brands find and
+                evaluate creators for campaigns.
+              </Prose>
+              <p className="text-sm font-medium text-stone-700">
+                If your public profile appears in Cre8r and you don't want it
+                to:
+              </p>
+              <ul className="space-y-3">
+                <BulletItem>
+                  Write to our Grievance Officer (section 12) with your
+                  handle and we will remove it within 15 days and keep it
+                  out, or
+                </BulletItem>
+                <BulletItem>
+                  Sign up as a creator to take control of your profile,
+                  correct it and add your own details.
+                </BulletItem>
+              </ul>
+              <Prose>
+                If you change your account to private or delete it, we stop
+                showing it when our next update runs.
               </Prose>
             </div>
           </section>
 
           <Divider />
 
-          {/* Rights Granted */}
-          <section id="rights-granted" className="scroll-mt-8">
-            <SectionHeading
-              number="9"
-              title="Rights You Are Granted by CRE8R"
-            />
+          {/* Who we share data with */}
+          <section id="sharing" className="scroll-mt-8">
+            <SectionHeading number="5" title="Who We Share Data With" />
             <Prose>
-              CRE8R grants you the right to use and enjoy our Services, subject
-              to these Terms. For as long as you comply with these Terms, CRE8R
-              grants you a personal, worldwide, royalty-free, non-assignable,
-              non-exclusive, revocable, and non-sub licensable license to access
-              and use our Services for purposes as intended by CRE8R and
-              permitted by these Terms and applicable laws.
-            </Prose>
-          </section>
-
-          <Divider />
-
-          {/* IP */}
-          <section id="ip" className="scroll-mt-8">
-            <SectionHeading number="10" title="Intellectual Property" />
-            <Prose>
-              Nothing in these Terms of Use grants you any ownership or other
-              rights in, the Intellectual Property Rights of the Brand. Nothing
-              in these Terms of Use prohibits the Brand to make use of any
-              content made by the influencer for promotion of brand to use on
-              their platform.
-            </Prose>
-          </section>
-
-          <Divider />
-
-          {/* Influencer Rights */}
-          <section id="influencer-rights" className="scroll-mt-8">
-            <SectionHeading number="11" title="Influencer Rights in Posts" />
-            <Prose>
-              All rights, title, and interest (including all Intellectual
-              Property Rights) in Posts will remain held by you for all the
-              social media pages owned by you.
-            </Prose>
-          </section>
-
-          <Divider />
-
-          {/* Consideration */}
-          <section id="consideration" className="scroll-mt-8">
-            <SectionHeading
-              number="12"
-              title="Consideration — Requirements for Payment"
-            />
-            <Prose>
-              You shall duly provision your account details and affirm to
-              acceptance of payments to be remitted to you as per agreed terms
-              or within 45 days from the date of getting the post live on the
-              said platforms.
-            </Prose>
-          </section>
-
-          <Divider />
-
-          {/* CRE8R IP */}
-          <section id="cre8r-ip" className="scroll-mt-8">
-            <SectionHeading number="13" title="CRE8R's Intellectual Property" />
-            <div className="space-y-4">
-              <Prose>
-                All CRE8R Materials on the CRE8R Platform are protected by all
-                applicable laws, including copyright and trademark laws, and may
-                not be used except as permitted in these Terms of Use. Nothing
-                in these Terms of Use will be taken to constitute a transfer,
-                assignment or grant of any ownership rights in any Intellectual
-                Property Rights in the CRE8R Materials to a Brand or Influencer.
-              </Prose>
-              <Prose>
-                All right, title and interest in all Intellectual Property
-                Rights in all of CRE8R brands, logos, images, buttons, codes,
-                layout, text, content, graphics, and products and services as
-                displayed on the CRE8R Platform as well as the look and feel of
-                the CRE8R Platform (the "Brand Features") are the property of
-                CRE8R and will remain or be vested in CRE8R at all times and may
-                not be copied, imitated or used in whole or in part without
-                CRE8R prior written consent. Your use of the CRE8R Platform will
-                not under any circumstances be taken to constitute a transfer,
-                assignment or grant of any ownership rights in any of the Brand
-                Features or the Platform. CRE8R grants to you a limited,
-                non-exclusive licence to use the Brand Features solely for the
-                purpose, and to the extent necessary, to enable you to use the
-                CRE8R Platform in accordance with these Terms of Use.
-              </Prose>
-            </div>
-          </section>
-
-          <Divider />
-
-          {/* Confidentiality */}
-          <section id="confidentiality" className="scroll-mt-8">
-            <SectionHeading number="14" title="Confidentiality" />
-            <Prose>
-              Each of you and CRE8R understands that the other has disclosed or
-              may disclose business, technical or financial information relating
-              to its business, including in the case of CRE8R (Confidential
-              Information), and agrees:
+              We don't sell personal data. We share it only in these cases:
             </Prose>
             <ul className="space-y-3 mt-5">
-              {[
-                "To take reasonable precautions to protect the other party's Confidential Information.",
-                "Not to use the other party's Confidential Information except for the purposes of these Terms of Use.",
-                "Not to disclose the other party's Confidential Information to any third person except to the extent required by law or with the consent of the other party.",
-              ].map((item, i) => (
-                <BulletItem key={i}>{item}</BulletItem>
-              ))}
+              <BulletItem>
+                <strong className="text-stone-800">
+                  Brands and agencies
+                </strong>{" "}
+                running campaigns see creator profiles, audience statistics,
+                rates, campaign content and results. They get a creator's
+                delivery address only when shipping requires it, and never
+                the creator's bank details. They receive a creator's PAN only
+                when a brand must file TDS on products it gives (section 393
+                of the Income-tax Act, 2025).
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">Creators</strong> taking
+                part in a campaign see the brand's brief and the contact
+                details of the people managing it.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">Service providers</strong>{" "}
+                who work for us under contract and only on our instructions:
+                cloud hosting, payment processing, shipping (Shiprocket and
+                its couriers), email and messaging, analytics (Google
+                Analytics) and customer support tools.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">Authorities</strong>, when
+                the law, a court or a government agency requires it,
+                including tax authorities for TDS and GST filings.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">
+                  A buyer or successor
+                </strong>{" "}
+                if Cre8r's business is merged, sold or restructured. We will
+                tell you before your data becomes subject to a different
+                privacy policy.
+              </BulletItem>
             </ul>
-            <p className="text-sm text-stone-600 mt-6 mb-4">
-              The obligations will not apply to any information that you or
-              CRE8R can document:
+            <p className="text-sm text-stone-600 mt-6">
+              Service providers must protect your data and may not use it
+              for their own purposes.
             </p>
-            <ul className="space-y-3">
-              {[
-                "Is or has become generally available to the public.",
-                "Was in its possession, or known by it, prior to receipt from the other party.",
-                "Was rightfully disclosed to it without restriction by a third person.",
-                "Was independently developed by it without use of any Confidential Information of the other party.",
-              ].map((item, i) => (
-                <BulletItem key={i}>{item}</BulletItem>
-              ))}
-            </ul>
           </section>
 
           <Divider />
 
-          {/* Indemnification */}
-          <section id="indemnification" className="scroll-mt-8">
-            <SectionHeading number="15" title="Indemnification" />
-            <p className="text-sm text-stone-600 mb-5">
-              You agree to indemnify, and must defend and hold harmless, CRE8R
-              and its related bodies corporate, personnel, servants, and agents,
-              from and against any claims, liabilities, damages, losses, and
-              expenses (including reasonable legal fees) arising out of or in
-              any way connected with any of the following (including as a result
-              of your direct activities on the CRE8R Platform):
-            </p>
-            <ul className="space-y-3">
-              {[
-                {
-                  letter: "a",
-                  text: "Your Content or access to the CRE8R Platform.",
-                },
-                {
-                  letter: "b",
-                  text: "Your use or inability to use the CRE8R Platform.",
-                },
-                {
-                  letter: "c",
-                  text: "Your breach or alleged breach of these Terms of Use.",
-                },
-                {
-                  letter: "d",
-                  text: "(Where you are an influencer) your claim against a Brand for any reason.",
-                },
-                {
-                  letter: "e",
-                  text: "(Where you are a Brand) your claim against an influencer for any reason.",
-                },
-                {
-                  letter: "f",
-                  text: "Any claim or allegation that your Content infringes a third party's rights, including Intellectual Property Rights.",
-                },
-                { letter: "g", text: "Your violation of any applicable Laws." },
-                { letter: "h", text: "Any misrepresentation made by you." },
-              ].map(({ letter, text }) => (
-                <LetterItem key={letter} letter={letter}>
-                  {text}
-                </LetterItem>
-              ))}
-            </ul>
+          {/* Where your data is stored */}
+          <section id="storage" className="scroll-mt-8">
+            <SectionHeading number="6" title="Where Your Data Is Stored" />
+            <Prose>
+              We store data with established cloud hosting providers. Some
+              of our service providers, such as email or analytics tools,
+              may process data outside India. When that happens, we use
+              providers with strong security commitments, and we will never
+              transfer data to a country the Government of India restricts
+              under section 16 of the DPDP Act.
+            </Prose>
           </section>
 
           <Divider />
 
-          {/* Limitation of Liability */}
-          <section id="liability" className="scroll-mt-8">
-            <SectionHeading number="16" title="Limitation of Liability" />
-            <div className="bg-stone-900 text-stone-300 rounded-xl p-6 text-xs leading-relaxed tracking-wide space-y-4">
-              <p>
-                In using the CRE8R Platform, you may be exposed to Content that
-                is harmful, obscene, misleading, or inaccurate. Under no
-                circumstances will CRE8R be liable in any way for any Content,
-                including but not limited to any errors or omissions in such
-                Content or any loss or damage of any kind incurred as a result
-                of any use of Content posted, transmitted, or otherwise made
-                available via the CRE8R Platform.
-              </p>
-              <p className="uppercase font-medium text-stone-200">
-                IN NO EVENT SHALL THE AGGREGATE LIABILITY OF CRE8R FOR ANY
-                DAMAGES ARISING UNDER THESE TERMS OR OUT OF YOUR USE OF, OR
-                INABILITY TO USE, EXCEED THE TOTAL AMOUNT OF FEES, IF ANY, PAID
-                TO YOU BY CRE8R FOR OFFERING YOUR SERVICES OR USING THE SITE
-                DURING THE THREE (3) MONTHS PRIOR TO BRINGING THE CLAIM.
-              </p>
-              <p>
-                The CRE8R Group shall not be liable to the influencer for
-                damages of any kind arising out of the influencer's use of the
-                CRE8R Platform otherwise required by Law.
-              </p>
+          {/* How long we keep data */}
+          <section id="retention" className="scroll-mt-8">
+            <SectionHeading number="7" title="How Long We Keep Data" />
+            <Prose>
+              We keep personal data only as long as we need it for the
+              purpose we collected it for, or as long as the law requires.
+            </Prose>
+            <div className="mt-6">
+              <Table
+                columns={["Data", "How Long We Keep It"]}
+                rows={[
+                  [
+                    "Creator account and profile",
+                    "While your account is open; deleted within 30 days of closing it, except as below",
+                  ],
+                  [
+                    "Instagram and YouTube data",
+                    "While connected; deleted within 30 days of disconnecting",
+                  ],
+                  [
+                    "Campaign content, results and messages",
+                    "3 years after the campaign, for brand reporting and disputes",
+                  ],
+                  [
+                    "PAN, payment, TDS and GST records",
+                    "Up to 8 years, as tax laws require",
+                  ],
+                  [
+                    "Brand user contact and billing details",
+                    "While the business relationship lasts, then 3 years",
+                  ],
+                  [
+                    "Demo and contact form enquiries",
+                    "2 years after the last contact",
+                  ],
+                  [
+                    "Public discovery profiles",
+                    "Until removed on request or no longer public",
+                  ],
+                  [
+                    "Security and access logs",
+                    "At least 1 year, as the DPDP Rules require",
+                  ],
+                  ["Marketing email list", "Until you unsubscribe"],
+                ]}
+              />
             </div>
+            <p className="text-sm text-stone-600 mt-6">
+              When the period ends, we delete the data or remove anything
+              that identifies you.
+            </p>
           </section>
 
           <Divider />
 
-          {/* Disclaimers */}
-          <section id="disclaimers" className="scroll-mt-8">
-            <SectionHeading number="17" title="Disclaimers" />
-            <div className="bg-stone-100 border border-stone-200 rounded-xl p-6">
+          {/* Security and data breaches */}
+          <section id="security" className="scroll-mt-8">
+            <SectionHeading number="8" title="Security and Data Breaches" />
+            <div className="space-y-4">
               <Prose>
-                Whilst CRE8R endeavours to take all reasonable steps to ensure
-                that the CRE8R Platform operates as expected, the CRE8R Platform
-                and its entire contents are provided on an "as is" and "as
-                available" basis without any warranties of any kind, either
-                expressed or implied, to the fullest extent permissible pursuant
-                to applicable law, including, without limitation, any implied
-                warranties of merchantability, satisfactory quality,
-                non-infringement or fitness for a particular purpose. CRE8R does
-                not make any guarantees and does not provide any undertaking
-                that the CRE8R Platform will be available at all times or that
-                it will be error free, reliable, or secure or free from viruses
-                or other harmful components or that any defects will be
-                corrected. You agree that you use the CRE8R Platform at your own
-                risk and that CRE8R disclaims any and all responsibility for any
-                damage or loss that you may suffer or incur as a result of using
-                the CRE8R Platform, whether they are direct, indirect, punitive,
-                or consequential (including but not limited to loss of profits,
-                loss of business revenue or loss of goodwill). This includes any
-                loss that results from any interference, malfunction, delays,
-                failures, or damage that occurs to your device or that results
-                from accessing, installing, updating, or using the CRE8R
-                Platform. You assume total responsibility for your use of the
-                CRE8R Platform, including compliance with all applicable road
-                rules and regulations. Subject to the Consumer Guarantees, your
-                sole remedy against CRE8R for dissatisfaction with the CRE8R
-                Platform or any content is to stop using the CRE8R Platform or
-                such Content. This limitation of relief is a part of the bargain
-                between the parties.
+                We protect data with encryption in transit and at rest,
+                access limited to staff who need it, multi-factor login for
+                our systems, access logs and regular security reviews.
+                Payment details are handled by our payment provider and are
+                not stored in plain text.
+              </Prose>
+              <Prose>
+                No system is perfectly secure. If a personal data breach
+                affects you, we will tell you without delay: what happened,
+                what data was involved, what it could mean for you, what we
+                are doing about it and what you can do. We will also report
+                it to the Data Protection Board of India as the DPDP Rules
+                require.
+              </Prose>
+              <Prose>
+                Keep your login private. Tell us straight away at{" "}
+                <MailLink email="gs@cre8r.ai" /> if you think your account
+                has been accessed by someone else.
               </Prose>
             </div>
           </section>
 
           <Divider />
 
-          {/* Dispute Resolution */}
-          <section id="dispute" className="scroll-mt-8">
-            <SectionHeading number="18" title="Dispute Resolution" />
-            <Prose>
-              In the unlikely event that we have a legal dispute, here is what
-              you need to know. If you are dissatisfied with our Services for
-              any reason, please contact CRE8R Customer Service first so that we
-              can try to resolve your concerns without the need of outside
-              assistance. If you choose to pursue a claim against CRE8R, these
-              terms will apply.
-            </Prose>
+          {/* Your rights */}
+          <section id="rights" className="scroll-mt-8">
+            <SectionHeading number="9" title="Your Rights" />
+            <p className="text-sm text-stone-600 mb-5">
+              Under the DPDP Act, you can:
+            </p>
+            <ul className="space-y-3">
+              <BulletItem>
+                <strong className="text-stone-800">Access:</strong> ask for a
+                summary of the personal data we hold about you, what we do
+                with it, and who we have shared it with.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">
+                  Correct and update:
+                </strong>{" "}
+                fix anything inaccurate or incomplete. Most profile details
+                can be edited directly in your settings.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">Erase:</strong> ask us to
+                delete your data when it's no longer needed for the purpose
+                you gave it for, or when you withdraw consent. We will keep
+                only what the law requires.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">
+                  Withdraw consent
+                </strong>{" "}
+                at any time (section 2).
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">Nominate</strong> someone
+                to exercise your rights if you die or become unable to act.
+              </BulletItem>
+              <BulletItem>
+                <strong className="text-stone-800">Complain</strong> to our
+                Grievance Officer, and then to the Data Protection Board of
+                India (section 12).
+              </BulletItem>
+            </ul>
+            <p className="text-sm text-stone-600 mt-6">
+              <strong className="text-stone-800">How to ask.</strong> Email{" "}
+              <MailLink email="gs@cre8r.ai" /> or use the privacy option in
+              your account settings. We may ask you to confirm your identity
+              before acting. We will respond within 30 days. Exercising your
+              rights is free.
+            </p>
           </section>
 
           <Divider />
 
-          {/* Jurisdiction */}
-          <section id="jurisdiction" className="scroll-mt-8">
+          {/* Children */}
+          <section id="children" className="scroll-mt-8">
+            <SectionHeading number="10" title="Children" />
+            <div className="space-y-4">
+              <Prose>
+                Cre8r is for people aged 18 and over. We don't knowingly
+                create accounts for, or collect data from, anyone under 18.
+                We don't track, profile or target advertising at children.
+              </Prose>
+              <Prose>
+                If we learn that someone under 18 has signed up, we will
+                close the account and delete their data. If a parent or
+                guardian believes their child has given us data, please
+                contact our Grievance Officer.
+              </Prose>
+              <Prose>
+                Creators must have permission from a parent or guardian
+                before showing a child in campaign content, and must follow
+                our Creator Terms on content that features other people.
+              </Prose>
+            </div>
+          </section>
+
+          <Divider />
+
+          {/* Cookies and analytics */}
+          <section id="cookies" className="scroll-mt-8">
+            <SectionHeading number="11" title="Cookies and Analytics" />
+            <Prose>
+              Cookies are small files a website stores in your browser.
+            </Prose>
+            <div className="mt-6">
+              <Table
+                columns={["Type", "What It Does"]}
+                rows={[
+                  [
+                    "Essential",
+                    "Keeps you logged in and keeps the site secure. The site can't work without them.",
+                  ],
+                  [
+                    "Analytics",
+                    "Google Analytics tells us which pages people visit and how they use the site. It doesn't tell us who you are.",
+                  ],
+                ]}
+              />
+            </div>
+            <p className="text-sm text-stone-600 mt-6">
+              We don't use advertising or tracking cookies. You can block or
+              delete cookies in your browser settings, or stop Google
+              Analytics with Google's opt-out browser add-on. Blocking
+              essential cookies may stop parts of the site from working.
+            </p>
+          </section>
+
+          <Divider />
+
+          {/* Contact */}
+          <section id="contact" className="scroll-mt-8">
             <SectionHeading
-              number="19"
-              title="Jurisdiction and Dispute Resolution"
+              number="12"
+              title="Contact, Grievance Officer and Complaints"
             />
             <Prose>
-              Any question or difference which may arise concerning the
-              construction meaning or effect of this Agreement or concerning the
-              rights and liabilities of the parties hereunder or any other
-              matter arising out of or in connection with this Agreement shall
-              be referred to a single arbitrator who shall conduct proceeding in
-              Gurgaon, Haryana which shall be appointed by the us within 30 days
-              from the written request from the Member. The decision of such
-              arbitrator shall be final and binding upon the parties. The cost
-              of proceedings shall be borne equally by the parties. Any
-              reference under this clause shall be deemed to be a reference to
-              arbitration within the meaning of the Arbitration Act 1996. The
-              courts at Gurgaon, Haryana (India) shall have exclusive
-              jurisdiction in all the matters arising out of Agreement. For the
-              purpose of Jurisdiction this Agreement shall be deemed to be
-              accepted by the User/Member in India.
+              For any question or request about your personal data, contact
+              our Grievance Officer:
+            </Prose>
+            <div className="bg-white rounded-xl border border-stone-200 p-6 mt-5 space-y-1 text-sm text-stone-600">
+              <p>
+                <strong className="text-stone-800">Name:</strong> Gaurav
+                Sharma
+              </p>
+              <p>
+                <strong className="text-stone-800">Email:</strong>{" "}
+                <MailLink email="gs@cre8r.ai" />
+              </p>
+              <p>
+                <strong className="text-stone-800">Address:</strong> Grunmech
+                Technologies Private Limited, AltF Coworking, Orchid Business
+                Park, Badshahpur Sohna Road, Islampur Village, Sector 38,
+                Gurugram, Haryana 122018
+              </p>
+            </div>
+            <div className="mt-6 space-y-4">
+              <Prose>
+                We acknowledge complaints within 24 hours and aim to resolve
+                them within 15 days, and in all cases within the time the
+                DPDP Rules allow.
+              </Prose>
+              <Prose>
+                If you're not satisfied with our response, you can complain
+                to the Data Protection Board of India through its official
+                website.
+              </Prose>
+            </div>
+          </section>
+
+          <Divider />
+
+          {/* Changes */}
+          <section id="changes" className="scroll-mt-8">
+            <SectionHeading number="13" title="Changes to This Policy" />
+            <Prose>
+              We will update this policy when our practices or the law
+              change, and show the new "Last updated" date at the top. For
+              important changes, we will email account holders at least 15
+              days before they take effect. If a change needs your consent,
+              we will ask for it.
             </Prose>
           </section>
         </main>
