@@ -64,7 +64,7 @@ const cards: PayoutCard[] = [
     textClass: "text-foreground",
     avatarClass: "bg-sky-500",
     startX: "0px",
-    startY: "-95px",
+    startY: "-25px",
   },
   {
     title: "AI Match",
