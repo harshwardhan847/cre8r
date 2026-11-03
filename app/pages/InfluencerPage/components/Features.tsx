@@ -8,35 +8,37 @@ import {
   Users,
   Wallet,
 } from "lucide-react";
+import { CONSTANTS, ELIGIBILITY } from "~/constants";
 
 type Props = {};
 
 const featureRows = [
   {
-    title: "Sign up & complete your profile",
+    title: "1 · Send us your profile",
     description:
-      "Join our community to expand your reach and opportunities. Showcase your content, audience demographics, and engagement metrics to help us match you with the perfect brand partnerships.",
+      `Email ${CONSTANTS.CONTACT_EMAIL_CREATORS} with your Instagram or YouTube handle, niche, city and languages.`,
     reverse: false,
     visual: "profile",
   },
   {
-    title: "Connect with brands that fit your niche",
+    title: "2 · Get offers that fit",
     description:
-      "Our AI helps you connect with brands that align with your audience and content style. Browse vetted opportunities, receive personalized campaign offers, and partner with companies you actually want to work with.",
+      "When a brand's brief matches your audience, the offer comes to you.",
     reverse: true,
     visual: "match",
   },
   {
-    title: "Land dream collaborations",
+    title: `3 · Say yes in ${ELIGIBILITY.RESPONSE_WINDOW}`,
     description:
-      "Partner with top brands, boost your engagement, and watch your influence grow. Create authentic content that resonates, meet exciting brands, and build lasting professional relationships.",
+      "Check the brief and the pay, create the content and send it for approval.",
     reverse: false,
     visual: "collab",
   },
   {
-    title: "Get paid seamlessly",
+    title: "4 · Get paid",
     description:
-      "Receive your payment directly in your account as per agreed terms. For barter campaigns, get exclusive products. For paid collaborations, earn competitive rates. Everything handled in one platform.",
+      "Cash for paid campaigns, product for barter, both tracked on the platform.",
+    note: "Being on our list doesn't guarantee a campaign. Offers depend on each brand's brief, and you can turn any of them down.",
     reverse: true,
     visual: "payout",
   },
@@ -422,6 +424,11 @@ const Features = (props: Props) => {
               <p className="mt-4 max-w-xl text-base font-light leading-relaxed text-muted-foreground">
                 {feature.description}
               </p>
+              {feature.note && (
+                <p className="mt-3 max-w-xl text-xs leading-relaxed text-muted-foreground/80">
+                  {feature.note}
+                </p>
+              )}
             </div>
 
             <div className={`${feature.reverse ? "md:order-1" : "md:order-2"}`}>

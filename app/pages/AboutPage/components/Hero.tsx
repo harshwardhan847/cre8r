@@ -111,14 +111,16 @@ const Hero = (_props: Props) => {
         transition={{ duration: 0.65, ease: "easeOut" }}
       >
         <h2 className="eyebrow">About Us</h2>
-        <h1 className="h1 text-center">
-          Reimagining Influencer Marketing
-          <br />
-          One campaign at a time
+        <h1 className="h1 max-w-3xl text-center text-balance">
+          Cre8r is the platform we built after running {STATS.CAMPAIGNS} creator
+          campaigns
         </h1>
-        <p className="max-w-lg text-center text-base font-light text-muted-foreground sm:text-lg">
-          From concept to scale, we help brands discover top influencers, design
-          impactful campaigns, and grow their reach effortlessly.
+        <p className="max-w-xl text-center text-base font-light text-muted-foreground sm:text-lg text-pretty">
+          Cre8r.ai is a creator discovery, activation and tracking platform
+          for Indian brands, run by Grunmech Technologies Private Limited from
+          Gurugram and Mumbai. We have delivered {STATS.CAMPAIGNS} campaigns for{" "}
+          {STATS.BRANDS} brands, including Tata Motors, Hyundai, Tanishq and
+          KFC, and won {STATS.AWARDS} awards.
         </p>
 
         {/* Mobile-only static stats — the parallax proof cards above are

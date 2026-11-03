@@ -30,6 +30,19 @@ const FEATURE_CARDS = [
   },
 ];
 
+const WAYS_TO_RUN = [
+  {
+    title: "Run it on the platform",
+    description:
+      "Your team runs campaigns in Cre8r directly, with the same AI search, moderation and dashboards our own team uses.",
+  },
+  {
+    title: "Add the managed team",
+    description:
+      "Our Gurugram and Mumbai team plans the campaign, supervises the content and coordinates creators, working on the same platform you see.",
+  },
+];
+
 const Transform = (props: Props) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const transition = useScroll({
@@ -90,13 +103,13 @@ const Transform = (props: Props) => {
           Influencer Marketing Platform
         </span>
       </p>
-      <h2 className="h2 text-primary-foreground text-center">
-        Understand your audience
-        <br className="hidden sm:block" /> through voices they trust.
+      <h2 className="h2 text-primary-foreground text-center max-w-2xl text-balance">
+        Most creator campaigns still run on a database, a spreadsheet and WhatsApp
       </h2>
-      <p className="max-w-md md:-m-4 text-muted-foreground text-center text-pretty text-sm md:text-base">
-        We prioritize authentic influencer relationships
-        <br className="hidden sm:block" /> that create lasting impact for your brand.
+      <p className="max-w-xl md:-m-4 text-muted-foreground text-center text-pretty text-sm md:text-base">
+        You find creators in one tool, track them in a spreadsheet and chase
+        drafts over WhatsApp. Then the report stops at views. Cre8r puts every
+        step on one platform, from the first search to the final report.
       </p>
       <Button
         className="bg-white text-neutral-900 hover:bg-neutral-100 cursor-pointer text-sm font-normal"
@@ -193,6 +206,24 @@ const Transform = (props: Props) => {
         </div>
       </div>
       <div className="h-20 md:h-40" />
+      <section className="w-full max-w-5xl pb-16 md:pb-24 flex flex-col items-center gap-8">
+        <h2 className="h2 text-primary-foreground text-center text-balance">
+          Use the platform on your own, or with our team
+        </h2>
+        <div className="grid w-full gap-4 sm:grid-cols-2">
+          {WAYS_TO_RUN.map((way) => (
+            <article
+              key={way.title}
+              className="rounded-xl border border-primary-foreground/10 bg-primary-foreground/10 p-6"
+            >
+              <h3 className="h3 text-primary-foreground">{way.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-primary-foreground/60">
+                {way.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
       <div className="mt-20 hidden">
         <h3 className="h3 text-center mb-8">
           Never miss a campaign opportunity

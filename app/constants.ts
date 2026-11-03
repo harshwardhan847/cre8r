@@ -19,15 +19,17 @@ const HIRING_FORM_URL = "https://forms.gle/z2MqTsVaRnC8y6tA9";
  */
 export const STATS = {
   /** Discoverable creator profiles in the index. */
-  CREATORS: "4Mn+",
+  CREATORS: "4M+",
   /** Views generated across delivered campaigns. */
   VIEWS: "500Mn+",
   /** Content pieces published. */
   CONTENT: "6,000+",
   /** Campaigns delivered end to end. */
-  CAMPAIGNS: "200+",
+  CAMPAIGNS: "500+",
   /** Brands served. */
   BRANDS: "100+",
+  /** Awards won. */
+  AWARDS: "10+",
   /** Filters available in Discovery. */
   FILTERS: "25+",
   /** Revenue attributed to campaigns. */
@@ -40,10 +42,12 @@ export const STATS = {
  * number is never described two different ways.
  */
 export const STAT_LABELS = {
-  CREATORS: "Discoverable profiles",
+  CREATORS: "Creator profiles, searchable with AI",
   VIEWS: "Views generated",
   CONTENT: "Content published",
   CAMPAIGNS: "Campaigns delivered",
+  BRANDS: "Brands",
+  AWARDS: "Awards",
   REVENUE: "Revenue attributed",
 } as const;
 
@@ -53,8 +57,11 @@ export const STAT_LABELS = {
  * here means a change to the threshold is a one-line edit.
  */
 export const ELIGIBILITY = {
-  /** Minimum followers to join, as shown in marketing copy. */
-  MIN_FOLLOWERS: "2,000+",
+  /**
+   * Minimum followers to join, as shown in marketing copy. Bare number so
+   * copy can read "at 2,000 followers" or "2,000+ followers".
+   */
+  MIN_FOLLOWERS: "2,000",
   /** Minimum age in years. */
   MIN_AGE: 18,
   /** Minimum engagement rate. */
@@ -75,8 +82,8 @@ export const ELIGIBILITY = {
  * lands everywhere at once.
  */
 export const CTA = {
-  BRAND: { label: "Book a Demo", href: CALENDLY_URL },
-  CREATOR: { label: "Join Cre8r", href: CREATOR_SIGNUP_URL },
+  BRAND: { label: "Book a platform demo", href: CALENDLY_URL },
+  CREATOR: { label: "Work with Cre8r", href: CREATOR_SIGNUP_URL },
   CAREERS: { label: "Apply Now", href: HIRING_FORM_URL },
 } as const;
 
@@ -156,15 +163,14 @@ export const CONSTANTS = {
           "Cre8r's vetting process thoroughly screens and onboards only creators who produce relevant, trustworthy and high-value content.",
       },
       {
-        question:
-          "How is Cre8r different from other influencer marketing platforms?",
+        question: "How is Cre8r different from other influencer platforms?",
         answer:
-          "Cre8r is a data-driven, DIY platform that helps brands discover and collaborate with high-quality influencers. Unlike other subscription-based platforms, Cre8r enables direct brand-influencer interaction, content approval and scheduling — all in one place.",
+          "Most platforms give you a creator database and leave the campaign to you. Cre8r combines AI-powered discovery and workflows with a managed team that plans, runs and measures the campaign, with live tracking and sentiment analysis built in.",
       },
       {
-        question: "What is Cre8r's revenue model?",
+        question: "Can I try Cre8r without a big budget?",
         answer:
-          "For barter campaigns, Cre8r charges a fixed platform fee per influencer. For paid campaigns, the margins are bundled in the influencer pricing.",
+          "Yes. Start with a barter campaign: you send product and pay a fixed fee per creator, then judge the content and results before you spend on paid creators.",
       },
       {
         question: "How do brands communicate with influencers?",
@@ -204,9 +210,9 @@ export const CONSTANTS = {
           "No, your registration at Cre8r is completely free. We're here to provide a platform that helps you escalate your growth as an influencer and earn money for the content you create.",
       },
       {
-        question: "What are the requirements to join Cre8r?",
+        question: "How many followers do I need for brand deals?",
         answer:
-          `You must be at least ${ELIGIBILITY.MIN_AGE} years old, have an Instagram or YouTube account with ${ELIGIBILITY.MIN_FOLLOWERS} followers/subscribers, and be located in India.`,
+          `At least ${ELIGIBILITY.MIN_FOLLOWERS} on Instagram or YouTube, with an India-based account. There's no upper limit: brands also book macro creators and celebrities. Barter campaigns also need at least a ${ELIGIBILITY.MIN_ENGAGEMENT} engagement rate.`,
       },
       {
         question: "Can I search for particular campaigns?",
@@ -214,9 +220,9 @@ export const CONSTANTS = {
           "No, you can't search for particular campaigns. The platform is designed to surface the campaigns that fit your profile, so the right collaborations come to you.",
       },
       {
-        question: "How do I get paid?",
+        question: "Do small creators get paid?",
         answer:
-          "Creators receive payments as per the agreed terms. For barter campaigns, you receive products. For paid campaigns, you earn a fee directly into your account.",
+          "Yes. You get paid campaigns with the fee written in the offer, and barter campaigns where you keep the product. You see which it is before you accept.",
       },
       {
         question: "How will I know about new campaign opportunities?",

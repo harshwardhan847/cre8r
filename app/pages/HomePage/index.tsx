@@ -4,6 +4,7 @@ import Brands from "./components/Brands";
 import EmailCard from "./components/EmailCard";
 import Features from "./components/Features";
 import Header from "./components/Header";
+import Scale from "./components/Scale";
 import CaseStudiesPreview from "./components/CaseStudiesPreview";
 import BlogsPreview from "./components/BlogsPreview";
 import Transform from "./components/Transform";
@@ -24,6 +25,7 @@ const Home = ({ latestPosts }: Props) => {
       {/* <VideoCarousel /> */}
       <Features />
       {featureFlags.enableCaseStudies && <CaseStudiesPreview />}
+      <Scale />
       <BlogsPreview posts={latestPosts} />
       {/* <EmailCard /> */}
     </>

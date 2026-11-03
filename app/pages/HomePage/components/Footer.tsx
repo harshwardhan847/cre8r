@@ -4,9 +4,12 @@ import { featureFlags } from "../../../featureFlags";
 
 const Footer = () => {
   const year = new Date().getFullYear();
-  // On the creator page every call to action is the creator sign-up, never the
-  // brand demo.
-  const isCreatorPage = useLocation().pathname.startsWith("/influencer");
+  // On the creator pages every call to action is the creator sign-up, never
+  // the brand demo.
+  const { pathname } = useLocation();
+  const isCreatorPage = ["/influencer", "/creator", "/barter-collabs"].some(
+    (path) => pathname.startsWith(path),
+  );
   const primaryCta = isCreatorPage ? CTA.CREATOR : CTA.BRAND;
 
   return (
@@ -14,19 +17,33 @@ const Footer = () => {
       {/* CTA Banner */}
       <div className="border-b border-primary-foreground/10">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="max-w-2xl">
-            <h2 className="h2">
-              Intelligent influencer
-              <br />
-              matchmaking{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-br from-sky-400 via-blue-300 to-sky-400">
-                powered by AI
-              </span>
-            </h2>
-            <p className="mt-4 text-primary-foreground/60 text-base leading-relaxed max-w-md">
-              From first brief to final conversion — discover, execute, and track campaigns with precision.
-            </p>
-          </div>
+          {isCreatorPage ? (
+            <div className="max-w-2xl">
+              <h2 className="h2">
+                Intelligent influencer
+                <br />
+                matchmaking{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-br from-sky-400 via-blue-300 to-sky-400">
+                  powered by AI
+                </span>
+              </h2>
+              <p className="mt-4 text-primary-foreground/60 text-base leading-relaxed max-w-md">
+                From first brief to final conversion — discover, execute, and track campaigns with precision.
+              </p>
+            </div>
+          ) : (
+            <div className="max-w-2xl">
+              <h2 className="h2">
+                See the platform on your{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-br from-sky-400 via-blue-300 to-sky-400">
+                  next campaign
+                </span>
+              </h2>
+              <p className="mt-4 text-primary-foreground/60 text-base leading-relaxed max-w-md">
+                Tell us your product, audience and launch date. In a 30&#8209;minute demo, we'll search the platform for creators who fit and show you how you'd track the results.
+              </p>
+            </div>
+          )}
           <div className="flex flex-col gap-3 items-start md:items-end shrink-0">
             <Link
               to={primaryCta.href}

@@ -18,17 +18,17 @@ export async function loader() {
 }
 
 const DESCRIPTION =
-  `Run influencer marketing end to end. Discover from ${STATS.CREATORS} vetted Instagram and YouTube creators, manage campaigns and content approvals, and attribute real revenue.`;
+  `Search ${STATS.CREATORS} creator profiles with AI, run campaigns with hundreds of creators, and track views and comment sentiment on one platform. ${STATS.CAMPAIGNS} campaigns for ${STATS.BRANDS} brands.`;
 
 export function meta() {
   return seo({
-    rawTitle: "Influencer Marketing Platform in India | Cre8r.ai",
-    title: "Influencer Marketing Platform in India",
+    rawTitle: "Cre8r.ai: AI Influencer Marketing Platform in India",
+    title: "AI Influencer Marketing Platform in India",
     description: DESCRIPTION,
     path: "/",
     jsonLd: [
       webPageSchema({
-        name: "Cre8r.ai — Influencer Marketing Platform",
+        name: "Cre8r.ai: AI Influencer Marketing Platform",
         description: SITE.description,
         path: "/",
       }),

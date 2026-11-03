@@ -3,16 +3,16 @@ import { seo, webPageSchema, breadcrumbSchema } from "~/seo";
 import { ELIGIBILITY } from "~/constants";
 
 const DESCRIPTION =
-  `Get paid brand collaborations without chasing agencies. Join free with ${ELIGIBILITY.MIN_FOLLOWERS} Instagram or YouTube followers in India and get campaigns matched to your profile.`;
+  `Brand deals for creators with ${ELIGIBILITY.MIN_FOLLOWERS}+ followers. See the brand, the brief and the pay before you say yes. Always free for creators.`;
 
 export function meta() {
   return seo({
-    title: "Brand Collaborations for Creators",
+    title: "Get Brand Deals on Instagram & YouTube in India",
     description: DESCRIPTION,
     path: "/influencer",
     jsonLd: [
       webPageSchema({
-        name: "Brand Collaborations for Creators",
+        name: "Get Brand Deals on Instagram & YouTube in India",
         description: DESCRIPTION,
         path: "/influencer",
       }),

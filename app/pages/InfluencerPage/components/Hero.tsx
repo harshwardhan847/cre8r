@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { CTA, ELIGIBILITY } from "~/constants";
+import { featureFlags } from "~/featureFlags";
 
 type Props = {};
 
@@ -11,30 +13,35 @@ const Hero = (props: Props) => {
       <div className="mx-auto grid min-h-screen w-full max-w-312.5 grid-cols-1 items-center gap-14 px-6 py-20 md:px-10 lg:grid-cols-2 lg:gap-10 lg:py-16 xl:px-14">
         <div className="mx-auto flex w-full max-w-140 flex-col items-center text-center lg:items-start lg:text-left justify-center">
           <p className="text-sm font-medium uppercase tracking-[0.06em] text-foreground/80">
-            CRE8R FOR CREATORS
+            For Instagram &amp; YouTube creators in India
           </p>
 
-          <h1 className="h1 mt-4">
-            Discover campaigns.
-            <br /> Create content.
-            <br /> Get paid.
+          <h1 className="h1 mt-4 text-balance">
+            Your next brand deal starts at {ELIGIBILITY.MIN_FOLLOWERS} followers
           </h1>
 
           <p className="mt-6 max-w-150 text-base sm:text-lg lg:text-xl font-light leading-relaxed text-muted-foreground">
-            Focus on creating content, we&apos;ll handle the rest. Connect with
-            vetted brands, unlock your earning potential, and grow your
-            influence.
+            Cre8r brings paid and barter campaigns from real Indian brands to
+            you. See the brand, the brief and the pay before you say yes, and
+            get paid through the platform instead of chasing invoices.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-center gap-3 lg:items-start">
-            <Button size="lg" className="h-12 px-6 font-normal" asChild>
-              <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">
-                {CTA.CREATOR.label}
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <Button size="lg" className="h-12 px-6 font-normal" asChild>
+                <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">
+                  {CTA.CREATOR.label}
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </a>
+              </Button>
+              {featureFlags.enableBarterCollabs && (
+                <Button variant="outline" size="lg" className="h-12 px-6 font-normal" asChild>
+                  <Link to="/barter-collabs">See barter deals</Link>
+                </Button>
+              )}
+            </div>
             <p className="text-xs font-medium text-muted-foreground">
-              Free to join · {ELIGIBILITY.MIN_FOLLOWERS} Instagram or YouTube followers
+              Always free for creators · Instagram &amp; YouTube · India
             </p>
           </div>
         </div>

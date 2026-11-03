@@ -126,30 +126,40 @@ const Hero = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.5 }}
         >
-          <p className="text-[13px] font-medium tracking-sm text-muted-foreground">
-            INFLUENCER PLATFORM
+          <p className="text-[13px] font-medium tracking-sm text-muted-foreground uppercase">
+            The Cre8r platform
           </p>
           <h1 className="h1 mt-4 text-balance">
-            Let AI build your next influencer campaign
+            One platform from creator search to campaign report
           </h1>
           <p className="mt-6 max-w-125 text-pretty text-lg leading-[1.35] text-muted-foreground">
-            Discover {STATS.CREATORS} creators. Execute campaigns. Track performance — all
-            in one place.
+            Pick creators on real audience data, launch them in one go, and see
+            how each one performed, with a managed team on hand when you want one.
           </p>
-          <Button
-            variant={"default"}
-            size={"lg"}
-            className="mt-10 h-12 px-6 text-lg font-light"
-            asChild
-          >
-            <a
-              href={CTA.BRAND.href}
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
+              variant={"default"}
+              size={"lg"}
+              className="h-12 px-6 text-lg font-light"
+              asChild
             >
-              {CTA.BRAND.label}
-            </a>
-          </Button>
+              <a
+                href={CTA.BRAND.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {CTA.BRAND.label}
+              </a>
+            </Button>
+            <Button
+              variant={"outline"}
+              size={"lg"}
+              className="h-12 px-6 text-lg font-light"
+              asChild
+            >
+              <a href="#pricing">See pricing</a>
+            </Button>
+          </div>
 
           {/* Mobile-only static replacement for the floating parallax stat
               cards below — same key numbers, no scroll-linked transforms. */}
@@ -258,7 +268,7 @@ const Stats = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            200+
+            {STATS.CAMPAIGNS}
           </motion.h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Campaigns delivered

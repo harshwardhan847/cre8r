@@ -15,12 +15,12 @@ const textBlocks: TextBlock[] = [
   {
     id: "block-1",
     content:
-      "We are a team of passionate marketers who have spent years navigating the digital media landscape.",
+      "We kept seeing the same problems: creators picked by follower count, briefs lost in WhatsApp threads, and reports that counted views but not sales.",
   },
   {
     id: "block-2",
     content:
-      "We saw firsthand the frustrations brands faced with influencer marketing and knew there had to be a better way.",
+      "So we built one platform to find real creators, run the campaign and see how each creator performed.",
   },
   // {
   //   id: "block-3",
@@ -97,8 +97,11 @@ const ScrollingTextAnimationSection = () => {
       className="w-full py-16 md:py-48"
       style={{ minHeight: "40vh" }}
     >
-      <div className="sticky top-0 h-[40vh] flex flex-col items-center justify-center px-4">
+      <div className="sticky top-0 min-h-[40vh] flex flex-col items-center justify-center px-4">
         <div className="max-w-2xl mx-auto space-y-10 md:space-y-24">
+          <h2 className="h2 text-center text-balance">
+            Built by marketers who were tired of guessing
+          </h2>
           {textBlocks.map((block, index) => {
             const isHighlighted = isMobile || focusedIndex === index;
 

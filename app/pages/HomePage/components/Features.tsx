@@ -8,38 +8,38 @@ type Props = {};
 
 const featuresList = [
   {
-    title: `Find & Track ${STATS.CREATORS} Creators`,
+    title: "Discover",
     image: "platform/discovery.png",
     demo: "discovery" as const,
     description:
-      "Filter by engagement metrics, niche, audience demographics & more.",
+      `Search ${STATS.CREATORS} profiles in plain language by niche, city, language and audience. Every profile shows audience age, gender, city and an authenticity score.`,
     accent: "bg-violet-400",
     num: "01",
   },
   {
-    title: "Advanced Creator Briefing System",
+    title: "Activate",
     image: "platform/creator_insights.png",
     demo: "campaignRequest" as const,
     description:
-      "The intuitive briefing system helps you set clear goals and share detailed guidelines.",
+      "AI-assisted outreach, onboarding and briefs. Launch five creators or five hundred across tiers, cities and languages.",
     accent: "bg-emerald-400",
     num: "02",
   },
   {
-    title: "Intelligent Matchmaking",
-    image: "platform/creators.png",
-    demo: "collection" as const,
+    title: "Monitor",
+    image: "platform/campaign_insights.png",
+    demo: "campaignCreation" as const,
     description:
-      "Make data-driven decisions with every click, every view, every comment.",
+      "AI checks every draft for hashtags, CTAs and disclosure labels before it goes live. Track every post day by day on a live dashboard.",
     accent: "bg-amber-400",
     num: "03",
   },
   {
-    title: "Live Performance Tracking",
-    image: "platform/campaign_insights.png",
-    demo: "campaignCreation" as const,
+    title: "Optimise",
+    image: "platform/creators.png",
+    demo: "compscan" as const,
     description:
-      "Monitor views, engagement and ROI in real-time across campaigns.",
+      "See views, reach, cost per view and comment sentiment for each creator, then move budget to what works.",
     accent: "bg-rose-400",
     num: "04",
   },
@@ -52,10 +52,9 @@ const Features = (props: Props) => {
 
   return (
     <div className="w-full my-12 md:my-24 flex flex-col items-center gap-4 justify-center">
-      <h2 className="h2 text-center">How it works?</h2>
-      <p className="text-center text-muted-foreground text-sm -m-2 px-4">
-        Find your ideal influencers in seconds —
-        <br /> no matter the niche, reach or region.
+      <h2 className="h2 text-center px-4">Discover. Activate. Monitor. Optimise.</h2>
+      <p className="text-center text-muted-foreground text-sm -mt-2 px-4">
+        One login takes a campaign from brief to final report.
       </p>
 
       {/* Mobile: plain vertical list of steps — no absolute 3D stack,
@@ -154,6 +153,15 @@ const Features = (props: Props) => {
           })}
         </div>
       </div>
+
+      <section className="container mx-auto max-w-3xl px-4 mt-12 md:mt-24 flex flex-col items-center gap-4 text-center">
+        <h2 className="h2 text-balance">See who's really following before you pay</h2>
+        <p className="text-muted-foreground text-sm md:text-base leading-relaxed text-pretty">
+          Every profile splits a creator's audience into genuine, suspicious and
+          mass followers, with their top cities, age groups and interests. You
+          shortlist on real audiences and skip inflated follower counts.
+        </p>
+      </section>
     </div>
   );
 };

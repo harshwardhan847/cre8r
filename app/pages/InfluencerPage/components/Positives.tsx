@@ -5,27 +5,27 @@ type Props = {};
 
 const positives = [
   {
-    title: "Creator-friendly pricing logic",
+    title: "Brands come to you",
     description:
-      "Unlock your earning potential with our performance-led pricing logic. We evaluate your data and insights to determine optimal compensation for your content.",
+      "Offers that match your niche reach you by phone and email. You choose what to take.",
     accent: "bg-blue-500",
   },
   {
-    title: "Vetted brand opportunities",
+    title: "The pay is upfront",
     description:
-      "Partner with trustworthy brands that are pre-screened and verified. Work with companies that value authentic creators and deliver real value.",
+      "Every offer shows the fee or product and exactly what to post, before you accept.",
     accent: "bg-orange-500",
   },
   {
-    title: "Grow your influence",
+    title: "Real, checked brands",
     description:
-      "Introduce your content to new followers and expand your fanbase. Every collaboration helps you reach wider audiences and strengthen your creator community.",
+      "Brands are reviewed before they reach you, and the full brief is on the platform.",
     accent: "bg-amber-400",
   },
   {
-    title: "Seamless collaboration",
+    title: "Paid on time",
     description:
-      "From signing up to getting paid, we make it simple. Manage campaigns, share content, and receive payments all in one intuitive platform.",
+      "Paid campaigns pay into your account on the timeline agreed in your campaign confirmation. Barter products ship to your door.",
     accent: "bg-emerald-500",
   },
 ];
@@ -35,7 +35,7 @@ const Positives = (props: Props) => {
     <section className="w-full bg-background py-20 md:py-24">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
         <h2 className="h2">
-          Why creators choose Cre8r
+          Why creators stay on Cre8r
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">

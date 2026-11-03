@@ -8,6 +8,7 @@ import {
   type BlogCard,
 } from "~/lib/blog";
 import { useFreshData } from "~/lib/use-fresh-data";
+import { STATS } from "~/constants";
 
 const fetchLatestPosts = async (signal: AbortSignal) =>
   (await getPostsPage({ limit: LATEST_POSTS_COUNT }, { signal })).posts;
@@ -25,8 +26,8 @@ const BlogsPreview = ({ posts: prerenderedPosts }: BlogsPreviewProps) => {
       <div className="container px-4 md:px-8 mx-auto flex flex-col gap-6 md:gap-8 max-w-7xl">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="h2">Latest Insights</h2>
-            <p className="text-muted-foreground mt-2 text-base md:text-lg">Stay updated with the latest in influencer marketing, trends, and strategies.</p>
+            <h2 className="h2">Playbooks from {STATS.CAMPAIGNS} campaigns</h2>
+            <p className="text-muted-foreground mt-2 text-base md:text-lg">Creator selection, fake-follower checks, regional activations and ASCI rules for brand teams in India.</p>
           </div>
           <Button variant="outline" size="lg" className="rounded-full shrink-0" asChild>
             <Link to="/blog">View All Posts</Link>

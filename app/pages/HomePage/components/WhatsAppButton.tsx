@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
-import { CONSTANTS, CTA } from "~/constants";
+import { CONSTANTS, CTA, STATS } from "~/constants";
 import { featureFlags } from "~/featureFlags";
 
 type Props = {
@@ -44,7 +44,7 @@ const WhatsAppButton = ({ dark }: Props) => {
         className={`text-xs w-full mt-2 font-medium text-center ${dark ? "text-white/60" : "text-muted-foreground"
           }`}
       >
-        Trusted by 200+ brands across India
+        Trusted by {STATS.BRANDS} brands across India
       </p>
     </div>
   );

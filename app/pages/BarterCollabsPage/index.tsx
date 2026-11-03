@@ -8,8 +8,8 @@ import { ELIGIBILITY } from "~/constants";
 const collabTypes = [
   {
     icon: Package,
-    title: "Product Gifting",
-    description: "Receive premium products from top brands in exchange for authentic, organic content posts. Perfect for building your portfolio.",
+    title: "Product gifting",
+    description: "The brand sends a product. You post an honest unboxing, review or day-in-the-life video.",
     examples: ["Unboxing videos", "Product reviews", "Day-in-life features"],
     colorClass: "bg-violet-50 text-violet-600 border-violet-100",
   },
@@ -29,20 +29,43 @@ const collabTypes = [
   },
   {
     icon: Handshake,
-    title: "Affiliate + Barter",
-    description: "Combine barter benefits with an affiliate code. Get products for free, plus earn commissions on every sale you drive.",
+    title: "Affiliate + barter",
+    description: "Keep the product and get a personal discount code. Earn commission on every sale it drives.",
     examples: ["Custom discount codes", "Revenue sharing", "Performance bonuses"],
     colorClass: "bg-rose-50 text-rose-600 border-rose-100",
   },
 ];
 
 const requirements = [
-  { label: "Minimum Followers", value: ELIGIBILITY.MIN_FOLLOWERS },
+  { label: "Minimum Followers", value: `${ELIGIBILITY.MIN_FOLLOWERS}+` },
   { label: "Platforms Supported", value: "Instagram, YouTube" },
   { label: "Content Quality", value: "Original & Authentic" },
   { label: "Engagement Rate", value: `Above ${ELIGIBILITY.MIN_ENGAGEMENT}` },
   { label: "Niches Covered", value: "All categories" },
   { label: "Payout Method", value: "Products / Cash" },
+];
+
+const definitions = [
+  {
+    title: "What is a barter collaboration?",
+    body: "A barter collaboration is a deal where a brand gives a creator a product, or another agreed benefit, instead of a cash fee. In return the creator posts agreed content, such as a Reel, Story or YouTube video. On Cre8r, every offer lists the product, its value and the content expected before you accept.",
+    lang: "en-IN",
+  },
+  {
+    title: "Barter collab kya hota hai?",
+    body: "Barter collaboration mein brand aapko paise ki jagah apna product deta hai. Badle mein aap us product par content banate hain, jaise Reel, Story ya YouTube video. Cre8r par har offer mein pehle se likha hota hai ki aapko kya milega aur kya post karna hai.",
+    lang: "hi-Latn",
+  },
+];
+
+const barterVsPaid = [
+  { label: "You get", barter: "The product, sometimes plus a code", paid: "A cash fee, set in the offer" },
+  { label: "Best when", barter: "You're building a portfolio", paid: "You have brand work to show" },
+  {
+    label: "On Cre8r",
+    barter: `${ELIGIBILITY.MIN_FOLLOWERS}+ followers, ${ELIGIBILITY.MIN_ENGAGEMENT}+ engagement`,
+    paid: `${ELIGIBILITY.MIN_FOLLOWERS}+ followers`,
+  },
 ];
 
 const brandsInvolved = [
@@ -61,20 +84,18 @@ const BarterCollabsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <p className="eyebrow">
-              Barter Collaborations
+              Barter collaborations · free for creators
             </p>
-            <h1 className="h1 mt-4">
-              Collaborate for
-              <br />
-              Products
+            <h1 className="h1 mt-4 text-balance">
+              Free products from brands you'd actually use
             </h1>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
-              Access exclusive barter collaboration opportunities with premium brands. Create authentic content, grow your portfolio, and get rewarded in products, cash, or both — depending on the campaign. Free to join, always.
+              Barter collaborations on Cre8r get you products from Indian brands in exchange for Reels, Stories and YouTube videos. It's the fastest way to build a brand portfolio, starting at {ELIGIBILITY.MIN_FOLLOWERS} followers.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-8">
               <Button size="lg" asChild>
                 <a href={CTA.CREATOR.href} target="_blank" rel="noopener noreferrer">
-                  {CTA.CREATOR.label}
+                  Apply for barter collabs
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
               </Button>
@@ -83,6 +104,17 @@ const BarterCollabsPage = () => {
               </Button>
             </div>
           </motion.div>
+
+          <div className="flex flex-col gap-6">
+          {/* Definitions — written to be lifted as the answer to "what is a barter collab" searches. */}
+          <div className="flex flex-col gap-5">
+            {definitions.map((def) => (
+              <div key={def.title} lang={def.lang}>
+                <h2 className="h3">{def.title}</h2>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{def.body}</p>
+              </div>
+            ))}
+          </div>
 
           {/* Stats Card */}
           <motion.div
@@ -101,6 +133,7 @@ const BarterCollabsPage = () => {
               ))}
             </div>
           </motion.div>
+          </div>
         </div>
       </section>
 
@@ -114,9 +147,9 @@ const BarterCollabsPage = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-10 md:mb-16"
           >
-            <h2 className="h2">Types of Collabs</h2>
+            <h2 className="h2">Four ways to collab</h2>
             <p className="mt-3 text-muted-foreground max-w-lg mx-auto">
-              Choose the collab format that works best for your content style and audience.
+              Pick the one that suits your content.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -160,7 +193,7 @@ const BarterCollabsPage = () => {
             transition={{ duration: 0.5 }}
             className="h2 mb-4"
           >
-            Brands actively seeking barter creators
+            Brands looking for creators right now
           </motion.h2>
           <p className="text-primary-foreground/60 mb-12 max-w-lg mx-auto">
             We have hundreds of brands across these categories looking for authentic creator collaborations right now.
@@ -190,6 +223,39 @@ const BarterCollabsPage = () => {
               <ArrowRight className="ml-2 w-4 h-4" />
             </a>
           </Button>
+        </div>
+      </section>
+
+      {/* Barter vs paid */}
+      <section className="py-16 md:py-24 px-6 md:px-8">
+        <div className="mx-auto max-w-3xl flex flex-col gap-10">
+          <h2 className="h2 text-center">Barter or paid: which is right for you?</h2>
+          <div className="overflow-x-auto rounded-2xl bg-white shadow-sm">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-border/10">
+                  <th className="p-4 md:p-5" />
+                  <th scope="col" className="p-4 md:p-5 font-medium">Barter</th>
+                  <th scope="col" className="p-4 md:p-5 font-medium">Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                {barterVsPaid.map((row) => (
+                  <tr key={row.label} className="border-b border-border/10 last:border-0">
+                    <th scope="row" className="p-4 md:p-5 font-medium">{row.label}</th>
+                    <td className="p-4 md:p-5 text-muted-foreground">{row.barter}</td>
+                    <td className="p-4 md:p-5 text-muted-foreground">{row.paid}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="rounded-2xl border border-border/10 bg-card p-6">
+            <h3 className="h3">Do I need to disclose a barter collab?</h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              Yes. A free product counts as a material connection under ASCI's influencer guidelines, so label the post clearly, for example with #Collab or #Ad.
+            </p>
+          </div>
         </div>
       </section>
     </main>

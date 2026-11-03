@@ -55,11 +55,10 @@ const CreatorFAQ = (props: Props) => {
       <div className="mx-auto w-full max-w-6xl px-6 md:px-10">
         <div className="mb-12 max-w-2xl">
           <h2 className="h2">
-            Creator FAQs
+            Before you work with us
           </h2>
           <p className="mt-3 text-base font-light text-muted-foreground">
-            Have questions about how Cre8r works? Find answers to commonly asked
-            questions from our creator community.
+            Eligibility, pay and how offers work.
           </p>
         </div>
 

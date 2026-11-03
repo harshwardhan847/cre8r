@@ -110,11 +110,10 @@ const TableOfContents = ({
         <li key={s.id}>
           <button
             onClick={() => onSelect(s.id)}
-            className={`w-full text-left text-xs px-3 py-1.5 rounded-lg transition-colors ${
-              active === s.id
+            className={`w-full text-left text-xs px-3 py-1.5 rounded-lg transition-colors ${active === s.id
                 ? "bg-amber-50 text-amber-700 font-semibold"
                 : "text-stone-500 hover:text-stone-800 hover:bg-stone-50"
-            }`}
+              }`}
           >
             {s.label}
           </button>
@@ -244,7 +243,7 @@ export default function CreatorsTc() {
                 the platform requires it.
               </NumItem>
               <NumItem label="4.">
-                Your account has at least 5,000 followers or subscribers.
+                Your account has at least 2,000 followers or subscribers.
                 There is no upper limit: we work with nano, micro, macro and
                 celebrity creators.
               </NumItem>

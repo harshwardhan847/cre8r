@@ -2,11 +2,11 @@ import BarterCollabsPage from "~/pages/BarterCollabsPage";
 import { seo, webPageSchema, breadcrumbSchema } from "~/seo";
 
 const DESCRIPTION =
-  "Product-gifting collaborations between brands and creators. See how barter campaigns work on Cre8r, who qualifies, and what creators receive in place of a fee.";
+  "A barter collaboration means you get a brand's product instead of a cash fee, in exchange for content. See who qualifies, how to get one and which brands are looking.";
 
 export function meta() {
   return seo({
-    title: "Barter Collaborations for Creators",
+    title: "Barter Collaboration: Meaning, How It Works & Brands in India",
     description: DESCRIPTION,
     path: "/barter-collabs",
     jsonLd: [

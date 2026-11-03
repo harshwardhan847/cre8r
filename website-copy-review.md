@@ -614,7 +614,7 @@ Subhead: "Have questions about how Cre8r works? Find answers to commonly asked q
 3. **Is there a registration charge?**
    "No, your registration at Cre8r is completely free. We're here to provide a platform that helps you escalate your growth as an influencer and earn money for the content you create."
 4. **What are the requirements to join Cre8r?**
-   "You must be at least 13 years old, have an Instagram or YouTube account with 5,000-100,000 followers/subscribers, and be located in India."
+   "You must be at least 13 years old, have an Instagram or YouTube account with 2,000-100,000 followers/subscribers, and be located in India."
 5. **How do I get paid?**
    "Creators receive payments as per the agreed terms. For barter campaigns, you receive products. For paid campaigns, you earn a fee directly into your account."
 6. **How will I know about new campaign opportunities?**
@@ -652,7 +652,7 @@ Buttons: **"Apply as Creator"** / **"For Influencers"**
 **"Program at a glance" card:**
 | Field | Value |
 |---|---|
-| Minimum Followers | 5,000+ |
+| Minimum Followers | 2,000+ |
 | Platforms Supported | Instagram, YouTube |
 | Content Quality | Original & Authentic |
 | Engagement Rate | Above 2% |

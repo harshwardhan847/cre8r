@@ -1,32 +1,32 @@
 import { Link } from "react-router";
 import { ArrowRight, Clock } from "lucide-react";
-import { CONSTANTS } from "~/constants";
 import { DemoPlayer } from "~/components/DemoPlayer";
+import { STATS } from "~/constants";
 
 const modules = [
   {
-    title: "Discovery Module",
-    description: "Find the right creators with 25+ filters, optimizing for engagement, credibility, and brand fit.",
-    features: ["Category", "Location", "Followers", "Engagement"],
+    title: "Creator discovery & intelligence",
+    description: `AI-powered search across ${STATS.CREATORS} profiles by content, attributes and audience. Every profile shows audience age, gender, city, interests and an authenticity score.`,
+    features: ["AI search", "Audience data", "Authenticity score"],
     demo: "discovery" as const,
   },
   {
-    title: "Execution Module",
-    description: "Turn your shortlist into confirmed creators with the Outreach module.",
-    features: ["Creator outreach", "Response tracking", "Outreach pipeline"],
+    title: "UGC & influencer collaborations",
+    description: "Paid, barter and UGC campaigns at scale: AI-assisted outreach, onboarding, briefs, AI content moderation and compliance checks before anything goes live.",
+    features: ["Outreach & onboarding", "Briefs", "AI content moderation"],
     demo: "outreach" as const,
   },
   {
-    title: "Campaign Tracking Module",
-    description: "Track every post as it goes live — views, likes, comments and engagement per creator.",
-    features: ["Live post performance", "Campaign insights", "Creator breakdown"],
+    title: "Campaign tracking & sentiment",
+    description: "Track every post as it goes live, with views, reach and engagement for each creator, alongside sentiment analysis of every comment.",
+    features: ["Live post tracking", "Creator breakdown", "Sentiment analysis"],
     demo: "campaignCreation" as const,
   },
   {
-    title: "Sentiment Analysis Module",
-    description: "Understand how audiences reacted to your campaign and see what competitors are running.",
-    features: ["Comment sentiment", "Audience feedback", "Competition scanner"],
-    demo: "compscan" as const,
+    title: "AI content production & paid media",
+    description: "AI creator videos at scale across formats and languages, and paid amplification of your best creator content to the right audiences.",
+    features: ["AI creator videos", "Multi-language", "Paid amplification"],
+    demo: "videoAnalyzer" as const,
   },
 ];
 
@@ -35,10 +35,7 @@ const ProductModules = () => {
     <div className="w-full py-12 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="h2">Our Key Offerings</h2>
-          <p className="mt-4 text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Everything you need for a successful influencer marketing strategy, broken down into powerful modules.
-          </p>
+          <h2 className="h2 text-balance">Everything a creator campaign needs, in one login</h2>
         </div>
 
         <div className="flex flex-col gap-14 md:gap-24">
@@ -74,9 +71,9 @@ const ProductModules = () => {
               <Clock className="w-3.5 h-3.5" />
               Coming Soon
             </span>
-            <h3 className="h3">Affiliate & Lead Gen*</h3>
+            <h3 className="h3">Affiliate commerce & attribution*</h3>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
-              Creator promo codes, referral tracking, attributed revenue and lead generation from influencer campaigns.
+              Live links, coupon tracking and Shopify attribution to show the traffic, conversions and sales each creator drives.
             </p>
           </div>
           <Link

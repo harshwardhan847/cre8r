@@ -1,14 +1,14 @@
 import { motion } from "motion/react";
 import { useIsMobile } from "~/lib/use-is-mobile";
-import { BRAND_LOGOS, CLAIMS, STAT_LABELS, STATS } from "~/constants";
+import { BRAND_LOGOS, STAT_LABELS, STATS } from "~/constants";
 
 type Props = {};
 
 const statItems = [
   { stat: STATS.CREATORS, label: STAT_LABELS.CREATORS, border: "border-l-violet-400" },
-  { stat: STATS.VIEWS, label: STAT_LABELS.VIEWS, border: "border-l-emerald-400" },
-  { stat: STATS.CONTENT, label: STAT_LABELS.CONTENT, border: "border-l-amber-400" },
-  { stat: STATS.CAMPAIGNS, label: STAT_LABELS.CAMPAIGNS, border: "border-l-rose-400" },
+  { stat: STATS.CAMPAIGNS, label: STAT_LABELS.CAMPAIGNS, border: "border-l-emerald-400" },
+  { stat: STATS.BRANDS, label: STAT_LABELS.BRANDS, border: "border-l-amber-400" },
+  { stat: STATS.AWARDS, label: STAT_LABELS.AWARDS, border: "border-l-rose-400" },
 ];
 
 // Duplicated so the marquee loops seamlessly without a visible seam.
@@ -39,6 +39,12 @@ const Brands = (props: Props) => {
 
   return (
     <section className="py-12 md:py-24 overflow-hidden">
+      <p className="container mx-auto px-4 mb-4 md:mb-6 text-center text-sm text-muted-foreground text-pretty">
+        <span className="font-medium text-foreground">
+          Tata Motors, Hyundai, MG, Tanishq, KFC, MakeMyTrip and Marico
+        </span>{" "}
+        have run creator campaigns with Cre8r.
+      </p>
       <div className="w-full flex overflow-hidden mb-12 md:mb-24 py-6 md:py-8 border-y border-black/5 bg-white transition-opacity duration-500">
         {isMobile ? (
           // Mobile: simple static wrapped row, no continuous JS-driven marquee.
@@ -84,12 +90,10 @@ const Brands = (props: Props) => {
               Traction
             </p>
             <h2 className="h2">
-              Automate Influencer Marketing
-              <br /> to Drive ROI
+              The platform behind {STATS.CAMPAIGNS} creator campaigns
             </h2>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              {CLAIMS.BRAND_TRUST} to discover creators, run campaigns and measure
-              what matters most.
+              Totals across every Cre8r campaign to date, updated October 2026.
             </p>
           </motion.div>
 
